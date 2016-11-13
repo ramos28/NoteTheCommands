@@ -1,0 +1,8 @@
+<h1>RestaurantsUsers#index</h1>
+<p>Find me in app/views/restaurants_users/index.html.erb</p>
+
+<% @restaurant_users.each do |restaurant_user| %>
+	<p><%= restaurant_user.restaurant.name %> - <%= restaurant_user.user_type %></p>
+<% end %>
+
+<%= link_to 'Apuntarte a otro restaurante', select_restaurant_path %>
