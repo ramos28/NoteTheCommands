@@ -1,5 +1,8 @@
-new.html.erb
-
-<% @restaurants.each do |restaurant| %>
-	<p><%= restaurant.name %></p>
+<%= form_for @restaurants do |f| %>
+  	<%= f.collection_select :name, Restaunrant.all, :id, :name_with_initial, prompt: true %>
+  	<%= f.submit %>
 <% end %>
+
+<!-- <% @restaurants.each do |restaurant| %>
+	<p><%= check_box_tag (restaurant.name) %><h8><%= restaurant.name %></h8></p>
+<% end %> -->

@@ -1,3 +1,45 @@
 // Place all the styles related to the restaurants_users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.centradoVertical {
+	vertical-aligned: middle;
+	margin-top: right;
+}
+
+#agruparLogin {
+	position: absolute;
+	top: 30%;
+	left: 42%;
+	height: 150px;
+	width: 180px;
+	margin: -15% O O -25%;
+}
+
+#agruparRegistro {
+	position: absolute;
+	top: 30%;
+	left: 42%;
+	height: 300px;
+	width: 300px;
+	margin: -15% O O -25%;
+}
+
+#agruparForget {
+	position: absolute;
+	top: 30%;
+	left: 38%;
+	height: 150px;
+	width: 250px;
+	margin: -15% O O -25%;
+}
+
+#agrupaSesion {
+	clear: both;
+	text-align: right;
+	font-weight: bold;
+	padding: 10px;
+}
+
+h2 {
+	text-align: center;
+}

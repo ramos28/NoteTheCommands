@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+body
+{
+	font-family: Arial, 'Helvetica';
+	background-image: url("fondoOndulado.jpg");
+}
+
+nav {
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+	font-size: xx-large;
+	font-family: verdana;
+}
+
+footer {
+	clear: both;
+	text-align: right;
+	font-weight: bold;
+	padding: 20px;
+}
+
+section {
+	height: 460px;
+}
+
+.menu {
+	padding: 30px;
+}

@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>NoteTheCommands</title>
-    <%= csrf_meta_tags %>
+      <head>
+            <title>NoteTheCommands</title>
+            <%= csrf_meta_tags %>
+            <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+            <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      </head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-  	<%= render partial: 'layouts/header' %>
-    <%= yield %>
-  </body>
+      <body>
+            <header>
+                  <h1>Note the Commands</h1>
+            </header>
+            <nav>
+                  <h4>Panel de control</h4>
+                  <%= render partial: 'layouts/header' %>
+            </nav>
+            <section>
+                  <%= yield %>
+            </section>
+            <footer>- UAM - EPS - Ingenieria Informatica - TFG - Daniel Ramos Trejo</footer>
+      </body>
 </html>

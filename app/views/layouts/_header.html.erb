@@ -1,6 +1,8 @@
-<% if user_signed_in? %>
-	<p><%= current_user.email %></p>
-	<%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete %>
-<% else %>
-	<%= link_to 'Iniciar sesion', new_user_session_path %>
-<% end %>
+<div id ="agrupaSesion">
+	<% if user_signed_in? %>
+		<h5>Sesion Usuario: <%= current_user.nick %></h5>
+		<%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete %>
+	<% else %>
+		<%= link_to 'Iniciar sesion', new_user_session_path %>
+	<% end %>
+</div>
