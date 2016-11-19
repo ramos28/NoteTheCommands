@@ -60,29 +60,37 @@ h2 {
 	color: white;
 }
 
-.restaurantes-asociados {
-	float: left;
+.muestra-tabla {
+float: left;
 	text-align: center;
 	top: 35%;
-	height: 300px;
-	width: 510px;
+	height: 360px;
+	width: 580px;
 	border: 1px solid white;
 }
 
-.botonera-restaurante {
+.muestra-opciones {
 	float: left;
 	text-align: center;
 	top: 35%;
-	height: 300px;
-	width: 510px;
+	height: 360px;
+	width: 700px;
 	border: 1px solid white;
+}
+
+.chatbox {
+	display:none;
+}
+
+a.mostrar{
+	
 }
 
 table {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 20px; 
 	margin: 15px;
-	width:480px;
+	width:545px;
 	text-align: center;
 	border_collapse: collapse;
 }
@@ -99,7 +107,7 @@ th {
 
 td {
 	padding: 8px;
-	background: #e8edff;
+	background: #9C7ADC;
 	border-botton: 1px solid #fff;
 	color: #669;
 	border-top: 1px solid transparent;

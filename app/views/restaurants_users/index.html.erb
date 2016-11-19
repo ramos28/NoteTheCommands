@@ -1,6 +1,6 @@
 <h1>Restaurantes Asociados</h1>
 
-<div class ="restaurantes-asociados">
+<div class ="muestra-tabla">
 	<table>
 		<caption>Restaurantes inscritos</caption>
 		<tr><th>Nombre Restaurante</th><th>Tipo Usuario</th></tr>
@@ -9,7 +9,22 @@
 		<% end %>
 	</table>
 </div>
-<div class="botonera-restaurante">
-	<p><%= link_to 'Apuntarte a otro restaurante', select_restaurant_path %></p>
-	<p><%= link_to 'Continuar', location_user_path %></p>
+<div class="muestra-opciones">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+		jQuery("a.mostrar").click(function(){
+		jQuery("div.chatbox").toggle("slow");
+		return false;
+		});
+		});
+	</script>
+
+	<a href="#" class="mostrar">Apuntarte a otro restaurante</a><br/>
+	<div class="chatbox">
+		<%= form_for :post do |f| %>
+			<p>Seleccione Restaurante: <%= collection_select( :restaurant, :user, Restaurant.all, :id, :name, {}, {:multiple => false})%></p>
+			<p><%= f.submit %></p>
+		<% end %>
+    </div>
 </div>

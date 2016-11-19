@@ -1,20 +1,41 @@
 <h1>Productos del restaurante</h1>
 
-<div class ="productos-asociados">
+<div class ="muestra-tabla">
 	<table>
 		<caption>Listado Productos</caption>
-		<tr><th>Nombre</th><th>Categoría</th><th>Descripción</th><th>Precio Unidad</th></tr>
-		<% @productos_restaurante.each do |product_rest| %>
-			<tr>
-				<th><%= product_rest.name %></th> 
-				<th><%= product_rest.product_type%></th>  
-				<th><%= product_rest.product_description%></th>
-				<th><%= product_rest.unit_price%></th>
-			</tr>
-		<% end %>
+		<tbody>
+			<tr><td>Nombre</td><td>Categoría</td><td>Descripción</td><td>Precio Unidad</td></tr>
+			<% @productos_restaurante.each do |product_rest| %>
+				<tr>
+					<th><%= product_rest.name %></th> 
+					<th><%= product_rest.product_type%></th>  
+					<th><%= product_rest.product_description%></th>
+					<th><%= product_rest.unit_price%></th>
+				</tr>
+			<% end %>
+		</tbody>
+		<tfoot>AFLJHSFL</tfoot>
 	</table>
 </div>
-<div class="botonera-productos">
-	<p><%= link_to 'Añadir un nuevo producto', select_restaurant_path %></p>
-	<p><%= link_to 'Continuar', location_user_path %></p>
+<div class="muestra-opciones">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+		jQuery("a.mostrar").click(function(){
+		jQuery("div.chatbox").toggle("slow");
+		return false;
+		});
+		});
+	</script>
+
+	<a href="#" class="mostrar">Añadir un nuevo producto</a><br/>
+	<div class="chatbox">
+		<%= form_for :post do |f| %>
+			<p>Nombre: <%= f.text_field :name %></p>
+			<p>Tipo Producto: <%= f.text_field :type_product %></p>
+			<p>Descripción del producto: <%= f.text_area :product_description %></p>
+			<p>Precio unidad producto: <%= f.text_field :unit_price %></p>
+			<p><%= f.submit %></p>
+		<% end %>
+    </div>
 </div>

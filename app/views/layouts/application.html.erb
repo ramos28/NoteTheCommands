@@ -19,10 +19,15 @@
                         <li><%= link_to "Quienes Somos", new_user_session_path%></li>
                         <li><%= link_to "Contacto", new_user_session_path%></li>
                         <li><%= link_to "Panel de Control", new_user_session_path%>
-                        <% if current_user %>
+                              <% if current_user %>
                                     <ul>
                                           <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
-                                          <li><%= link_to "Añadir Productos", productos_index_path%></li>
+                                          <% @restaurant_users.each do |restaurant_user| %>
+                                                <% if restaurant_user.user_type == 3 %>
+                                                      <li><%= link_to "Control Stock", new_user_registration_path %></li>
+                                                      <li><%= link_to "Añadir Productos", productos_index_path%></li>
+                                                <% end %>
+                                          <% end %>
                                     </ul>
                               <% else %>
                                     <ul>
