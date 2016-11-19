@@ -1,0 +1,4 @@
+<div id = "agrupaSelectRest">
+	<%= collection_select( :restaurant, :user, Restaurant.all, :id, :name, {}, {:multiple => false})%>
+	<%= link_to 'Continuar', location_user_path %>
+</div>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
       <head>
+            <link rel="image" type="image/png" href="icon.png">
             <title>NoteTheCommands</title>
             <%= csrf_meta_tags %>
             <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,8 +13,28 @@
                   <h1>Note the Commands</h1>
             </header>
             <nav>
-                  <h4>Panel de control</h4>
-                  <%= render partial: 'layouts/header' %>
+                  <ul>
+                        <li><%= link_to "Inicio", root_path %></li>
+                        <li><%= link_to "Noticias", new_user_session_path%></li>
+                        <li><%= link_to "Quienes Somos", new_user_session_path%></li>
+                        <li><%= link_to "Contacto", new_user_session_path%></li>
+                        <li><%= link_to "Panel de Control", new_user_session_path%>
+                        <% if current_user %>
+                                    <ul>
+                                          <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
+                                          <li><%= link_to "Añadir Productos", productos_index_path%></li>
+                                    </ul>
+                              <% else %>
+                                    <ul>
+                                          <li><%= link_to "Iniciar Sesion", new_user_session_path %></li>
+                                          <li><%= link_to "Registra Restaurante", new_user_registration_path %></li>
+                                    </ul>
+                              <% end %>
+                        </li>
+                        <% if user_signed_in? %>
+                              Sesión: <%= current_user.nick %>
+                        <%end%>
+                  </ul>
             </nav>
             <section>
                   <%= yield %>

@@ -1,0 +1,20 @@
+<h1>Productos del restaurante</h1>
+
+<div class ="productos-asociados">
+	<table>
+		<caption>Listado Productos</caption>
+		<tr><th>Nombre</th><th>Categoría</th><th>Descripción</th><th>Precio Unidad</th></tr>
+		<% @productos_restaurante.each do |product_rest| %>
+			<tr>
+				<th><%= product_rest.name %></th> 
+				<th><%= product_rest.product_type%></th>  
+				<th><%= product_rest.product_description%></th>
+				<th><%= product_rest.unit_price%></th>
+			</tr>
+		<% end %>
+	</table>
+</div>
+<div class="botonera-productos">
+	<p><%= link_to 'Añadir un nuevo producto', select_restaurant_path %></p>
+	<p><%= link_to 'Continuar', location_user_path %></p>
+</div>

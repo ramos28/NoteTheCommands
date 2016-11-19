@@ -5,6 +5,6 @@ class RestaurantsUsersController < ApplicationController
   end
 
   def new
-  	@restaurants = Restaurant.all
+  	@restaurant_users = current_user
   end
 end

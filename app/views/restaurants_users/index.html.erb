@@ -1,7 +1,15 @@
 <h1>Restaurantes Asociados</h1>
 
-<% @restaurant_users.each do |restaurant_user| %>
-	<p><%= restaurant_user.restaurant.name %> - <%= restaurant_user.user_type %></p>
-<% end %>
-
-<%= link_to 'Apuntarte a otro restaurante', select_restaurant_path %>
+<div class ="restaurantes-asociados">
+	<table>
+		<caption>Restaurantes inscritos</caption>
+		<tr><th>Nombre Restaurante</th><th>Tipo Usuario</th></tr>
+		<% @restaurant_users.each do |restaurant_user| %>
+			<tr><th><%= restaurant_user.restaurant.name %></th> <th><%= restaurant_user.user_type %></th>
+		<% end %>
+	</table>
+</div>
+<div class="botonera-restaurante">
+	<p><%= link_to 'Apuntarte a otro restaurante', select_restaurant_path %></p>
+	<p><%= link_to 'Continuar', location_user_path %></p>
+</div>

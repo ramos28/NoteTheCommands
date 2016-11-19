@@ -7,39 +7,105 @@
 }
 
 #agruparLogin {
+	text-align: center;
 	position: absolute;
-	top: 30%;
-	left: 42%;
-	height: 150px;
+	top: 35%;
+	left: 44%;
+	height: 190px;
 	width: 180px;
 	margin: -15% O O -25%;
+	border: 1px solid white;
 }
 
 #agruparRegistro {
+	text-align: center;
 	position: absolute;
-	top: 30%;
-	left: 42%;
+	top: 35%;
+	left: 38%;
 	height: 300px;
 	width: 300px;
 	margin: -15% O O -25%;
+	border: 1px solid white;
 }
 
 #agruparForget {
+	text-align: center;
 	position: absolute;
-	top: 30%;
+	top: 35%;
+	left: 40%;
+	height: 120px;
+	width: 250px;
+	margin: -15% O O -25%;
+	border: 1px solid white;
+}
+
+#agrupaSesion {
+
+	clear: both;
+	text-align: right;
+	font-weight: bold;
+}
+
+#agrupaSelectRest {
+	position: absolute;
+	top: 50%;
 	left: 38%;
 	height: 150px;
 	width: 250px;
 	margin: -15% O O -25%;
 }
 
-#agrupaSesion {
-	clear: both;
-	text-align: right;
-	font-weight: bold;
-	padding: 10px;
-}
-
 h2 {
 	text-align: center;
+	color: white;
+}
+
+.restaurantes-asociados {
+	float: left;
+	text-align: center;
+	top: 35%;
+	height: 300px;
+	width: 510px;
+	border: 1px solid white;
+}
+
+.botonera-restaurante {
+	float: left;
+	text-align: center;
+	top: 35%;
+	height: 300px;
+	width: 510px;
+	border: 1px solid white;
+}
+
+table {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 20px; 
+	margin: 15px;
+	width:480px;
+	text-align: center;
+	border_collapse: collapse;
+}
+
+th {
+	font-size: 10px;
+	font-weight: normal;
+	padding: 8px;
+	background: #b9c9fe;
+	border-top: 4px solid #aabcfe;
+	border-botton: 1px solid #fff;
+	color: #039;
+}
+
+td {
+	padding: 8px;
+	background: #e8edff;
+	border-botton: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid transparent;
+}
+
+tr:hover td {
+	background: #d0dafd;
+	color: #339;
 }

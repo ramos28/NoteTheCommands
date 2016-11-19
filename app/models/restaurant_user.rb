@@ -4,6 +4,6 @@ class RestaurantUser < ApplicationRecord
 
 	CUSTOMER = 0
 	WAITER = 1
-	ADMIN = 2
-	CHEF = 3
+	CHEF = 2
+	ADMIN = 3
 end
