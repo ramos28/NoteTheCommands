@@ -1,7 +1,7 @@
-class Product < ActiveRecord::Base
+class Stock < ApplicationRecord
 
-	belongs_to :restaurant
-
+	belongs_to :product
+	
   	def self.search(search)
 	  	if search
 	    	where('name LIKE ?', "%#{search}%")
@@ -10,4 +10,3 @@ class Product < ActiveRecord::Base
 	  	end
 	end
 end
-

@@ -1,0 +1,21 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="pretty">
+      <tr>
+            <th><%= sortable "name" %></th>
+            <th><%= sortable "product_type", "Categoria Producto" %></th>
+            <th><%= sortable "product_description", "Descripcion producto" %></th>
+            <th><%= sortable "unit_price" %></th>
+            <th>Resturante</th>
+      </tr>
+      <% @products.each do |product| %>
+            <tr>
+                  <td><%= product.name %></td>
+                  <td><%= product.product_type %></td>
+                  <td><%= product.product_description %></td>
+                  <td class="price"><%= number_to_currency(product.unit_price, :unit => "&pound;") %></td>
+                  <td><%= product.restaurant.name %></td>                  
+            </tr>
+      <% end %>
+</table>
+<%= will_paginate @products %>

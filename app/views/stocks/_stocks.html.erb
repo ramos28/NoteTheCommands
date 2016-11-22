@@ -1,0 +1,18 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="pretty">
+  <tr>
+    <th><%=  "Cantidad" %></th>
+    <th><%=  "Descipcion Stock" %></th>
+    <th><%=  "Precio Compra Unidad" %></th>
+    <th><%=  "Gasto Total Producto" %></th>
+  </tr>
+  <% @stocks.each do |stock| %>
+    <tr>
+      <td><%= stock.quantity %></td>
+      <td><%= stock.description_stock %></td>
+      <td class="price"><%= number_to_currency(stock.price_buy_unity) %></td>
+      <td class="price"><%= number_to_currency(stock.quantity.to_i * stock.price_buy_unity.to_i) %></td>
+    </tr>
+  <% end %>
+</table>

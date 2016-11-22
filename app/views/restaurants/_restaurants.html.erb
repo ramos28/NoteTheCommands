@@ -1,0 +1,12 @@
+<table class="pretty">
+      <tr>
+            <th><%=  "name" %></th>
+            <th><%=  "email" %></th>
+      </tr>
+      <% @restaurants.each do |restaurant| %>
+            <tr>
+                  <td><%= restaurant.name %></td>
+                  <td><%= restaurant.email %></td>
+            </tr>
+      <% end %>
+</table>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cantidad: 1
+  descripcionStock: MyString
+  precioCompraUnidad: 1.5
+  gastosTotalProducto: 1.5
+
+two:
+  cantidad: 1
+  descripcionStock: MyString
+  precioCompraUnidad: 1.5
+  gastosTotalProducto: 1.5

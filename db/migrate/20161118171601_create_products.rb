@@ -6,6 +6,8 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :product_description
       t.float :unit_price, null: false
 
+	    t.references :restaurant
+
       t.timestamps null: false
     end
   end

@@ -1,0 +1,24 @@
+<h1>Producto</h1>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @restaurant.name %>
+</p>
+<p>
+  <strong>Tipo producto:</strong>
+  <%= @restaurant.email %>
+</p>
+<p>
+  <strong>Descripcion Producto:</strong>
+  <%= @restaurant.phone %>
+</p>
+<p>
+  <strong>Precio:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_restaurant_path(@restaurant) %> |
+  <%= link_to "Destroy", @restaurant, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", restaurants_path %>
+</p>

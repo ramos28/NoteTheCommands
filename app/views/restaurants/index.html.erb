@@ -1,0 +1,29 @@
+<h1>Restaurantes</h1>
+
+<div class ="muestra-tabla">
+	<%= form_tag products_path, :method => 'get', :id => "products_search" do %>
+		<p>
+			<%= text_field_tag :search, params[:search] %>
+			<%= submit_tag "Search", :name => nil %>
+		</p>
+		<div id="products"><%= render 'restaurants' %></div>
+	<% end %>
+	
+</div>
+<div class="muestra-opciones">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+		jQuery("a.mostrar").click(function(){
+		jQuery("div.chatbox").toggle("slow");
+		return false;
+		});
+		});
+	</script>
+
+	<a href="#" class="mostrar">Añadir un nuevo producto</a><br/>
+	<div class="chatbox">
+		<%= render 'form' %>
+		<p><%= link_to "Back to List", products_path %></p>
+    </div>
+</div>

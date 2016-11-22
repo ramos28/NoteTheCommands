@@ -1,0 +1,22 @@
+<h1>Stock</h1>
+
+<p>
+  <strong>qauntity:</strong>
+  <%= @stock.quantity %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%= @stock.price_buy_unity %>
+</p>
+
+<p>
+  <strong>producto:</strong>
+  <%= @stock.product.name %>
+</p>
+
+
+<p>
+  <%= link_to "Edit", edit_stock_path(@stock) %> |
+  <%= link_to "Destroy", @stock, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", stocks_path %>
+</p>

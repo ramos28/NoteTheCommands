@@ -9,7 +9,5 @@ class User < ApplicationRecord
 	has_many :restaurants, through: :restaurant_users
 
 	#Validacion de los paramtros insertados en el registro	
-	validates :nick, format: {with: /[^{}]/}
-	validates :nick, length: { in: 8..20 }
-	validates :username, length: { maximum: 30 }
+	validates :user_name, length: { maximum: 30 }
 end

@@ -4,7 +4,7 @@ class CreateUserRestaurants < ActiveRecord::Migration[5.0]
 				t.index :user_id
 				t.index :restaurant_id
 
-				t.integer :user_type
+				t.integer :rol
 
 				t.timestamps
 

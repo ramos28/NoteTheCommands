@@ -1,0 +1,15 @@
+<h1>Perfil <%current_user.user_name%></h1>
+<div id="logo_profile">
+	<%= image_tag "perfil.png"%>
+</div>
+<div id = "profile">
+	<ul>
+		<li>Nombre:	<h3><%= current_user.user_name%></h3></li>
+		<li>Correo: <h3><%= current_user.email%></h3></li>
+		<li>Telefono: <h3><%= current_user.phone%></h3></li>
+	</ul>	
+</div>
+<div id="config_profile">
+	<p><%= link_to "Editar usuario", edit_user_registration_path %></p>
+	<p><%= link_to "Editar contraseña", edit_user_password_path %></p>
+</div>

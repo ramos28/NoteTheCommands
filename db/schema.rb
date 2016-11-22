@@ -10,21 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118171601) do
+ActiveRecord::Schema.define(version: 20161122160902) do
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                           null: false
     t.string   "product_type",                   null: false
     t.string   "product_description"
     t.float    "unit_price",          limit: 24, null: false
+    t.integer  "restaurant_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.index ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
   end
 
   create_table "restaurant_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",       null: false
     t.integer  "restaurant_id", null: false
-    t.integer  "user_type"
+    t.integer  "rol"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["restaurant_id"], name: "index_restaurant_users_on_restaurant_id", using: :btree
@@ -32,14 +34,27 @@ ActiveRecord::Schema.define(version: 20161118171601) do
   end
 
   create_table "restaurants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email"
-    t.integer  "phone"
-    t.string   "country"
-    t.integer  "postal_code"
-    t.string   "address"
-    t.string   "name"
+    t.string   "email",       null: false
+    t.integer  "phone",       null: false
+    t.string   "country",     null: false
+    t.integer  "postal_code", null: false
+    t.string   "address",     null: false
+    t.string   "name",        null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["email"], name: "index_restaurants_on_email", unique: true, using: :btree
+    t.index ["name"], name: "index_restaurants_on_name", unique: true, using: :btree
+  end
+
+  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "quantity",                          null: false
+    t.string   "description_stock"
+    t.float    "price_buy_unity",        limit: 24, null: false
+    t.float    "total_expenses_product", limit: 24, null: false
+    t.integer  "product_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["product_id"], name: "index_stocks_on_product_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -54,12 +69,11 @@ ActiveRecord::Schema.define(version: 20161118171601) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "phone"
-    t.string   "username"
-    t.string   "nick",                                null: false
+    t.string   "user_name"
+    t.integer  "user_type",              default: 0,  null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["nick"], name: "index_users_on_nick", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 

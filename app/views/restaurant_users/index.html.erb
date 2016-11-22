@@ -3,10 +3,22 @@
 <div class ="muestra-tabla">
 	<table>
 		<caption>Restaurantes inscritos</caption>
-		<tr><th>Nombre Restaurante</th><th>Tipo Usuario</th></tr>
-		<% @restaurant_users.each do |restaurant_user| %>
-			<tr><th><%= restaurant_user.restaurant.name %></th> <th><%= restaurant_user.user_type %></th>
-		<% end %>
+		<thead>
+			<tr>
+				<td>Nombre Restaurante</td>
+				<td>Tipo Usuario</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @restaurant_users.each do |restaurant_user| %>
+				<tr>
+					<%if current_user.id == restaurant_user.user_id%>
+						<th><%= restaurant_user.restaurant.name %></th> 
+						<th><%= RestaurantUser::ROLES[current_user.user_type] %></th>
+					<% end%>
+				</tr>
+			<% end %>
+		</tbody>
 	</table>
 </div>
 <div class="muestra-opciones">
@@ -22,8 +34,8 @@
 
 	<a href="#" class="mostrar">Apuntarte a otro restaurante</a><br/>
 	<div class="chatbox">
-		<%= form_for :post do |f| %>
-			<p>Seleccione Restaurante: <%= collection_select( :restaurant, :user, Restaurant.all, :id, :name, {}, {:multiple => false})%></p>
+		<%= form_for @restaurants_users do |f| %>
+			<p>Seleccione Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%></p>
 			<p><%= f.submit %></p>
 		<% end %>
     </div>

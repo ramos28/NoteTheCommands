@@ -1,0 +1,13 @@
+<h1>Stock del restaurante</h1>
+
+<%= form_tag stocks_path, :method => 'get', :id => "stocks_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :quantity => nil %>
+  </p>
+  <div id="products"><%= render 'stocks' %></div>
+<% end %>
+
+
+
+<p><%= link_to "New Stock", new_stock_path %></p>
