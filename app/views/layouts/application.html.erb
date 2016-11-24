@@ -48,7 +48,7 @@
                                                 <li><%= link_to "Añadir Productos", products_path%></li>
                                                 <li><%= link_to "Control Stock", stocks_path%></li>
                                                 <li><%= link_to "Crear Menu", new_user_registration_path%></li>
-                                                <li><%= link_to "Crear Cuestionario", new_user_registration_path%></li>
+                                                <li><%= link_to "Crear Cuestionario", new_questionnaire_path%></li>
                                           <% end %>
                                           <% if (current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3)%>
                                                 <li><%= link_to "Crear Incidencia", new_user_registration_path %></li>

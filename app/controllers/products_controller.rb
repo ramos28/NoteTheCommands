@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   	def index
   		@restaurant_users = RestaurantUser.all
-  		@products = Product.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 5, :page => params[:page])
+  		@products = Product.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 7, :page => params[:page])
 		@product = Product.new
 	end
 

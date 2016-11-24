@@ -1,0 +1,16 @@
+<h1>Cuestionario</h1>
+
+    <p>
+        <strong>Pregunta:</strong>
+        <%= @questionnaire.question %>
+    </p>
+    <p>
+        <strong>Restaurante:</strong>
+        <%= @questionnaire.restaurant.name %>
+    </p>
+
+    <p>
+    <%= link_to "Edit", edit_questionnaire_path(@questionnaire) %> |
+    <%= link_to "Destroy", @questionnaire, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "View All", questionnaires_path %>
+</p>

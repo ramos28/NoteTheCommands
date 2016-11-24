@@ -1,12 +1,12 @@
-<h1>Restaurantes</h1>
+<h1>Cuestionarios del restaurante</h1>
 
 <div class ="muestra-tabla">
-	<%= form_tag restaurant_path, :method => 'get', :id => "restaurants_search" do %>
+	<%= form_tag questionnaires_path, :method => 'get', :id => "questionnaire_search" do %>
 		<p>
 			<%= text_field_tag :search, params[:search] %>
-			<%= submit_tag "Search", :name => nil %>
+			<%= submit_tag "Search", :@name => nil %>
 		</p>
-		<div id="products"><%= render 'restaurants' %></div>
+		<div id="products"><%= render 'questionnaires' %></div>
 	<% end %>
 	
 </div>
@@ -21,9 +21,9 @@
 		});
 	</script>
 
-	<a href="#" class="mostrar">Añadir un nuevo restaurante</a><br/>
+	<a href="#" class="mostrar">Añadir un nuevo cuestionario</a><br/>
 	<div class="chatbox">
 		<%= render 'form' %>
-		<p><%= link_to "Back to List", restaurant_path %></p>
+		<p><%= link_to "Back to List", questionnaires_path %></p>
     </div>
 </div>
