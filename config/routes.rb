@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'start/index'
+
   get 'productos/index'
 
   get 'profile/index'
@@ -19,27 +21,7 @@ Rails.application.routes.draw do
   devise_scope :user do
 
     authenticated :user do
-      root 'restaurant_users#index'
-    end
-
-    authenticated :user do
-      root 'location#new'
-    end
-
-  	unauthenticated :user do
-  		root 'devise/sessions#new' 
-  	end
-
-    authenticated :user do
-      root 'products#index'
-    end
-
-    authenticated :user do
-      root 'profile#index'
-    end
-
-    authenticated :user do
-      root 'stock#index'
+      root 'start#index'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,4 +1,4 @@
-<h1>Stock del restaurante</h1>
+<h1>Stock del Restaurante</h1>
 
 <%= form_tag stocks_path, :method => 'get', :id => "stocks_search" do %>
   <p>
@@ -7,7 +7,5 @@
   </p>
   <div id="products"><%= render 'stocks' %></div>
 <% end %>
-
-
 
 <p><%= link_to "New Stock", new_stock_path %></p>

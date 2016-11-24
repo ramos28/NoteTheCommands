@@ -1,23 +1,20 @@
 <%= form_for @stock do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :quantity %><br />
-    <%= f.text_field :quantity %>
-  </p>
-  <p>
-    <%= f.label :description_stock %><br />
-    <%= f.text_field :description_stock %>
-  </p>
-  <p>
-    <%= f.label :price_buy_unity %><br />
-    <%= f.text_field :price_buy_unity %>
-  </p>
-  <p>
-    <%= f.label :total_expenses_product %><br />
-    <%= f.text_field :total_expenses_product %>
-  </p>
-
-  <p><%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
-</p>
-  <p><%= f.submit %></p>
+    <%= f.error_messages %>
+    <p>
+        <%= f.label :product %><br />
+        <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+    </p>
+    <p>
+        <%= f.label :quantity %><br />
+        <%= f.text_field :quantity %>
+    </p>
+    <p>
+        <%= f.label :description_stock %><br />
+        <%= f.text_field :description_stock %>
+    </p>
+    <p>
+        <%= f.label :price_buy_unity %><br />
+        <%= f.text_field :price_buy_unity %>
+    </p>
+    <p><%= f.submit %></p>
 <% end %>

@@ -19,7 +19,6 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
-		debugger
 		if @product.save
 			flash[:notice] = "Successfully created product."
 			redirect_to @product

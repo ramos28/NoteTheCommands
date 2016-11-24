@@ -13,22 +13,18 @@
                   <h1>Note the Commands</h1>
             </header>
             <nav>
-
-            <% @restaurant_users = current_user.restaurant_users if current_user %>
                   <ul>
                         <li><%= link_to "Inicio", root_path %>
                               <% if current_user %>
                                     <ul>
-                                          <% @restaurant_users.each do |restaurant_users| %>
-                                                <% if (current_user.id == restaurant_users.user_id) &&(current_user.user_type == 1 || current_user.user_type == 3)%>
-                                                      <li><%= link_to "Comanda Camarero", new_user_registration_path%></li>
-                                                <% end %>
-                                                <% if (current_user.id == restaurant_users.user_id) &&(current_user.user_type  == 2 || current_user.user_type  == 3)%>
-                                                      <li><%= link_to "Comanda Cocinero", new_user_registration_path%></li>
-                                                <% end %>
-                                                <% if (current_user.id == restaurant_users.user_id) &&(current_user.user_type  == 0)%>
-                                                      <li><%= link_to "Comanda", new_user_registration_path%></li>
-                                                <% end %>
+                                          <% if (current_user.user_type == 1 || current_user.user_type == 3)%>
+                                                <li><%= link_to "Comanda Camarero", new_user_registration_path%></li>
+                                          <% end %>
+                                          <% if (current_user.user_type  == 2 || current_user.user_type  == 3)%>
+                                                <li><%= link_to "Comanda Cocinero", new_user_registration_path%></li>
+                                          <% end %>
+                                          <% if (current_user.user_type  == 0)%>
+                                                <li><%= link_to "Comanda", new_user_registration_path%></li>
                                           <% end %>
                                     </ul>
                               <% end %>
@@ -36,13 +32,11 @@
                         <li><%= link_to "Noticias", new_user_session_path%>
                               <% if current_user %>
                                     <ul>
-                                          <% @restaurant_users.each do |restaurant_users| %>
-                                                <% if (current_user.id == restaurant_users.user_id) &&(current_user.user_type  == 3) %>
-                                                      <li><%= link_to "Publicar noticia", new_user_registration_path %></li>
-                                                <% end %>
-                                                <% if (current_user.id == restaurant_users.user_id) &&(current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3)%>
-                                                      <li><%= link_to "Ver noticia", new_user_registration_path %></li>
-                                                <% end %>
+                                          <% if (current_user.user_type  == 3) %>
+                                                <li><%= link_to "Publicar noticia", new_user_registration_path %></li>
+                                          <% end %>
+                                          <% if (current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3)%>
+                                                <li><%= link_to "Ver noticia", new_user_registration_path %></li>
                                           <% end %>
                                     </ul>
                               <% end %>
@@ -50,20 +44,18 @@
                         <li><%= link_to "Gestiones", new_user_session_path%>
                               <% if current_user %>
                                     <ul>
-                                          <% @restaurant_users.each do |restaurant_users| %>
-                                                <% if (current_user.id == restaurant_users.user_id) &&(current_user.user_type  == 3) %>
-                                                      <li><%= link_to "Añadir Productos", products_path%></li>
-                                                      <li><%= link_to "Control Stock", stocks_path%></li>
-                                                      <li><%= link_to "Crear Menu", new_user_registration_path%></li>
-                                                      <li><%= link_to "Crear Cuestionario", new_user_registration_path%></li>
-                                                <% end %>
-                                                <% if (current_user.id == restaurant_users.user_id) &&(current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3)%>
-                                                      <li><%= link_to "Crear Incidencia", new_user_registration_path %></li>
-                                                      <li><%= link_to "Realizar Reserva", new_user_registration_path %></li>
-                                                <% end %>
-                                                <% if (current_user.id == restaurant_users.user_id) &&(current_user.user_type  == 0)%>
-                                                      <li><%= link_to "Solicitar Reclamación", new_user_registration_path %></li>
-                                                <% end %>
+                                          <% if (current_user.user_type  == 3) %>
+                                                <li><%= link_to "Añadir Productos", products_path%></li>
+                                                <li><%= link_to "Control Stock", stocks_path%></li>
+                                                <li><%= link_to "Crear Menu", new_user_registration_path%></li>
+                                                <li><%= link_to "Crear Cuestionario", new_user_registration_path%></li>
+                                          <% end %>
+                                          <% if (current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3)%>
+                                                <li><%= link_to "Crear Incidencia", new_user_registration_path %></li>
+                                                <li><%= link_to "Realizar Reserva", new_user_registration_path %></li>
+                                          <% end %>
+                                          <% if (current_user.user_type  == 0)%>
+                                                <li><%= link_to "Solicitar Reclamación", new_user_registration_path %></li>
                                           <% end %>
                                     </ul>
                               <% end %>
@@ -71,13 +63,11 @@
                         <li><%= link_to "Contacto", new_user_session_path%>
                               <% if current_user %>
                                     <ul>
-                                          <% @restaurant_users.each do |restaurant_users| %>
-                                                <% if (current_user.id == restaurant_users.user_id) &&(current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3)%>
-                                                      <li><%= link_to "Quienes somos", new_user_registration_path%></li>
-                                                      <li><%= link_to "Donde estamos", new_user_registration_path%></li>
-                                                      <li><%= link_to "Como contactar", new_user_registration_path%></li>
-                                                      <li><%= link_to "¿Quieres trabajar con nosotros?", new_user_registration_path%></li>
-                                                <% end %>
+                                          <% if (current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3)%>
+                                                <li><%= link_to "Quienes somos", new_user_registration_path%></li>
+                                                <li><%= link_to "Donde estamos", new_user_registration_path%></li>
+                                                <li><%= link_to "Como contactar", new_user_registration_path%></li>
+                                                <li><%= link_to "¿Quieres trabajar con nosotros?", new_user_registration_path%></li>
                                           <% end %>
                                     </ul>
                               <% else %>
@@ -92,16 +82,14 @@
                               <% if current_user %>
                                     <ul>
                                           <li><%= link_to "Mi Perfil", profile_index_path%></li>
-                                                <% @restaurant_users.each do |restaurant_users| %>
-                                                      <% if (current_user.id == restaurant_users.user_id) &&(current_user.user_type  == 3) %>
-                                                            <li><%= link_to "Gestionar Personal", new_user_registration_path%></li>
-                                                            <li><%= link_to "Incidencias",new_user_registration_path%></li>
-                                                            <li><%= link_to "Generar estadísticas", new_user_registration_path %></li>
-                                                            <li><%= link_to "Bandeja Mensajes", new_user_registration_path %></li>
-                                                      <% elsif (current_user.id == restaurant_users.user_id) &&(current_user.user_type  == 0) %>
-                                                            <li><%= link_to "Chat", new_user_registration_path %></li>
-                                                      <% end %>
-                                                <% end %>
+                                          <% if (current_user.user_type  == 3) %>
+                                                <li><%= link_to "Gestionar Personal", new_user_registration_path%></li>
+                                                <li><%= link_to "Incidencias",new_user_registration_path%></li>
+                                                <li><%= link_to "Generar estadísticas", new_user_registration_path %></li>
+                                                <li><%= link_to "Bandeja Mensajes", new_user_registration_path %></li>
+                                          <% elsif (current_user.user_type  == 0) %>
+                                                <li><%= link_to "Chat", new_user_registration_path %></li>
+                                          <% end %>
                                           <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
                                     </ul>
                               <% else %>

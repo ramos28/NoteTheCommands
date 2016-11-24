@@ -1,18 +1,22 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
 <table class="pretty">
-  <tr>
-    <th><%=  "Cantidad" %></th>
-    <th><%=  "Descipcion Stock" %></th>
-    <th><%=  "Precio Compra Unidad" %></th>
-    <th><%=  "Gasto Total Producto" %></th>
-  </tr>
-  <% @stocks.each do |stock| %>
     <tr>
-      <td><%= stock.quantity %></td>
-      <td><%= stock.description_stock %></td>
-      <td class="price"><%= number_to_currency(stock.price_buy_unity) %></td>
-      <td class="price"><%= number_to_currency(stock.quantity.to_i * stock.price_buy_unity.to_i) %></td>
+        <th><%=  "Nombre Producto" %></th>
+        <th><%=  "Precio Venta Publico Unidad" %></th>
+        <th><%=  "Cantidad en Stock" %></th>
+        <th><%=  "Descipcion" %></th>
+        <th><%=  "Precio Compra Unidad" %></th>
+        <th><%=  "Gasto Total Producto" %></th>
     </tr>
-  <% end %>
+    <% @stocks.each do |stock| %>
+        <tr>
+            <td><%= stock.product.name %></td>
+            <td class="price"><%= number_to_currency(stock.product.unit_price, :unit => "€") %></td>
+            <td><%= stock.quantity %></td>
+            <td><%= stock.description_stock %></td>
+            <td class="price"><%= number_to_currency(stock.price_buy_unity) %></td>
+            <td class="price"><%= number_to_currency(stock.quantity * stock.price_buy_unity, :unit => "€") %></td>
+        </tr>
+    <% end %>
 </table>

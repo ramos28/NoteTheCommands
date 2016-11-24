@@ -13,7 +13,7 @@
                   <td><%= product.name %></td>
                   <td><%= product.product_type %></td>
                   <td><%= product.product_description %></td>
-                  <td class="price"><%= number_to_currency(product.unit_price, :unit => "&pound;") %></td>
+                  <td class="price"><%= number_to_currency(product.unit_price, :unit => "€") %></td>
                   <td><%= product.restaurant.name %></td>                  
             </tr>
       <% end %>

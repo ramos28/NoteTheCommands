@@ -16,7 +16,6 @@ class StocksController < ApplicationController
 
 	def create
 		@stock = Stock.new(stock_params)
-		debugger
 		if @stock.save
 			flash[:notice] = "Successfully created stock."
 			redirect_to @stock
@@ -50,7 +49,7 @@ class StocksController < ApplicationController
   	
 
   	def stock_params
-  		params.require(:stock).permit(:quantity, :description_stock, :price_buy_unity, :total_expenses_product, :product_id)
+  		params.require(:stock).permit(:quantity, :description_stock, :price_buy_unity, :product_id)
 
   	end
 
