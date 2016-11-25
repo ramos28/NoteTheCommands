@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161124151603) do
+ActiveRecord::Schema.define(version: 20161125180326) do
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                           null: false
@@ -24,10 +24,11 @@ ActiveRecord::Schema.define(version: 20161124151603) do
   end
 
   create_table "questionnaires", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "question"
+    t.string   "question",            null: false
     t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "remember_created_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.index ["restaurant_id"], name: "index_questionnaires_on_restaurant_id", using: :btree
   end
 
@@ -79,11 +80,23 @@ ActiveRecord::Schema.define(version: 20161124151603) do
     t.string   "last_sign_in_ip"
     t.string   "phone"
     t.string   "user_name"
+    t.date     "birth_date",                          null: false
     t.integer  "user_type",              default: 0,  null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "votings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "answer"
+    t.integer  "restaurant_id"
+    t.integer  "questionnaire_id"
+    t.datetime "remember_created_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["questionnaire_id"], name: "index_votings_on_questionnaire_id", using: :btree
+    t.index ["restaurant_id"], name: "index_votings_on_restaurant_id", using: :btree
   end
 
 end

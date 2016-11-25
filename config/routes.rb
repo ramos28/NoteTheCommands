@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'votings/index'
+
     get 'productos/index'
 
     get 'profile/index'
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
     resources :restaurants
     resources :restaurant_users
     resources :questionnaires
+    resources :votings
 
 
     get 'select_restaurant', to: 'restaurants_users#new'
@@ -33,6 +36,10 @@ Rails.application.routes.draw do
 
         authenticated :user do
             root 'products#index'
+        end
+
+        authenticated :user do
+            root 'votings#index'
         end
 
         authenticated :user do

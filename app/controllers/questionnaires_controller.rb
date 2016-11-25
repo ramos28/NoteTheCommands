@@ -20,7 +20,7 @@ class QuestionnairesController < ApplicationController
 	def create
 		@questionnaire = Questionnaire.new(questionnaire_params)
 		if @questionnaire.save
-			flash[:notice] = "Successfully created product."
+			flash[:notice] = "Successfully created questionnaire."
 			redirect_to @questionnaire
 		else
 			render :action =>'new'

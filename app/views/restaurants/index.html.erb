@@ -1,7 +1,7 @@
 <h1>Restaurantes</h1>
 
 <div class ="muestra-tabla">
-	<%= form_tag restaurant_path, :method => 'get', :id => "restaurants_search" do %>
+	<%= form_tag restaurants_path, :method => 'get', :id => "restaurants_search" do %>
 		<p>
 			<%= text_field_tag :search, params[:search] %>
 			<%= submit_tag "Search", :name => nil %>
@@ -24,6 +24,6 @@
 	<a href="#" class="mostrar">Añadir un nuevo restaurante</a><br/>
 	<div class="chatbox">
 		<%= render 'form' %>
-		<p><%= link_to "Back to List", restaurant_path %></p>
+		<p><%= link_to "Back to List", restaurants_path %></p>
     </div>
 </div>

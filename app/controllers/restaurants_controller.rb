@@ -16,7 +16,7 @@ class RestaurantsController < ApplicationController
 	def create
 		@restaurant = Restaurant.new(restaurant_params)
 		if @restaurant.save
-			flash[:notice] = "Successfully created product."
+			flash[:notice] = "Successfully created restaurant."
 			redirect_to @restaurant
 		else
 			render :action =>'new'
@@ -24,24 +24,24 @@ class RestaurantsController < ApplicationController
 	end
 
 	def edit
-		@product = Product.find(params[:id])
+		@restaurant = Restaurant.find(params[:id])
 	end
 
 	def update
-	    @product = Product.find(params[:id])
-	    if @product.update_attributes(params[:product])
-	      	flash[:notice] = "Successfully updated product."
-	      	redirect_to @product
+	    @restaurant = Restaurant.find(params[:id])
+	    if @restaurant.update_attributes(params[:restaurant])
+	      	flash[:notice] = "Successfully updated restaurant."
+	      	redirect_to @restaurant
 	    else
 	      	render :action => 'edit'
 	    end
   	end
   
   	def destroy
-    	@product = Product.find(params[:id])
-    	@product.destroy
-    	flash[:notice] = "Successfully destroyed product."
-    	redirect_to products_url
+    	@restaurant = Restaurant.find(params[:id])
+    	@restaurant.destroy
+    	flash[:notice] = "Successfully destroyed restaurant."
+    	redirect_to restaurants_url
   	end
   
   	private

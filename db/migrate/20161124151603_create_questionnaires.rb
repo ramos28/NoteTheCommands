@@ -1,7 +1,7 @@
 class CreateQuestionnaires < ActiveRecord::Migration[5.0]
 	def change
 		create_table :questionnaires do |t|
-			t.string :question
+			t.string :question, null: false
 
 			t.references :restaurant
 
