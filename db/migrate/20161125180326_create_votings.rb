@@ -1,7 +1,7 @@
 class CreateVotings < ActiveRecord::Migration[5.0]
   def change
     create_table :votings do |t|
-		t.string :answer
+		t.string :answer, null: false
 
 		t.references :restaurant
 		t.references :questionnaire

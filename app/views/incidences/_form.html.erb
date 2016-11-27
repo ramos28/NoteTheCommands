@@ -1,0 +1,29 @@
+<%= form_for @incidence do |f| %>
+
+    <%= f.error_messages %>
+    <p>
+        <%= f.label :category %><br />
+        <%= f.text_field :category %>
+    </p>
+    <p>
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :description %><br />
+        <%= f.text_area :description, :cols => 30, rows: 5 %>
+    </p>
+    <p>
+        <%= f.label :date_start %><br />
+        <%= f.date_field :date_start %>
+    </p>
+    <p>
+        <%= f.label :restaurant %><br />
+        <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
+    </p>
+      <p>
+        <%= f.label :user %><br />
+        <%= f.select :user_id, options_from_collection_for_select( User.all, :id, :email)%>
+    </p>
+    <p><%= f.submit %></p>
+<% end %>

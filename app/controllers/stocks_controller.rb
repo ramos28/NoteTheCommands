@@ -42,7 +42,7 @@ class StocksController < ApplicationController
 	    	@stock = Stock.find(params[:id])
 	    	@stock.destroy
 	    	flash[:notice] = "Successfully destroyed stock."
-	    	redirect_to stockss_url
+	    	redirect_to stocks_url
   	end
   
   	private

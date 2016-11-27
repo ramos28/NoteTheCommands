@@ -1,0 +1,62 @@
+class BlogsController < ApplicationController
+  def index
+		@restaurant_users = RestaurantUser.all
+		@blogs = Blog.all
+	end
+
+	def show
+		@restaurant_users = RestaurantUser.all
+		@blog = Blog.find(params[:id])
+	end
+
+	def new
+		@restaurant_users = RestaurantUser.all
+		@blog = Blog.new
+	end
+
+	def create
+		@blog = Blog.new(blog_params)
+		if @blog.save
+			flash[:notice] = "Successfully created blog."
+			redirect_to @blog
+		else
+			render :action =>'new'
+		end
+	end
+
+	def edit
+		@blog = Blog.find(params[:id])
+	end
+
+	def update
+	    @blog = Blog.find(params[:id])
+	    if @blog.update_attributes(params[:blog])
+	      	flash[:notice] = "Successfully updated blog."
+	      	redirect_to @blog
+	    else
+	      	render :action => 'edit'
+	    end
+  	end
+  
+  	def destroy
+	    	@blog = Blog.find(params[:id])
+	    	@blog.destroy
+	    	flash[:notice] = "Successfully destroyed blog."
+	    	redirect_to blogs_url
+  	end
+  
+  	private
+
+  	def blog_params
+  		params.require(:blog).permit(:title, :description, :is_closed, :restaurant_id, :user_id)
+
+  	end
+
+  	def sort_column
+    		Blog.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  	end
+  
+  	def sort_direction
+    		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  	end
+end

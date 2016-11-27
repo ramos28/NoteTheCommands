@@ -5,7 +5,7 @@ class CreateStocks < ActiveRecord::Migration[5.0]
             t.string :description_stock
             t.float :price_buy_unity, null: false
 
-            t.references :product
+            t.references :product, null: false
 
             t.timestamps
         end

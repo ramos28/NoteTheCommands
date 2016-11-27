@@ -1,0 +1,36 @@
+<h1>Incidencia</h1>
+<p>
+  <strong>category:</strong>
+  <%= @incidence.category %>
+</p>
+<p>
+  <strong>title:</strong>
+  <%= @incidence.title %>
+</p>
+<p>
+  <strong>description:</strong>
+  <%= @incidence.description %>
+</p>
+<p>
+  <strong>is_solved:</strong>
+  <%= @incidence.is_solved %>
+</p>
+<p>
+  <strong>date_start:</strong>
+  <%= @incidence.date_start %>
+</p>
+<p>
+  <strong>date_solution:</strong>
+  <%= @incidence.date_solution %>
+</p>
+<p>
+  <strong>restaurant:</strong>
+  <%= @incidence.restaurant.name %>
+</p>
+
+
+<p>
+  <%= link_to "Edit", edit_incidence_path(@incidence) %> |
+  <%= link_to "Destroy", @incidence, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", incidences_path %>
+</p>

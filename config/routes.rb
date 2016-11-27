@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'votings/index'
+    get 'blogs/index'
+
+    get 'incidences/index'
+
+    get 'messages/index'
+
+    get 'news/index'
+
+    get 'votings/index'
 
     get 'productos/index'
 
@@ -14,7 +22,9 @@ Rails.application.routes.draw do
     resources :restaurant_users
     resources :questionnaires
     resources :votings
-
+    resources :blogs
+    resources :messages
+    resources :incidences
 
     get 'select_restaurant', to: 'restaurants_users#new'
     #get 'restaurants_user', to: 'restaurants_users#index'

@@ -1,0 +1,20 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="pretty">
+    <tr>
+        <th><%=  "Titulo" %></th>
+        <th><%=  "Descripcon" %></th>
+        <th><%=  "Esta cerrado" %></th>
+        <th><%=  "Restaurante" %></th>
+        <th><%=  "Usuario" %></th>
+    </tr>
+    <% @blogs.each do |noticia| %>
+        <tr>
+            <td><%= noticia.title %></td>
+            <td><%= noticia.description %></td>
+            <td><%= noticia.is_closed %></td>
+            <td><%= noticia.restaurant.name %></td>
+            <td><%= noticia.user.user_name %></td>
+        </tr>
+    <% end %>
+</table>

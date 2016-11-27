@@ -1,0 +1,29 @@
+<h1>Noticias</h1>
+
+<p>
+  <strong>title:</strong>
+  <%= @blog.title %>
+</p>
+<p>
+  <strong>description:</strong>
+  <%= @blog.description %>
+</p>
+<p>
+  <strong>is_closed:</strong>
+  <%= @blog.is_closed %>
+</p>
+<p>
+  <strong>restaurant:</strong>
+  <%= @blog.restaurant.name %>
+</p>
+<p>
+  <strong>user:</strong>
+  <%= @blog.user.user_name %>
+</p>
+
+
+<p>
+  <%= link_to "Edit", edit_blog_path(@blog) %> |
+  <%= link_to "Destroy", @blog, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", blogs_path %>
+</p>

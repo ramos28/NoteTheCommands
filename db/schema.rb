@@ -10,7 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125180326) do
+ActiveRecord::Schema.define(version: 20161127165832) do
+
+  create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title",                         null: false
+    t.string   "description",                   null: false
+    t.boolean  "is_closed",     default: false, null: false
+    t.integer  "restaurant_id",                 null: false
+    t.integer  "user_id",                       null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["restaurant_id"], name: "index_blogs_on_restaurant_id", using: :btree
+    t.index ["user_id"], name: "index_blogs_on_user_id", using: :btree
+  end
+
+  create_table "incidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "category",                      null: false
+    t.string   "title",                         null: false
+    t.string   "description",                   null: false
+    t.boolean  "is_solved",     default: false, null: false
+    t.datetime "date_start",                    null: false
+    t.datetime "date_solution"
+    t.integer  "restaurant_id",                 null: false
+    t.integer  "user_id",                       null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["restaurant_id"], name: "index_incidences_on_restaurant_id", using: :btree
+    t.index ["user_id"], name: "index_incidences_on_user_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "subject",                     null: false
+    t.string   "description",                 null: false
+    t.boolean  "is_view",     default: false, null: false
+    t.integer  "user_id",                     null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                           null: false
@@ -89,7 +126,7 @@ ActiveRecord::Schema.define(version: 20161125180326) do
   end
 
   create_table "votings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "answer"
+    t.string   "answer",              null: false
     t.integer  "restaurant_id"
     t.integer  "questionnaire_id"
     t.datetime "remember_created_at"
