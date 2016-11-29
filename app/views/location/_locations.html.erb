@@ -1,0 +1,17 @@
+<table class="pretty">
+      <tr>
+            <th><%= "Mesa" %></th>
+            <th><%= "Precio total de la comanda" %></th>
+            <th><%= "Restaurante" %></th>
+            <th><%= "Usuario" %></th>
+      </tr>
+      <% @locations.each do |location| %>
+            <tr>
+                  <td><%= location.place %></td>
+                  <td><%= location.total_price_command %></td>
+                  <td><%= location.restaurant.name %></td>
+                  <td><%= location.user.name %></td>
+                  <td><%= link_to "Edit Location", edit_location_path(location) %></td>                
+            </tr>
+      <% end %>
+</table>

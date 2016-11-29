@@ -1,0 +1,22 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="pretty">
+    <tr>
+        <th><%=  "Numero de personas" %></th>
+        <th><%=  "Dia reserva" %></th>
+        <th><%=  "Hora reserva" %></th>
+        <th><%=  "Restaurante" %></th>
+        <th><%=  "Usuario" %></th>
+        <th><%=  "Telefono contacto" %></th>
+    </tr>
+    <% @reservations.each do |reservation| %>
+        <tr>
+            <td><%= reservation.num_persons %></td>
+            <td><%= reservation.date %></td>
+            <td><%= reservation.hour %></td>
+            <td><%= reservation.restaurant.name %></td>
+            <td><%= reservation.user.user_name %></td>
+            <td><%= reservation.phone %></td>
+        </tr>
+    <% end %>
+</table>

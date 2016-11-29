@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
 
             t.references :restaurant
 
-            t.timestamps null: false
+            t.timestamps
         end
     end
 end

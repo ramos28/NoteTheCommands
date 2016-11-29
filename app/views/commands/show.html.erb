@@ -1,0 +1,31 @@
+<h1>Comanda</h1>
+    <p>
+        <strong>Titulo:</strong>
+        <%= @command.title %>
+    </p>
+    <p>
+        <strong>Mesa:</strong>
+        <%= @command.location.place %>
+    </p>
+    <p>
+        <strong>Menu:</strong>
+        <%= @command.menu.type_menu %>
+    </p>
+    <p>
+        <strong>Producto:</strong>
+        <%= @command.producto.name %>
+    </p>
+    <p>
+        <strong>Descripcion:</strong>
+        <%= @command.description %>
+    </p>
+    <p>
+        <strong>Esta Finalizada:</strong>
+        <%= @command.is_end %>
+    </p>
+
+    <p>
+    <%= link_to "Edit", edit_command_path(@command) %> |
+    <%= link_to "Destroy", @command, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "View All", commands_path %>
+</p>

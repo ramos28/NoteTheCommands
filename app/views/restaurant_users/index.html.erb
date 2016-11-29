@@ -4,16 +4,17 @@
 	<table>
 		<thead>
 			<tr>
-				<td>Nombre Restaurante</td>
-				<td>Tipo Usuario</td>
+				<th>Nombre Restaurante</th>
+				<th>Tipo Usuario</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @restaurant_users.each do |restaurant_user| %>
 				<tr>
 					<%if current_user.id == restaurant_user.user_id%>
-						<th><%= restaurant_user.restaurant.name %></th> 
-						<th><%= RestaurantUser::ROLES[current_user.user_type] %></th>
+						<td><%= restaurant_user.restaurant.name %></td> 
+						<td><%= RestaurantUser::ROLES[current_user.user_type] %></td>
+						<td><%= link_to "Select", new_location_path %></td>
 					<% end%>
 				</tr>
 			<% end %>

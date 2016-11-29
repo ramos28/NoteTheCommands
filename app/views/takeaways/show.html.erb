@@ -1,0 +1,35 @@
+<h1>TakeAway</h1>
+    <p>
+        <strong>Mesa:</strong>
+        <%= @takeaway.name %>
+    </p>
+    <p>
+        <strong>Total precio comanda:</strong>
+        <%= @takeaway.date %>
+    </p>
+    <p>
+        <strong>Restaurante:</strong>
+        <%= @takeaway.hour %>
+    </p>
+    <p>
+        <strong>Usuario:</strong>
+        <%= @takeaway.product.name %>
+    </p>
+    <p>
+        <strong>Usuario:</strong>
+        <%= @takeaway.restaurant.name %>
+    </p>
+    <p>
+        <strong>Usuario:</strong>
+        <%= @takeaway.quantity %>
+    </p>
+    <p>
+        <strong>Usuario:</strong>
+        <%= @takeaway.total_price_selection %>
+    </p>
+
+    <p>
+    <%= link_to "Edit", edit_takeaway_path(@takeaway) %> |
+    <%= link_to "Destroy", @takeaway, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "View All", takeaways_path %>
+</p>

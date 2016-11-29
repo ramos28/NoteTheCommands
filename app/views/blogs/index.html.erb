@@ -7,5 +7,6 @@
   </p>
   <div id="products"><%= render 'blogs' %></div>
 <% end %>
-
+<%if current_user.user_type != 0%>
 <p><%= link_to "New Blogs", new_blog_path %></p>
+<% end %>

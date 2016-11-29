@@ -1,0 +1,2 @@
+module TakeawaysHelper
+end

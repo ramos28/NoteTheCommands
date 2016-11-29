@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+    get 'product_menus/index'
+
+    get 'menus/index'
+
+    get 'commands/index'
+
+    get 'takeaways/index'
+
+    get 'reservations/index'
+
     get 'blogs/index'
 
     get 'incidences/index'
@@ -25,10 +35,17 @@ Rails.application.routes.draw do
     resources :blogs
     resources :messages
     resources :incidences
+    resources :reservations
+    resources :takeaways
+    resources :locations
+    resources :menus
+    resources :commands
+    resources :product_menus
 
     get 'select_restaurant', to: 'restaurants_users#new'
     #get 'restaurants_user', to: 'restaurants_users#index'
     get 'location_user', to: 'location#new'
+    get 'start', to: 'start#index'
 
     devise_scope :user do
 

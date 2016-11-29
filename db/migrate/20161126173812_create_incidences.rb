@@ -2,6 +2,7 @@ class CreateIncidences < ActiveRecord::Migration[5.0]
 	def change
 		create_table :incidences do |t|
 			t.integer :category, null: false
+			t.integer :priority, null: false
 			t.string :title, null: false
 			t.string :description, null: false
 			t.boolean :is_solved, default: false, null: false

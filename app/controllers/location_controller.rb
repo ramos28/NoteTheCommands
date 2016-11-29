@@ -1,4 +1,4 @@
 class LocationController < ApplicationController
-  def new
-  end
+	def new
+	end
 end

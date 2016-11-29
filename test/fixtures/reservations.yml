@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_persons: 1
+  date: 2016-11-27
+  hour: 2016-11-27 21:06:17
+  phone: 1
+
+two:
+  num_persons: 1
+  date: 2016-11-27
+  hour: 2016-11-27 21:06:17
+  phone: 1

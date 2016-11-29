@@ -14,7 +14,8 @@
                   <td><%= product.product_type %></td>
                   <td><%= product.product_description %></td>
                   <td class="price"><%= number_to_currency(product.unit_price, :unit => "€") %></td>
-                  <td><%= product.restaurant.name %></td>                  
+                  <td><%= product.restaurant.name %></td>
+                  <td><%= link_to "Edit Stock", edit_product_path(product) %></td>                
             </tr>
       <% end %>
 </table>

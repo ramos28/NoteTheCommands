@@ -15,6 +15,7 @@
             <td><%= noticia.is_closed %></td>
             <td><%= noticia.restaurant.name %></td>
             <td><%= noticia.user.user_name %></td>
+            <td><%= link_to "Edit Blog", edit_blog_path(noticia) %></td>
         </tr>
     <% end %>
 </table>

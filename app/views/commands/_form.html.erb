@@ -1,0 +1,28 @@
+<%= form_for @command do |f| %>
+      <%= f.error_messages %>
+      <p>
+            <%= f.label :title %><br />
+            <%= f.text_field :title %>
+      </p>
+      <p>
+            <%= f.label :location_id %><br />
+            <%= f.select :location_id, options_from_collection_for_select( Location.all, :id, :place)%>
+      </p>
+      <p>
+            <%= f.label :menu_id %><br />
+            <%= f.select :menu_id, options_from_collection_for_select( Menu.all, :id, :type_menu)%>
+      </p>
+      <p>
+            <%= f.label :producto_id %><br />
+            <%= f.select :producto_id, options_from_collection_for_select( Product.all, :id, :name)%>
+      </p>
+      <p>
+            <%= f.label :description %><br />
+            <%= f.text_field :description %>
+      </p>
+      <p>
+            <%= f.label :is_end %><br />
+            <%= f.text_field :is_end %>
+      </p>
+      <p><%= f.submit %></p>
+<% end %>

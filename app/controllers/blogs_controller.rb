@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  def index
+  	def index
 		@restaurant_users = RestaurantUser.all
 		@blogs = Blog.all
 	end

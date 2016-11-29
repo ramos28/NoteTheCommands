@@ -21,6 +21,7 @@
             <td><%= incidence.date_solution %></td>
             <td><%= incidence.restaurant.name %></td>
             <td><%= incidence.user.user_name %></td>
+            <td><%= link_to "Edit Blog", edit_incidence_path(incidence) %></td>
         </tr>
     <% end %>
 </table>

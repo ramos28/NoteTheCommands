@@ -1,0 +1,2 @@
+module ProductMenusHelper
+end

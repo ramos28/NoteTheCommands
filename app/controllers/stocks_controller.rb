@@ -13,6 +13,10 @@ class StocksController < ApplicationController
 		@restaurant_users = RestaurantUser.all
 		@stock = Stock.new
 	end
+	
+	def edit
+		@stock = Stock.find(params[:id])
+	end
 
 	def create
 		@stock = Stock.new(stock_params)
@@ -22,10 +26,6 @@ class StocksController < ApplicationController
 		else
 			render :action =>'new'
 		end
-	end
-
-	def edit
-		@stock = Stock.find(params[:id])
 	end
 
 	def update

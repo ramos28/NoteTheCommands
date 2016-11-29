@@ -1,0 +1,24 @@
+<%= form_for @reservation do |f| %>
+    <%= f.error_messages %>
+    <p>
+        <%= f.label :num_persons %><br />
+        <%= f.text_field :num_persons %>
+    </p>
+    <p>
+        <%= f.label :date %><br />
+        <%= f.date_field :date %>
+    </p>
+    <p>
+        <%= f.label :hour %><br />
+        <%= f.time_field :hour %>
+    </p>
+    <p>
+        <%= f.label :restaurant %><br />
+        <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
+    </p>
+    <p>
+        <%= f.label :user %><br />
+        <%= f.select :user_id, options_from_collection_for_select( User.all, :id, :email )%>
+    </p>
+    <p><%= f.submit %></p>
+<% end %>
