@@ -30,7 +30,7 @@ class BlogsController < ApplicationController
 
 	def update
 	    @blog = Blog.find(params[:id])
-	    if @blog.update_attributes(params[:blog])
+	    if @blog.update_attributes(blog_params)
 	      	flash[:notice] = "Successfully updated blog."
 	      	redirect_to @blog
 	    else

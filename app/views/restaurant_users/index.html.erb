@@ -11,10 +11,10 @@
 		<tbody>
 			<% @restaurant_users.each do |restaurant_user| %>
 				<tr>
-					<%if current_user.id == restaurant_user.user_id%>
+					<%if current_user.id == restaurant_user.user_id || current_user.superadmin %>
 						<td><%= restaurant_user.restaurant.name %></td> 
-						<td><%= RestaurantUser::ROLES[current_user.user_type] %></td>
-						<td><%= link_to "Select", new_location_path %></td>
+						<td><%= RestaurantUser::ROLES[restaurant_user.rol] %></td>
+						<td><%= link_to "Select", restaurants_select_path(restaurant_id: restaurant_user.restaurant_id) %></td>
 					<% end%>
 				</tr>
 			<% end %>
@@ -36,7 +36,19 @@
 	<div class="chatbox">
 		<%= form_for @restaurants_users do |f| %>
 			<p>Seleccione Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%></p>
+			
+
+			<% if current_user.superadmin %>
+				<p>Seleccione Restaurante: <%= f.select :user_id, options_from_collection_for_select( User.all, :id, :email)%></p>
+
+				<p>Seleccione Restaurante: <%= f.select :rol, options_for_select(RestaurantUser::ROLES.map.with_index {|index, value| [index, value]})%></p>
+			
+						
+			<% end %>
+
 			<p><%= f.submit %></p>
+
+
 		<% end %>
     </div>
 </div>

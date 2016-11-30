@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
     get 'profile/index'
 
+    get 'restaurants/select'
+
     devise_for :users
     resources :products
     resources :profile

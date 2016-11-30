@@ -17,13 +17,13 @@
                         <li><%= link_to "Inicio", start_path%>
                               <% if current_user %>
                                     <ul>
-                                          <% if (current_user.user_type == 1 || current_user.user_type == 3)%>
+                                          <% if (@current_role == 1 || @current_role == 3)%>
                                                 <li><%= link_to "Comandas del Camarero", new_command_path%></li>
                                           <% end %>
-                                          <% if (current_user.user_type  == 2 || current_user.user_type  == 3)%>
+                                          <% if (@current_role  == 2 || @current_role  == 3)%>
                                                 <li><%= link_to "Comandas del Cocinero", new_command_path%></li>
                                           <% end %>
-                                          <% if (current_user.user_type  == 0)%>
+                                          <% if (@current_role  == 0)%>
                                                 <li><%= link_to "Mi comanda", new_command_path%></li>
                                           <% end %>
                                     </ul>
@@ -32,7 +32,7 @@
                         <li><%= link_to "Acerca de" %>
                               <% if current_user %>
                                     <ul>
-                                          <% if (current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3)%>
+                                          <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
                                                 <li><%= link_to "Contactar", new_user_registration_path%></li>
                                                 <li><%= link_to "¿Quieres trabajar con nosotros?", new_user_registration_path%></li>
                                           <% end %>
@@ -48,10 +48,10 @@
                         <li><%= link_to "Noticias" %>
                               <% if current_user %>
                                     <ul>
-                                          <% if (current_user.user_type  == 3) %>
+                                          <% if (@current_role  == 3) %>
                                                 <li><%= link_to "Publicar noticia", new_blog_path %></li>
                                           <% end %>
-                                          <% if (current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3)%>
+                                          <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
                                                 <li><%= link_to "Blog", blogs_index_path %></li>
                                           <% end %>
                                     </ul>
@@ -60,17 +60,17 @@
                         <li><%= link_to "Gestiones" %>
                               <% if current_user %>
                                     <ul>
-                                          <% if (current_user.user_type  == 3) %>
+                                          <% if (@current_role  == 3) %>
                                                 <li><%= link_to "Productos", products_path%></li>
                                                 <li><%= link_to "Stock", stocks_path%></li>
                                                 <li><%= link_to "Menus", new_menu_path(current_user)%></li>
                                                 <li><%= link_to "Cuestionarios", new_questionnaire_path%></li>
                                           <% end %>
-                                          <% if (current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3)%>
+                                          <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
                                                 <li><%= link_to "Incidencias", new_incidence_path %></li>
                                                 <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
                                           <% end %>
-                                          <% if (current_user.user_type  == 0)%>
+                                          <% if (@current_role  == 0)%>
                                                 <li><%= link_to "Solicitar Reclamación", new_user_registration_path %></li>
                                                 <li><%= link_to "Votaciones", votings_path %></li>
                                                 <li><%= link_to "Pedido Online", new_takeaway_path %></li>
@@ -82,25 +82,26 @@
                               <% if current_user %>
                                     <ul>
                                           <li><%= link_to "Mi Perfil", profile_index_path%></li>
-                                          <% if (current_user.user_type  == 3) %>
+                                          <% if (@current_role  == 3) %>
                                                 <li><%= link_to "Tramitar Personal", new_user_registration_path%></li>
                                                 <li><%= link_to "Ver Incidencias", incidences_index_path%></li>
                                                 <li><%= link_to "Generar estadísticas", new_user_registration_path %></li>
                                           <% end %>
-                                          <% if (current_user.user_type  == 0) %>
+                                          <% if (@current_role  == 0) %>
                                                 <li><%= link_to "Chat", new_user_registration_path %></li>
                                           <% end %>
-                                          <% if (current_user.user_type  == 0 || current_user.user_type  == 1 || current_user.user_type  == 2 || current_user.user_type  == 3 ) %>
+                                          <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3 ) %>
                                                 <li><%= link_to "Bandeja Mensajes", messages_index_path %></li>
                                           <% end %>
                                           <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
+                                          <% if current_user.superadmin %>
+                                                <li><%= link_to "Registrar restaurante", restaurants_path %></li>
+                                          <% end %>
                                     </ul>
                               <% else %>
                                     <ul>
                                           <li><%= link_to "Iniciar Sesion", new_user_session_path %></li>
                                           <li><%= link_to "Registrate", new_registration_path(:user) %></li>
-                                          <li><%= link_to "Registrar restaurante", restaurants_path %></li>
-
                                     </ul>
                               <% end %>
                         </li>

@@ -1,0 +1,2 @@
+class CommandProduct < ApplicationRecord
+end

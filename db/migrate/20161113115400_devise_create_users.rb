@@ -33,7 +33,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
             t.string :phone
             t.string :user_name
             t.date :birth_date, null: false
-            t.integer :user_type, default: 0, null: false
+            t.integer :current_user_restaurant
+
+            t.boolean :superadmin, default: false
 
             t.timestamps null: false
         end

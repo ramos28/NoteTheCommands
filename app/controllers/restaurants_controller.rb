@@ -43,6 +43,11 @@ class RestaurantsController < ApplicationController
     	flash[:notice] = "Successfully destroyed restaurant."
     	redirect_to restaurants_url
   	end
+
+  	def select
+  		current_user.update(current_user_restaurant: params[:restaurant_id])
+  		redirect_to new_location_path
+  	end
   
   	private
 

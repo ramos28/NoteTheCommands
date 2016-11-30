@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129192007) do
+ActiveRecord::Schema.define(version: 20161130201642) do
 
   create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title",                         null: false
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20161129192007) do
     t.datetime "updated_at",                    null: false
     t.index ["restaurant_id"], name: "index_blogs_on_restaurant_id", using: :btree
     t.index ["user_id"], name: "index_blogs_on_user_id", using: :btree
+  end
+
+  create_table "command_product", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "command_id", null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["command_id"], name: "index_command_product_on_command_id", using: :btree
+    t.index ["product_id"], name: "index_command_product_on_product_id", using: :btree
   end
 
   create_table "commands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -55,12 +64,12 @@ ActiveRecord::Schema.define(version: 20161129192007) do
   end
 
   create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "place",               null: false
-    t.string   "total_price_command", null: false
-    t.integer  "restaurant_id",       null: false
-    t.integer  "user_id",             null: false
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "place",                          null: false
+    t.float    "total_price_command", limit: 24, null: false
+    t.integer  "restaurant_id",                  null: false
+    t.integer  "user_id",                        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.index ["restaurant_id"], name: "index_locations_on_restaurant_id", using: :btree
     t.index ["user_id"], name: "index_locations_on_user_id", using: :btree
   end
@@ -181,22 +190,23 @@ ActiveRecord::Schema.define(version: 20161129192007) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                   default: "",    null: false
+    t.string   "encrypted_password",      default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",           default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "phone"
     t.string   "user_name"
-    t.date     "birth_date",                          null: false
-    t.integer  "user_type",              default: 0,  null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.date     "birth_date",                              null: false
+    t.integer  "current_user_restaurant"
+    t.boolean  "superadmin",              default: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

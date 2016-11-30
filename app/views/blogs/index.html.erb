@@ -7,6 +7,6 @@
   </p>
   <div id="products"><%= render 'blogs' %></div>
 <% end %>
-<%if current_user.user_type != 0%>
+<%if @current_rol != 0%>
 <p><%= link_to "New Blogs", new_blog_path %></p>
 <% end %>

@@ -49,4 +49,5 @@ class MenusController < ApplicationController
 
   	def menu_params
   		params.require(:menu).permit(:type_menu, :price, :restaurant_id, :user_id)
+  	end
 end
