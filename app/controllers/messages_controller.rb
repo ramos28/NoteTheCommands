@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
 
 	def update
 	    @message = Message.find(params[:id])
-	    if @message.update_attributes(params[:message])
+	    if @message.update_attributes(message_params)
 	      	flash[:notice] = "Successfully updated message."
 	      	redirect_to @message
 	    else

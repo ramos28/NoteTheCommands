@@ -30,7 +30,7 @@ class IncidencesController < ApplicationController
 
 	def update
 	    @incidence = Incidence.find(params[:id])
-	    if @incidence.update_attributes(params[:incidence])
+	    if @incidence.update_attributes(incidence_params)
 	      	flash[:notice] = "Successfully updated incidence."
 	      	redirect_to @incidence
 	    else

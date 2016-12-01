@@ -30,7 +30,7 @@ class MenusController < ApplicationController
 
 	def update
 	    @menu = Menu.find(params[:id])
-	    if @menu.update_attributes(params[:menu])
+	    if @menu.update_attributes(menu_params)
 	      	flash[:notice] = "Successfully updated menu."
 	      	redirect_to @menu
 	    else

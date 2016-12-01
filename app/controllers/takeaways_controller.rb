@@ -30,7 +30,7 @@ class TakeawaysController < ApplicationController
 
 	def update
 	    @takeaway = Takeaway.find(params[:id])
-	    if @takeaway.update_attributes(params[:takeaway])
+	    if @takeaway.update_attributes(takeaway_params)
 	      	flash[:notice] = "Successfully updated takeaway."
 	      	redirect_to @takeaway
 	    else

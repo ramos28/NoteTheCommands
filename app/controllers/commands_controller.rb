@@ -2,6 +2,7 @@ class CommandsController < ApplicationController
 	def index
 		@restaurant_users = RestaurantUser.all
 		@commands = Command.all
+		@command = Command.new
 	end
 
 	def show
@@ -30,7 +31,7 @@ class CommandsController < ApplicationController
 
 	def update
 	    @command = Command.find(params[:id])
-	    if @command.update_attributes(params[:command])
+	    if @command.update_attributes(command_params)
 	      	flash[:notice] = "Successfully updated command."
 	      	redirect_to @command
 	    else
@@ -48,7 +49,7 @@ class CommandsController < ApplicationController
   	private
 
   	def command_params
-  		params.require(:command).permit(:title, :location, :menu, :producto_id, :description, :is_end)
+  		params.require(:command).permit(:title, :location, :menu_id, :producto_id, :description, :is_end)
 
   	end
 

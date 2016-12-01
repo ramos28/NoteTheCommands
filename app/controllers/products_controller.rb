@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
 
 	def update
 	    @product = Product.find(params[:id])
-	    if @product.update_attributes(params[:product])
+	    if @product.update_attributes(product_params)
 	      	flash[:notice] = "Successfully updated product."
 	      	redirect_to @product
 	    else

@@ -1,29 +1,34 @@
-<h1>Comandas del restaurante</h1>
+<h1>Comandas del Restaurante</h1>
 
-<div class ="muestra-tabla">
-	<%= form_tag commands_path, :method => 'get', :id => "commands_search" do %>
-		<p>
-			<%= text_field_tag :search, params[:search] %>
-			<%= submit_tag "Search", :name => nil %>
-		</p>
-		<div id="products"><%= render 'commands' %></div>
-	<% end %>
-	
-</div>
-<div class="muestra-opciones">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-		jQuery("a.mostrar").click(function(){
-		jQuery("div.chatbox").toggle("slow");
-		return false;
-		});
-		});
-	</script>
+<% if @current_role == 0 %>
+	<div class ="muestra-tabla">
+		<%= form_tag commands_path, :method => 'get', :id => "commands_search" do %>
+			<p>
+				<%= text_field_tag :search, params[:search] %>
+				<%= submit_tag "Search", :name => nil %>
+			</p>
+			<div id="products"><%= render 'commands' %></div>
+		<% end %>
+		
+	</div>
+	<div class="muestra-opciones">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
+		<script type="text/javascript">
+			jQuery(document).ready(function() {
+			jQuery("a.mostrar").click(function(){
+			jQuery("div.chatbox").toggle("slow");
+			return false;
+			});
+			});
+		</script>
 
-	<a href="#" class="mostrar">Añadir una nueva comanda</a><br/>
-	<div class="chatbox">
-		<%= render 'form' %>
-		<p><%= link_to "Back to List", commands_path %></p>
-    </div>
-</div>
+
+		<a href="#" class="mostrar">Añadir una nueva comanda</a><br/>
+		<div class="chatbox">
+			<%= render 'form' %>
+			<p><%= link_to "Back to List", commands_path %></p>
+	    </div>
+	</div>
+<% else %>
+	<div id="products"><%= render 'commands' %></div>
+<% end %>

@@ -20,9 +20,6 @@
             <%= f.label :description %><br />
             <%= f.text_field :description %>
       </p>
-      <p>
-            <%= f.label :is_end %><br />
-            <%= f.text_field :is_end %>
-      </p>
+      <%= f.hidden_field :location_id, :value => @current_restaurant %>
       <p><%= f.submit %></p>
 <% end %>

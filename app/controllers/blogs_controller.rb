@@ -2,6 +2,7 @@ class BlogsController < ApplicationController
   	def index
 		@restaurant_users = RestaurantUser.all
 		@blogs = Blog.all
+		@blog = Blog.new
 	end
 
 	def show

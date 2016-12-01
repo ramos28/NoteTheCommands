@@ -20,10 +20,11 @@
 		});
 		});
 	</script>
-
-	<a href="#" class="mostrar">Añadir un nuevo restaurante</a><br/>
-	<div class="chatbox">
-		<%= render 'form' %>
-		<p><%= link_to "Back to List", restaurants_path %></p>
-    </div>
+	<% if current_user.superadmin %> 
+		<a href="#" class="mostrar">Registrar un nuevo Restaurante</a><br/>
+		<div class="chatbox">
+			<%= render 'form' %>
+			<p><%= link_to "Back to List", restaurants_path %></p>
+	    </div>
+	<% end %>
 </div>

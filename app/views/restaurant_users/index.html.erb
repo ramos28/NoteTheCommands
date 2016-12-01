@@ -14,7 +14,11 @@
 					<%if current_user.id == restaurant_user.user_id || current_user.superadmin %>
 						<td><%= restaurant_user.restaurant.name %></td> 
 						<td><%= RestaurantUser::ROLES[restaurant_user.rol] %></td>
-						<td><%= link_to "Select", restaurants_select_path(restaurant_id: restaurant_user.restaurant_id) %></td>
+						<% if restaurant_user.rol == 0 %>
+							<td><%= link_to "Select", restaurants_select_path(restaurant_id: restaurant_user.restaurant_id) %></td>
+						<% else %>
+							<td><%= link_to "Select", commands_path %></td>
+						<% end %>
 					<% end%>
 				</tr>
 			<% end %>
@@ -31,24 +35,26 @@
 		});
 		});
 	</script>
-
-	<a href="#" class="mostrar">Apuntarte a otro restaurante</a><br/>
-	<div class="chatbox">
-		<%= form_for @restaurants_users do |f| %>
-			<p>Seleccione Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%></p>
-			
-
-			<% if current_user.superadmin %>
-				<p>Seleccione Restaurante: <%= f.select :user_id, options_from_collection_for_select( User.all, :id, :email)%></p>
-
-				<p>Seleccione Restaurante: <%= f.select :rol, options_for_select(RestaurantUser::ROLES.map.with_index {|index, value| [index, value]})%></p>
-			
-						
+	<% if current_user.superadmin %>                                  
+		<a href="#" class="mostrar">Registrar Personal del Restaurante</a><br/>
+		<div class="chatbox">
+			<%= form_for @restaurants_users do |f| %>
+				<p>Seleccione un Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%></p>
+				<% if current_user.superadmin %>
+					<p>Seleccione un Usuario: <%= f.select :user_id, options_from_collection_for_select( User.all, :id, :email)%></p>
+					<p>Funcion del Usuario: <%= f.select :rol, options_for_select(RestaurantUser::ROLES.map.with_index {|index, value| [index, value]})%></p>
+				<% end %>
+				<p><%= f.submit %></p>
 			<% end %>
-
-			<p><%= f.submit %></p>
-
-
-		<% end %>
-    </div>
+	    </div>
+	<% else %>
+		<a href="#" class="mostrar">Apuntarse a un Restaurante</a><br/>
+		<div class="chatbox">
+			<%= form_for @restaurants_users do |f| %>
+				<p>Seleccione un Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%></p>
+		            <%= f.hidden_field :user_id, :value => current_user.id %>
+				<p><%= f.submit %></p>
+			<% end %>
+	    </div>
+    <% end %>
 </div>

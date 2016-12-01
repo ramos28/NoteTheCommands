@@ -21,7 +21,7 @@ class VotingsController < ApplicationController
 
 	def update
 	    @voting = Voting.find(params[:id])
-	    if @voting.update_attributes(params[:voting])
+	    if @voting.update_attributes(voting_params)
 	      	flash[:notice] = "Successfully updated voting."
 	      	redirect_to @voting
 	    else

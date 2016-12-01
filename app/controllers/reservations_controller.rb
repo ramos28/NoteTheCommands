@@ -30,7 +30,7 @@ class ReservationsController < ApplicationController
 
 	def update
 	    @reservation = Reservation.find(params[:id])
-	    if @reservation.update_attributes(params[:reservation])
+	    if @reservation.update_attributes(reservation_params)
 	      	flash[:notice] = "Successfully updated reservation."
 	      	redirect_to @reservation
 	    else

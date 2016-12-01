@@ -29,7 +29,7 @@ class RestaurantsController < ApplicationController
 
 	def update
 	    @restaurant = Restaurant.find(params[:id])
-	    if @restaurant.update_attributes(params[:restaurant])
+	    if @restaurant.update_attributes(restaurant_params)
 	      	flash[:notice] = "Successfully updated restaurant."
 	      	redirect_to @restaurant
 	    else

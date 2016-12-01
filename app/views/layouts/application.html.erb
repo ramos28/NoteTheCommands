@@ -18,13 +18,13 @@
                               <% if current_user %>
                                     <ul>
                                           <% if (@current_role == 1 || @current_role == 3)%>
-                                                <li><%= link_to "Comandas del Camarero", new_command_path%></li>
+                                                <li><%= link_to "Comandas del Camarero", command_path(:command) %></li>
                                           <% end %>
                                           <% if (@current_role  == 2 || @current_role  == 3)%>
-                                                <li><%= link_to "Comandas del Cocinero", new_command_path%></li>
+                                                <li><%= link_to "Comandas del Cocinero", command_path(:command) %></li>
                                           <% end %>
                                           <% if (@current_role  == 0)%>
-                                                <li><%= link_to "Mi comanda", new_command_path%></li>
+                                                <li><%= link_to "Mi comanda", commands_path%></li>
                                           <% end %>
                                     </ul>
                               <% end %>
@@ -107,6 +107,10 @@
                         </li>
                         <% if user_signed_in? %>
                               Sesión: <%= current_user.user_name %>
+                              <% if @current_restaurant %>
+                                    , Rest: <%= @current_restaurant %>
+                              <% end %>
+                              
                         <%end%>
                   </ul>
             </nav>

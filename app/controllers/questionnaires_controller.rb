@@ -33,7 +33,7 @@ class QuestionnairesController < ApplicationController
 
 	def update
 	    @questionnaire = Questionnaire.find(params[:id])
-	    if @questionnaire.update_attributes(params[:questionnaire])
+	    if @questionnaire.update_attributes(questionnaire_params)
 	      	flash[:notice] = "Successfully updated questionnaire."
 	      	redirect_to @questionnaire
 	    else

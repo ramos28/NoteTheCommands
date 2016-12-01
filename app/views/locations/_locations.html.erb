@@ -9,8 +9,8 @@
             <tr>
                   <td><%= location.place %></td>
                   <td><%= location.total_price_command %></td>
-                  <td><%= location.restaurant.name %></td>
-                  <td><%= location.user.name %></td>
+                  <td><%= @current_restaurant %></td>
+                  <td><%= current_user.user_name %></td>
                   <td><%= link_to "Edit Location", edit_location_path(location) %></td>                
             </tr>
       <% end %>

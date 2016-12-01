@@ -3,6 +3,8 @@ class CreateCommandProducts < ActiveRecord::Migration[5.0]
 	create_join_table :command, :product do |t|
 		t.index :product_id
 		t.index :command_id
+
+		t.integer :quantity, null: false
 		
 		t.timestamps
     end

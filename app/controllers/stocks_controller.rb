@@ -30,7 +30,7 @@ class StocksController < ApplicationController
 
 	def update
 	    @stock = Stock.find(params[:id])
-	    if @stock.update_attributes(params[:stock])
+	    if @stock.update_attributes(stock_params)
 	      	flash[:notice] = "Successfully updated stock."
 	      	redirect_to @stock
 	    else

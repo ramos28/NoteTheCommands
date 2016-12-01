@@ -9,14 +9,15 @@
     </p>
     <p>
         <strong>Restaurante:</strong>
-        <%= @location.restaurant.name %>
+        <%= @current_restaurant %>
     </p>
     <p>
         <strong>Usuario:</strong>
-        <%= @location.user.name %>
+        <%= current_user.user_name %>
     </p>
 
     <p>
+    <%= link_to "Continuar", commands_path %>
     <%= link_to "Edit", edit_location_path(@location) %> |
     <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
     <%= link_to "View All", locations_path %>
