@@ -12,8 +12,16 @@
             <header>
                   <h1>NOTE THE COMMANDS</h1>
             </header>
+            <% if user_signed_in? %>
+                Sesión: <%= current_user.user_name %>
+                <% if @current_restaurant %>,
+                    Role: <%= @current_role %>,
+                    Rest: <%= @current_restaurant %>
+                <% end %>
+            <%end%>
+
             <nav>
-                  <ul>
+                  <ul>  
                         <li><%= link_to "Inicio", start_path%>
                               <% if current_user %>
                                     <ul>
@@ -58,25 +66,28 @@
                               <% end %>
                         </li>
                         <li><%= link_to "Gestiones" %>
-                              <% if current_user %>
-                                    <ul>
-                                          <% if (@current_role  == 3) %>
-                                                <li><%= link_to "Productos", products_path%></li>
-                                                <li><%= link_to "Stock", stocks_path%></li>
-                                                <li><%= link_to "Menus", new_menu_path(current_user)%></li>
-                                                <li><%= link_to "Cuestionarios", new_questionnaire_path%></li>
-                                          <% end %>
-                                          <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
-                                                <li><%= link_to "Incidencias", new_incidence_path %></li>
-                                                <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
-                                          <% end %>
-                                          <% if (@current_role  == 0)%>
-                                                <li><%= link_to "Solicitar Reclamación", new_user_registration_path %></li>
-                                                <li><%= link_to "Votaciones", votings_path %></li>
-                                                <li><%= link_to "Pedido Online", new_takeaway_path %></li>
-                                          <% end %>
-                                    </ul>
-                              <% end %>
+                            <% if current_user %>
+                                <ul>
+                                    <% if (@current_role  == 3) %>
+                                        <li><%= link_to "Productos", products_path%></li>
+                                        <li><%= link_to "Stock", stocks_path%></li>
+                                        <li><%= link_to "Menus", new_menu_path(current_user)%></li>
+                                        <li><%= link_to "Cuestionarios", new_questionnaire_path%></li>
+                                        <li><%= link_to "Votaciones", votings_path %></li>
+                                        <li><%= link_to "Incidencias", incidences_path %></li>
+                                    <% end %>
+                                    <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
+                                        <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
+                                    <% end %>
+                                    <% if (@current_role  == 0)%>
+                                        <li><%= link_to "Solicitar Reclamación", new_user_registration_path %></li>
+                                        <li><%= link_to "Pedido Online", takeaways_path %></li>
+                                    <% end %>
+                                    <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2)%>
+                                        <li><%= link_to "Crear Incidencias", new_incidence_path %></li>
+                                    <% end %>
+                                </ul>
+                            <% end %>
                         </li>
                         <li><%= link_to "Panel de Control" %>
                               <% if current_user %>
@@ -105,13 +116,7 @@
                                     </ul>
                               <% end %>
                         </li>
-                        <% if user_signed_in? %>
-                              Sesión: <%= current_user.user_name %>
-                              <% if @current_restaurant %>
-                                    , Rest: <%= @current_restaurant %>
-                              <% end %>
-                              
-                        <%end%>
+                        
                   </ul>
             </nav>
             <section>

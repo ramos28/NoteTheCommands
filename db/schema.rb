@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 20161130201642) do
     t.string   "title",                                     null: false
     t.integer  "location_id",                               null: false
     t.integer  "menu_id"
-    t.integer  "producto_id",                               null: false
+    t.integer  "product_id",                                null: false
     t.text     "description", limit: 65535
     t.boolean  "is_end",                    default: false, null: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.index ["location_id"], name: "index_commands_on_location_id", using: :btree
     t.index ["menu_id"], name: "index_commands_on_menu_id", using: :btree
-    t.index ["producto_id"], name: "index_commands_on_producto_id", using: :btree
+    t.index ["product_id"], name: "index_commands_on_product_id", using: :btree
   end
 
   create_table "incidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

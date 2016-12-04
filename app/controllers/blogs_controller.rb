@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   	def index
 		@restaurant_users = RestaurantUser.all
-		@blogs = Blog.all
+		@blogs = Blog.all.paginate(:per_page => 1, :page => params[:page])
 		@blog = Blog.new
 	end
 

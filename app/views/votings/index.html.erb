@@ -1,26 +1,22 @@
 <h1>Votacion del Restaurante</h1>
 
-<div class="muestra-opciones">
-	<%= form_for @voting do |f| %>
-		<%= f.error_messages %>
-		<p>
-			<%= f.label :questionnaire_id %><br />
-			<%= f.select :questionnaire_id, options_from_collection_for_select(Questionnaire.all, :id, :question)%>
-		</p>
-		<p>
-			<%= f.label :restaurante %><br />
-			<%= f.select :restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name)%>
-		</p>
-		<p>
-			<% answers = {'Muy mal' => '1', 'Mal' => '3', 'Aceptable' => '5', 'Buena' => '6', 'Muy buena' => '8', 'Excelente' => '10'} %>
-			<fieldset>
-				<% answers.each do |ans| %>
-					<%= f.radio_button :answer, ans[1] %>
-					<label for="<%=ans[1]%>""><%= ans[0] %></label>
-				<% end %>
-			</fieldset>
-		</p>
 
-		<p><%= f.submit %></p>
-	<% end %>
-</div>
+<%= form_for @voting do |f| %>
+	<%= f.error_messages %>
+	<p>
+		<%= f.label :questionnaire_id %><br />
+		<%= f.select :questionnaire_id, options_from_collection_for_select(Questionnaire.all, :id, :question)%>
+	</p>
+	<p>
+		<% answers = {'Muy mal' => '1', 'Mal' => '3', 'Aceptable' => '5', 'Buena' => '6', 'Muy buena' => '8', 'Excelente' => '10'} %>
+		<fieldset>
+			<% answers.each do |ans| %>
+				<%= f.radio_button :answer, ans[1] %>
+				<label for="<%=ans[1]%>""><%= ans[0] %></label>
+			<% end %>
+		</fieldset>
+	</p>
+	<%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
+	<p><%= f.submit %></p>
+<% end %>
+

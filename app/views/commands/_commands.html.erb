@@ -1,21 +1,29 @@
 <table class="pretty">
-      <tr>
-            <th><%= "Titulo" %></th>
-            <th><%=  "Mesa" %></th>
-            <th><%=  "Menu" %></th>
-            <th><%=  "Producto" %></th>
-            <th><%=  "Descripcion" %></th>
-            <th><%=  "Esta Finalizada" %></th>
-      </tr>
-      <% @commands.each do |command| %>
+    <tr>
+        <th><%= "Titulo" %></th>
+        <th><%=  "Restaurante" %></th>
+        <th><%=  "Mesa" %></th>
+        <th><%=  "Menu" %></th>
+        <th><%=  "Producto" %></th>
+        <th><%=  "Descripcion" %></th>
+        <th><%=  "Esta Finalizada" %></th>
+    </tr>
+    <% @commands.each do |command| %>
+    <%= command.location.restaurant_id %>
+    <%= @current_restaurant %>
+        <% if command.location.restaurant_id == @current_restaurant %>
             <tr>
-                  <td><%= command.title %></td>
-                  <td><%= command.location.place %></td>
-                  <td><%= command.menu.type_menu %></td>
-                  <td><%= command.producto.name %></td>
-                  <td><%= command.description %></td>
-                  <td><%= command.is_end %></td>
-                  <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
+                <td><%= command.title %></td>
+                <td><%= command.location.restaurant_id %></td>
+                <td><%= command.location.place %></td>
+                <td><%= command.menu.type_menu %></td>
+                <td><%= command.product.name %></td>
+                <td><%= command.description %></td>
+                <td><%= command.is_end %></td>
+                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
             </tr>
-      <% end %>
+        <% end %>
+        <%= link_to "Back", location_path(command.location.place) %>
+    <% end %>
 </table>
+<%= will_paginate @commands %>

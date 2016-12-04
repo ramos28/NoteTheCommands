@@ -5,7 +5,7 @@ class CreateCommands < ActiveRecord::Migration[5.0]
 
 			t.references :location, null: false
 			t.references :menu
-			t.references :producto, null: false
+			t.references :product, null: false
 
 			t.text :description
 

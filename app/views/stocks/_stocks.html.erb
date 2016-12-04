@@ -2,12 +2,12 @@
 <%= hidden_field_tag :sort, params[:sort] %>
 <table class="pretty">
     <tr>
-        <th><%=  "Nombre Producto" %></th>
-        <th><%=  "Coste Publico Unidad" %></th>
-        <th><%=  "Cantidad en Stock" %></th>
-        <th><%=  "Descipcion" %></th>
-        <th><%=  "Precio Compra Unidad" %></th>
-        <th><%=  "Gasto Total Producto Mercado" %></th>
+        <th><%= "Nombre Producto" %></th>
+        <th><%= "Coste Publico Unidad" %></th>
+        <th><%= "Cantidad en Stock" %></th>
+        <th><%= "Descipcion" %></th>
+        <th><%= "Precio Compra Unidad" %></th>
+        <th><%= "Gasto Total Producto Mercado" %></th>
     </tr>
     <% @stocks.each do |stock| %>
         <tr>

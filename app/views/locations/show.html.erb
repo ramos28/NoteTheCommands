@@ -16,9 +16,9 @@
         <%= current_user.user_name %>
     </p>
 
-    <p>
-    <%= link_to "Continuar", commands_path %>
+    <p>    
     <%= link_to "Edit", edit_location_path(@location) %> |
     <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to "View All", locations_path %>
+    <%= link_to "View All", locations_path %> | 
+    <%= link_to "Continuar", commands_path %>
 </p>

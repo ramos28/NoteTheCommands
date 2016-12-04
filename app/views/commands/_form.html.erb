@@ -1,25 +1,24 @@
 <%= form_for @command do |f| %>
       <%= f.error_messages %>
       <p>
-            <%= f.label :title %><br />
+            <%= f.label :titulo_comanda %>
             <%= f.text_field :title %>
       </p>
       <p>
-            <%= f.label :location_id %><br />
+            <%= f.label :localizacion %>
             <%= f.select :location_id, options_from_collection_for_select( Location.all, :id, :place)%>
       </p>
       <p>
-            <%= f.label :menu_id %><br />
+            <%= f.label :menu %>
             <%= f.select :menu_id, options_from_collection_for_select( Menu.all, :id, :type_menu)%>
       </p>
       <p>
-            <%= f.label :producto_id %><br />
-            <%= f.select :producto_id, options_from_collection_for_select( Product.all, :id, :name)%>
+            <%= f.label :producto %>
+            <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
       </p>
       <p>
-            <%= f.label :description %><br />
-            <%= f.text_field :description %>
+            <%= f.label :descripción %><br />
+            <%= f.text_area :description %>
       </p>
-      <%= f.hidden_field :location_id, :value => @current_restaurant %>
       <p><%= f.submit %></p>
 <% end %>

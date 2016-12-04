@@ -1,32 +1,25 @@
 <%= form_for @takeaway do |f| %>
-      <%= f.error_messages %>
-      <p>
-            <%= f.label :name %><br />
-            <%= f.text_field :name %>
-      </p>
-      <p>
-            <%= f.label :date %><br />
-            <%= f.date_field :date %>
-      </p>
-      <p>
-            <%= f.label :hour %><br />
-            <%= f.date_field :hour %>
-      </p>
-      <p>
-            <%= f.label :product_id %><br />
-            <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
-      </p>
-      <p>
-            <%= f.label :restaurant_id %><br />
-            <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
-      </p>
-      <p>
-            <%= f.label :quantity %><br />
-            <%= f.date_field :quantity %>
-      </p>
-      <p>
-            <%= f.label :total_price_selection %><br />
-            <%= f.date_field :total_price_selection %>
-      </p>
-      <p><%= f.submit %></p>
+    <%= f.error_messages %>
+    <p>
+        <%= f.label :nombre %><br />
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.label :fecha_recogida %><br />
+        <%= f.date_field :date %>
+    </p>
+    <p>
+        <%= f.label :hora %><br />
+        <%= f.time_field :hour %>
+    </p>
+    <p>
+        <%= f.label :producto %><br />
+        <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+    </p>
+    <p>
+        <%= f.label :cantidad %><br />
+        <%= f.text_field :quantity %>
+    </p>
+    <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
+    <p><%= f.submit %></p>
 <% end %>

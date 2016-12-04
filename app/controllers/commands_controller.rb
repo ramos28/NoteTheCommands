@@ -1,7 +1,7 @@
 class CommandsController < ApplicationController
 	def index
 		@restaurant_users = RestaurantUser.all
-		@commands = Command.all
+		@commands = Command.all.paginate(:per_page => 5, :page => params[:page])
 		@command = Command.new
 	end
 
@@ -49,7 +49,7 @@ class CommandsController < ApplicationController
   	private
 
   	def command_params
-  		params.require(:command).permit(:title, :location, :menu_id, :producto_id, :description, :is_end)
+  		params.require(:command).permit(:title, :location_id, :menu_id, :product_id, :description, :is_end)
 
   	end
 

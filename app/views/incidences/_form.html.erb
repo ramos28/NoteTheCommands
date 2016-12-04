@@ -2,28 +2,27 @@
 
     <%= f.error_messages %>
     <p>
-        <%= f.label :category %><br />
+        <%= f.label :categoria %>
         <%= f.text_field :category %>
     </p>
     <p>
-        <%= f.label :title %><br />
+        <%= f.label :prioridad %>
+        <%= f.text_field :priority %>
+    </p>
+    <p>
+        <%= f.label :titulo %>
         <%= f.text_field :title %>
     </p>
     <p>
-        <%= f.label :description %><br />
-        <%= f.text_area :description, :cols => 30, rows: 5 %>
-    </p>
-    <p>
-        <%= f.label :date_start %><br />
+        <%= f.label :fecha_creación %>
         <%= f.date_field :date_start %>
     </p>
     <p>
-        <%= f.label :restaurant %><br />
-        <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
+        <%= f.label :descripción %><br />
+        <%= f.text_area :description, :cols => 30, rows: 5 %>
     </p>
-      <p>
-        <%= f.label :user %><br />
-        <%= f.select :user_id, options_from_collection_for_select( User.all, :id, :email)%>
-    </p>
+    
+    <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     <p><%= f.submit %></p>
 <% end %>

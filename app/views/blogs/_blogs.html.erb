@@ -1,21 +1,23 @@
-<%= hidden_field_tag :direction, params[:direction] %>
-<%= hidden_field_tag :sort, params[:sort] %>
-<table class="pretty">
-    <tr>
-        <th><%=  "Titulo" %></th>
-        <th><%=  "Descripcon" %></th>
-        <th><%=  "Esta cerrado" %></th>
-        <th><%=  "Restaurante" %></th>
-        <th><%=  "Usuario" %></th>
-    </tr>
-    <% @blogs.each do |noticia| %>
-        <tr>
-            <td><%= noticia.title %></td>
-            <td><%= noticia.description %></td>
-            <td><%= noticia.is_closed %></td>
-            <td><%= noticia.restaurant.name %></td>
-            <td><%= noticia.user.user_name %></td>
-            <td><%= link_to "Edit Blog", edit_blog_path(noticia) %></td>
-        </tr>
-    <% end %>
-</table>
+<section>
+    <article class=”blogPost”>
+        <% @blogs.each do |noticia| %>
+            <% if noticia.restaurant_id == @current_restaurant %>
+                <header>
+                    <h2><%= noticia.title %></h2>
+                    <p>Posted on <%= noticia.created_at %> – <a href=”#comments”>3 comments</a>
+                        <%if @current_role != 0%>
+                            | <%= link_to "Edit Blog", edit_blog_path(noticia) %>
+                            | <%= link_to "Destroy", @blog, :confirm => 'Are you sure?', :method => :delete %>
+                            | <%= link_to "New Blogs", new_blog_path %>
+                        <% end %>
+                    </p>
+                </header>
+                <p><%= noticia.description %></p>
+            <% end %>
+        <% end %>
+        <%= will_paginate @blogs %>
+    </article>
+</section>
+<aside>
+
+</aside>

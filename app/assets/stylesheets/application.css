@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
-header {
-	border: 1px solid white;
+head {
+	
 }
 
 body
@@ -41,8 +41,7 @@ footer {
 
 section {
 	text-align: center;
-	height: 490px;
-	border: 1px solid white;
+	height: 500px;	
 }
 
 .menu {
@@ -53,7 +52,6 @@ section {
 /*Menu deplegable*/
 nav {
 	text-align: center;
-	border: 1px solid white;
 }
 
 nav ul ul {
