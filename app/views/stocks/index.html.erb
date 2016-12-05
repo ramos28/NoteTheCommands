@@ -1,12 +1,33 @@
 <h1>Stock del Restaurante</h1>
 
-<%= form_tag stocks_path, :method => 'get', :id => "stocks_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :quantity => nil %>
-  </p>
-  <div id="products"><%= render 'stocks' %></div>
-<% end %>
+<table id="stocks" class="display">
+    <thead>
+        <tr>
+            <th><%= "Nombre Producto" %></th>
+            <th><%= "Coste Publico Unidad" %></th>
+            <th><%= "Cantidad en Stock" %></th>
+            <th><%= "Descipcion" %></th>
+            <th><%= "Precio Compra Unidad" %></th>
+            <th><%= "Gasto Total Producto Mercado" %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @stocks.each do |stock| %>
+            <tr>
+                <td><%= stock.product.name %></td>
+                <td class="price"><%= number_to_currency(stock.product.unit_price, :unit => "€") %></td>
+                <td><%= stock.quantity %></td>
+                <td><%= stock.description_stock %></td>
+                <td class="price"><%= number_to_currency(stock.price_buy_unity) %></td>
+                <td class="price"><%= number_to_currency(stock.quantity * stock.price_buy_unity, :unit => "€") %></td>
+                <td><%= link_to "Edit Stock", edit_stock_path(stock) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+    <tfoot>
+        <%= will_paginate @products %>
+    </tfoot>
+</table>
 
 <p><%= link_to "New Stock", new_stock_path %></p>
 

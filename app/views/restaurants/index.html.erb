@@ -1,15 +1,24 @@
 <h1>Restaurantes</h1>
 
 <div class ="muestra-tabla">
-	<%= form_tag restaurants_path, :method => 'get', :id => "restaurants_search" do %>
-		<p>
-			<%= text_field_tag :search, params[:search] %>
-			<%= submit_tag "Search", :name => nil %>
-		</p>
-		<div id="products"><%= render 'restaurants' %></div>
-	<% end %>
-	
+	<table class="pretty">
+	    <tr>
+	        <th><%=  "Nombre" %></th>
+	        <th><%=  "Telefono" %></th>
+	        <th><%=  "Correo Electronico" %></th>
+	        <th><%=  "Pais" %></th>
+	    </tr>
+	    <% @restaurants.each do |restaurant| %>
+	        <tr>
+	            <td><%= restaurant.name %></td>
+	            <td><%= restaurant.phone %></td>
+	            <td><%= restaurant.email %></td>
+	            <td><%= restaurant.country %></td>
+	        </tr>
+	    <% end %>
+	</table>
 </div>
+
 <div class="muestra-opciones">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
 	<script type="text/javascript">

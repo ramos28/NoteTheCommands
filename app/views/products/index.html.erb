@@ -1,15 +1,30 @@
-<h1>Productos del restaurante</h1>
+<h1>Productos del Restaurante</h1>
 
 <div class ="muestra-tabla">
-	<%= form_tag products_path, :method => 'get', :id => "products_search" do %>
-		<p>
-			<%= text_field_tag :search, params[:search] %>
-			<%= submit_tag "Search", :name => nil %>
-		</p>
-		<div id="products"><%= render 'products' %></div>
-	<% end %>
-	
+	<%= hidden_field_tag :direction, params[:direction] %>
+	<%= hidden_field_tag :sort, params[:sort] %>
+	<table class="pretty">
+	      <tr>
+	            <th><%= sortable "name" %></th>
+	            <th><%= sortable "product_type", "Categoria Producto" %></th>
+	            <th><%= sortable "product_description", "Descripcion producto" %></th>
+	            <th><%= sortable "unit_price" %></th>
+	            <th>Resturante</th>
+	      </tr>
+	      <% @products.each do |product| %>
+	            <tr>
+	                  <td><%= product.name %></td>
+	                  <td><%= Product::PRODUCT_CATEGORY[product.product_type] %></td>
+	                  <td><%= product.product_description %></td>
+	                  <td class="price"><%= number_to_currency(product.unit_price, :unit => "€") %></td>
+	                  <td><%= product.restaurant.name %></td>
+	                  <td><%= link_to "Edit Stock", edit_product_path(product) %></td>                
+	            </tr>
+	      <% end %>
+	</table>
+	<%= will_paginate @products %>
 </div>
+
 <div class="muestra-opciones">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
 	<script type="text/javascript">

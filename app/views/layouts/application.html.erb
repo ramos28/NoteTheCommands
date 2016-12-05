@@ -10,26 +10,24 @@
 
       <body>
             <header>
-                  <h1>NOTE THE COMMANDS</h1>
+              <% if user_signed_in? %>
+                  Sesión: <%= current_user.user_name %>
+                  <% if @current_restaurant %>,
+                      Role: <%= @current_role %>,
+                      Rest: <%= @current_restaurant %>
+                  <% end %>
+              <%end%>
             </header>
-            <% if user_signed_in? %>
-                Sesión: <%= current_user.user_name %>
-                <% if @current_restaurant %>,
-                    Role: <%= @current_role %>,
-                    Rest: <%= @current_restaurant %>
-                <% end %>
-            <%end%>
-
             <nav>
                   <ul>  
                         <li><%= link_to "Inicio", start_path%>
                               <% if current_user %>
                                     <ul>
                                           <% if (@current_role == 1 || @current_role == 3)%>
-                                                <li><%= link_to "Comandas del Camarero", command_path(:command) %></li>
+                                                <li><%= link_to "Comandas del Camarero", commands_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 2 || @current_role  == 3)%>
-                                                <li><%= link_to "Comandas del Cocinero", command_path(:command) %></li>
+                                                <li><%= link_to "Comandas del Cocinero", commands_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 0)%>
                                                 <li><%= link_to "Mi comanda", commands_path%></li>
@@ -57,7 +55,7 @@
                               <% if current_user %>
                                     <ul>
                                           <% if (@current_role  == 3) %>
-                                                <li><%= link_to "Publicar noticia", new_blog_path %></li>
+                                                <li><%= link_to "Publicar Noticia", new_blog_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
                                                 <li><%= link_to "Blog", blogs_index_path %></li>
@@ -94,9 +92,8 @@
                                     <ul>
                                           <li><%= link_to "Mi Perfil", profile_index_path%></li>
                                           <% if (@current_role  == 3) %>
-                                                <li><%= link_to "Tramitar Personal", new_user_registration_path%></li>
                                                 <li><%= link_to "Ver Incidencias", incidences_index_path%></li>
-                                                <li><%= link_to "Generar estadísticas", new_user_registration_path %></li>
+                                                <li><%= link_to "Generar Estadísticas", new_user_registration_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 0) %>
                                                 <li><%= link_to "Chat", new_user_registration_path %></li>
@@ -106,7 +103,7 @@
                                           <% end %>
                                           <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
                                           <% if current_user.superadmin %>
-                                                <li><%= link_to "Registrar restaurante", restaurants_path %></li>
+                                                <li><%= link_to "Registrar Restaurante", restaurants_path %></li>
                                           <% end %>
                                     </ul>
                               <% else %>

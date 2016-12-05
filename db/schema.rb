@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20161130201642) do
 
   create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "place",                                        null: false
+    t.integer  "sit"
     t.float    "total_price_command", limit: 24, default: 0.0, null: false
     t.integer  "restaurant_id",                                null: false
     t.integer  "user_id",                                      null: false
@@ -109,7 +110,7 @@ ActiveRecord::Schema.define(version: 20161130201642) do
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                           null: false
-    t.string   "product_type",                   null: false
+    t.integer  "product_type",                   null: false
     t.string   "product_description"
     t.float    "unit_price",          limit: 24, null: false
     t.integer  "restaurant_id"

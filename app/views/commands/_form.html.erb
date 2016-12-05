@@ -1,11 +1,11 @@
 <%= form_for @command do |f| %>
       <%= f.error_messages %>
       <p>
-            <%= f.label :titulo_comanda %>
+            <%= f.label :nombre_comanda %>
             <%= f.text_field :title %>
       </p>
       <p>
-            <%= f.label :localizacion %>
+            <%= f.label :localización %>
             <%= f.select :location_id, options_from_collection_for_select( Location.all, :id, :place)%>
       </p>
       <p>

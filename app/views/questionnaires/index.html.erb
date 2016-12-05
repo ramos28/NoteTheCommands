@@ -1,15 +1,21 @@
 <h1>Cuestionarios del restaurante</h1>
 
 <div class ="muestra-tabla">
-	<%= form_tag questionnaires_path, :method => 'get', :id => "questionnaire_search" do %>
-		<p>
-			<%= text_field_tag :search, params[:search] %>
-			<%= submit_tag "Search", :@name => nil %>
-		</p>
-		<div id="products"><%= render 'questionnaires' %></div>
-	<% end %>
-	
+	<table class="pretty">
+	      <tr>
+	            <th><%= sortable "Pregunta" %></th>
+	            <th><%= sortable "Restaurante"%></th>
+	      </tr>
+	      <% @questionnaires.each do |questionnaire| %>
+	            <tr>
+	                  <td><%= questionnaire.question %></td>
+	                  <td><%= questionnaire.restaurant.name %></td>                  
+	            </tr>
+	      <% end %>
+	</table>
+	<%= will_paginate @questionnaires %>
 </div>
+
 <div class="muestra-opciones">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
 	<script type="text/javascript">

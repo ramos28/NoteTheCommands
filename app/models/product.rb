@@ -2,7 +2,7 @@ class Product < ApplicationRecord
 
 	belongs_to :restaurant
 
-	PRODUCT_CATEGORY = ["BEBIDA", "RACION", "BOCADILLO", "GENERAL"]
+	PRODUCT_CATEGORY = ["BEBIDA", "RACION", "BOCADILLO", "GENERAL", "POSTRE"]
 
   	def self.search(search)
 	  	if search

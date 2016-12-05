@@ -46,9 +46,14 @@ class RestaurantsController < ApplicationController
 
   	def select
   		current_user.update(current_user_restaurant: params[:restaurant_id])
-  		redirect_to new_location_path
+  		if @current_role == 0
+			redirect_to new_location_path
+		else
+			redirect_to start_path
+		end
+  		
   	end
-  
+  	
   	private
 
   	def restaurant_params

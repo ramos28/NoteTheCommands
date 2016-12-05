@@ -1,13 +1,12 @@
 <%= form_for @incidence do |f| %>
-
     <%= f.error_messages %>
     <p>
         <%= f.label :categoria %>
-        <%= f.text_field :category %>
+        <%= f.select :categoria, options_for_select(Incidence::INCIDENCE_CATEGORY.map.with_index {|index, value| [index, value]})%>
     </p>
     <p>
         <%= f.label :prioridad %>
-        <%= f.text_field :priority %>
+        <%= f.select :rol, options_for_select(Incidence::PRIORITY_CATEGORY.map.with_index {|index, value| [index, value]})%>
     </p>
     <p>
         <%= f.label :titulo %>

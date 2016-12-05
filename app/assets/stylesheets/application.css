@@ -11,16 +11,20 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require dataTables/bootstrap/2/jquery.dataTables.bootstrap
+ *= require dataTables/jquery.dataTables
  *= require_self
  */
-head {
-	
+header{
+	height: 200px;
+	text-align: right;
+	background-image: url("logo3.jpg");
 }
 
 body
 {
 	font-family: Georgia, Cambria, Times, "Times New Roman";
-	background-image: url("fondoGris.jpg");
+	background-image: url("background.jpg");
 }
 
 h1 {

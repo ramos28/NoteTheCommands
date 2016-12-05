@@ -1,11 +1,24 @@
 <h1>Reservas del Restaurante</h1>
 
-<%= form_tag reservations_path, :method => 'get', :id => "reservations_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :fecha => nil %>
-  </p>
-  <div id="products"><%= render 'reservations' %></div>
-<% end %>
+<table class="pretty">
+    <tr>
+        <th><%=  "Numero de personas" %></th>
+        <th><%=  "Dia reserva" %></th>
+        <th><%=  "Hora reserva" %></th>
+        <th><%=  "Restaurante" %></th>
+        <th><%=  "Usuario" %></th>
+        <th><%=  "Telefono contacto" %></th>
+    </tr>
+    <% @reservations.each do |reservation| %>
+        <tr>
+            <td><%= reservation.num_persons %></td>
+            <td><%= reservation.date %></td>
+            <td><%= reservation.hour %></td>
+            <td><%= reservation.restaurant.name %></td>
+            <td><%= reservation.user.user_name %></td>
+            <td><%= reservation.phone %></td>
+        </tr>
+    <% end %>
+</table>
 
 <p><%= link_to "New Reservations", new_reservation_path %></p>

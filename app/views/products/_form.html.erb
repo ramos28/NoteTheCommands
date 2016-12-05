@@ -1,26 +1,21 @@
 <%= form_for @product do |f| %>
-      <%= f.error_messages %>
-      <p>
-            <%= f.label :name %><br />
-            <%= f.text_field :name %>
-      </p>
-      <p>
-            <%= f.label :product_type %><br />
-            <%= f.text_field :product_type %>
-      </p>
-      <p>
-            <%= f.label :product_description %><br />
-            <%= f.text_field :product_description %>
-      </p>
-      <p>
-            <%= f.label :unit_price %><br />
-            <%= f.text_field :unit_price %>
-      </p>
-
-      <p>
-            <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
-      </p>
-
-
-      <p><%= f.submit %></p>
+    <%= f.error_messages %>
+    <p>
+        <%= f.label :nombre %><br />
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.label :tipo_producto %><br />
+        <%= f.select :product_type, options_for_select(Product::PRODUCT_CATEGORY.map.with_index {|index, value| [index, value]})%>
+    </p>
+    <p>
+        <%= f.label :descripcion_producto %><br />
+        <%= f.text_field :product_description %>
+    </p>
+    <p>
+        <%= f.label :precio_producto %><br />
+        <%= f.text_field :unit_price %>
+    </p>
+    <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
+    <p><%= f.submit %></p>
 <% end %>

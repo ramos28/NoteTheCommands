@@ -1,15 +1,27 @@
 <h1>Mesas del restaurante</h1>
 
 <div class ="muestra-tabla">
-	<%= form_tag locations_path, :method => 'get', :id => "locations_search" do %>
-		<p>
-			<%= text_field_tag :search, params[:search] %>
-			<%= submit_tag "Search", :name => nil %>
-		</p>
-		<div id="products"><%= render 'locations' %></div>
-	<% end %>
-	
+<table class="pretty">
+    <tr>
+        <th><%= "Lugar" %></th>
+        <th><%= "Mesa" %></th>
+        <th><%= "Precio total de la comanda" %></th>
+        <th><%= "Restaurante" %></th>
+        <th><%= "Usuario" %></th>
+    </tr>
+    <% @locations.each do |location| %>
+        <tr>
+            <td><%= Location::LOCATION_CATEGORY[location.place] %></td>
+            <td><%= location.sit %></td>
+            <td><%= location.total_price_command %></td>
+            <td><%= @current_restaurant %></td>
+            <td><%= current_user.user_name %></td>
+            <td><%= link_to "Edit Location", edit_location_path(location) %></td>                
+        </tr>
+    <% end %>
+</table>
 </div>
+
 <div class="muestra-opciones">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
 	<script type="text/javascript">
@@ -24,6 +36,6 @@
 	<a href="#" class="mostrar">Añadir una nueva mesa</a><br/>
 	<div class="chatbox">
 		<%= render 'form' %>
-		<p><%= link_to "Back to List", locations_path %></p>
+		<p><%= link_to "Back to List", restauran_users_path %></p>
     </div>
 </div>

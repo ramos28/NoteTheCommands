@@ -1,7 +1,7 @@
 class StocksController < ApplicationController
 	def index
 		@restaurant_users = RestaurantUser.all
-		@stocks = Stock.all
+		@stocks = Stock.all.paginate(:per_page => 7, :page => params[:page])
 	end
 
 	def show

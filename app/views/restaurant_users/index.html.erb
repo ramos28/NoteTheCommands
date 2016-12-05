@@ -4,26 +4,26 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Nombre Restaurante</th>
-				<th>Tipo Usuario</th>
+				<th>Restaurante</th>
+				<th>Usuario</th>
+				<th>Rol Usuario</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @restaurant_users.each do |restaurant_user| %>
 				<tr>
 					<%if current_user.id == restaurant_user.user_id || current_user.superadmin %>
-						<td><%= restaurant_user.restaurant.name %></td> 
+						<td><%= restaurant_user.restaurant.name %></td>
+						<td><%= restaurant_user.user.user_name %></td>
 						<td><%= RestaurantUser::ROLES[restaurant_user.rol] %></td>
-						<% if restaurant_user.rol == 0 %>
-							<td><%= link_to "Select", restaurants_select_path(restaurant_id: restaurant_user.restaurant_id) %></td>
-						<% else %>
-							<td><%= link_to "Select", commands_path %></td>
-						<% end %>
+						<%= restaurant_user.rol %>
+						<td><%= link_to "Select", restaurants_select_path(restaurant_id: restaurant_user.restaurant_id) %></td>
 					<% end%>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
+	<%= will_paginate @restaurant_users %>
 </div>
 <div class="muestra-opciones">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
