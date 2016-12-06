@@ -1,7 +1,8 @@
 class MenusController < ApplicationController
 	def index
 		@restaurant_users = RestaurantUser.all
-		@menus = Menu.all
+		@menus = Menu.all.paginate(:per_page => 6, :page => params[:page])
+		@menu = Menu.new
 	end
 
 	def show
@@ -48,6 +49,6 @@ class MenusController < ApplicationController
   	private
 
   	def menu_params
-  		params.require(:menu).permit(:type_menu, :price, :restaurant_id, :user_id)
+  		params.require(:menu).permit(:name, :type_menu, :price, :description, :restaurant_id, :user_id)
   	end
 end

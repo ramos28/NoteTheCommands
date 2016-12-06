@@ -1,29 +1,15 @@
 Rails.application.routes.draw do
-
-    get 'product_menus/index'
-
     get 'menus/index'
-
     get 'commands/index'
-
     get 'takeaways/index'
-
     get 'reservations/index'
-
     get 'blogs/index'
-
     get 'incidences/index'
-
     get 'messages/index'
-
     get 'news/index'
-
     get 'votings/index'
-
     get 'productos/index'
-
     get 'profile/index'
-
     get 'restaurants/select'
 
     devise_for :users
@@ -42,7 +28,7 @@ Rails.application.routes.draw do
     resources :locations
     resources :menus
     resources :commands
-    resources :product_menus
+    resources :menu_product
 
     get 'select_restaurant', to: 'restaurants_users#new'
     #get 'restaurants_user', to: 'restaurants_users#index'

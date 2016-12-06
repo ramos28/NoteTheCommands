@@ -1,11 +1,11 @@
 <%= form_for @location do |f| %>
 	<%= f.error_messages %>
 	<p>
-	    <%= f.label :place %><br />
+	    <%= f.label :Lugar %><br />
 	    <%= f.select :place, options_for_select(Location::LOCATION_CATEGORY.map.with_index {|index, value| [index, value]})%>
 	</p>
 	<p>
-	    <%= f.label :sit %><br />
+	    <%= f.label :Mesa %><br />
 	    <%= f.text_field :sit %>
 	</p>
 	<%= f.hidden_field :restaurant_id, :value => @current_restaurant %>

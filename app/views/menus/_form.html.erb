@@ -1,0 +1,22 @@
+<%= form_for @menu do |f| %>
+    <%= f.error_messages %>
+    <p>
+        <%= f.label :nombre_menu %><br />
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.label :tipo_menu %>
+        <%= f.select :type_menu, options_for_select(Menu::MENU_CATEGORY.map.with_index {|index, value| [index, value]})%>
+    </p>
+    <p>
+        <%= f.label :descripción %><br />
+        <%= f.text_area :description, :cols => 30, rows: 5 %>
+    </p>
+    <p>
+        <%= f.label :precio %><br />
+        <%= f.text_field :price %>
+    </p>
+    <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <p><%= f.submit %></p>
+<% end %>

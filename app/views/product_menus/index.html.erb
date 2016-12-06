@@ -1,2 +1,49 @@
-<h1>ProductMenus#index</h1>
-<p>Find me in app/views/product_menus/index.html.erb</p>
+<h1>Productos del Menu</h1>
+
+<div class ="muestra-tabla">
+	<table>
+		<thead>
+			<tr>
+				<th>Producto</th>
+				<th>Menu</th>
+				<th>Tipo</th>
+				<th>Cantidad</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @menu_products.each do |menu_product| %>
+				<tr>
+					<%if menu_product.menu_id.user_id == 3  %>
+						<td><%= menu_product.product_id.name %></td>
+						<td><%= menu_product.menu_id.name %></td>
+						<td><%= MenuProduct::CONTENT_CATEGORY[menu_product.category] %></td>
+						<td><%= menu_product.quantity %></td>
+					<% end%>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= will_paginate @menu_products %>
+</div>
+<div class="muestra-opciones">
+	<%= form_for @menu_product do |f| %>
+	    <%= f.error_messages %>
+	    <p>
+	        <%= f.label :producto %><br />
+	        <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+	    </p>
+	    <p>
+	        <%= f.label :menu %><br />
+	        <%= f.select :menu_id, options_from_collection_for_select( Menu.all, :id, :name)%>
+	    </p>
+	    <p>
+	        <%= f.label :category %>
+	        <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
+	    </p>
+	    <p>
+	        <%= f.label :quantity %><br />
+	        <%= f.text_field :quantity %>
+	    </p>
+	    <p><%= f.submit %></p>
+	<% end %>
+</div>

@@ -26,19 +26,8 @@
 </div>
 
 <div class="muestra-opciones">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-		jQuery("a.mostrar").click(function(){
-		jQuery("div.chatbox").toggle("slow");
-		return false;
-		});
-		});
-	</script>
-
-	<a href="#" class="mostrar">Añadir un nuevo producto</a><br/>
-	<div class="chatbox">
-		<%= render 'form' %>
-		<p><%= link_to "Back to List", products_path %></p>
-    </div>
+	<h2>Añadir productos al restaurante</h2>
+	<%= render 'form' %>
+	<p><%= link_to "Back to List", products_path %></p>
+   
 </div>

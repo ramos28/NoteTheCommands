@@ -1,35 +1,29 @@
 <%= form_for @restaurant do |f| %>
     <%= f.error_messages %>
     <p>
-        <%= f.label :name %>
+        <%= f.label :nombre %>
         <%= f.text_field :name %>
-    </p>
-    <p>
-        <%= f.label :phone %>
+        <%= f.label :teléfono %>
         <%= f.text_field :phone %>
     </p>
     <p>
-        <%= f.label :address %>
+        <%= f.label :dirección %>
         <%= f.text_field :address %>
-    </p>
-    <p>
-        <%= f.label :city %>
+        <%= f.label :ciudad %>
         <%= f.text_field :city %>
     </p>
     <p>
-        <%= f.label :country %>
+        <%= f.label :pais %>
         <%= f.text_field :country %>
-    </p>
-    <p>
-        <%= f.label :postal_code %>
+         <%= f.label :postal_code %>
         <%= f.text_field :postal_code %>
     </p>
     <p>
-        <%= f.label :email %>
+        <%= f.label :correo_electronico %>
         <%= f.text_field :email %>
-    </p> 
+    </p>
     <p>
-        <%= f.label :opening_hours %>
+        <%= f.label :horario_apertura %>
         <%= f.text_field :opening_hours %>
     </p>    
     <p><%= f.submit %></p>
