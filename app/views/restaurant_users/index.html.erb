@@ -30,7 +30,7 @@
 </div>
 <div class="muestra-opciones">
 	<% if current_user.superadmin %>
-	Registrar personal                                
+		<h2>Registra personal</h2>                              
 		<%= form_for @restaurants_users do |f| %>
 			<div class="field">
 				Seleccione un Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
@@ -49,7 +49,7 @@
 		<% end %>   
 	<% else %>
 		<%= form_for @restaurants_users do |f| %>
-		Apuntarse a un restaurante
+			<h2>Apuntarse a un restaurante</h2>
 			<div class="field">
 			Seleccione un Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
 			</div>
