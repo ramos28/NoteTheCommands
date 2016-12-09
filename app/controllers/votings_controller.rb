@@ -7,13 +7,13 @@ class VotingsController < ApplicationController
 	end
 
 	def create
-		@voting = Voting.new(voting_params)
-		if @voting.save
-			flash[:notice] = "Successfully created voting."
-			redirect_to @voting
-		else
-			render :action =>'new'
-		end
+    params[:voting][:questions].keys.each do |question_id|
+      debugger
+      @voting = Voting.new(restaurant_id: params[:voting][:restaurant_id], questionnaire_id: question_id, answer: params[:voting][:questions][question_id][:answer])
+      @voting.save
+    end
+
+		redirect_to start_path
 	end
 
 	def edit
@@ -40,6 +40,6 @@ class VotingsController < ApplicationController
   	private
 
   	def voting_params
-  		params.require(:voting).permit(:answer, :restaurant_id, :questionnaire_id, :remember_created_at) 
+  		params.require(:voting).permit(:questions, :restaurant_id) 
   	end
 end

@@ -17,7 +17,7 @@
                     <td><%= reservation.name %></td>
                     <td><%= reservation.num_persons %></td>
                     <td><%= reservation.date %></td>
-                    <td><%= reservation.hour %></td>
+                    <td><%= reservation.hour.strftime("%H:%M") %></td>
                     <td><%= reservation.restaurant.name %></td>
                     <td><%= reservation.phone %></td>
                     <td><%= reservation.user.user_name %></td>

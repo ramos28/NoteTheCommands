@@ -37,21 +37,22 @@ class RestaurantsController < ApplicationController
 	    end
   	end
   
-  	def destroy
-    	@restaurant = Restaurant.find(params[:id])
-    	@restaurant.destroy
-    	flash[:notice] = "Successfully destroyed restaurant."
-    	redirect_to restaurants_url
-  	end
+  def destroy
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+    flash[:notice] = "Successfully destroyed restaurant."
+    redirect_to restaurants_url
+  end
 
   	def select
   		current_user.update(current_user_restaurant: params[:restaurant_id])
-  		if @current_role == 0
-			redirect_to new_location_path
-		else
-			redirect_to start_path
-		end
-  		
+      rol = current_user.restaurant_users.find_by_restaurant_id(params[:restaurant_id]).rol
+
+  		if rol == 0
+	   		redirect_to new_location_path
+  		else
+  			redirect_to start_path
+  		end	
   	end
   	
   	private

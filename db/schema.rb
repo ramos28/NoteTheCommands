@@ -76,15 +76,15 @@ ActiveRecord::Schema.define(version: 20161130201642) do
     t.index ["user_id"], name: "index_locations_on_user_id", using: :btree
   end
 
-  create_table "menu_product", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "menu_products", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "menu_id",    null: false
     t.integer  "product_id", null: false
     t.integer  "category",   null: false
     t.integer  "quantity",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_menu_product_on_menu_id", using: :btree
-    t.index ["product_id"], name: "index_menu_product_on_product_id", using: :btree
+    t.index ["menu_id"], name: "index_menu_products_on_menu_id", using: :btree
+    t.index ["product_id"], name: "index_menu_products_on_product_id", using: :btree
   end
 
   create_table "menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

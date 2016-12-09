@@ -19,7 +19,7 @@
 				<td><%= menu.restaurant.name %></td>
 				<td><%= menu.user.user_name %></td>
 				<td><%= link_to "Edit menu", edit_menu_path(menu) %></td> 
-				<td><%= link_to "Agregar productos", menu_product_path(menu.id) %></td>         
+				<td><%= link_to "Agregar productos", menu_path(menu) %></td>         
 		    </tr>
 		<% end %>
 	</table>

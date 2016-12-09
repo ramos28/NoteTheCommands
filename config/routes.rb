@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'productos/index'
     get 'profile/index'
     get 'restaurants/select'
+    get 'guests/index'
 
     devise_for :users
     resources :products
