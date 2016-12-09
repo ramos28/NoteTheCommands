@@ -1,27 +1,38 @@
 <%= form_for @incidence do |f| %>
     <%= f.error_messages %>
-    <p>
+    <div class="field">
         <%= f.label :categoria %>
-        <%= f.select :categoria, options_for_select(Incidence::INCIDENCE_CATEGORY.map.with_index {|index, value| [index, value]})%>
-    </p>
-    <p>
+        <%= f.select :category, options_for_select(Incidence::INCIDENCE_CATEGORY.map.with_index {|index, value| [index, value]})%>
+    </div>
+    <div class="field"> <div class="field">
         <%= f.label :prioridad %>
-        <%= f.select :rol, options_for_select(Incidence::PRIORITY_CATEGORY.map.with_index {|index, value| [index, value]})%>
-    </p>
-    <p>
+        <%= f.select :priority, options_for_select(Incidence::PRIORITY_CATEGORY.map.with_index {|index, value| [index, value]})%>
+    </div>
+    <div class="field">
         <%= f.label :titulo %>
         <%= f.text_field :title %>
-    </p>
-    <p>
+    </div>
+    <div class="field">
         <%= f.label :fecha_creación %>
         <%= f.date_field :date_start %>
-    </p>
-    <p>
+    </div>
+    <div class="field">
         <%= f.label :descripción %><br />
         <%= f.text_area :description, :cols => 30, rows: 5 %>
-    </p>
-    
+    </div>
+    <% if @current_role  == 3 %>
+        <div class="field">
+            <%= f.label :fecha_solución %>
+            <%= f.date_field :date_solution %>
+        </div>
+        <div class="field">
+            <%= f.label :esta_solucionado %>
+            <%= f.select :is_solved, options_for_select(Incidence::SOLVED_CATEGORY.map.with_index {|index, value| [index, value]})%>
+        </div>
+    <% end %>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <p><%= f.submit %></p>
+    <div class="field">
+        <%= f.submit %>
+    </div>
 <% end %>

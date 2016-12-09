@@ -4,5 +4,6 @@
 
 <p>
   <%= link_to "Show", @stock %> |
+  <%= link_to "Destroy", @stock, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", stocks_path %>
 </p>

@@ -1,0 +1,19 @@
+<h1>Votacion</h1>
+    <p>
+        <strong>Pregunta:</strong>
+        <%= @voting.questionnaire.question %>
+    </p>
+    <p>
+        <strong>Respuesta:</strong>
+        <%= @voting.answer %>
+    </p>
+    <p>
+        <strong>Restaurante:</strong>
+        <%= @voting.restaurant.name %>
+    </p>
+
+    <p>
+    <%= link_to "Edit", edit_voting_path(@voting) %> |
+    <%= link_to "Destroy", @voting, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "View All", votings_path %>
+</p>

@@ -1,25 +1,27 @@
 <%= form_for @takeaway do |f| %>
     <%= f.error_messages %>
-    <p>
+    <div class="field">
         <%= f.label :nombre %><br />
         <%= f.text_field :name %>
-    </p>
-    <p>
+    </div>
+    <div class="field">
         <%= f.label :fecha_recogida %><br />
         <%= f.date_field :date %>
-    </p>
-    <p>
+    </div>
+    <div class="field">
         <%= f.label :hora %><br />
         <%= f.time_field :hour %>
-    </p>
-    <p>
+    </div>
+    <div class="field">
         <%= f.label :producto %><br />
         <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
-    </p>
-    <p>
+    </div>
+    <div class="field">
         <%= f.label :cantidad %><br />
         <%= f.text_field :quantity %>
-    </p>
+    </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
-    <p><%= f.submit %></p>
+    <div class="field">
+        <%= f.submit %>
+    </div>
 <% end %>

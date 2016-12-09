@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
 	def index
 		@restaurant_users = RestaurantUser.all
 		@reservations = Reservation.all
+		@reservation = Reservation.new
 	end
 
 	def show
@@ -48,7 +49,7 @@ class ReservationsController < ApplicationController
   	private
 
   	def reservation_params
-  		params.require(:reservation).permit(:num_persons, :date, :hour, :restaurant_id, :user_id, :phone)
+  		params.require(:reservation).permit(:name, :num_persons, :date, :hour, :restaurant_id, :user_id, :menu_id, :phone)
 
   	end
 

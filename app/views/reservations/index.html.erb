@@ -1,24 +1,36 @@
 <h1>Reservas del Restaurante</h1>
-
-<table class="pretty">
-    <tr>
-        <th><%=  "Numero de personas" %></th>
-        <th><%=  "Dia reserva" %></th>
-        <th><%=  "Hora reserva" %></th>
-        <th><%=  "Restaurante" %></th>
-        <th><%=  "Usuario" %></th>
-        <th><%=  "Telefono contacto" %></th>
-    </tr>
-    <% @reservations.each do |reservation| %>
-        <tr>
-            <td><%= reservation.num_persons %></td>
-            <td><%= reservation.date %></td>
-            <td><%= reservation.hour %></td>
-            <td><%= reservation.restaurant.name %></td>
-            <td><%= reservation.user.user_name %></td>
-            <td><%= reservation.phone %></td>
-        </tr>
+<div class ="muestra-tabla">
+    <% if @current_role == 1 || @current_role == 2 || @current_role == 3 %>
+        <table class="pretty">
+            <tr>
+                <th><%= "Nombre reserva" %></th>
+                <th><%= "Número de personas" %></th>
+                <th><%= "Dia reserva" %></th>
+                <th><%= "Hora reserva" %></th>
+                <th><%= "Restaurante" %></th>
+                <th><%= "Teléfono contacto" %></th>
+                <th><%= "Reserva realizada por:" %></th>
+                <th><%= "Rol" %></th>
+            </tr>
+            <% @reservations.each do |reservation| %>
+                <tr>
+                    <td><%= reservation.name %></td>
+                    <td><%= reservation.num_persons %></td>
+                    <td><%= reservation.date %></td>
+                    <td><%= reservation.hour %></td>
+                    <td><%= reservation.restaurant.name %></td>
+                    <td><%= reservation.phone %></td>
+                    <td><%= reservation.user.user_name %></td>
+                    <td><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                </tr>
+            <% end %>
+        </table>
     <% end %>
-</table>
+</div>
 
-<p><%= link_to "New Reservations", new_reservation_path %></p>
+<div class="muestra-opciones">
+    <h2>Realizar reserva</h2>
+    <%= render 'form' %>
+    <p><%= link_to "Back to List", questionnaires_path %></p>
+
+</div>

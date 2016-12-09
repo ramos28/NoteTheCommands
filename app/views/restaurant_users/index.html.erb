@@ -7,6 +7,7 @@
 				<th>Restaurante</th>
 				<th>Usuario</th>
 				<th>Rol Usuario</th>
+				<th>Descuento Adicional</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -16,8 +17,10 @@
 						<td><%= restaurant_user.restaurant.name %></td>
 						<td><%= restaurant_user.user.user_name %></td>
 						<td><%= RestaurantUser::ROLES[restaurant_user.rol] %></td>
-						<%= restaurant_user.rol %>
-						<td><%= link_to "Select", restaurants_select_path(restaurant_id: restaurant_user.restaurant_id) %></td>
+						<td class="price"><%= number_to_currency(restaurant_user.discount, :unit => "%") %></td>
+						<% if !current_user.superadmin %>
+							<td><%= link_to "Select", restaurants_select_path(restaurant_id: restaurant_user.restaurant_id) %></td>
+						<% end%>
 					<% end%>
 				</tr>
 			<% end %>
@@ -26,35 +29,34 @@
 	<%= will_paginate @restaurant_users %>
 </div>
 <div class="muestra-opciones">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-		jQuery("a.mostrar").click(function(){
-		jQuery("div.chatbox").toggle("slow");
-		return false;
-		});
-		});
-	</script>
-	<% if current_user.superadmin %>                                  
-		<a href="#" class="mostrar">Registrar Personal del Restaurante</a><br/>
-		<div class="chatbox">
-			<%= form_for @restaurants_users do |f| %>
-				<p>Seleccione un Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%></p>
-				<% if current_user.superadmin %>
-					<p>Seleccione un Usuario: <%= f.select :user_id, options_from_collection_for_select( User.all, :id, :email)%></p>
-					<p>Funcion del Usuario: <%= f.select :rol, options_for_select(RestaurantUser::ROLES.map.with_index {|index, value| [index, value]})%></p>
-				<% end %>
-				<p><%= f.submit %></p>
+	<% if current_user.superadmin %>
+	Registrar personal                                
+		<%= form_for @restaurants_users do |f| %>
+			<div class="field">
+				Seleccione un Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
+			</div>
+			<% if current_user.superadmin %>
+				<div class="field">
+					Seleccione un Usuario: <%= f.select :user_id, options_from_collection_for_select( User.all, :id, :email)%>
+				</div>
+				<div class="field">
+					Funcion del Usuario: <%= f.select :rol, options_for_select(RestaurantUser::ROLES.map.with_index {|index, value| [index, value]})%>
+				</div>
 			<% end %>
-	    </div>
+			<div class="field">
+				<%= f.submit %>
+			</div>
+		<% end %>   
 	<% else %>
-		<a href="#" class="mostrar">Apuntarse a un Restaurante</a><br/>
-		<div class="chatbox">
-			<%= form_for @restaurants_users do |f| %>
-				<p>Seleccione un Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%></p>
-		            <%= f.hidden_field :user_id, :value => current_user.id %>
-				<p><%= f.submit %></p>
-			<% end %>
-	    </div>
+		<%= form_for @restaurants_users do |f| %>
+		Apuntarse a un restaurante
+			<div class="field">
+			Seleccione un Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
+			</div>
+	        <%= f.hidden_field :user_id, :value => current_user.id %>
+			<div class="field">
+				<%= f.submit %>
+			</div>
+		<% end %>
     <% end %>
 </div>

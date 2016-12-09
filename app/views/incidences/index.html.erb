@@ -5,7 +5,7 @@
         <th><%=  "Titulo" %></th>
         <th><%=  "Categoria" %></th>
         <th><%=  "Prioridad" %></th>
-        <th><%=  "Descripcon" %></th>
+        <th><%=  "Descripción" %></th>
         <th><%=  "Esta resuelto" %></th>
         <th><%=  "Fecha creacion" %></th>
         <th><%=  "Fecha solucion" %></th>
@@ -18,7 +18,7 @@
             <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
             <td><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
             <td><%= incidence.description %></td>
-            <td><%= incidence.is_solved %></td>
+            <td><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
             <td><%= incidence.date_start %></td>
             <td><%= incidence.date_solution %></td>
             <td><%= incidence.restaurant.name %></td>
@@ -27,5 +27,3 @@
         </tr>
     <% end %>
 </table>
-
-<p><%= link_to "New Incidence", new_incidence_path %></p>

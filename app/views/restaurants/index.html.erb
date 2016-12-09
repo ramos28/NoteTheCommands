@@ -17,7 +17,9 @@
 	        </tr>
 	    <% end %>
 	</table>
+	<%= will_paginate @restaurants %>
 </div>
+
 
 <div class="muestra-opciones">
 	<% if current_user.superadmin %> 

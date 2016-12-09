@@ -2,6 +2,7 @@ class VotingsController < ApplicationController
 	def index
   		@restaurant_users = RestaurantUser.all
   		@votings = Voting.all
+  		@questionaires = Questionnaire.all
   		@voting = Voting.new
 	end
 
@@ -39,6 +40,6 @@ class VotingsController < ApplicationController
   	private
 
   	def voting_params
-  		params.require(:voting).permit(:answer, :restaurant_id, :questionnaire_id) 
+  		params.require(:voting).permit(:answer, :restaurant_id, :questionnaire_id, :remember_created_at) 
   	end
 end

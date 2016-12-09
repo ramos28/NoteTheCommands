@@ -4,13 +4,13 @@
 	<div class ="muestra-tabla">
 		<table class="pretty">
 		    <tr>
-		        <th><%= "Titulo" %></th>
-		        <th><%=  "Restaurante" %></th>
-		        <th><%=  "Mesa" %></th>
-		        <th><%=  "Menu" %></th>
-		        <th><%=  "Producto" %></th>
-		        <th><%=  "Descripcion" %></th>
-		        <th><%=  "Esta Finalizada" %></th>
+		        <th><%= "Comanda" %></th>
+		        <th><%= "Restaurante" %></th>
+		        <th><%= "Mesa" %></th>
+		        <th><%= "Menu" %></th>
+		        <th><%= "Producto" %></th>
+		        <th><%= "Descripcion" %></th>
+		        <th><%= "Esta Finalizada" %></th>
 		    </tr>
 		    <% @commands.each do |command| %>
 		    <%= command.location.restaurant_id %>
@@ -53,13 +53,13 @@
 <% else %>
 	<table class="pretty">
 		    <tr>
-		        <th><%= "Titulo" %></th>
-		        <th><%=  "Restaurante" %></th>
-		        <th><%=  "Mesa" %></th>
-		        <th><%=  "Menu" %></th>
-		        <th><%=  "Producto" %></th>
-		        <th><%=  "Descripcion" %></th>
-		        <th><%=  "Esta Finalizada" %></th>
+		        <th><%= "Comanda" %></th>
+		        <th><%= "Restaurante" %></th>
+		        <th><%= "Mesa" %></th>
+		        <th><%= "Menu" %></th>
+		        <th><%= "Producto" %></th>
+		        <th><%= "Descripcion" %></th>
+		        <th><%= "Esta Finalizada" %></th>
 		    </tr>
 		    <% @commands.each do |command| %>
 		    <%= command.location.restaurant_id %>

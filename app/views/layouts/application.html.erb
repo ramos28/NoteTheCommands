@@ -13,8 +13,9 @@
               <% if user_signed_in? %>
                   Sesión: <%= current_user.user_name %>
                   <% if @current_restaurant %>,
-                      Role: <%= @current_role %>,
+                      Rol: <%= @current_role %>,
                       Rest: <%= @current_restaurant %>
+                      Desc: <%= @current_discount %>
                   <% end %>
               <%end%>
             </header>
@@ -72,7 +73,7 @@
                                         <li><%= link_to "Menus", menus_path%></li>
                                         <li><%= link_to "Cuestionarios", new_questionnaire_path%></li>
                                         <li><%= link_to "Votaciones", votings_path %></li>
-                                        <li><%= link_to "Incidencias", incidences_path %></li>
+                                        <li><%= link_to "Incidencia", new_incidence_path %></li>
                                     <% end %>
                                     <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
                                         <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
@@ -84,6 +85,11 @@
                                     <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2)%>
                                         <li><%= link_to "Crear Incidencias", new_incidence_path %></li>
                                     <% end %>
+                                    <% if current_user.superadmin %>
+                                        <li><%= link_to "Registrar Restaurante", restaurants_path %></li>
+                                        <li><%= link_to "Clientes Registrados", restaurants_path %></li>
+                                        <li><%= link_to "Productos Registrados", restaurants_path %></li>
+                                    <% end %>
                                 </ul>
                             <% end %>
                         </li>
@@ -93,6 +99,7 @@
                                           <li><%= link_to "Mi Perfil", profile_index_path%></li>
                                           <% if (@current_role  == 3) %>
                                                 <li><%= link_to "Ver Incidencias", incidences_index_path%></li>
+                                                <li><%= link_to "Ver Reservas", reservations_index_path%></li>
                                                 <li><%= link_to "Generar Estadísticas", new_user_registration_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 0) %>
@@ -102,9 +109,6 @@
                                                 <li><%= link_to "Bandeja Mensajes", messages_index_path %></li>
                                           <% end %>
                                           <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
-                                          <% if current_user.superadmin %>
-                                                <li><%= link_to "Registrar Restaurante", restaurants_path %></li>
-                                          <% end %>
                                     </ul>
                               <% else %>
                                     <ul>

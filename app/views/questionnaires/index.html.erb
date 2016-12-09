@@ -3,8 +3,8 @@
 <div class ="muestra-tabla">
 	<table class="pretty">
 	      <tr>
-	            <th><%= sortable "Pregunta" %></th>
-	            <th><%= sortable "Restaurante"%></th>
+	            <th>Pregunta</th>
+	            <th>Restaurante</th>
 	      </tr>
 	      <% @questionnaires.each do |questionnaire| %>
 	            <tr>
@@ -17,19 +17,7 @@
 </div>
 
 <div class="muestra-opciones">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-		jQuery("a.mostrar").click(function(){
-		jQuery("div.chatbox").toggle("slow");
-		return false;
-		});
-		});
-	</script>
+	<%= render 'form' %>
+	<p><%= link_to "Back to List", questionnaires_path %></p>
 
-	<a href="#" class="mostrar">Añadir un nuevo cuestionario</a><br/>
-	<div class="chatbox">
-		<%= render 'form' %>
-		<p><%= link_to "Back to List", questionnaires_path %></p>
-    </div>
 </div>

@@ -28,22 +28,24 @@
 <div class="muestra-opciones">
 	<%= form_for @menu_product do |f| %>
 	    <%= f.error_messages %>
-	    <p>
+	    <div class="field">
 	        <%= f.label :producto %><br />
 	        <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
-	    </p>
-	    <p>
+	    </div>
+	    <div class="field">
 	        <%= f.label :menu %><br />
 	        <%= f.select :menu_id, options_from_collection_for_select( Menu.all, :id, :name)%>
-	    </p>
-	    <p>
+	    </div>
+	    <div class="field">
 	        <%= f.label :category %>
 	        <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
-	    </p>
-	    <p>
+	    </div>
+	    <div class="field">
 	        <%= f.label :quantity %><br />
 	        <%= f.text_field :quantity %>
-	    </p>
-	    <p><%= f.submit %></p>
+	    </div>
+	    <div class="field">
+	    	<%= f.submit %>
+	    </div>
 	<% end %>
 </div>

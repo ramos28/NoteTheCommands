@@ -19,7 +19,7 @@ class RestaurantUsersController < ApplicationController
     private
 
     def restaurant_user_params
-        params.require(:restaurant_user).permit(:restaurant_id, :user_id, :rol)
+        params.require(:restaurant_user).permit(:restaurant_id, :user_id, :rol, :discount)
 
     end
 end

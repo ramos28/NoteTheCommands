@@ -5,7 +5,7 @@ class CreateIncidences < ActiveRecord::Migration[5.0]
 			t.integer :priority, null: false
 			t.string :title, null: false
 			t.text :description, null: false
-			t.boolean :is_solved, default: false, null: false
+			t.integer :is_solved, default: 0, null: false
 
 			t.datetime :date_start, null: false
 			t.datetime :date_solution

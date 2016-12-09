@@ -1,26 +1,30 @@
 <h1>Reservas</h1>
 <p>
-  <strong>num_persons:</strong>
+  <strong>Nombre:</strong>
+  <%= @reservation.name %>
+</p>
+<p>
+  <strong>Numero Personas:</strong>
   <%= @reservation.num_persons %>
 </p>
 <p>
-  <strong>date:</strong>
+  <strong>Dia de la reserva</strong>
   <%= @reservation.date %>
 </p>
 <p>
-  <strong>hour:</strong>
+  <strong>Hora de la reserva:</strong>
   <%= @reservation.hour %>
 </p>
 <p>
-  <strong>restaurant:</strong>
+  <strong>Restaurante:</strong>
   <%= @reservation.restaurant.name %>
 </p>
 <p>
-  <strong>user:</strong>
+  <strong>Usuario que realizo la reserva:</strong>
   <%= @reservation.user.user_name %>
 </p>
 <p>
-  <strong>phone:</strong>
+  <strong>Telefono de contacto:</strong>
   <%= @reservation.phone %>
 </p>
 <p>

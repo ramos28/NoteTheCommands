@@ -1,18 +1,28 @@
 <%= form_for @reservation do |f| %>
     <%= f.error_messages %>
-    <p>
-        <%= f.label :num_persons %><br />
+    <div class="field">
+        <%= f.label :nombre_reserva %><br />
+        <%= f.text_field :name %>
+    </div>
+    <div class="field">
+        <%= f.label :numero_personas %><br />
         <%= f.text_field :num_persons %>
-    </p>
-    <p>
-        <%= f.label :date %><br />
+    </div>
+    <div class="field">
+        <%= f.label :dia_reserva %><br />
         <%= f.date_field :date %>
-    </p>
-    <p>
-        <%= f.label :hour %><br />
+    </div>
+    <div class="field">
+        <%= f.label :hora_reserva %><br />
         <%= f.time_field :hour %>
-    </p>
+    </div>
+    <div class="field">
+        <%= f.label :menu %><br />
+        <%= f.select :menu_id, options_from_collection_for_select(Menu.all, :id, :name)%>
+    </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <p><%= f.submit %></p>
+    <div class="field">
+        <%= f.submit %>
+    </div>
 <% end %>

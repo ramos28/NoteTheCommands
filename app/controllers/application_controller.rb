@@ -12,13 +12,16 @@ class ApplicationController < ActionController::Base
 		if current_user
 			@current_restaurant = current_user.current_user_restaurant
 			@current_role = nil
+			@current_discount = nil
 
 			if !@current_restaurant.blank?
 				@current_role = current_user.restaurant_users.find_by_restaurant_id(@current_restaurant).rol
+				@current_discount = current_user.restaurant_users.find_by_restaurant_id(@current_restaurant).discount
 			end
 		else
 			@current_restaurant = nil
-			@current_role = nil 
+			@current_role = nil
+			@current_discount = nil
 		end
 	end
 end
