@@ -1,0 +1,2 @@
+module TotalRestaurantsHelper
+end

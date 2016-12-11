@@ -1,0 +1,2 @@
+module ProductCommandsHelper
+end

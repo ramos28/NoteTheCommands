@@ -47,9 +47,9 @@ class CommandsController < ApplicationController
   	end
   
   	private
-
+  	
   	def command_params
-  		params.require(:command).permit(:title, :location_id, :menu_id, :product_id, :description, :is_end)
+  		params.require(:command).permit(:title, :location_id, :user_id, :description, :is_end)
 
   	end
 

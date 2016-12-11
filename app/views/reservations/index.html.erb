@@ -1,36 +1,40 @@
 <h1>Reservas del Restaurante</h1>
-<div class ="muestra-tabla">
-    <% if @current_role == 1 || @current_role == 2 || @current_role == 3 %>
-        <table class="pretty">
-            <tr>
-                <th><%= "Nombre reserva" %></th>
-                <th><%= "Número de personas" %></th>
-                <th><%= "Dia reserva" %></th>
-                <th><%= "Hora reserva" %></th>
-                <th><%= "Restaurante" %></th>
-                <th><%= "Teléfono contacto" %></th>
-                <th><%= "Reserva realizada por:" %></th>
-                <th><%= "Rol" %></th>
-            </tr>
-            <% @reservations.each do |reservation| %>
+<% if @current_role == 1 || @current_role == 2 || @current_role == 3 %>
+    <div class ="muestra-tabla">
+            <table class="pretty">
                 <tr>
-                    <td><%= reservation.name %></td>
-                    <td><%= reservation.num_persons %></td>
-                    <td><%= reservation.date %></td>
-                    <td><%= reservation.hour.strftime("%H:%M") %></td>
-                    <td><%= reservation.restaurant.name %></td>
-                    <td><%= reservation.phone %></td>
-                    <td><%= reservation.user.user_name %></td>
-                    <td><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                    <th><%= "Nombre reserva" %></th>
+                    <th><%= "Número de personas" %></th>
+                    <th><%= "Menu" %></th>
+                    <th><%= "Dia reserva" %></th>
+                    <th><%= "Hora reserva" %></th>
+                    <th><%= "Restaurante" %></th>
+                    <th><%= "Teléfono contacto" %></th>
+                    <th><%= "Reserva realizada por:" %></th>
+                    <th><%= "Rol" %></th>
                 </tr>
-            <% end %>
-        </table>
-    <% end %>
-</div>
-
-<div class="muestra-opciones">
-    <h2>Realizar reserva</h2>
-    <%= render 'form' %>
-    <p><%= link_to "Back to List", questionnaires_path %></p>
-
-</div>
+                <% @reservations.each do |reservation| %>
+                    <tr>
+                        <td><%= reservation.name %></td>
+                        <td><%= reservation.num_persons %></td>
+                        <td><%= reservation.menu.name %></td>
+                        <td><%= reservation.date %></td>
+                        <td><%= reservation.hour.strftime("%H:%M") %></td>
+                        <td><%= reservation.restaurant.name %></td>
+                        <td><%= reservation.phone %></td>
+                        <td><%= reservation.user.user_name %></td>
+                        <td><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                    </tr>
+                <% end %>
+            </table>
+    </div>
+    <div class="muestra-opciones">
+            <h2>Realizar Reserva</h2>
+            <%= render 'form' %>
+        <p><%= link_to "Back to List", questionnaires_path %></p>
+    </div>
+<%else%>
+        <h2>Realizar Reserva</h2>
+        <%= render 'form' %>
+        <p><%= link_to "Back to List", questionnaires_path %></p>
+<% end %>

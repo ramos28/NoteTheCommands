@@ -4,12 +4,11 @@ class CreateTakeaways < ActiveRecord::Migration[5.0]
 			t.string :name, null: false
 			t.date :date, null: false
 			t.time :hour, null: false
-
-			t.references :product, null: false
-			t.references :restaurant, null: false
-			
-			t.integer :quantity, null: false
+			t.integer :phone
 			t.float :total_price_selection
+
+			t.references :restaurant, null: false
+			t.references :user
 
 			t.timestamps
 	    end

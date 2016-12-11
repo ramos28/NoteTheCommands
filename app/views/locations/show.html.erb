@@ -1,4 +1,6 @@
-<h1>Mesa</h1>
+<h1>Comanda</h1>
+<div class="muestra-comanda">
+    <h1>Mesa</h1>
     <p>
         <strong>Lugar:</strong>
         <%= @location.place %>
@@ -21,8 +23,28 @@
     </p>
 
     <p>    
-    <%= link_to "Edit", edit_location_path(@location) %> |
-    <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to "View All", locations_path %> | 
-    <%= link_to "Continuar", commands_path %>
-</p>
+        <%= link_to "Edit", edit_location_path(@location) %> |
+        <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
+        <%= link_to "View All", locations_path %>
+    </p>
+</div>
+
+<div class="muestra-eleccion-comanda">
+    <%= form_for :menu_product, url: menu_product_path do |f| %>
+        <h2>Crear nueva comanda</h2>
+        <div class="field">
+            <%= f.label :category %><br />
+            <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
+        </div>
+        <div class="field">
+            <%= f.label :producto %><br />
+            <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+        </div>
+        <div class="field">
+            <%= f.label :quantity %><br />
+            <%= f.text_field :quantity %>
+        </div>
+        <%= f.hidden_field :menu_id, value: @menu %>
+        <%= f.submit %>
+    <% end %>
+</div>

@@ -3,21 +3,23 @@
 <table id="stocks" class="display">
     <thead>
         <tr>
+            <th><%= "Restaurante" %></th>
             <th><%= "Nombre Producto" %></th>
-            <th><%= "Coste Publico Unidad" %></th>
+            <th><%= "Descipción" %></th>
+            <th><%= "Coste de venta" %></th>
             <th><%= "Cantidad en Stock" %></th>
-            <th><%= "Descipcion" %></th>
-            <th><%= "Precio Compra Unidad" %></th>
-            <th><%= "Gasto Total Producto Mercado" %></th>
+            <th><%= "Coste Materia Prima Unidad" %></th>
+            <th><%= "Coste Total Materia Prima" %></th>
         </tr>
     </thead>
     <tbody>
         <% @stocks.each do |stock| %>
             <tr>
+                <td><%= stock.product.restaurant.name %></td>
                 <td><%= stock.product.name %></td>
+                <td><%= stock.description_stock %></td>
                 <td class="price"><%= number_to_currency(stock.product.unit_price, :unit => "€") %></td>
                 <td><%= stock.quantity %></td>
-                <td><%= stock.description_stock %></td>
                 <td class="price"><%= number_to_currency(stock.price_buy_unity) %></td>
                 <td class="price"><%= number_to_currency(stock.quantity * stock.price_buy_unity, :unit => "€") %></td>
                 <td><%= link_to "Edit Stock", edit_stock_path(stock) %></td>
@@ -25,7 +27,7 @@
         <% end %>
     </tbody>
     <tfoot>
-        <%= will_paginate @products %>
+        <%= will_paginate @stocks %>
     </tfoot>
 </table>
 

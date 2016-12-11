@@ -6,14 +6,14 @@
 	            <th>Nombre</th>
 	            <th>Categoría</th>
 	            <th>Descripción</th>
-	            <th>Precio Unidad</th>
+	            <th>Coste Venta Unidad</th>
 	            <th>Resturante</th>
 	      </tr>
 	      <% @products.each do |product| %>
 	            <tr>
 	                  <td><%= product.name %></td>
 	                  <td><%= Product::PRODUCT_CATEGORY[product.product_type] %></td>
-	                  <td><%= product.product_description %></td>
+	                  <td><%= product.description %></td>
 	                  <td class="price"><%= number_to_currency(product.unit_price, :unit => "€") %></td>
 	                  <td><%= product.restaurant.name %></td>
 	                  <td><%= link_to "Edit Stock", edit_product_path(product) %></td>                

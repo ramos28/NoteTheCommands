@@ -29,7 +29,7 @@ h2 {
 }
 
 .muestra-tabla {
-float: left;
+	float: left;
 	text-align: center;
 	top: 35%;
 	height: 422px;
@@ -56,7 +56,7 @@ table {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 10px; 
 	margin: 15px;
-	width:545px;
+	width:98%;
 	text-align: center;
 	border_collapse: collapse;
 }
@@ -77,6 +77,16 @@ td {
 	border-botton: 1px solid #fff;
 	color: #669;
 	border-top: 1px solid transparent;
+}
+
+td.b1 {
+	background-color:red;
+	color: black;
+}
+
+td.b2 {
+	background-color:green;
+	color: black;
 }
 
 tr:hover td {

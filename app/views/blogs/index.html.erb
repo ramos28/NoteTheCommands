@@ -15,8 +15,8 @@
                     </p>
                 </head>
                 <p><%= noticia.description %></p>
+                <%= will_paginate @blogs %>
             <% end %>
-	      	<%= will_paginate @blogs %>
 	    <% end %>
     </article>
 </section>

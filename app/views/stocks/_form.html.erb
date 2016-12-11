@@ -1,19 +1,19 @@
 <%= form_for @stock do |f| %>
     <%= f.error_messages %>
     <div class="field">
-        <%= f.label :product %><br />
+        <%= f.label :producto %><br />
         <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
     </div>
     <div class="field">
-        <%= f.label :quantity %><br />
+        <%= f.label :cantidad %><br />
         <%= f.text_field :quantity %>
     </div>
     <div class="field">
-        <%= f.label :description_stock %><br />
+        <%= f.label :descripción_stock %><br />
         <%= f.text_field :description_stock %>
     </div>
     <div class="field">
-        <%= f.label :price_buy_unity %><br />
+        <%= f.label :Coste_materia_prima_unidad %><br />
         <%= f.text_field :price_buy_unity %>
     </div>
     <div class="field">

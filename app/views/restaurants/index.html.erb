@@ -1,5 +1,4 @@
 <h1>Restaurantes</h1>
-
 <div class ="muestra-tabla">
 	<table class="pretty">
 	    <tr>
@@ -22,7 +21,8 @@
 
 
 <div class="muestra-opciones">
-	<% if current_user.superadmin %> 
+	<% if current_user.superadmin %>
+		<h2>Añadir un nuevo restaurante</h2>
 		<%= render 'form' %>
 		<p><%= link_to "Back to List", restaurants_path %></p>
 	<%end %>

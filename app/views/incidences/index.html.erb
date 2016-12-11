@@ -1,16 +1,16 @@
 <h1>Incidencias del Restaurante</h1>
 
-<table class="pretty">
+<table>
     <tr>
         <th><%=  "Titulo" %></th>
         <th><%=  "Categoria" %></th>
         <th><%=  "Prioridad" %></th>
         <th><%=  "Descripción" %></th>
-        <th><%=  "Esta resuelto" %></th>
         <th><%=  "Fecha creacion" %></th>
         <th><%=  "Fecha solucion" %></th>
         <th><%=  "Restaurante" %></th>
         <th><%=  "Usuario" %></th>
+        <th><%=  "Esta resuelto" %></th>
     </tr>
     <% @incidences.each do |incidence| %>
         <tr>
@@ -18,11 +18,15 @@
             <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
             <td><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
             <td><%= incidence.description %></td>
-            <td><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
             <td><%= incidence.date_start %></td>
             <td><%= incidence.date_solution %></td>
             <td><%= incidence.restaurant.name %></td>
             <td><%= incidence.user.user_name %></td>
+            <% if incidence.is_solved == 0 %>
+                <td class="b1"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+            <% else %>
+                <td class="b2"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+            <% end %>
             <td><%= link_to "Edit Blog", edit_incidence_path(incidence) %></td>
         </tr>
     <% end %>

@@ -1,4 +1,6 @@
-<h1>Menu</h1>
+<h1>Agregar productos al menu</h1>
+<div class="muestra-menus">
+    <h1>Menu</h1>
     <p>
         <strong>Nombre:</strong>
         <%= @menu.name %>
@@ -16,34 +18,46 @@
         <%= @menu.description %>
     </p>
     <p>
-    <%= link_to "Edit", edit_product_path(@menu) %> |
-    <%= link_to "Destroy", @menu, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to "View All", menus_path %>
-</p>
+        <%= link_to "Edit", edit_menu_product_path(@menu) %> |
+        <%= link_to "Destroy", @menu, :confirm => 'Are you sure?', :method => :delete %> |
+        <%= link_to "View All", menus_path %>
+    </p>
+</div>
 
+<div class="muestra-tabla-menus">
+    <table class="pretty">
+        <tr>
+            <th>Nombre menu</th>
+            <th>Categoria</th>
+            <th>Nombre producto</th>
+            <th>Cantidad</th>
+        </tr>
+        <% @menu.menu_products.each do |mp| %>
+            <tr>
+                <td><%= mp.menu.name %></td>
+                <td><%= MenuProduct::CONTENT_CATEGORY[mp.category] %></td>
+                <td><%= mp.product.name %></td>
+                <td><%= mp.quantity %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>
 
-    <% @menu.menu_products.each do |mp| %>
-        <p><%= mp.product.name %></p>
-        <p><%= mp.quantity %></p>
-        <p><%= MenuProduct::CONTENT_CATEGORY[mp.category] %></p>
-    <% end %>
-
-    <%= form_for :menu_product, url: menu_product_index_path do |f| %>
-        <div class="field">
-            <%= f.label :producto %><br />
-            <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
-        </div>
+<div class="muestra-eleccion">
+    <%= form_for :menu_product, url: menu_product_path do |f| %>
         <div class="field">
             <%= f.label :category %>
             <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
         </div>
         <div class="field">
+            <%= f.label :producto %><br />
+            <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+        </div>
+        <div class="field">
             <%= f.label :quantity %><br />
             <%= f.text_field :quantity %>
         </div>
-
-
-
-    <%= f.hidden_field :menu_id, value: @menu.id %>
-    <%= f.submit %>
-<% end %>
+        <%= f.hidden_field :menu_id, value: @menu %>
+        <%= f.submit %>
+    <% end %>
+</div>

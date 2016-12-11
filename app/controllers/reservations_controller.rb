@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
 	def index
 		@restaurant_users = RestaurantUser.all
-		@reservations = Reservation.all
+		@reservations = Reservation.all.paginate(:per_page => 7, :page => params[:page])
 		@reservation = Reservation.new
 	end
 

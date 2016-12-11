@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'total_restaurants/index'
+
+  get 'total_products/index'
+
+    get 'total_clients/index'
+    get 'product_commands/index'
+    get 'menu_commands/index'
     get 'menus/index'
     get 'commands/index'
     get 'takeaways/index'
@@ -29,7 +36,7 @@ Rails.application.routes.draw do
     resources :locations
     resources :menus
     resources :commands
-    resources :menu_product
+    resources :menu_products
 
     get 'select_restaurant', to: 'restaurants_users#new'
     #get 'restaurants_user', to: 'restaurants_users#index'

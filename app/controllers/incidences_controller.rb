@@ -48,7 +48,7 @@ class IncidencesController < ApplicationController
   	private
 
   	def incidence_params
-  		params.require(:incidence).permit(:category, :title, :description, :is_solved, :date_start, :date_solution, :restaurant_id, :user_id)
+  		params.require(:incidence).permit(:category, :title, :priority,:description, :is_solved, :date_start, :date_solution, :restaurant_id, :user_id)
 
   	end
 

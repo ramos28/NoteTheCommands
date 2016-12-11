@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
       <head>
             <link rel="image" type="image/png" href="icon.png">
@@ -21,17 +21,18 @@
             </header>
             <nav>
                   <ul>  
-                        <li><%= link_to "Inicio", start_path%>
+                        <li><%= link_to "Inicio"%>
                               <% if current_user %>
                                     <ul>
+                                          <li><%= link_to "Tareas", start_path%></li>
                                           <% if (@current_role == 1 || @current_role == 3)%>
-                                                <li><%= link_to "Comandas del Camarero", commands_path %></li>
+                                              <li><%= link_to "Comandas para Camarero", commands_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 2 || @current_role  == 3)%>
-                                                <li><%= link_to "Comandas del Cocinero", commands_path %></li>
+                                              <li><%= link_to "Comandas para Cocinero", commands_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 0)%>
-                                                <li><%= link_to "Mi comanda", commands_path%></li>
+                                              <li><%= link_to "Mi comanda", commands_path%></li>
                                           <% end %>
                                     </ul>
                               <% end %>
@@ -46,9 +47,9 @@
                                     </ul>
                               <% else %>
                                     <ul>
-                                          <li><%= link_to "Empresa desarrolladora", new_user_registration_path%></li>
-                                          <li><%= link_to "Donde estamos", new_user_registration_path%></li>
-                                          <li><%= link_to "¿Quieres trabajar con nosotros?", new_user_registration_path%></li>
+                                        <li><%= link_to "Empresa desarrolladora", new_user_registration_path%></li>
+                                        <li><%= link_to "Donde estamos", new_user_registration_path%></li>
+                                        <li><%= link_to "¿Quieres trabajar con nosotros?", new_user_registration_path%></li>
                                     </ul>
                               <% end %>
                         </li>
@@ -72,6 +73,7 @@
                                         <li><%= link_to "Stock", stocks_path%></li>
                                         <li><%= link_to "Menus", menus_path%></li>
                                         <li><%= link_to "Cuestionarios", new_questionnaire_path%></li>
+                                        <li><%= link_to "Estadísticas", new_user_registration_path %></li>
                                     <% end %>
                                     <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
                                         <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
@@ -86,9 +88,9 @@
                                         <li><%= link_to "Crear Incidencias", new_incidence_path %></li>
                                     <% end %>
                                     <% if current_user.superadmin %>
-                                        <li><%= link_to "Registrar Restaurante", restaurants_path %></li>
-                                        <li><%= link_to "Clientes Registrados", restaurants_path %></li>
-                                        <li><%= link_to "Productos Registrados", restaurants_path %></li>
+                                        <li><%= link_to "Restaurantes Registrados", total_restaurants_index_path %></li>
+                                        <li><%= link_to "Clientes Registrados", total_clients_index_path %></li>
+                                        <li><%= link_to "Productos Registrados", total_products_index_path %></li>
                                     <% end %>
                                 </ul>
                             <% end %>
@@ -100,17 +102,17 @@
                                           <% if (@current_role  == 3) %>
                                                 <li><%= link_to "Ver Incidencias", incidences_index_path%></li>
                                                 <li><%= link_to "Ver Reservas", reservations_index_path%></li>
-                                                <li><%= link_to "Ver Restaurantes", restaurant_users_path%></li>
-                                                <li><%= link_to "Generar Estadísticas", new_user_registration_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 0) %>
                                                 <li><%= link_to "Chat", new_user_registration_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3 ) %>
-                                                <li><%= link_to "Bandeja Mensajes", messages_index_path %></li>
                                                 <li><%= link_to "Ver Restaurantes", restaurant_users_path%></li>
+                                                <li><%= link_to "Bandeja Mensajes", messages_index_path %></li>
                                           <% end %>
-
+                                          <% if current_user.superadmin %>
+                                            <li><%= link_to "Registra Restaurante", restaurants_path %></li>
+                                          <% end %>
                                           <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
                                     </ul>
                               <% else %>

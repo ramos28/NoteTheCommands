@@ -1,17 +1,14 @@
 class MenusController < ApplicationController
 	def index
-		@restaurant_users = RestaurantUser.all
 		@menus = Menu.all.paginate(:per_page => 6, :page => params[:page])
 		@menu = Menu.new
 	end
 
 	def show
-		@restaurant_users = RestaurantUser.all
 		@menu = Menu.find(params[:id])
 	end
 
 	def new
-		@restaurant_users = RestaurantUser.all
 		@menu = Menu.new
 	end
 

@@ -4,6 +4,7 @@
 	<table class="pretty">
 	    <tr>
 	        <th><%= "Nombre" %></th>
+	        <th><%= "Teléfono" %></th>
 	        <th><%= "Dia Recogida" %></th>
 	        <th><%= "Hora Recogida" %></th>
 	        <th><%= "Producto" %></th>
@@ -14,6 +15,7 @@
 	    <% @takeaways.each do |takeaway| %>
 	        <tr>
 	            <td><%= takeaway.name %></td>
+	            <td><%= takeaway.phone %></td>
 	            <td><%= takeaway.date %></td>
 	            <td><%= takeaway.hour %></td>
 	            <td><%= takeaway.product.name %></td>

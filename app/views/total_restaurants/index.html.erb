@@ -1,0 +1,36 @@
+<h1>Restaurantes Registrados</h1>
+<table>
+    <thead>
+        <tr>
+            <th><%= "Restaurante" %></th>
+            <th><%= "Email" %></th>
+            <th><%= "Telefono" %></th>
+            <th><%= "Direccion" %></th>
+            <th><%= "Ciudad" %></th>
+            <th><%= "Pais" %></th>
+            <th><%= "Código postal" %></th>
+            <th><%= "Horario apertura" %></th>
+            <th><%= "Fecha registrado" %></th>
+            <th><%= "Fecha modificación" %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @restaurants.each do |total_restaurants| %>
+            <tr>
+                <td><%= total_restaurants.name %></td>
+                <td><%= total_restaurants.email %></td>
+                <td><%= total_restaurants.phone %></td>
+                <td><%= total_restaurants.address %></td>
+                <td><%= total_restaurants.city %></td>
+                <td><%= total_restaurants.country %></td>
+                <td><%= total_restaurants.postal_code %></td>
+                <td><%= total_restaurants.opening_hours %></td>
+                <td><%= total_restaurants.created_at %></td>
+                <td><%= total_restaurants.updated_at %></td>
+            </tr>
+        <% end %>
+    </tbody>
+    <tfoot>
+        <%= will_paginate @restaurants %>
+    </tfoot>
+</table>

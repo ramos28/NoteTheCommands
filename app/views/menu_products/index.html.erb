@@ -13,12 +13,10 @@
 		<tbody>
 			<% @menu_products.each do |menu_product| %>
 				<tr>
-					<%if menu_product.menu_id.user_id == 3  %>
-						<td><%= menu_product.product_id.name %></td>
-						<td><%= menu_product.menu_id.name %></td>
-						<td><%= MenuProduct::CONTENT_CATEGORY[menu_product.category] %></td>
-						<td><%= menu_product.quantity %></td>
-					<% end%>
+					<td><%= menu_product.product_id.name %></td>
+					<td><%= menu_product.menu_id.name %></td>
+					<td><%= MenuProduct::CONTENT_CATEGORY[menu_product.category] %></td>
+					<td><%= menu_product.quantity %></td>
 				</tr>
 			<% end %>
 		</tbody>
@@ -33,10 +31,6 @@
 	        <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
 	    </div>
 	    <div class="field">
-	        <%= f.label :menu %><br />
-	        <%= f.select :menu_id, options_from_collection_for_select( Menu.all, :id, :name)%>
-	    </div>
-	    <div class="field">
 	        <%= f.label :category %>
 	        <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
 	    </div>
@@ -44,6 +38,7 @@
 	        <%= f.label :quantity %><br />
 	        <%= f.text_field :quantity %>
 	    </div>
+	    <%= f.hidden_field :menu_id, :value => @menu_products.menu_id %>
 	    <div class="field">
 	    	<%= f.submit %>
 	    </div>

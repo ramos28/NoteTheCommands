@@ -1,7 +1,8 @@
 class TakeawaysController < ApplicationController
 	def index
 		@restaurant_users = RestaurantUser.all
-		@takeaways = Takeaway.all
+		@takeaways = Takeaway.all.paginate(:per_page => 7, :page => params[:page])
+		@takeaway = Takeaway.new
 	end
 
 	def show

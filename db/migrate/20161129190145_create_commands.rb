@@ -4,12 +4,10 @@ class CreateCommands < ActiveRecord::Migration[5.0]
 			t.string :title, null: false
 
 			t.references :location, null: false
-			t.references :menu
-			t.references :product, null: false
+			t.references :user, null: false
 
 			t.text :description
-
-			t.boolean :is_end, default: false, null: false
+			t.integer :is_end, default: false, null: false
 
 			t.timestamps
 		end

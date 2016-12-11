@@ -35,6 +35,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
             t.date :birth_date, null: false
             t.integer :current_user_restaurant
 
+            t.float :total_spent, default: 0, null: false
+
             t.boolean :superadmin, default: false
 
             t.timestamps null: false
