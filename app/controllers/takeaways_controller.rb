@@ -49,7 +49,7 @@ class TakeawaysController < ApplicationController
   	private
 
   	def takeaway_params
-  		params.require(:takeaway).permit(:name, :date, :hour, :product, :quantity, :total_price_selection, :restaurant_id)
+  		params.require(:takeaway).permit(:name, :date, :hour, :total_price_selection, :restaurant_id)
 
   	end
 

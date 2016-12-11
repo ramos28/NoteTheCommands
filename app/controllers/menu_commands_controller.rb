@@ -1,7 +1,7 @@
 class MenuCommandsController < ApplicationController
 	def index
         @menu_commands = CommandMenu.all.paginate(:per_page => 5, :page => params[:page])
-        @menus_commands = CommandMenu.new
+        @menu_command = CommandMenu.new
     end
 
     def create

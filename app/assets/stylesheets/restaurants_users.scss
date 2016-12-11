@@ -7,22 +7,6 @@
 	margin-top: right;
 }
 
-#agrupaSesion {
-
-	clear: both;
-	text-align: right;
-	font-weight: bold;
-}
-
-#agrupaSelectRest {
-	position: absolute;
-	top: 50%;
-	left: 38%;
-	height: 150px;
-	width: 250px;
-	margin: -15% O O -25%;
-}
-
 h2 {
 	text-align: center;
 	color: white;
@@ -77,16 +61,6 @@ td {
 	border-botton: 1px solid #fff;
 	color: #669;
 	border-top: 1px solid transparent;
-}
-
-td.b1 {
-	background-color:red;
-	color: black;
-}
-
-td.b2 {
-	background-color:green;
-	color: black;
 }
 
 tr:hover td {

@@ -1,4 +1,4 @@
-<h1>Mensajes del Restaurante</h1>
+<h1>Bandeja de entrada de <%= current_user.user_name %></h1>
 
 <table class="pretty">
     <tr>
@@ -11,12 +11,16 @@
     <% @messages.each do |message| %>
         <tr>
             <td><%= message.subject %></td>
-            <td><%= message.user.name %></td>
-            <td><%= message.user.name %></td>
+            <td><%= message.user.email %></td>
+            <td><%= message.user_for %></td>
             <td><%= message.description %></td>
-            <td><%= message.is_view %></td>
+            <% if message.is_view == 0 %>
+                <td class="b1"><%= Message::VIEW_CATEGORY[message.is_view]%></td>
+            <% else %>
+                <td class="b2"><%= Message::VIEW_CATEGORY[message.is_view]%></td>
+            <% end %>
         </tr>
     <% end %>
 </table>
 
-<p><%= link_to "New message", new_message_path %></p>
+<p><%= button_to "New message", new_message_path, :method => "get" %></p>

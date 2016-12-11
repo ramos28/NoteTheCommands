@@ -1,7 +1,7 @@
 class ProductCommandsController < ApplicationController
 	def index
         @product_commands = CommandProduct.all.paginate(:per_page => 5, :page => params[:page])
-        @product_commands = CommandProduct.new
+        @product_command = CommandProduct.new
     end
 
     def create
@@ -16,7 +16,7 @@ class ProductCommandsController < ApplicationController
 
     private
 
-    def menu_command_params
+    def product_command_params
         params.require(:product_command).permit(:command_id, :product_id, :quantity)
 
     end 

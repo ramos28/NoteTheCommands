@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'product_takeaways/index'
+
   get 'total_restaurants/index'
 
   get 'total_products/index'

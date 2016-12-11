@@ -7,9 +7,7 @@
 	        <th><%= "Teléfono" %></th>
 	        <th><%= "Dia Recogida" %></th>
 	        <th><%= "Hora Recogida" %></th>
-	        <th><%= "Producto" %></th>
 	        <th><%= "Restaurante" %></th>
-	        <th><%= "Cantidad" %></th>
 	        <th><%= "Total Precio Seleccion" %></th>
 	    </tr>
 	    <% @takeaways.each do |takeaway| %>
@@ -18,11 +16,9 @@
 	            <td><%= takeaway.phone %></td>
 	            <td><%= takeaway.date %></td>
 	            <td><%= takeaway.hour %></td>
-	            <td><%= takeaway.product.name %></td>
 	            <td><%= takeaway.restaurant.name %></td>
-	            <td><%= takeaway.quantity %></td>
 	            <td><%= takeaway.total_price_selection %></td>
-	            <td><%= link_to "Edit Takeaway", edit_location_path(takeaway) %></td>                
+	            <td><%= link_to "Edit Takeaway", edit_takeaway_path(takeaway) %></td>                
 	        </tr>
 	    <% end %>
 	</table>

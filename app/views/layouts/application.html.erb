@@ -75,7 +75,7 @@
                                         <li><%= link_to "Cuestionarios", new_questionnaire_path%></li>
                                         <li><%= link_to "Estadísticas", new_user_registration_path %></li>
                                     <% end %>
-                                    <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
+                                    <% if (@current_role  == 0 || @current_role  == 3)%>
                                         <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
                                     <% end %>
                                     <% if (@current_role  == 0)%>

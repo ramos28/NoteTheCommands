@@ -38,6 +38,7 @@ footer {
 	text-align: right;
 	font-weight: bold;
 	padding: 20px;
+	background-color: white;
 	border: 1px solid white;
 }
 
@@ -133,3 +134,4 @@ nav ul ul li a:hover {
 .error_messages ul {
   margin: 0;
 }
+

@@ -1,0 +1,2 @@
+module ProductTakeawaysHelper
+end

@@ -14,11 +14,7 @@
     </div>
     <div class="field">
         <%= f.label :teléfono %><br />
-        <%= f.time_field :phone %>
-    </div>
-    <div class="field">
-        <%= f.label :cantidad %><br />
-        <%= f.text_field :quantity %>
+        <%= f.text_field :phone %>
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
     <%= f.hidden_field :user_id, :value => current_user %>

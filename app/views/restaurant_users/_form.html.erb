@@ -1,0 +1,17 @@
+<%= form_for @restaurants_users do |f| %>
+     <%= f.error_messages %>
+    <div class="field">
+        Seleccione un Restaurante: <%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
+    </div>
+    <% if current_user.superadmin %>
+        <div class="field">
+            Seleccione un Usuario: <%= f.select :user_id, options_from_collection_for_select( User.all, :id, :email)%>
+        </div>
+        <div class="field">
+            Funcion del Usuario: <%= f.select :rol, options_for_select(RestaurantUser::ROLES.map.with_index {|index, value| [index, value]})%>
+        </div>
+    <% end %>
+    <div class="field">
+        <%= f.submit %>
+    </div>
+<% end %>
