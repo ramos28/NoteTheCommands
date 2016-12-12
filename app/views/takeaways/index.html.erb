@@ -1,4 +1,4 @@
-<h1>Mesas del restaurante</h1>
+<h1>Pedido al restaurante '<%= current_user.restaurant_users.find_by_restaurant_id(@current_restaurant).restaurant.name %>'</h1>
 
 <div class ="muestra-tabla">
 	<table class="pretty">
@@ -25,19 +25,6 @@
 </div>
 
 <div class="muestra-opciones">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-		jQuery("a.mostrar").click(function(){
-		jQuery("div.chatbox").toggle("slow");
-		return false;
-		});
-		});
-	</script>
-
-	<a href="#" class="mostrar">Añadir una nuevo takeaway</a><br/>
-	<div class="chatbox">
-		<%= render 'form' %>
-		<p><%= link_to "Back to List", takeaways_path %></p>
-    </div>
+	<h2>Crear Pedido</h2>
+	<%= render 'form' %>
 </div>

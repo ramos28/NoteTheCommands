@@ -1,29 +1,19 @@
 <%= form_for @voting do |f| %>
-	<%= f.error_messages %>
-
-	<% answers = {'Muy mal' => '1', 'Mal' => '3', 'Aceptable' => '5', 'Buena' => '6', 'Muy buena' => '8', 'Excelente' => '10'} %>
-
-	<% Restaurant.find(@current_restaurant).questionnaires.each do |question| %>
-		<p><%= question.question %></p>
-		
-		<% answers.each do |ans| %>
-			<%= radio_button_tag "[voting][questions][#{question.id}][answer]", ans[1] %>
-			<label for="<%#= id %>"><%= ans[0] %></label>
-		<% end %>
-
-<!--
-		<div class="field">
+	<% if Restaurant.find(@current_restaurant).questionnaires %>
+		<%= f.error_messages %>
+		<% answers = {'Muy mal' => '1', 'Mal' => '3', 'Aceptable' => '5', 'Buena' => '6', 'Muy buena' => '8', 'Excelente' => '10'} %>
+		<% Restaurant.find(@current_restaurant).questionnaires.each do |q| %>
+			<h4><%= q.question %></h4>
 			<fieldset>
-				<%# answers.each do |ans| %>
-					<%# name = "[#{question.id}][answer]" %>
-					<%#= radio_button_tag name, ans[1] %>
-				<%# end %>
+				<% answers.each do |ans| %>
+					<%= radio_button_tag "[voting][questions][#{q.id}][answer]", ans[1] %>
+					<label for="<%#= id %>"><%= ans[0] %></label>
+				<% end %>
 			</fieldset>
-		</div>-->
+		<% end %>
+		<%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
+		<div class="field">
+			</br><%= f.submit %>
+		</div>
 	<% end %>
-	
-	<%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
-	<div class="field">
-		<%= f.submit %>
-	</div>
 <% end %>
