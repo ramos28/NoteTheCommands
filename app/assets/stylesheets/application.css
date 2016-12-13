@@ -16,13 +16,32 @@
 header{
 	height: 200px;
 	text-align: right;
-	background-image: url("logo3.jpg");
+	background-image: url("logo9.jpg");
 }
 
 body
 {
 	font-family: Georgia, Cambria, Times, "Times New Roman";
 	background-image: url("background.jpg");
+}
+
+@font-face {
+    font-family: logoFont;
+    src: url(LearningCurve.ttf);
+}
+
+@font-face {
+    font-family: logoFont;
+    src: url(LearningCurve.ttf);
+    font-weight: bold;
+}
+
+div.p1 {
+    font-family: logoFont;
+    text-align: center;	
+    padding-top: 1px;	
+    font-size: 90px;
+    color: white;
 }
 
 h1 {
@@ -32,6 +51,35 @@ h1 {
 	color: white;
 }
 
+@font-face {
+    font-family: titleFont;
+    src: url(tituloCabecera.ttf);
+}
+
+@font-face {
+    font-family: titleFont;
+    src: url(tituloCabecera.ttf);
+    font-weight: bold;
+}
+
+div.title {
+	font-family: titleFont;
+	text-align: center;
+	font-size: 70px;
+	color: white;
+}
+
+div.sesion {
+	background-image: url("papiro.png");
+    font-family: logoFont;
+    padding-left: 10px;
+    text-align: center;	
+    font-size: 20px;
+    float: right;
+    color: black;
+    height: 109px;
+    width: 170px;
+}
 
 footer {
 	clear: both;

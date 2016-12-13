@@ -9,18 +9,17 @@
       </head>
 
       <body>
-      <font color="Olive" face="Comic Sans MS,arial"1>
-<h1 align="center"><i>Cocina para Todos</i></h1>
-<h2 align="center">La cocina tu alcance</h2>
-</font>
             <header>
+              <div class="p1"><i>Note The Commands</i></div>
               <% if user_signed_in? %>
-                  Sesión: <%= current_user.user_name %>
-                  <% if @current_restaurant %>,
-                      Rol: <%= @current_role %>,
-                      Rest: <%= @current_restaurant %>
-                      Desc: <%= @current_discount %>
-                  <% end %>
+                  <div class="sesion">
+                    </br>Sesión: <%= current_user.user_name %>
+                    <% if @current_restaurant %>,
+                        </br>Rol: <%= @current_role %>,
+                        </br>Rest: <%= @current_restaurant %>
+                        </br>Desc: <%= @current_discount %>%
+                    <% end %>
+                  </div>
               <%end%>
             </header>
             <nav>
