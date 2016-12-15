@@ -1,12 +1,12 @@
-<h1>Perfil <%current_user.user_name%></h1>
+<div class="title">Perfil <%=current_user.user_name%></div>
 <div id="logo_profile">
 	<%= image_tag "perfil.png"%>
 </div>
 <div id = "profile">
 	<ul>
-		<li>Nombre:	<h3><%= current_user.user_name%></h3></li>
-		<li>Correo: <h3><%= current_user.email%></h3></li>
-		<li>Telefono: <h3><%= current_user.phone%></h3></li>
+		<li><div class="accion">Nombre:	</div><h3><%= current_user.user_name%></h3></li>
+		<li><div class="accion">Correo: </div><h3><%= current_user.email%></h3></li>
+		<li><div class="accion">Telefono: </div><h3><%= current_user.phone%></h3></li>
 	</ul>	
 </div>
 <div id="config_profile">

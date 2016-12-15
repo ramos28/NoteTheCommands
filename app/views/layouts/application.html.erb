@@ -15,7 +15,7 @@
                   <div class="sesion">
                     </br>Sesión: <%= current_user.user_name %>
                     <% if @current_restaurant %>,
-                        </br>Rol: <%= @current_role %>,
+                        </br>Rol: <%= RestaurantUser::ROLES[@current_role] %>,
                         </br>Rest: <%= @current_restaurant %>
                         </br>Desc: <%= @current_discount %>%
                     <% end %>
@@ -114,7 +114,8 @@
                                                 <li><%= link_to "Bandeja Mensajes", messages_index_path %></li>
                                           <% end %>
                                           <% if current_user.superadmin %>
-                                            <li><%= link_to "Registra Restaurante", restaurants_path %></li>
+                                            <li><%= link_to "Dar de Alta Empleado", restaurant_users_path %></li>
+                                            <li><%= link_to "Registrar Restaurante", restaurants_path %></li>
                                           <% end %>
                                           <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
                                     </ul>

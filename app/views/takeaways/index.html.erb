@@ -1,4 +1,4 @@
-<h1>Pedido al restaurante '<%= current_user.restaurant_users.find_by_restaurant_id(@current_restaurant).restaurant.name %>'</h1>
+<div class="title">Pedido al restaurante '<%= current_user.restaurant_users.find_by_restaurant_id(@current_restaurant).restaurant.name %>'</div>
 
 <div class ="muestra-tabla">
 	<table class="pretty">
@@ -25,6 +25,6 @@
 </div>
 
 <div class="muestra-opciones">
-	<h2>Crear Pedido</h2>
+	<div class="accion">Crear Pedido</div>
 	<%= render 'form' %>
 </div>

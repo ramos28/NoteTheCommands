@@ -33,6 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
             t.string :phone
             t.string :user_name
             t.date :birth_date, null: false
+            #Gerente del restaurante
             t.integer :current_user_restaurant
 
             t.float :total_spent, default: 0, null: false

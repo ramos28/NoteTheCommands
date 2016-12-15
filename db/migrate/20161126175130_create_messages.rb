@@ -6,7 +6,7 @@ class CreateMessages < ActiveRecord::Migration[5.0]
 			t.integer :is_view, default: 0, null: false
 			t.string :user_for, null: false
 
-			t.references :user, null: false
+			t.string :user_from, null: false
 
 			t.timestamps
 		end

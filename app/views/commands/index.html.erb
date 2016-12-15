@@ -1,5 +1,5 @@
 <% if @current_role == 0 %>
-	<h1>Comanda de <%= current_user.user_name %></h1>
+	<div class="title">Comanda de '<%= current_user.user_name %>'</div>
 	<div class ="muestra-tabla">
 		<table class="pretty">
 		    <tr>
@@ -36,17 +36,7 @@
 
 
 	<div class="muestra-opciones">
-		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> 
-		<script type="text/javascript">
-			jQuery(document).ready(function() {
-			jQuery("a.mostrar").click(function(){
-			jQuery("div.chatbox").toggle("slow");
-			return false;
-			});
-			});
-		</script>
-		<a href="#" class="mostrar">Añadir una nueva comanda</a><br/>
-		<div class="chatbox">
+		<div class="accion">Crear nueva comanda</div>
 			<%= render 'form' %>
 			<p><%= link_to "Back to List", commands_path %></p>
 	    </div>

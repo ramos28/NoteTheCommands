@@ -27,28 +27,20 @@ body
 
 @font-face {
     font-family: logoFont;
-    src: url(LearningCurve.ttf);
+    src: url(noteTheCommand.ttf);
 }
 
 @font-face {
     font-family: logoFont;
-    src: url(LearningCurve.ttf);
+    src: url(noteTheCommand.ttf);
     font-weight: bold;
 }
 
 div.p1 {
     font-family: logoFont;
-    text-align: center;	
-    padding-top: 1px;	
+    text-align: center;		
     font-size: 90px;
     color: white;
-}
-
-h1 {
-	text-align: center;
-	font-size: x-large;
-	font-family: verdana;
-	color: white;
 }
 
 @font-face {
@@ -65,7 +57,46 @@ h1 {
 div.title {
 	font-family: titleFont;
 	text-align: center;
-	font-size: 70px;
+	font-size: 50px;
+	color: white;
+}
+
+@font-face {
+    font-family: accionesFont;
+    src: url(titulosAcciones.ttf);
+}
+
+@font-face {
+    font-family: accionesFont;
+    src: url(titulosAcciones.ttf);
+    font-weight: bold;
+}
+
+div.accion {
+    font-family: accionesFont;
+    text-align: center;		
+    font-size: 40px;
+    color: white;
+}
+
+.muestra-tabla {
+	float: left;
+	text-align: center;
+	top: 35%;
+	width: 690px;
+}
+
+.muestra-opciones {
+	float: left;
+	text-align: center;
+	top: 35%;
+	width: 700px;
+}
+
+h1 {
+	text-align: center;
+	font-size: x-large;
+	font-family: verdana;
 	color: white;
 }
 
@@ -77,7 +108,7 @@ div.sesion {
     font-size: 20px;
     float: right;
     color: black;
-    height: 109px;
+    height: 110px;
     width: 170px;
 }
 

@@ -4,6 +4,7 @@ class Product < ApplicationRecord
 
 	PRODUCT_CATEGORY = ["BEBIDA", "RACION", "BOCADILLO", "POSTRE", "GENERAL"]
 
+	#definimos una clase metodo search
   	def self.search(search)
 	  	if search
 	    	where('name LIKE ?', "%#{search}%")

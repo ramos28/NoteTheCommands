@@ -1,9 +1,8 @@
-<h2>¿Ha olvidado su contraseña?</h2>
+<div class="title">¿Ha olvidado su contraseña?</div>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 	<%= devise_error_messages! %>
-
 	<div class="field">
-		<%= f.label :correo %><br />
+		</br><%= f.label :correo %><br/>
 		<%= f.email_field :email, autofocus: true %>
 	</div>
 

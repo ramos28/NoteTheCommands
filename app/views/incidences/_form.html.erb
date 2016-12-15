@@ -1,7 +1,7 @@
 <%= form_for @incidence do |f| %>
     <%= f.error_messages %>
     <div class="field">
-        <%= f.label :categoria %>
+        </br><%= f.label :categoria %>
         <%= f.select :category, options_for_select(Incidence::INCIDENCE_CATEGORY.map.with_index {|index, value| [index, value]})%>
     </div>
     <div class="field"> <div class="field">

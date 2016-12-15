@@ -1,7 +1,7 @@
 <%= form_for @command do |f| %>
       <%= f.error_messages %>
       <div class="field">
-            <%= f.label :nombre_comanda %>
+            </br><%= f.label :nombre_comanda %>
             <%= f.text_field :title %>
       </div>
       <div class="field">
@@ -11,6 +11,6 @@
       <%= f.hidden_field :location_id, :value => @current_restaurant %>
       <%= f.hidden_field :user_id, :value => current_user.user_name %>
       <div class="field">
-            <%= f.submit %>
+            </br><%= f.submit %>
       </div>
 <% end %>

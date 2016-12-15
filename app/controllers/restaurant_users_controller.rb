@@ -1,7 +1,11 @@
 class RestaurantUsersController < ApplicationController
   
     def index
-        @restaurant_users = RestaurantUser.all.paginate(:per_page => 8, :page => params[:page])
+        if current_user.superadmin
+            @restaurant_users = RestaurantUser.where("rol = 1").or(RestaurantUser.where("rol = 2")).or(RestaurantUser.where("rol =3")).paginate(:per_page => 8, :page => params[:page])
+        else
+            @restaurant_users = RestaurantUser.where("user_id = ?", "#{current_user.id}").paginate(:per_page => 8, :page => params[:page])
+        end
         @restaurants_users = RestaurantUser.new
     end
 
@@ -18,8 +22,6 @@ class RestaurantUsersController < ApplicationController
 
         redirect_to root_path
     end
-
-
 
     private
 

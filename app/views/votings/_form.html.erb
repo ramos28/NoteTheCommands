@@ -3,7 +3,7 @@
 		<%= f.error_messages %>
 		<% answers = {'Muy mal' => '1', 'Mal' => '3', 'Aceptable' => '5', 'Buena' => '6', 'Muy buena' => '8', 'Excelente' => '10'} %>
 		<% Restaurant.find(@current_restaurant).questionnaires.each do |q| %>
-			<h4><%= q.question %></h4>
+			<div class="accion"><%= q.question %></div>
 			<fieldset>
 				<% answers.each do |ans| %>
 					<%= radio_button_tag "[voting][questions][#{q.id}][answer]", ans[1] %>

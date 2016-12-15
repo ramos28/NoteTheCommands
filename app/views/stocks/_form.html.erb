@@ -2,7 +2,7 @@
     <%= f.error_messages %>
     <div class="field">
         <%= f.label :producto %><br />
-        <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+        <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant}"), :id, :name)%>
     </div>
     <div class="field">
         <%= f.label :cantidad %><br />

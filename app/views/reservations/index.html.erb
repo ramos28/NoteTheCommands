@@ -1,5 +1,5 @@
 <% if @current_role == 1 || @current_role == 2 || @current_role == 3 %>
-    <h2>Reservas del Restaurante</h2>
+    <div class="title">Reservas del Restaurante</div>
     <div class ="muestra-tabla">
             <table class="pretty">
                 <tr>
@@ -29,12 +29,12 @@
             </table>
     </div>
     <div class="muestra-opciones">
-            <h2>Realizar Reserva</h2>
+            <div class="accion">Realizar Reserva</div>
             <%= render 'form' %>
         <p><%= link_to "Back to List", questionnaires_path %></p>
     </div>
 <%else%>
-        <h2>Realizar Reserva</h2>
+        <div class="accion">Realizar Reserva</div>
         <%= render 'form' %>
         <p><%= link_to "Back to List", questionnaires_path %></p>
 <% end %>

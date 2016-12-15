@@ -1,6 +1,6 @@
 <div class="title">Bienvenido</div>
 <div class ="muestra-tabla">
-    <h2><i>Acceso Usuario Registrado</i></h2>
+    </br></br><div class="accion">Acceso Usuario Registrado</div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
             <%= f.label :correo %><br />
@@ -27,6 +27,6 @@
 </div>
 
 <div class="muestra-opciones">
-    <h2>Acceda sin Registro</h2> 
+    </br></br></br></br><div class="accion">Acceda sin Registro</div> 
     <%= button_to 'Usuario invitado', guests_index_path, :method => "get" %>
 </div>

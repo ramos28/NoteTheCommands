@@ -3,20 +3,18 @@
 <section>
     <article class=”blogPost”>
         <% @blogs.each do |noticia| %>
-            <% if noticia.restaurant_id == @current_restaurant %>
-                <head>
-                    <h2><%= noticia.title %></h2>
-                    <p>Posted on <%= noticia.created_at %> – <a href=”#comments”>3 comments</a>
-                        <%if @current_role != 0%>
-                            | <%= link_to "Edit Blog", edit_blog_path(noticia) %>
-                            | <%= link_to "Destroy", @blog, :confirm => 'Are you sure?', :method => :delete %>
-                            | <%= link_to "New Blogs", new_blog_path %>
-                        <% end %>
-                    </p>
-                </head>
-                <p><%= noticia.description %></p>
-                <%= will_paginate @blogs %>
-            <% end %>
+            <head>
+                <div class="accion"><%= noticia.title %></div>
+                <p>Posted on <%= noticia.created_at %> – <a href=”#comments”>3 comments</a>
+                    <%if @current_role != 0%>
+                        | <%= link_to "Edit Blog", edit_blog_path(noticia) %>
+                        | <%= link_to "Destroy", @blog, :confirm => 'Are you sure?', :method => :delete %>
+                        | <%= link_to "New Blogs", new_blog_path %>
+                    <% end %>
+                </p>
+            </head>
+            <p><%= noticia.description %></p>
+            <%= will_paginate @blogs %>
 	    <% end %>
     </article>
 </section>
