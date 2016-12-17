@@ -10,6 +10,6 @@
 	</ul>	
 </div>
 <div id="config_profile">
-	<p><%= link_to "Editar usuario", edit_user_registration_path %></p>
-	<p><%= link_to "Editar contraseña", edit_user_password_path %></p>
+	<p><%= button_to "Editar usuario", edit_user_registration_path, :method => "get" %></p>
+	<p><%= button_to "Editar contraseña", edit_user_password_path, :method => "get" %></p>
 </div>

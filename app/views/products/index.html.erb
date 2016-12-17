@@ -1,31 +1,35 @@
-<h1>Productos del Restaurante</h1>
+<div class="title">Productos del Restaurante</div>
 
 <div class ="muestra-tabla">
 	<table class="pretty">
-	      <tr>
-	            <th>Nombre</th>
-	            <th>Categoría</th>
-	            <th>Descripción</th>
-	            <th>Coste Venta Unidad</th>
-	            <th>Resturante</th>
-	      </tr>
-	      <% @products.each do |product| %>
-	            <tr>
-	                  <td><%= product.name %></td>
-	                  <td><%= Product::PRODUCT_CATEGORY[product.product_type] %></td>
-	                  <td><%= product.description %></td>
-	                  <td class="price"><%= number_to_currency(product.unit_price, :unit => "€") %></td>
-	                  <td><%= product.restaurant.name %></td>
-	                  <td><%= link_to "Edit Stock", edit_product_path(product) %></td>                
-	            </tr>
-	      <% end %>
+		<thead>
+			<tr>
+			    <th>Nombre</th>
+			    <th>Categoría</th>
+			    <th>Descripción</th>
+			    <th>Coste Venta Unidad</th>
+			    <th>Resturante</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @products.each do |product| %>
+			    <tr>
+			          <td><%= product.name %></td>
+			          <td><%= Product::PRODUCT_CATEGORY[product.product_type] %></td>
+			          <td><%= product.description %></td>
+			          <td class="price"><%= number_to_currency(product.unit_price, :unit => "€") %></td>
+			          <td><%= product.restaurant.name %></td>
+			          <td><%= link_to "Edit Stock", edit_product_path(product) %></td>                
+			    </tr>
+			<% end %>
+		</tbody>
+		<tfoot>
+			<%= will_paginate @products %>
+		</tfoot>
 	</table>
-	<%= will_paginate @products %>
 </div>
 
 <div class="muestra-opciones">
-	<h2>Añadir productos al restaurante</h2>
+	<div class="accion">Agregar productos al restaurante</div>
 	<%= render 'form' %>
-	<p><%= link_to "Back to List", products_path %></p>
-   
 </div>

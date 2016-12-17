@@ -14,8 +14,8 @@
               <% if user_signed_in? %>
                   <div class="sesion">
                     </br>Sesión: <%= current_user.user_name %>
-                    <% if @current_restaurant %>,
-                        </br>Rol: <%= RestaurantUser::ROLES[@current_role] %>,
+                    <% if @current_restaurant %>
+                        </br>Rol: <%= RestaurantUser::ROLES[@current_role] %>
                         </br>Rest: <%= @current_restaurant %>
                         </br>Desc: <%= @current_discount %>%
                     <% end %>
@@ -39,7 +39,7 @@
                                           <% end %>
                                     </ul>
                               <% end %>
-                        </li>
+                        </li>                     
                         <li><%= link_to "Acerca de" %>
                               <% if current_user %>
                                     <ul>
@@ -67,7 +67,7 @@
                                           <% end %>
                                     </ul>
                               <% end %>
-                        </li>
+                        </li> 
                         <li><%= link_to "Gestiones" %>
                             <% if current_user %>
                                 <ul>
@@ -75,7 +75,7 @@
                                         <li><%= link_to "Productos", products_path%></li>
                                         <li><%= link_to "Stock", stocks_path%></li>
                                         <li><%= link_to "Menus", menus_path%></li>
-                                        <li><%= link_to "Cuestionarios", new_questionnaire_path%></li>
+                                        <li><%= link_to "Cuestionarios", questionnaires_path%></li>
                                         <li><%= link_to "Estadísticas", new_user_registration_path %></li>
                                     <% end %>
                                     <% if (@current_role  == 0 || @current_role  == 3)%>
@@ -91,9 +91,15 @@
                                         <li><%= link_to "Crear Incidencias", new_incidence_path %></li>
                                     <% end %>
                                     <% if current_user.superadmin %>
-                                        <li><%= link_to "Restaurantes Registrados", total_restaurants_index_path %></li>
-                                        <li><%= link_to "Clientes Registrados", total_clients_index_path %></li>
-                                        <li><%= link_to "Productos Registrados", total_products_index_path %></li>
+                                        <li><%= link_to "Dar de Alta Empleado", restaurant_users_path %></li>
+                                        <li><%= link_to "Registrar Restaurante", restaurants_path %></li>
+                                        <li> <%= link_to "Ver más"%>
+                                            <ul>
+                                              <li><%= link_to "Restaurantes Registrados", total_restaurants_index_path %></li>
+                                              <li><%= link_to "Clientes Registrados", total_clients_index_path %></li>
+                                              <li><%= link_to "Productos Registrados", total_products_index_path %></li>
+                                            </ul>
+                                        </li>
                                     <% end %>
                                 </ul>
                             <% end %>
@@ -107,15 +113,14 @@
                                                 <li><%= link_to "Ver Reservas", reservations_index_path%></li>
                                           <% end %>
                                           <% if (@current_role  == 0) %>
-                                                <li><%= link_to "Chat", new_user_registration_path %></li>
+                                                <li><%= link_to "Chat", conversations_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3 ) %>
                                                 <li><%= link_to "Ver Restaurantes", restaurant_users_path%></li>
-                                                <li><%= link_to "Bandeja Mensajes", messages_index_path %></li>
+                                                <li><%= link_to "Bandeja Mensajes", emails_index_path %></li>
                                           <% end %>
                                           <% if current_user.superadmin %>
-                                            <li><%= link_to "Dar de Alta Empleado", restaurant_users_path %></li>
-                                            <li><%= link_to "Registrar Restaurante", restaurants_path %></li>
+                                              <li><%= link_to "Bandeja Mensajes", emails_index_path %></li>
                                           <% end %>
                                           <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
                                     </ul>

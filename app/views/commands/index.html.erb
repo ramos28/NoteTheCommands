@@ -42,7 +42,7 @@
 	    </div>
 	</div>
 <% elsif @current_role == 1 %>
-	<h1>Comandas del Camarero</h1>
+	<div class="title">Comandas del Camarero</div>
 	<table class="pretty">
 		    <tr>
 		        <th><%= "Comanda" %></th>
@@ -71,7 +71,7 @@
 		</table>
 		<%= will_paginate @commands %>
 <% elsif @current_role == 2 %>
-	<h1>Comandas del Cocinero</h1>
+	<div class="title">Comandas del Cocinero</div>
 	<table class="pretty">
 		    <tr>
 		        <th><%= "Comanda" %></th>
@@ -100,7 +100,7 @@
 		</table>
 		<%= will_paginate @commands %>
 <% elsif @current_role == 3 %>
-	<h1>Comandas del Restaurante</h1>
+	<div class="title">Comandas del Restaurante</div>
 	<table class="pretty">
 		    <tr>
 		        <th><%= "Comanda" %></th>

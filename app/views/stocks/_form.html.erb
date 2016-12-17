@@ -1,7 +1,7 @@
 <%= form_for @stock do |f| %>
     <%= f.error_messages %>
     <div class="field">
-        <%= f.label :producto %><br />
+        </br><%= f.label :producto %><br />
         <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant}"), :id, :name)%>
     </div>
     <div class="field">
@@ -17,6 +17,6 @@
         <%= f.text_field :price_buy_unity %>
     </div>
     <div class="field">
-        <%= f.submit %>
+        </br><%= f.submit %>
     </div>
 <% end %>

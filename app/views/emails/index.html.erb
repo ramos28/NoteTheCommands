@@ -1,0 +1,32 @@
+<div class="title">Mensajes de '<%= current_user.user_name %>'</div>
+<table class="pretty">
+    <thead>
+        <tr>
+            <th> Asunto </th>
+            <th> Emisor. De: </th>
+            <th> Receptor. Para: </th>
+            <th> Descripción </th>
+            <th> Esta leido </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @emails_in.each do |email_in| %>
+            <tr>
+                <td><%= email_in.subject %></td>
+                <td><%= email_in.user_from %></td>
+                <td><%= email_in.user_for %></td>
+                <td class="contenido"><%= email_in.description %></td>
+                <% if email_in.is_view == 0 %>
+                    <td class="b1"><%= Email::VIEW_CATEGORY[email_in.is_view]%></td>
+                <% else %>
+                    <td class="b2"><%= Email::VIEW_CATEGORY[email_in.is_view]%></td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+    <tfoot>
+        <%= will_paginate @emails_in %>
+    </tfoot>
+</table>
+
+<p><%= button_to "New email", new_email_path, :method => "get" %></p>

@@ -1,6 +1,6 @@
 <div class="title">Noticias del Restaurante</div>
 
-<section>
+<div class="muestra-blog">
     <article class=”blogPost”>
         <% @blogs.each do |noticia| %>
             <head>
@@ -17,7 +17,10 @@
             <%= will_paginate @blogs %>
 	    <% end %>
     </article>
-</section>
+</div>
+<div class="muestra-blog">
+    Aqui iria los comemtarios
+</div>
 <aside>
 
 </aside>

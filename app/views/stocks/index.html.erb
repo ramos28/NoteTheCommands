@@ -1,4 +1,4 @@
-<h1>Stock del Restaurante</h1>
+<div class="title">Stock del Restaurante</div>
 
 <table id="stocks" class="display">
     <thead>
@@ -31,5 +31,5 @@
     </tfoot>
 </table>
 
-<p><%= link_to "New Stock", new_stock_path %></p>
+<p><%= button_to "New Stock", new_stock_path, :method => "get" %></p>
 

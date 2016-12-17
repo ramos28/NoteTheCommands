@@ -1,23 +1,23 @@
 <%= form_for @product do |f| %>
     <%= f.error_messages %>
     <div class="field">
-        <%= f.label :nombre %><br />
+        </br><%= f.label :nombre %><br />
         <%= f.text_field :name %>
     </div>
     <div class="field">
-        <%= f.label :tipo_producto %>
+        </br><%= f.label :tipo_producto %>
         <%= f.select :product_type, options_for_select(Product::PRODUCT_CATEGORY.map.with_index {|index, value| [index, value]})%>
     </div>
     <div class="field">
-        <%= f.label :precio_producto %><br />
+        </br><%= f.label :precio_producto %><br />
         <%= f.text_field :unit_price %>
     </div>
     <div class="field">
-        <%= f.label :descripción_producto %><br />
+        </br><%= f.label :descripción_producto %><br />
         <%= f.text_area :description, :cols => 30, rows: 5 %>
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
     <div class="field">
-        <%= f.submit %>
+        <p><%= f.submit %></p>
     </div>
 <% end %>

@@ -1,21 +1,28 @@
-<h1>Cuestionarios del restaurante</h1>
+<div class="title">Cuestionarios del restaurante</div>
 
 <div class ="muestra-tabla">
 	<table class="pretty">
-	      <tr>
-	            <th>Pregunta</th>
-	            <th>Restaurante</th>
-	      </tr>
-	      <% @questionnaires.each do |questionnaire| %>
-	            <tr>
-	                  <td><%= questionnaire.question %></td>
-	                  <td><%= questionnaire.restaurant.name %></td>                  
-	            </tr>
-	      <% end %>
+		<thead>
+			<tr>
+			    <th>Pregunta</th>
+			    <th>Restaurante</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @questionnaires.each do |questionnaire| %>
+			    <tr>
+					<td><%= questionnaire.question %></td>
+					<td><%= questionnaire.restaurant.name %></td>                  
+			    </tr>
+			<% end %>
+		</tbody>
+		<tfoot>
+			<%= will_paginate @questionnaires %>
+		</tfoot>
 	</table>
-	<%= will_paginate @questionnaires %>
 </div>
 
 <div class="muestra-opciones">
+	<div class="accion">Nuevo Cuestionario</div>
 	<%= render 'form' %>
 </div>

@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  get 'product_takeaways/index'
+  get 'users/index'
 
-  get 'total_restaurants/index'
-
-  get 'total_products/index'
-
+    get 'emails/index'
+    get 'emails/new'
+    get 'emails/edit'
+    get 'emails/show'
+    get 'emails/_form'
+    get 'product_takeaways/index'
+    get 'total_restaurants/index'
+    get 'total_products/index'
     get 'total_clients/index'
     get 'product_commands/index'
     get 'menu_commands/index'
@@ -39,6 +43,10 @@ Rails.application.routes.draw do
     resources :menus
     resources :commands
     resources :menu_products
+    resources :emails
+    resources :users, only: [:index]
+    resources :personal_messages, only: [:new, :create]
+    resources :conversations, only: [:index, :show]
 
     get 'select_restaurant', to: 'restaurants_users#new'
     #get 'restaurants_user', to: 'restaurants_users#index'

@@ -1,16 +1,22 @@
 <%= form_for @command do |f| %>
-      <%= f.error_messages %>
-      <div class="field">
-            </br><%= f.label :nombre_comanda %>
-            <%= f.text_field :title %>
-      </div>
-      <div class="field">
-            <%= f.label :descripción %><br />
-            <%= f.text_area :description %>
-      </div>
-      <%= f.hidden_field :location_id, :value => @current_restaurant %>
-      <%= f.hidden_field :user_id, :value => current_user.user_name %>
-      <div class="field">
-            </br><%= f.submit %>
-      </div>
+    <%= f.error_messages %>
+    <div class="field">
+        </br><%= f.label :nombre_comanda %>
+        <%= f.text_field :title %>
+    </div>
+    <div class="field">
+        <%= f.label :descripción %><br />
+        <%= f.text_area :description %>
+    </div>
+    <% if @current_role  == 3 %>
+        <div class="field">
+            </br><%= f.label :esta_finalizada %>
+            <%= f.select :is_end, options_for_select(Command::FINISH_CATEGORY.map.with_index {|index, value| [index, value]})%>
+        </div>
+    <% end %>
+    <%= f.hidden_field :location_id, :value => @current_restaurant %>
+    <%= f.hidden_field :user_id, :value => current_user.user_name %>
+    <div class="field">
+        </br><%= f.submit %>
+    </div>
 <% end %>

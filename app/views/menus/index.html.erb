@@ -1,4 +1,4 @@
-<h1>Menus del Restaurante</h1>
+<div class="title">Menus del Restaurante</div>
 
 <div class ="muestra-tabla">
 	<table class="pretty">
@@ -27,7 +27,9 @@
 	</table>
 	<%= will_paginate @menus %>
 </div>
-<h2>Crear nuevo Menu</h2>
-<%= render 'form' %>
-<p><%= link_to "Back to List", menus_path %></p>
+
+<div class="muestra-opciones">
+	<div class="accion">Crear nuevo Menu</div>
+	<%= render 'form' %>
+</div>
     

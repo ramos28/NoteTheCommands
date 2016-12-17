@@ -1,24 +1,24 @@
 <%= form_for @menu do |f| %>
     <%= f.error_messages %>
     <div class="field">
-        <%= f.label :nombre_menu %><br />
+        </br><%= f.label :nombre_menu %><br />
         <%= f.text_field :name %>
     </div>
     <div class="field">
-        <%= f.label :tipo_menu %>
+        </br><%= f.label :tipo_menu %>
         <%= f.select :type_menu, options_for_select(Menu::MENU_CATEGORY.map.with_index {|index, value| [index, value]})%>
     </div>
     <div class="field">
-        <%= f.label :descripción %><br />
+        </br><%= f.label :descripción %><br />
         <%= f.text_area :description, :cols => 30, rows: 5 %>
     </div>
     <div class="field">
-        <%= f.label :precio %><br />
+        </br><%= f.label :precio %><br />
         <%= f.number_field :price %>€
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="field">
-        <%= f.submit %>
+        <p><%= f.submit %></p>
     </div>
 <% end %>
