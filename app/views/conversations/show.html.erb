@@ -9,7 +9,7 @@
     <%= hidden_field_tag 'conversation_id', @conversation.id %>
     <%= f.label :body %>
     <%= f.text_area :body %>
-
+	<%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
     <%= f.submit %>
   <% end %>
 </div>

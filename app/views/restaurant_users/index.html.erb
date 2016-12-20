@@ -23,7 +23,9 @@
 			<% end %>
 		</tbody>
 		<tfoot>
-			<%= will_paginate @restaurant_users %>
+			<tr>
+				<td colspan="5"><%= will_paginate @restaurant_users %></td>
+			</tr>
 		</tfoot>
 	</table>
 </div>

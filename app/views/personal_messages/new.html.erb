@@ -1,13 +1,8 @@
 <div class="title">New message to '<%= @receiver.user_name %>'</div>
-
-<%= form_for @personal_message do |f| %>
-	<%= f.error_messages %>
-	<div class="field">
-	    </br><%= f.label :body %>
-		<%= f.text_area :body %>
-	</div>
-	<%= hidden_field_tag 'receiver_id', @receiver.id %>
-	<div class="field">
-		</br><%= f.submit %>
-	</div>
-<% end %>
+  
+  	<%= form_for @personal_message do |f| %>
+		<%= f.error_messages %>
+			<%= f.text_area :body %>
+			<%= f.submit %>
+		<%= hidden_field_tag 'receiver_id', @receiver.id %>
+	<% end %>
