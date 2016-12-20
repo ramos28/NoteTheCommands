@@ -4,6 +4,7 @@ class CreateUserRestaurants < ActiveRecord::Migration[5.0]
 			t.index :user_id
 			t.index :restaurant_id
 
+			t.primary_key :id
 			t.integer :rol
 			t.float  :discount, default: 0, null: false
 

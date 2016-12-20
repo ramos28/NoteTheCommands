@@ -16,7 +16,7 @@
                     </br>Sesión: <%= current_user.user_name %>
                     <% if @current_restaurant %>
                         </br>Rol: <%= RestaurantUser::ROLES[@current_role] %>
-                        </br>Rest: <%= @current_restaurant %>
+                        </br>Rest: <%= @current_restaurant.name %>
                         </br>Desc: <%= @current_discount %>%
                     <% end %>
                   </div>
@@ -76,7 +76,7 @@
                                         <li><%= link_to "Stock", stocks_path%></li>
                                         <li><%= link_to "Menus", menus_path%></li>
                                         <li><%= link_to "Cuestionarios", questionnaires_path%></li>
-                                        <li><%= link_to "Estadísticas", new_user_registration_path %></li>
+                                        <li><%= link_to "Estadísticas", statistics_index_path %></li>
                                     <% end %>
                                     <% if (@current_role  == 0 || @current_role  == 3)%>
                                         <li><%= link_to "Realizar Reserva", reservations_index_path %></li>

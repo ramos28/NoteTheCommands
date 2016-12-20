@@ -44,7 +44,7 @@
 </div>
 
 <div class="muestra-eleccion">
-    <%= form_for :menu_product, url: menu_product_path do |f| %>
+    <%= form_for :menu_product, url: menu_products_path do |f| %>
         <div class="field">
             <%= f.label :category %>
             <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
@@ -57,7 +57,7 @@
             <%= f.label :quantity %><br />
             <%= f.text_field :quantity %>
         </div>
-        <%= f.hidden_field :menu_id, value: @menu %>
+        <%= f.hidden_field :menu_id, value: @menu.id %>
         <%= f.submit %>
     <% end %>
 </div>

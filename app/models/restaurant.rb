@@ -12,4 +12,15 @@ class Restaurant < ApplicationRecord
 	has_many :locations
 	has_many :menus
 	has_many :commands
+
+
+	def ventas
+		ventas = 0
+		locations_ids = self.locations.pluck(:id)
+		Command.where(location_id: locations_ids).each do |command|
+			ventas += command.command_price
+		end
+
+		return ventas
+	end
 end

@@ -9,19 +9,18 @@ class ApplicationController < ActionController::Base
 	end
 
 	def set_current_user_restaurant_role
+		@current_restaurant = nil
+		@current_role = nil
+		@current_discount = nil
+		
 		if current_user
-			@current_restaurant = current_user.current_user_restaurant
-			@current_role = nil
-			@current_discount = nil
+			current_restaurant_user = RestaurantUser.where(:id => current_user.current_user_restaurant).first
 
-			if !@current_restaurant.blank?
-				@current_role = current_user.restaurant_users.find_by_restaurant_id(@current_restaurant).rol
-				@current_discount = current_user.restaurant_users.find_by_restaurant_id(@current_restaurant).discount
+			if current_restaurant_user
+				@current_restaurant = current_restaurant_user.restaurant
+				@current_role = current_restaurant_user.rol
+				@current_discount = current_restaurant_user.discount
 			end
-		else
-			@current_restaurant = nil
-			@current_role = nil
-			@current_discount = nil
 		end
 	end
 end

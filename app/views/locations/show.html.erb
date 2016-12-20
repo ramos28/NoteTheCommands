@@ -1,6 +1,6 @@
-<h1>Comanda</h1>
+<div class="title">Comanda</div>
 <div class="muestra-comanda">
-    <h1>Mesa</h1>
+    <div class="accion">Mesa</div>
     <p>
         <strong>Lugar:</strong>
         <%= @location.place %>
@@ -30,21 +30,26 @@
 </div>
 
 <div class="muestra-eleccion-comanda">
-    <%= form_for :menu_product, url: menu_product_path do |f| %>
-        <h2>Crear nueva comanda</h2>
+    <%= form_for :command, url: commands_path do |f| %>
+        <%= f.error_messages %>
         <div class="field">
-            <%= f.label :category %><br />
-            <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
+            </br><%= f.label :nombre_comanda %>
+            <%= f.text_field :title %>
         </div>
         <div class="field">
-            <%= f.label :producto %><br />
-            <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+            <%= f.label :descripción %><br />
+            <%= f.text_area :description %>
         </div>
+        <% if @current_role  == 3 %>
+            <div class="field">
+                </br><%= f.label :esta_finalizada %>
+                <%= f.select :is_end, options_for_select(Command::FINISH_CATEGORY.map.with_index {|index, value| [index, value]})%>
+            </div>
+        <% end %>
+        <%= f.hidden_field :location_id, :value => @location.id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
         <div class="field">
-            <%= f.label :quantity %><br />
-            <%= f.text_field :quantity %>
+            </br><%= f.submit %>
         </div>
-        <%= f.hidden_field :menu_id, value: @menu %>
-        <%= f.submit %>
     <% end %>
 </div>

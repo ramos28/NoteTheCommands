@@ -45,8 +45,8 @@ class RestaurantsController < ApplicationController
   end
 
   	def select
-  		current_user.update(current_user_restaurant: params[:restaurant_id])
-      rol = current_user.restaurant_users.find_by_restaurant_id(params[:restaurant_id]).rol
+  		current_user.update(current_user_restaurant: params[:restaurant_user_id])
+      	rol = current_user.restaurant_users.find(params[:restaurant_user_id]).rol
 
   		if rol == 0
 	   		redirect_to new_location_path

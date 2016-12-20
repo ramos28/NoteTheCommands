@@ -27,6 +27,8 @@
         <% end %>
     </tbody>
     <tfoot>
-        <%= will_paginate @users %>
+        <tr>
+            <td colspan="8"><%= will_paginate @users %></td>
+        </tr>
     </tfoot>
 </table>

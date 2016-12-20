@@ -9,11 +9,10 @@
     </p>
     <p>
         <strong>Menu:</strong>
-        <%= @command.menu.type_menu %>
+       
     </p>
     <p>
         <strong>Producto:</strong>
-        <%= @command.product.name %>
     </p>
     <p>
         <strong>Descripcion:</strong>
@@ -29,3 +28,56 @@
     <%= link_to "Destroy", @command, :confirm => 'Are you sure?', :method => :delete %> |
     <%= link_to "View All", commands_path %>
 </p>
+
+
+<div class="muestra-tabla-menus">
+    <table class="pretty">
+        <tr>
+            <th>Nombre menu/producto</th>
+            <th>Cantidad</th>
+        </tr>
+        <% @command.command_products.each do |cp| %>
+            <tr>
+                <td><%= cp.product.name %></td>
+                <td><%= cp.quantity %></td>      
+            </tr>
+        <% end %>
+        <% @command.command_menus.each do |cp| %>
+            <tr>
+                <td><%= cp.menu.name %></td>
+                <td><%= cp.quantity %></td>
+            </tr>
+        <% end %>
+
+    </table>
+</div>
+
+<div class="muestra-eleccion">
+    <%= form_for :command_product, url: command_products_path do |f| %>
+        <div class="field">
+            <%= f.label :producto %><br />
+            <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+        </div>
+        <div class="field">
+            <%= f.label :quantity %><br />
+            <%= f.text_field :quantity %>
+        </div>
+        <%= f.hidden_field :command_id, value: @command.id %>
+        <%= f.submit %>
+    <% end %>
+</div>
+
+<div class="muestra-eleccion">
+    <%= form_for :command_menu, url: command_menus_path do |f| %>
+        <div class="field">
+            <%= f.label :menu %><br />
+            <%= f.select :menu_id, options_from_collection_for_select( Menu.all, :id, :name)%>
+        </div>
+        <div class="field">
+            <%= f.label :quantity %><br />
+            <%= f.text_field :quantity %>
+        </div>
+        <%= f.hidden_field :command_id, value: @command.id %>
+        <%= f.submit %>
+    <% end %>
+</div>

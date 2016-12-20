@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 20161217174308) do
     t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
   end
 
-  create_table "restaurant_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "restaurant_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                                null: false
     t.integer  "restaurant_id",                          null: false
     t.integer  "rol"

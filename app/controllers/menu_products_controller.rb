@@ -6,9 +6,10 @@ class MenuProductsController < ApplicationController
 
     def create
         @menu_product = MenuProduct.new(menu_product_params)
+        debugger
         if @menu_product.save
             flash[:notice] = "Successfully created product_menu."
-            redirect_to @menu_product
+            redirect_to :back
         else
             render :action =>'new'
         end

@@ -19,7 +19,7 @@ class PersonalMessagesController < ApplicationController
 	private
 
 	def personal_message_params
-		params.require(:personal_message).permit(:body, :restaurant_id)
+		params.require(:personal_message).permit(:body)
 	end
 
 	def find_conversation!

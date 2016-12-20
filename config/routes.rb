@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'statistics/index'
+
   get 'users/index'
 
     get 'emails/index'
@@ -42,6 +44,8 @@ Rails.application.routes.draw do
     resources :locations
     resources :menus
     resources :commands
+    resources :command_products
+    resources :command_menus
     resources :menu_products
     resources :emails
     resources :users, only: [:index]
