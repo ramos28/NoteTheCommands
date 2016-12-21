@@ -1,3 +1,4 @@
+
 <h1>Producto</h1>
 
     <p>
@@ -19,6 +20,6 @@
 
     <p>
     <%= link_to "Edit", edit_product_path(@product) %> |
-    <%= link_to "Destroy", @product, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "Destroy", @product, :confirm => 'Are you sure?', :method => :delete, :popup => true %> |
     <%= link_to "View All", products_path %>
 </p>

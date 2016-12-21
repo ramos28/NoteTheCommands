@@ -11,7 +11,7 @@ class CreateReservations < ActiveRecord::Migration[5.0]
 			t.references :user
 
 			#Aqui hay que añadir un menu que este o no creado por el cliente con el gerente del restaurante
-			t.references :menu
+			t.references :menu, null: true
 
 			t.timestamps
 	    end

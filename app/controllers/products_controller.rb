@@ -2,18 +2,18 @@ class ProductsController < ApplicationController
 	helper_method :sort_column, :sort_direction
 
   	def index
-  		@restaurant_users = RestaurantUser.all
-  		@products = Product.where("restaurant_id = ?", "#{@current_restaurant}").search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 7, :page => params[:page])
+  		@products = Product.where("restaurant_id = ?", "#{@current_restaurant.id}").order("product_type DESC").search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 7, :page => params[:page])
 		@product = Product.new
+	    if params[:name].present?
+	      	@products = @products.where("name LIKE ?", "%#{params[:name]}%")
+	    end
 	end
 
 	def show
-		@restaurant_users = RestaurantUser.all
 		@product = Product.find(params[:id])
 	end
 
 	def new
-		@restaurant_users = RestaurantUser.all
 		@product = Product.new
 	end
 

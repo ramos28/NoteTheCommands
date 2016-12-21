@@ -4,11 +4,13 @@
 	<table class="pretty">
 		<thead>
 			<tr>
-			    <th>Nombre</th>
-			    <th>Categoría</th>
-			    <th>Descripción</th>
-			    <th>Coste Venta Unidad</th>
-			    <th>Resturante</th>
+				<%= form_tag products_path, method: :get do %>
+				    <th>Nombre<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre producto" %></p></th>
+				    <th>Categoría</th>
+				    <th>Descripción</th>
+				    <th>Coste Venta Unidad</th>
+				    <th>Resturante</th>
+				<% end %>
 			</tr>
 		</thead>
 		<tbody>

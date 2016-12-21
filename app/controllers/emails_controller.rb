@@ -1,6 +1,6 @@
 class EmailsController < ApplicationController
     def index
-        @restaurant_email = Restaurant.where("id = ?", "#{@current_restaurant}")
+        
         #Bandeja de entrada
         if (@current_role == RestaurantUser::ROLES.index('GERENTE'))
             @emails_in = Email.all.where("user_for = ?", "#{current_user.email}").paginate(:per_page => 7, :page => params[:page])
@@ -40,7 +40,7 @@ class EmailsController < ApplicationController
 
     def update
         @email = Email.find(params[:id])
-        if @email.update_attributes(message_params)
+        if @email.update_attributes(email_params)
             flash[:notice] = "Successfully updated email."
             redirect_to @email
         else

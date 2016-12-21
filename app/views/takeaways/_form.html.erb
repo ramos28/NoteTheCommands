@@ -16,7 +16,7 @@
         <%= f.label :teléfono %><br />
         <%= f.text_field :phone %>
     </div>
-    <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
+    <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user %>
     <div class="field">
         </br><%= f.submit %>

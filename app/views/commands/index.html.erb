@@ -13,7 +13,7 @@
 		    <% @commands.each do |command| %>
 		    <%= command.location.restaurant_id %>
 		    <%= @current_restaurant %>
-		        <% if command.location.restaurant_id == @current_restaurant %>
+		        <% if command.location.restaurant_id == @current_restaurant.id %>
 		            <tr>
 		                <td><%= command.title %></td>
 		                <td><%= command.location.restaurant_id %></td>
@@ -24,16 +24,12 @@
 		                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
 		            </tr>
 		        <% end %>
-		        <%= link_to "Back", location_path(command.location.place) %>
 		    <% end %>
 		    <tfoot>
 		        <%= will_paginate @commands %>
 		    </tfoot>
 		</table>
-
-		<%= will_paginate @commands %>
 	</div>
-
 
 	<div class="muestra-opciones">
 		<div class="accion">Crear nueva comanda</div>
@@ -41,6 +37,7 @@
 			<p><%= link_to "Back to List", commands_path %></p>
 	    </div>
 	</div>
+
 <% elsif @current_role == 1 %>
 	<div class="title">Comandas del Camarero</div>
 	<table class="pretty">
@@ -55,7 +52,7 @@
 		    <% @commands.each do |command| %>
 		    <%= command.location.restaurant_id %>
 		    <%= @current_restaurant %>
-		        <% if command.location.restaurant_id == @current_restaurant %>
+		        <% if command.location.restaurant_id == @current_restaurant.id %>
 		            <tr>
 		                <td><%= command.title %></td>
 		                <td><%= command.location.restaurant_id %></td>
@@ -66,13 +63,14 @@
 		                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
 		            </tr>
 		        <% end %>
-		        <%= link_to "Back", location_path(command.location.place) %>
 		    <% end %>
+		    <tfoot>
+		    	<%= will_paginate @commands %>
+		    </tfoot>
 		</table>
-		<%= will_paginate @commands %>
 <% elsif @current_role == 2 %>
 	<div class="title">Comandas del Cocinero</div>
-	<table class="pretty">
+		<table class="pretty">
 		    <tr>
 		        <th><%= "Comanda" %></th>
 		        <th><%= "Restaurante" %></th>
@@ -84,7 +82,7 @@
 		    <% @commands.each do |command| %>
 		    <%= command.location.restaurant_id %>
 		    <%= @current_restaurant %>
-		        <% if command.location.restaurant_id == @current_restaurant %>
+		        <% if command.location.restaurant_id == @current_restaurant.id %>
 		            <tr>
 		                <td><%= command.title %></td>
 		                <td><%= command.location.restaurant_id %></td>
@@ -95,10 +93,12 @@
 		                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
 		            </tr>
 		        <% end %>
-		        <%= link_to "Back", location_path(command.location.place) %>
 		    <% end %>
+		    <tfoot>
+		    	<%= will_paginate @commands %>
+		    </tfoot>
 		</table>
-		<%= will_paginate @commands %>
+		
 <% elsif @current_role == 3 %>
 	<div class="title">Comandas del Restaurante</div>
 	<table class="pretty">
@@ -111,9 +111,7 @@
 		        <th><%= "¿Esta Finalizada?" %></th>
 		    </tr>
 		    <% @commands.each do |command| %>
-		    <%= command.location.restaurant_id %>
-		    <%= @current_restaurant %>
-		        <% if command.location.restaurant_id == @current_restaurant %>
+		        <% if command.location.restaurant_id == @current_restaurant.id %>
 		            <tr>
 		                <td><%= command.title %></td>
 		                <td><%= command.location.restaurant_id %></td>
@@ -124,8 +122,9 @@
 		                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
 		            </tr>
 		        <% end %>
-		        <%= link_to "Back", location_path(command.location.place) %>
 		    <% end %>
+		    <tfoot>
+		    	<%= will_paginate @commands %>
+		    </tfoot>
 		</table>
-		<%= will_paginate @commands %>
 <% end %>

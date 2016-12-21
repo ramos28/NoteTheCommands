@@ -24,7 +24,7 @@
         <%= f.label :menu %><br />
         <%= f.select :menu_id, options_from_collection_for_select(Menu.all, :id, :name), {:include_blank=>t(:ninguno), :value => 0}%>
     </div>
-    <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
+    <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="field">
         </br><%= f.submit %>

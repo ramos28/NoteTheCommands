@@ -1,7 +1,7 @@
 <%= form_for @questionnaire do |f| %>
 	<%= f.error_messages %>
 	<div class="field">
-		</br><%= f.label :question %><br />
+		</br><%= f.label :redactar_pregunta %><br />
 		<%= f.text_area :question, :cols => 30, rows: 2 %>
 	</div>
 	<%= f.hidden_field :restaurant_id, :value => @current_restaurant %>

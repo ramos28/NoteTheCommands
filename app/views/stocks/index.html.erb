@@ -3,13 +3,15 @@
 <table id="stocks" class="display">
     <thead>
         <tr>
-            <th><%= "Restaurante" %></th>
-            <th><%= "Nombre Producto" %></th>
-            <th><%= "Descipción" %></th>
-            <th><%= "Coste de venta" %></th>
-            <th><%= "Cantidad en Stock" %></th>
-            <th><%= "Coste Materia Prima Unidad" %></th>
-            <th><%= "Coste Total Materia Prima" %></th>
+            <%= form_tag stocks_path, method: :get do %>
+                <th>Restaurante</th>
+                <th>Nombre Producto</th>
+                <th>Descipción<p><%= text_field_tag :description_stock, params[:description_stock], class: "form-control", placeholder: "Descripcion Stock" %></p></th>
+                <th>Coste de venta</th>
+                <th>Cantidad en Stock</th>
+                <th>Coste Materia Prima Unidad</th>
+                <th>Coste Total Materia Prima</th>
+            <% end %>
         </tr>
     </thead>
     <tbody>

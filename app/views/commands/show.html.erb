@@ -1,18 +1,17 @@
-<div class="title">Comanda</div>
+<div class="title">Agregar Productos a la Comanda</div>
+<div class="muestra-menus">
+    <div class="accion">Comanda</div>
     <p>
-        <strong>Titulo:</strong>
+        <strong>Nombre:</strong>
         <%= @command.title %>
     </p>
     <p>
-        <strong>Mesa:</strong>
+        <strong>Localizacion:</strong>
         <%= @command.location.place %>
     </p>
     <p>
-        <strong>Menu:</strong>
-       
-    </p>
-    <p>
-        <strong>Producto:</strong>
+        <strong>Mesa:</strong>
+        <%= @command.location.sit %>
     </p>
     <p>
         <strong>Descripcion:</strong>
@@ -24,11 +23,11 @@
     </p>
 
     <p>
-    <%= link_to "Edit", edit_command_path(@command) %> |
-    <%= link_to "Destroy", @command, :confirm => 'Are you sure?', :method => :delete %> |
-    <%= link_to "View All", commands_path %>
-</p>
-
+        <%= link_to "Edit", edit_command_path(@command) %> |
+        <%= link_to "Destroy", @command, :confirm => 'Are you sure?', :method => :delete %> |
+        <%= link_to "View All", commands_path %>
+    </p>
+</div>
 
 <div class="muestra-tabla-menus">
     <table class="pretty">
@@ -53,6 +52,7 @@
 </div>
 
 <div class="muestra-eleccion">
+    <div class="accion">Agregar Productos</div>
     <%= form_for :command_product, url: command_products_path do |f| %>
         <div class="field">
             <%= f.label :producto %><br />
@@ -68,6 +68,7 @@
 </div>
 
 <div class="muestra-eleccion">
+    <div class="accion">Agragar Menu</div>
     <%= form_for :command_menu, url: command_menus_path do |f| %>
         <div class="field">
             <%= f.label :menu %><br />

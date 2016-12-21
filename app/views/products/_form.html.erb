@@ -16,7 +16,7 @@
         </br><%= f.label :descripción_producto %><br />
         <%= f.text_area :description, :cols => 30, rows: 5 %>
     </div>
-    <%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
+    <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <div class="field">
         <p><%= f.submit %></p>
     </div>

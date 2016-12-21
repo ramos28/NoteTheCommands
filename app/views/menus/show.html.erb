@@ -1,13 +1,13 @@
-<h1>Agregar productos al menu</h1>
+<div class="title">Agregar productos al menu</div>
 <div class="muestra-menus">
-    <h1>Menu</h1>
+    <div class="accion">Menu</div>
     <p>
         <strong>Nombre:</strong>
         <%= @menu.name %>
     </p>
     <p>
         <strong>Tipo menu:</strong>
-        <%= @menu.type_menu %>
+        <%= Menu::MENU_CATEGORY[@menu.type_menu] %>
     </p>
     <p>
         <strong>Precio:</strong>
@@ -44,20 +44,21 @@
 </div>
 
 <div class="muestra-eleccion">
+    <div class="accion">Seleccionar Producto</div>
     <%= form_for :menu_product, url: menu_products_path do |f| %>
         <div class="field">
-            <%= f.label :category %>
+            </br><%= f.label :category %>
             <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
         </div>
         <div class="field">
-            <%= f.label :producto %><br />
-            <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+            </br><%= f.label :producto %><br />
+            <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}"), :id, :name)%>
         </div>
         <div class="field">
-            <%= f.label :quantity %><br />
+            </br><%= f.label :quantity %><br />
             <%= f.text_field :quantity %>
         </div>
-        <%= f.hidden_field :menu_id, value: @menu.id %>
+        </br><%= f.hidden_field :menu_id, value: @menu.id %>
         <%= f.submit %>
     <% end %>
 </div>

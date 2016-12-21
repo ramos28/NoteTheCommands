@@ -128,9 +128,6 @@ ActiveRecord::Schema.define(version: 20161217174308) do
     t.index ["user_id"], name: "index_menus_on_user_id", using: :btree
   end
 
-  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-  end
-
   create_table "personal_messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "body",            limit: 65535
     t.integer  "conversation_id"
