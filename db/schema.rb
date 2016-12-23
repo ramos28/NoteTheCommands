@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20161217174308) do
     t.string   "subject",                               null: false
     t.text     "description", limit: 65535,             null: false
     t.integer  "is_view",                   default: 0, null: false
+    t.integer  "is_sent",                               null: false
     t.string   "user_for",                              null: false
     t.string   "user_from",                             null: false
     t.datetime "created_at",                            null: false

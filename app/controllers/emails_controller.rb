@@ -1,18 +1,25 @@
 class EmailsController < ApplicationController
     def index
-        
         #Bandeja de entrada
-        if (@current_role == RestaurantUser::ROLES.index('GERENTE'))
-            @emails_in = Email.all.where("user_for = ?", "#{current_user.email}").paginate(:per_page => 7, :page => params[:page])
-        else 
-            @emails_in = Email.all.where("user_for = ?", "#{current_user.email}").paginate(:per_page => 7, :page => params[:page])
-        end
+        @emails_in = Email.where("user_for = ? OR user_for = ?", "#{current_user.email}", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
+        @emails_in_rest = Email.where("user_for = ?", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
         #Bandeja de enviados
-        if (@current_role == RestaurantUser::ROLES.index('GERENTE'))
-            @emails_out = Email.all.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 7, :page => params[:page])
-        else 
-            @emails_out = Email.all.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 7, :page => params[:page])
-        end
+        @emails_out = Email.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page]) 
+        @emails_out_rest = Email.where("user_from = ?", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
+
+        #Bandeja de entrada donde los correos del restaurante aparecen asociados con los correos del usuario
+        #Bandeja de entrada
+        #if (@current_role == RestaurantUser::ROLES.index('GERENTE'))
+        #    @emails_in = Email.where("user_for = ? OR user_for = ?", "#{current_user.email}", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
+        #else 
+        #    @emails_in = Email.where("user_for = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page])
+        #end
+        #Bandeja de enviados
+        #if (@current_role == RestaurantUser::ROLES.index('GERENTE'))
+        #    @emails_out = Email.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page])
+        #else 
+        #    @emails_out = Email.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page])
+        #end
 
     end
 
@@ -58,7 +65,7 @@ class EmailsController < ApplicationController
     private
 
     def email_params
-        params.require(:email).permit(:subject, :description, :is_view, :user_for, :user_from)
+        params.require(:email).permit(:subject, :description, :is_view, :is_sent, :user_for, :user_from)
 
     end
 

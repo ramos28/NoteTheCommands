@@ -1,5 +1,30 @@
-<h1>Editar Mensaje</h1>
-<%= render 'form' %>
+<div class="title">Editar Mensaje</div>
+
+<%= form_for @email do |f| %>
+    <%= f.error_messages %>
+    <div class="field">
+        </br><%= f.label :asunto %><br/>
+        <%= f.text_field :subject %>
+    </div>
+    <div class="field">
+        </br>Usuario<%= radio_button_tag(:user_for, "Usuario") %>
+        <%= f.select :user_for, options_from_collection_for_select( User.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%"), :email, :email)%>
+    </div>
+    <div class="field">
+        </br>Restaurante<%= radio_button_tag(:user_for, "Restaurante") %>
+        <%= f.select :user_for, options_from_collection_for_select( Restaurant.where("id != ?", "#{@current_restaurant.id}"), :email, :email)%>
+    </div>
+    <div class="field">
+        </br><%= f.label :descripcion %><br/>
+        <%= f.text_area :description, :cols => 100, rows: 12 %>
+    </div>
+    <%= f.hidden_field :is_view, :value => 1 %>
+    <%= f.hidden_field :user_from, :value => current_user.email %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <div class="field">
+        </br><%= f.submit %>
+    </div>
+<% end %>
 
 <p>
   <%= link_to "Show", @email %> |
