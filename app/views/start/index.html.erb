@@ -1,21 +1,231 @@
 <div class="title">Seleccione una de las opciones</div>
-<p>Aqui irian las paginas que conectan a cada unas de las ventanas con una breve descripcion de lo que se puede realizar en dicha pagina</p>
+</br><div class="start">
+	<% if current_user.superadmin %>
+		<%= link_to restaurants_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('registrar_restaurante.png', :alt => 'registrar_restaurante')%>
+				</div>
+				<p>Registrar un nuevo restaurante en la aplicación</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<%= link_to restaurant_users_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('registrar_empleado.png', :alt => 'registrar_empleado')%>
+				</div>
+				<p>Registrar un nuevo empleado en un restaurante ya resgistrado en la aplicación</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<%= link_to total_restaurants_index_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('ver_restaurante.png', :alt => 'registrar_empleado')%>
+				</div>
+				<p>Visualización de todos los restaurantes registrados en el sistema</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<%= link_to total_clients_index_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('ver_clientes.png', :alt => 'ver_clientes')%>
+				</div>
+				<p>Visualización de todos los clientes registrados en el sistema</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<%= link_to total_products_index_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('ver_productos.png', :alt => 'ver_productos')%>
+				</div>
+				<p>Visualización de todos los productos registrados en el sistema</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% end %>
+	<% if @current_role == 0 %>
+		<%= link_to commands_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('comanda.png', :alt => 'comanda')%>
+				</div>
+				<p>Comanda que el cliente realiza desde su mesa y que el camarero recibe para ser servido posteriormente</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% elsif @current_role == 1 %>
+		<%= link_to commands_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('comanda_restaurante.png', :alt => 'comanda_restaurante')%>
+				</div>
+				<p>Comanda que recibe el camarero para ser servido posteriormente a la mesa</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% elsif @current_role == 2 %>
+		<%= link_to commands_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('comanda_restaurante.png', :alt => 'comanda_restaurante')%>
+				</div>
+				<p>Comanda que recibe el cocinero para ser servido posteriormente a la mesa</p>
+			</div>
+		<% end %>
+	<% elsif @current_role == 3 %>
+		<%= link_to commands_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('comanda_restaurante.png', :alt => 'comanda_restaurante')%>
+				</div>
+				<p>El gerente podra ver las comandas que tienen asignadas tanto el camarero como el cocinero</p>
+			</div>
+		<% end %>
+	<% end %>
+	<% if @current_role == 0 || @current_role == 1 || @current_role == 2 || @current_role == 3 %>
+		<%= link_to restaurant_users_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('restaurante.png', :alt => 'restaurante')%>
+				</div>
+				<p>Es aquí donde se selecciona el restaurante donde se va a querer realizar la comanda</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% end %>
+	<% if @current_role == 0 || @current_role == 1 || @current_role == 2 %>
+		<%= link_to incidences_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('incidencia.png', :alt => 'incidencia')%>
+				</div>
+				<p>Aquí se podrán reportar las incidencias del restuarante para que el se resulvan lo antes posible</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% elsif @current_role == 3 %>
+		<%= link_to incidences_index_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('incidencia.png', :alt => 'incidencia')%>
+				</div>
+				<p>Aquí el gerente del restaurante podrá ver y gestionar las incidencias</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% end %>
+	<% if @current_role == 0 %>
+		<%= link_to takeaways_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('pedido_online.png', :alt => 'pedido_online')%>
+				</div>
+				<p>Realice el pedido de sus productos favoritos y venga a recogerlo a casa o si lo desea se le podrá enviar el pedido a domicilio</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% end %>
+	<% if @current_role == 0 || @current_role == 1 || @current_role == 2 || @current_role == 3 %>
+		<%= link_to reservations_index_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('reserva.png', :alt => 'reserva')%>
+				</div>
+				<p>Petición de reserva el dia que desee de la mesa del restaurante para no tener que esperar</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% end %>
+	<% if @current_role == 3 %>
+		<%= link_to products_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('productos.png', :alt => 'productos')%>
+				</div>
+				<p>En esta sección el gerente podrá registrar, consultar y modificar los productos del restaurante</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<%= link_to stocks_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('stock.png', :alt => 'stock')%>
+				</div>
+				<p>En esta sección el gerente podrá registrar, consultar y modificar el stock del restaurante</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<%= link_to menus_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('menu.png', :alt => 'menu')%>
+				</div>
+				<p>En esta sección el gerente podrá registrar, consultar y modificar los menus del restaurante</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<%= link_to statistics_index_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('estadisticas.png', :alt => 'estadisticas')%>
+				</div>
+				<p>En esta sección el gerente podrá consultar las estadisticas del restaurante</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<%= link_to statistics_index_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('ver_reservas.png', :alt => 'ver_reservas')%>
+				</div>
+				<p>En esta sección el gerente podrá consultar y modificar las reservas del restaurante</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% end %>
+	<%= link_to emails_index_path do %>
+		<div class="starts">
+			<div class="imagen">
+				<%= image_tag('mensajeria.png', :alt => 'mensajeria')%>
+			</div>
+			<p>Bandeja de entrada de mensajes de usuarios donde se intercambiará información como reservas o asignacion de menus para una determinada reserva entre otros</p>
+			<div class="clear"></div>
+		</div>
+	<% end %>
+	<% if @current_role == 0 %>
+		<%= link_to conversations_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('chat.png', :alt => 'chat')%>
+				</div>
+				<p>Chat privado entre clientes del mismo restaurante donde poder comunicarse con personas las cuales opinan de diferentes temas</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% end %>
+	<%= link_to profile_index_path do %>
+		<div class="starts">
+			<div class="imagen">
+				<%= image_tag('mi_perfil.png', :alt => 'mi_pefil')%>
+			</div>
+			<p>Perfil del usuario donde se podrá modificar toda la información en caso de que sea necesario</p>
+			<div class="clear"></div>
+		</div>
+	<% end %>
+	<% if @current_role == 0 || @current_role == 1 || @current_role == 2 || @current_role == 3 %>
+		<%= link_to profile_index_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('contactar.png', :alt => 'contactar')%>
+				</div>
+				<p>Lugar donde se encuentra situado el restaurante, poder ver la informacion y contactar con el mismo</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+	<% end %>
+</div>
 
-<ul class="tabs">
-<li><a href="#tab1">Opción 1</a></li>
-<li><a href="#tab2">Opción 2</a></li>
-<li><a href="#tab3">Opción 3</a></li>
-</ul>
-<div class="contenedor_tab">
-<div id="tab1" class="contenido_tab">
-CONTENIDO 1
-</div>
-<div id="tab2" class="contenido_tab">
-CONTENIDO2
-</div>
-<div id="tab3" class="contenido_tab">
-CONTENIDO3
-</div>
-</div>
-<div style="clear:both;">
-</div>

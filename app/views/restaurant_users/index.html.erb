@@ -48,7 +48,7 @@
 				</div>
 			<% end %>
 			<div class="field">
-				</br><%= f.submit "Dar de alta Usuario en Restaurante"%>
+				</br><%= f.submit "Dar de alta Personal"%>
 			</div>
 		<% end %>   
 	<% else %>
@@ -60,7 +60,7 @@
 			</div>
 	        <%= f.hidden_field :user_id, :value => current_user.id %>
 			<div class="field">
-				</br><%= f.submit %>
+				</br><%= f.submit "Dar de alta Restaurante"%>
 			</div>
 		<% end %>
     <% end %>

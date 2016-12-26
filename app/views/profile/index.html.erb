@@ -1,15 +1,15 @@
-<div class="title">Perfil <%=current_user.user_name%></div>
-<div id="logo_profile">
-	<%= image_tag "perfil.png"%>
-</div>
-<div id = "profile">
-	<ul>
-		<li><div class="accion">Nombre:	</div><h3><%= current_user.user_name%></h3></li>
-		<li><div class="accion">Correo: </div><h3><%= current_user.email%></h3></li>
-		<li><div class="accion">Telefono: </div><h3><%= current_user.phone%></h3></li>
-	</ul>	
-</div>
-<div id="config_profile">
-	<p><%= button_to "Editar usuario", edit_user_registration_path, :method => "get" %></p>
-	<p><%= button_to "Editar contraseña", edit_user_password_path, :method => "get" %></p>
+<div class="title">Perfil</div>
+</br><div class="profile">
+	</br><div class="accion-perfil">Perfil del usuario '<%=current_user.user_name%>'</div>
+	<div id="logo_profile">
+		<%= image_tag "perfil.png"%>
+	</div>
+	</br><div id = "profile_info">
+		<h3>Nombre:	</h3><%= current_user.user_name%>
+		<h3>Correo: </h3><%= current_user.email%>
+		<h3>Telefono: </h3><%= current_user.phone%>
+	</div>
+		</br><p><%= button_to "Editar usuario", edit_user_registration_path, :method => "get" %></p>
+		</br></br></br><p><%= button_to "Editar contraseña", edit_user_password_path, :method => "get" %></p>
+
 </div>

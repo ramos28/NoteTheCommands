@@ -1,5 +1,5 @@
 
-<h1>Producto</h1>
+<div class="title">Producto</div>
 
     <p>
         <strong>Nombre:</strong>
@@ -7,7 +7,7 @@
     </p>
     <p>
         <strong>Tipo producto:</strong>
-        <%= @product.product_type %>
+        <%= Product::PRODUCT_CATEGORY[@product.product_type] %>
     </p>
     <p>
         <strong>Descripcion Producto:</strong>

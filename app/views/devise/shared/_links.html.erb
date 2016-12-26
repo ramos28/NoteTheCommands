@@ -1,17 +1,17 @@
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-	</br><%= link_to "¿Ha olvidado la contraseña?", new_password_path(resource_name) %><br />
+	</br><%= link_to "¿Ha olvidado la contraseña?", new_password_path(resource_name), style: "color: white" %><br />
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-	</br><%= link_to "¿No recibió instrucciones de confirmación?", new_confirmation_path(resource_name) %><br />
+	</br><%= link_to "¿No recibió instrucciones de confirmación?", new_confirmation_path(resource_name), style: "color: white" %><br />
 <% end -%>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-	</br><%= link_to "¿No recibió instrucciones de desbloqueo?", new_unlock_path(resource_name) %><br />
+	</br><%= link_to "¿No recibió instrucciones de desbloqueo?", new_unlock_path(resource_name), style: "color: white" %><br />
 <% end -%>
 
 <%- if devise_mapping.omniauthable? %>
 	<%- resource_class.omniauth_providers.each do |provider| %>
-		</br><%= link_to "Inicia sesion con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+		</br><%= link_to "Inicia sesion con #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), style: "color: white" %><br />
 	<% end -%>
 <% end -%>
