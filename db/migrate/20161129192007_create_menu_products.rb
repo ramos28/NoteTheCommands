@@ -5,7 +5,6 @@ class CreateMenuProducts < ActiveRecord::Migration[5.0]
 			t.index :product_id
 
 			t.integer :category, null: false
-			t.integer :quantity, null: false
 
 			t.timestamps
 		end

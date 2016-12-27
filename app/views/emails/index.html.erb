@@ -3,12 +3,12 @@
 <ul class="tabs">
     <li><a href="#tab1">Mensajes recibidos</a></li>
     <li><a href="#tab2">Mensajes enviados</a></li>
-    <li><a href="#tab3">Mensajes recibidos restaurante</a></li>
-    <li><a href="#tab2">Mensajes enviados restaurante</a></li>
 </ul>
 <div class="contenedor_tab">
     <div id="tab1" class="contenido_tab">
         <table class="pretty">
+            <%= button_to "New email", new_email_path, :method => "get" %>
+            <%= button_to "Destroy", @email, :confirm => 'Estas seguro?', :method => :delete %>
             <thead>
                 <tr>
                     <th>Selecciona</th>
@@ -26,7 +26,11 @@
                         <td><%= check_box_tag "alternate_numbers" %></td>
                         <td><%= email_in.subject %></td>
                         <td><%= email_in.user_from %></td>
-                        <td><%= email_in.user_for %></td>
+                        <% if @current_restaurant.email == email_in.user_for %>
+                            <td class="b3"><%= email_in.user_for %></td>
+                        <% else %>
+                            <td class="b4"><%= email_in.user_for %></td>
+                        <% end %>
                         <td class="contenido"><%= email_in.description %></td>
                         <td><%= email_in.created_at %></td>
                         <% if email_in.is_view == 0 %>
@@ -34,7 +38,7 @@
                         <% else %>
                             <td class="b2"><%= Email::VIEW_CATEGORY[email_in.is_view]%></td>
                         <% end %>
-                        <td><%= link_to "Leer Mensaje", emails_show_path(email_in) %></td>
+                        <td><%= link_to "Leer Mensaje", emails_show_path(email_in.id) %></td>
                     </tr>
                 <% end %>
             </tbody>
@@ -42,14 +46,13 @@
                 <%= will_paginate @emails_in %>
             </tfoot>
         </table>
-        <%= button_to "New email", new_email_path, :method => "get" %>
     </div>
     <div id="tab2" class="contenido_tab">
          <table class="pretty">
             <thead>
                 <tr>
                     <th> Asunto </th>
-                    <th> Receptor. Para: </th>
+                    <th> Enviado por: </th>
                     <th> Descripción </th>
                     <th> Fecha Creación </th>
                     <th> Esta leido </th>
@@ -75,77 +78,6 @@
             </tfoot>
         </table>
     </div>
-    <% if @current_role == RestaurantUser::ROLES.index('GERENTE') %>
-        <div id="tab3" class="contenido_tab">
-            <table class="pretty">
-                <thead>
-                    <tr>
-                        <th>Selecciona</th>
-                        <th> Asunto </th>
-                        <th> Emisor. De: </th>
-                        <th> Receptor. Para: </th>
-                        <th> Descripción </th>
-                        <th> Fecha Creación </th>
-                        <th> Esta leido </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @emails_in_rest.each do |email_in_rest| %>
-                        <tr>
-                            <td><%= check_box_tag "alternate_numbers" %></td>
-                            <td><%= email_in_rest.subject %></td>
-                            <td><%= email_in_rest.user_from %></td>
-                            <td><%= email_in_rest.user_for %></td>
-                            <td class="contenido"><%= email_in_rest.description %></td>
-                            <td><%= email_in_rest.created_at %></td>
-                            <% if email_in_rest.is_view == 0 %>
-                                <td class="b1"><%= Email::VIEW_CATEGORY[email_in_rest.is_view]%></td>
-                            <% else %>
-                                <td class="b2"><%= Email::VIEW_CATEGORY[email_in_rest.is_view]%></td>
-                            <% end %>
-                            <td><%= link_to "Leer Mensaje", emails_show_path(email_in_rest) %></td>
-                        </tr>
-                    <% end %>
-                </tbody>
-                <tfoot>
-                    <%= will_paginate @emails_in_rest %>
-                </tfoot>
-            </table>
-            <%= button_to "New email", new_email_path, :method => "get" %>
-        </div>
-        <div id="tab4" class="contenido_tab">
-             <table class="pretty">
-                <thead>
-                    <tr>
-                        <th> Asunto </th>
-                        <th> Receptor. Para: </th>
-                        <th> Descripción </th>
-                        <th> Fecha Creación </th>
-                        <th> Esta leido </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @emails_out_rest.each do |emails_out_rest| %>
-                        <tr>
-                            <td><%= emails_out_rest.subject %></td>
-                            <td><%= emails_out_rest.user_for %></td>
-                            <td class="contenido"><%= emails_out_rest.description %></td>
-                            <td><%= emails_out_rest.created_at %></td>
-                            <% if emails_out_rest.is_sent == 0 %>
-                                <td class="b1"><%= Email::SENT_CATEGORY[emails_out_rest.is_sent]%></td>
-                            <% else %>
-                                <td class="b2"><%= Email::SENT_CATEGORY[emails_out_rest.is_sent]%></td>
-                            <% end %>
-                        </tr>
-                    <% end %>
-                </tbody>
-                <tfoot>
-                    <%= will_paginate @emails_out_rest %>
-                </tfoot>
-            </table>
-        </div>
-    <% end %>
-</div>
 <div style="clear:both;">
 
 </div>

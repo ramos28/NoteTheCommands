@@ -1,33 +1,97 @@
 <div class="title">Incidencias del Restaurante</div>
-
-<table>
-    <tr>
-        <th><%=  "Titulo" %></th>
-        <th><%=  "Categoria" %></th>
-        <th><%=  "Prioridad" %></th>
-        <th><%=  "Descripción" %></th>
-        <th><%=  "Fecha creacion" %></th>
-        <th><%=  "Fecha solucion" %></th>
-        <th><%=  "Restaurante" %></th>
-        <th><%=  "Usuario" %></th>
-        <th><%=  "Esta resuelto" %></th>
-    </tr>
-    <% @incidences.each do |incidence| %>
-        <tr>
-            <td><%= incidence.title %></td>
-            <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-            <td><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-            <td><%= incidence.description %></td>
-            <td><%= incidence.date_start %></td>
-            <td><%= incidence.date_solution %></td>
-            <td><%= incidence.restaurant.name %></td>
-            <td><%= incidence.user.user_name %></td>
-            <% if incidence.is_solved == 0 %>
-                <td class="b1"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
-            <% else %>
-                <td class="b2"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+<ul class="tabs">
+    <li><a href="#tab1">Incidencias</a></li>
+    <li><a href="#tab2">Incidencias Pendientes</a></li>
+    <li><a href="#tab3">Incidencias Terminadas</a></li>
+</ul>
+<div class="contenedor_tab">
+    <div id="tab1" class="contenido_tab">
+       <table>
+            <tr>
+                <th><%=  "Titulo" %></th>
+                <th><%=  "Categoría" %></th>
+                <th><%=  "Prioridad" %></th>
+                <th><%=  "Descripción" %></th>
+                <th><%=  "Fecha creacion" %></th>
+                <th><%=  "Fecha solucion" %></th>
+                <th><%=  "Restaurante" %></th>
+                <th><%=  "Usuario" %></th>
+                <th><%=  "Esta resuelto" %></th>
+            </tr>
+            <% @incidences.each do |incidence| %>
+                <tr>
+                    <td><%= incidence.title %></td>
+                    <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
+                    <td><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
+                    <td><%= incidence.description %></td>
+                    <td><%= incidence.date_start %></td>
+                    <td><%= incidence.date_solution %></td>
+                    <td><%= incidence.restaurant.name %></td>
+                    <td><%= incidence.user.user_name %></td>
+                    <% if incidence.is_solved == 0 %>
+                        <td class="b1"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                    <% else %>
+                        <td class="b2"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                    <% end %>
+                </tr>
             <% end %>
-            <td><%= link_to "Edit Incidencia", edit_incidence_path(incidence) %></td>
-        </tr>
-    <% end %>
-</table>
+        </table>
+    </div>
+    <div id="tab2" class="contenido_tab">
+         <table>
+            <tr>
+                <th><%=  "Titulo" %></th>
+                <th><%=  "Categoría" %></th>
+                <th><%=  "Prioridad" %></th>
+                <th><%=  "Descripción" %></th>
+                <th><%=  "Fecha creacion" %></th>
+                <th><%=  "Usuario" %></th>
+                <th><%=  "Esta resuelto" %></th>
+            </tr>
+            <% @incidences.each do |incidence| %>
+                <tr>
+                    <td><%= incidence.title %></td>
+                    <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
+                    <td><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
+                    <td><%= incidence.description %></td>
+                    <td><%= incidence.date_start %></td>
+                    <td><%= incidence.user.user_name %></td>
+                    <% if incidence.is_solved == 0 %>
+                        <td class="b1"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                    <% else %>
+                        <td class="b2"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                    <% end %>
+                    <td><%= link_to "Edit Incidencia", edit_incidence_path(incidence) %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+    <div id="tab3" class="contenido_tab">
+         <table>
+            <tr>
+                <th><%=  "Titulo" %></th>
+                <th><%=  "Categoría" %></th>
+                <th><%=  "Fecha creacion" %></th>
+                <th><%=  "Fecha solucion" %></th>
+                <th><%=  "Usuario" %></th>
+                <th><%=  "Esta resuelto" %></th>
+            </tr>
+            <% @incidences.each do |incidence| %>
+                <tr>
+                    <td><%= incidence.title %></td>
+                    <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
+                    <td><%= incidence.date_start %></td>
+                    <td><%= incidence.date_solution %></td>
+                    <td><%= incidence.user.user_name %></td>
+                    <% if incidence.is_solved == 0 %>
+                        <td class="b1"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                    <% else %>
+                        <td class="b2"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                    <% end %>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+</div>
+<div style="clear:both;">
+</div>

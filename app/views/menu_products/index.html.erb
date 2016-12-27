@@ -7,7 +7,6 @@
 				<th>Producto</th>
 				<th>Menu</th>
 				<th>Tipo</th>
-				<th>Cantidad</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -16,7 +15,6 @@
 					<td><%= menu_product.product_id.name %></td>
 					<td><%= menu_product.menu_id.name %></td>
 					<td><%= MenuProduct::CONTENT_CATEGORY[menu_product.category] %></td>
-					<td><%= menu_product.quantity %></td>
 				</tr>
 			<% end %>
 		</tbody>
@@ -33,10 +31,6 @@
 	    <div class="field">
 	        <%= f.label :category %>
 	        <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
-	    </div>
-	    <div class="field">
-	        <%= f.label :quantity %><br />
-	        <%= f.text_field :quantity %>
 	    </div>
 	    <%= f.hidden_field :menu_id, :value => @menu_products.menu_id %>
 	    <div class="field">

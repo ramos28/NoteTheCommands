@@ -5,11 +5,13 @@
 		<%= image_tag "perfil.png"%>
 	</div>
 	</br><div id = "profile_info">
-		<h3>Nombre:	</h3><%= current_user.user_name%>
-		<h3>Correo: </h3><%= current_user.email%>
-		<h3>Telefono: </h3><%= current_user.phone%>
+		<div class="p2">Correo:   <%= current_user.email%></div>
+		<div class="p2">Teléfono:   <%= current_user.phone%></div>
+		<div class="p2">Edad:	  <%= current_user.birth_date%></div>
+		<div class="p2">Fecha de Alta:	  <%= current_user.created_at%></div>
+		<div class="p2">Número logins:	  <%= current_user.sign_in_count%></div>
 	</div>
+		</br></br><div class="accion-perfil">Modificar datos de Usuario</div>
 		</br><p><%= button_to "Editar usuario", edit_user_registration_path, :method => "get" %></p>
-		</br></br></br><p><%= button_to "Editar contraseña", edit_user_password_path, :method => "get" %></p>
 
 </div>

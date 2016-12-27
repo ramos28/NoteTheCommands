@@ -109,7 +109,6 @@ ActiveRecord::Schema.define(version: 20161217174308) do
     t.integer  "menu_id",    null: false
     t.integer  "product_id", null: false
     t.integer  "category",   null: false
-    t.integer  "quantity",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["menu_id"], name: "index_menu_products_on_menu_id", using: :btree

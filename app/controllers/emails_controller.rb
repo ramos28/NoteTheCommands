@@ -1,25 +1,28 @@
 class EmailsController < ApplicationController
     def index
         #Bandeja de entrada
-        @emails_in = Email.where("user_for = ? OR user_for = ?", "#{current_user.email}", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
-        @emails_in_rest = Email.where("user_for = ?", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
+        #@emails_in = Email.where("user_for = ? OR user_for = ?", "#{current_user.email}", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
+        #@emails_in_rest = Email.where("user_for = ?", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
         #Bandeja de enviados
-        @emails_out = Email.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page]) 
-        @emails_out_rest = Email.where("user_from = ?", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
+        #@emails_out = Email.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page]) 
+        #@emails_out_rest = Email.where("user_from = ?", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
 
         #Bandeja de entrada donde los correos del restaurante aparecen asociados con los correos del usuario
         #Bandeja de entrada
-        #if (@current_role == RestaurantUser::ROLES.index('GERENTE'))
-        #    @emails_in = Email.where("user_for = ? OR user_for = ?", "#{current_user.email}", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
-        #else 
-        #    @emails_in = Email.where("user_for = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page])
-        #end
+        if @current_role == RestaurantUser::ROLES.index('GERENTE')
+            @emails_in = Email.where("user_for = ? OR user_for = ?", "#{current_user.email}", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
+        else 
+            @emails_in = Email.where("user_for = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page])
+            if !current_user.superadmin
+                @email_rest = Restaurant.where("email = ?", "#{@current_restaurant.email}")
+            end
+        end
         #Bandeja de enviados
-        #if (@current_role == RestaurantUser::ROLES.index('GERENTE'))
-        #    @emails_out = Email.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page])
-        #else 
-        #    @emails_out = Email.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page])
-        #end
+        if @current_role == RestaurantUser::ROLES.index('GERENTE')
+            @emails_out = Email.where("user_from = ? OR user_from = ?", "#{current_user.email}", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
+        else 
+            @emails_out = Email.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page])
+        end
 
     end
 
@@ -56,10 +59,10 @@ class EmailsController < ApplicationController
     end
   
     def destroy
-            @email = Email.find(params[:id])
-            @email.destroy
-            flash[:notice] = "Successfully destroyed email."
-            redirect_to emails_url
+        @email = Email.find(params[:id])
+        @email.destroy
+        flash[:notice] = "Successfully destroyed email."
+        redirect_to emails_url
     end
   
     private

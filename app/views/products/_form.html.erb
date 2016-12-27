@@ -13,11 +13,11 @@
         <%= f.text_field :unit_price %>
     </div>
     <div class="field">
-        </br><%= f.label :descripción_producto %><br />
+        </br><%= f.label :breve_descripción_de_ingredientes %><br />
         <%= f.text_area :description, :cols => 30, rows: 5 %>
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <div class="field">
-        <p><%= f.submit %></p>
+        <p><%= f.submit 'Crear Producto'%></p>
     </div>
 <% end %>

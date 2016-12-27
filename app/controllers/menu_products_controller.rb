@@ -17,7 +17,7 @@ class MenuProductsController < ApplicationController
     private
 
     def menu_product_params
-        params.require(:menu_product).permit(:product_id, :menu_id, :category, :quantity)
+        params.require(:menu_product).permit(:product_id, :menu_id, :category)
 
     end
 end

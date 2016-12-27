@@ -3,12 +3,13 @@
 	<div class ="muestra-tabla">
 		<table class="pretty">
 		    <tr>
-		        <th><%= "Comanda" %></th>
-		        <th><%= "Restaurante" %></th>
-		        <th><%= "Usuario" %></th>
-		        <th><%= "Mesa" %></th>
-		        <th><%= "Descripción" %></th>
-		        <th><%= "¿Esta Finalizada?" %></th>
+		        <th><%= Comanda %></th>
+		        <th><%= Restaurante %></th>
+		        <th><%= Usuario %></th>
+		        <th><%= Lugar %></th>
+		        <th><%= Mesa %></th>
+		        <th><%= Descripción %></th>
+		        <th><%= ¿Esta Finalizada? %></th>
 		    </tr>
 		    <% @commands.each do |command| %>
 		    <%= command.location.restaurant_id %>
@@ -18,7 +19,8 @@
 		                <td><%= command.title %></td>
 		                <td><%= command.location.restaurant_id %></td>
 		                <td><%= command.user.user_name %></td>
-		                <td><%= command.location.place %></td>
+		                <td><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
+		                <td><%= command.location.sit %></td>
 		                <td><%= command.description %></td>
 		                <td><%= command.is_end %></td>
 		                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
