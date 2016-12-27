@@ -25,7 +25,7 @@
     </div>
 
     <div class="muestra-tabla-menus"> 
-        <div class="letra_menu">Menú <%= @menu.name %></div>
+        <div class="letra_menu">Menú <%= Menu::MENU_CATEGORY[@menu.type_menu] %></div>
             <div class="menu_tipo">Entrante</div>
             <% @menu.menu_products.each do |mp| %>
                 <% if mp.category == 0 %>

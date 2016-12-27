@@ -3,13 +3,13 @@
 	<div class ="muestra-tabla">
 		<table class="pretty">
 		    <tr>
-		        <th><%= Comanda %></th>
-		        <th><%= Restaurante %></th>
-		        <th><%= Usuario %></th>
-		        <th><%= Lugar %></th>
-		        <th><%= Mesa %></th>
-		        <th><%= Descripción %></th>
-		        <th><%= ¿Esta Finalizada? %></th>
+		        <th>Comanda</th>
+		        <th>Restaurante</th>
+		        <th>Usuario</th>
+		        <th>Lugar</th>
+		        <th>Mesa</th>
+		        <th>Descripción</th>
+		        <th>¿Esta Finalizada?</th>
 		    </tr>
 		    <% @commands.each do |command| %>
 		    <%= command.location.restaurant_id %>

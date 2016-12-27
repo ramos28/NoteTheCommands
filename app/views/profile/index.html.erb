@@ -7,8 +7,8 @@
 	</br><div id = "profile_info">
 		<div class="p2">Correo:   <%= current_user.email%></div>
 		<div class="p2">Teléfono:   <%= current_user.phone%></div>
-		<div class="p2">Edad:	  <%= current_user.birth_date%></div>
-		<div class="p2">Fecha de Alta:	  <%= current_user.created_at%></div>
+		<div class="p2">Edad:	  <%= current_user.birth_date %></div>
+		<div class="p2">Fecha de Alta:	  <%= current_user.created_at.strftime("%d %B %Y") %></div>
 		<div class="p2">Número logins:	  <%= current_user.sign_in_count%></div>
 	</div>
 		</br></br><div class="accion-perfil">Modificar datos de Usuario</div>

@@ -7,9 +7,9 @@
                 <div class="accion"><%= noticia.title %></div>
                 <p>Posted on <%= noticia.created_at %> – <a href=”#comments”>3 comments</a>
                     <%if @current_role != 0%>
-                        | <%= link_to "Edit Blog", edit_blog_path(noticia) %>
-                        | <%= link_to "Destroy", @blog, :confirm => 'Are you sure?', :method => :delete %>
-                        | <%= link_to "New Blogs", new_blog_path %>
+                        | <%= link_to "Edit Blog", edit_blog_path(noticia), style: "color: white" %>
+                        | <%= link_to "Destroy", @blog, :confirm => 'Are you sure?', :method => :delete, style: "color: white" %>
+                        | <%= link_to "New Blogs", new_blog_path, style: "color: white" %>
                     <% end %>
                 </p>
             </head>

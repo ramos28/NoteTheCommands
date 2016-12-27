@@ -24,12 +24,13 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="4"><%= will_paginate @restaurant_users %></td>
+				<%= will_paginate @restaurant_users %>
 			</tr>
 		</tfoot>
 	</table>
 </div>
 <div class="muestra-opciones">
+	</br></br></br>
 	<% if current_user.superadmin %>
 		<div class="accion">Registra Personal</div>                              
 		<%= form_for @restaurants_users do |f| %>
@@ -64,4 +65,5 @@
 			</div>
 		<% end %>
     <% end %>
+    </br></br></br></br></br></br></br></br></br>
 </div>

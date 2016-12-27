@@ -3,7 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #conversation-body {
-  max-height: 400px;
-  overflow-y: auto;
-  margin-bottom: 2em;
+	float: left;
+	text-align: center;
+	top: 35%;
+	width: 750px;
+	max-height: 400px;
+	overflow-y: auto;
+	margin-bottom: 2em;
+}
+
+.muestra-tabla-conversacion {
+	float: left;
+	text-align: center;
+	top: 35%;
+	width: 350px;
 }

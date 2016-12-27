@@ -4,6 +4,7 @@ class ConversationsController < ApplicationController
 
 	def index
 		@conversations = Conversation.participating(current_user).order('updated_at DESC').paginate(:per_page => 5, :page => params[:page])
+		@users = User.all.paginate(:per_page => 20, :page => params[:page])
 	end
 
 	def show

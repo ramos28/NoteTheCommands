@@ -24,8 +24,8 @@
                     <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
                     <td><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                     <td><%= incidence.description %></td>
-                    <td><%= incidence.date_start %></td>
-                    <td><%= incidence.date_solution %></td>
+                    <td><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                    <td><%= incidence.date_solution.strftime("%d %B %Y -- %X") %></td>
                     <td><%= incidence.restaurant.name %></td>
                     <td><%= incidence.user.user_name %></td>
                     <% if incidence.is_solved == 0 %>
@@ -54,7 +54,7 @@
                     <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
                     <td><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                     <td><%= incidence.description %></td>
-                    <td><%= incidence.date_start %></td>
+                    <td><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
                     <td><%= incidence.user.user_name %></td>
                     <% if incidence.is_solved == 0 %>
                         <td class="b1"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
@@ -80,8 +80,8 @@
                 <tr>
                     <td><%= incidence.title %></td>
                     <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-                    <td><%= incidence.date_start %></td>
-                    <td><%= incidence.date_solution %></td>
+                    <td><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                    <td><%= incidence.date_solution.strftime("%d %B %Y -- %X") %></td>
                     <td><%= incidence.user.user_name %></td>
                     <% if incidence.is_solved == 0 %>
                         <td class="b1"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>

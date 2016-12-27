@@ -16,7 +16,7 @@
                     <th> Emisor. De: </th>
                     <th> Receptor. Para: </th>
                     <th> Descripción </th>
-                    <th> Fecha Creación </th>
+                    <th> Fecha Recibido </th>
                     <th> Esta leido </th>
                 </tr>
             </thead>
@@ -32,7 +32,7 @@
                             <td class="b4"><%= email_in.user_for %></td>
                         <% end %>
                         <td class="contenido"><%= email_in.description %></td>
-                        <td><%= email_in.created_at %></td>
+                        <td><%= email_in.created_at.strftime("%d %B %Y -- %X") %></td>
                         <% if email_in.is_view == 0 %>
                             <td class="b1"><%= Email::VIEW_CATEGORY[email_in.is_view]%></td>
                         <% else %>
@@ -54,7 +54,7 @@
                     <th> Asunto </th>
                     <th> Enviado por: </th>
                     <th> Descripción </th>
-                    <th> Fecha Creación </th>
+                    <th> Fecha Envío </th>
                     <th> Esta leido </th>
                 </tr>
             </thead>

@@ -14,8 +14,8 @@
 	        <tr>
 	            <td><%= takeaway.name %></td>
 	            <td><%= takeaway.phone %></td>
-	            <td><%= takeaway.date %></td>
-	            <td><%= takeaway.hour %></td>
+	            <td><%= takeaway.date.strftime("%d %B %Y") %></td>
+	            <td><%= takeaway.hour.strftime("%X") %></td>
 	            <td><%= takeaway.restaurant.name %></td>
 	            <td><%= takeaway.total_price_selection %></td>
 	            <td><%= link_to "Edit Takeaway", edit_takeaway_path(takeaway) %></td>                
