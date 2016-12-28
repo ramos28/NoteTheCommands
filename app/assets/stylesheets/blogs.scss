@@ -5,14 +5,25 @@
 
 .muestra-blog {
 	float: left;
+	overflow:hidden;
+    background-image: url("fondoBlancoStart.jpg");
 	text-align: center;
 	top: 35%;
-	width: 790px;
+	width: 70%;
 }
 
-.muestra-comentario {
+.muestra-blogs {
 	float: left;
+	background-image: url("blog_lateral.jpg");
+	overflow:hidden;
 	text-align: center;
 	top: 35%;
-	width: 500px;
+	width: 30%;
+}
+
+div.accion-blog {
+    font-family: accionesFont;
+    text-align: center;		
+    font-size: 60px;
+    color: black;
 }

@@ -1,11 +1,12 @@
-<div class="title">Noticias del Restaurante</div>
+<div class="title">Noticias del Restaurante '<%= @current_restaurant.name %>'</div>
 
 <div class="muestra-blog">
     <article class=”blogPost”>
         <% @blogs.each do |noticia| %>
+            <%= will_paginate @blogs %>
             <head>
-                <div class="accion"><%= noticia.title %></div>
-                <p>Posted on <%= noticia.created_at %> – <a href=”#comments”>3 comments</a>
+                <div class="accion-blog"><%= noticia.title %></div>
+                <p>Posted on <%= noticia.created_at.strftime("%d %B %Y -- %X") %> – <a href=”#comments”>3 comments</a>
                     <%if @current_role != 0%>
                         | <%= link_to "Edit Blog", edit_blog_path(noticia), style: "color: white" %>
                         | <%= link_to "Destroy", @blog, :confirm => 'Are you sure?', :method => :delete, style: "color: white" %>
@@ -13,14 +14,45 @@
                     <% end %>
                 </p>
             </head>
+
             <p><%= noticia.description %></p>
-            <%= will_paginate @blogs %>
+            
+            <head>
+                <h3>Comentarios</h3>
+            </head>
+            <article>
+                <%= form_for @blog_comments do |blog_comments| %>
+                    <%= blog_comments.error_messages %>
+                     <head>
+                        <%= blog_comments.user.email %>
+                        <p>Posted on <%= blog_comments.created_at.strftime("%d %B %Y -- %X") %></p>
+                    </head>
+                    <p><%= blog_comments.comment %></p>
+                <% end %>
+            </article>
+
+            <head>
+                <h3>Post a comment</h3>
+            </head>
+            <%= form_for @blog_comment do |blog_comment| %>
+                <%= blog_comment.error_messages %>
+                <div class="field">
+                    </br><%= blog_comment.label :comentario %><br />
+                    <%= blog_comment.text_area :comment, :cols => 30, rows: 4 %>
+                </div>
+                <%= blog_comment.hidden_field :blog_id, :value => noticia.id %>
+                <%= blog_comment.hidden_field :user_id, :value => current_user.id %>
+                <div class="field">
+                    <p><%= blog_comment.submit %></p>
+                </div>
+            <% end %>
 	    <% end %>
     </article>
 </div>
-<div class="muestra-blog">
-    Aqui iria los comemtarios
-</div>
-<aside>
 
-</aside>
+<div class="muestra-blogs">
+    <% @blogs_view.each do |blog| %>
+        <%= blog.error_messages %>
+        <div class="accion-blog"><li><%= link_to blog.title, blogs_path(blog) %></li></div>
+    <% end %>
+</div>
