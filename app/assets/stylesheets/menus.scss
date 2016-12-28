@@ -4,7 +4,7 @@
 
 .menu {
     width: 95.5%;
-    height: 700px;
+    overflow:hidden;
     background-image: url("fondoBlancoStart.jpg");
     border: 1px solid black;
 }
@@ -27,7 +27,7 @@ div.menu_accion {
 	background-image: url("pizarra.jpg");
     background-position: center;
 	width: 550px;
-    height: 700px;
+    overflow:hidden;
 	float: left;
 	text-align: center;
 }

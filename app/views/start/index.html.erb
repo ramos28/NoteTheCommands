@@ -22,7 +22,7 @@
 		<%= link_to total_restaurants_index_path do %>
 			<div class="starts">
 				<div class="imagen">
-					<%= image_tag('ver_restaurante.png', :alt => 'registrar_empleado')%>
+					<%= image_tag('ver_restaurante.png', :alt => 'ver_restaurante')%>
 				</div>
 				<p>Visualización de todos los restaurantes registrados en el sistema</p>
 				<div class="clear"></div>
@@ -124,7 +124,7 @@
 				<div class="imagen">
 					<%= image_tag('pedido_online.png', :alt => 'pedido_online')%>
 				</div>
-				<p>Realice el pedido de sus productos favoritos y venga a recogerlo a casa o si lo desea se le podrá enviar el pedido a domicilio</p>
+				<p>Realice el pedido online de sus productos favoritos y venga a recogerlo a casa o si lo desea se le podrá enviar el pedido a domicilio</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -186,6 +186,24 @@
 				<div class="clear"></div>
 			</div>
 		<% end %>
+		<%= link_to questionnaires_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('cuestionario.png', :alt => 'cuestionario')%>
+				</div>
+				<p>Es aquí donde el Gerente del restaurante generará cuestiones para que los clientes realicen las votaciones mientras se le suministra la cuenta</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<%= link_to new_blog_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('publicacion_blog.png', :alt => 'publicacion_blog')%>
+				</div>
+				<p>Ventana donde el Gerente publicará noticias relevantes para que los clientes puedan verlas y dejar sus comnetarios si lo desean</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
 	<% end %>
 	<%= link_to emails_index_path do %>
 		<div class="starts">
@@ -216,6 +234,15 @@
 			<div class="clear"></div>
 		</div>
 	<% end %>
+	<%= link_to blogs_index_path do %>
+		<div class="starts">
+			<div class="imagen">
+				<%= image_tag('blog.png', :alt => 'blog')%>
+			</div>
+			<p>Aqui podremos ver las noticias, ofertas o demas información que el gerente del restaurante en el que estamos registrados publique</p>
+			<div class="clear"></div>
+		</div>
+	<% end %>
 	<% if @current_role == 0 || @current_role == 1 || @current_role == 2 || @current_role == 3 %>
 		<%= link_to profile_index_path do %>
 			<div class="starts">
@@ -227,5 +254,14 @@
 			</div>
 		<% end %>
 	<% end %>
+	<%= link_to destroy_user_session_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('cerrar_sesion.png', :alt => 'cerrar_sesion')%>
+				</div>
+				<p>Cerrar sesión del usuario actual</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
 </div>
 

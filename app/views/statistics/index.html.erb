@@ -9,12 +9,12 @@
 				<p>En esta primera opción el Gerente del restaurante al que esta registrado podrá ver las ganancias que percibe con respecto a los gastos. Dicha operación se calculará con la diferencia entre ganancias totales del restaurante y gastos totales del restaurante entre un rango de fechas que seleccionemos. Todos estos datos seán explicitos al detalle</p>
 			</div>
 		<% end %>
-		<%= link_to statistics_expenses_path do %>
+		<%= link_to statistics_commands_users_path do %>
 			<div class="statistics">
 				<div class="imagen">
 					<%= image_tag('estadistica_gastos_restaurante.png', :alt => 'estadistica_gastos_restaurante')%>
 				</div>
-				<p>En esta segunda opción el Gerente del restaurante al que esta registrado podrá ver los gastos que se realizan en el restaurante entre un rango de fechas. Dicha operación se calculará sumando todos los gastos que se han realizado en el rango seleccionado. Todos los datos serán explicitos al detalle</p>
+				<p>En esta segunda opción el Gerente del restaurante al que esta registrado podrá ver los usuarios que mas comandas han realizado en el restaurante en un rango de tiempo seleccionado. Tambien se mostrará el total de gastos de dicho usuario el rango seleccionado. Todos los datos serán explicitos al detalle</p>
 			</div>
 		<% end %>
 		<%= link_to statistics_best_seller_product_index_path do %>

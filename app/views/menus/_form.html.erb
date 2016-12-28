@@ -14,11 +14,12 @@
     </div>
     <div class="field">
         </br><%= f.label :precio %><br />
-        <%= f.number_field :price %>€
+        <%= f.number_field :price %> €
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="field">
         <p><%= f.submit 'Crear Menú'%></p>
     </div>
+    </br></br>
 <% end %>
