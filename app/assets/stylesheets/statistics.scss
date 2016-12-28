@@ -1,3 +1,23 @@
 // Place all the styles related to the statistics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.statistic {
+    width: 100%;
+    height: 395px;
+    background-image: url("fondoBlancoStart.jpg");
+    border: 1px solid black;
+}
+	
+.statistics {
+	float: left;		
+    font-size: 20px;
+    color: black;
+    height: 49.82%;
+    width: 49.84%;
+    border: 0.5px solid black;
+}
+
+.clear {
+    clear: both;
+}

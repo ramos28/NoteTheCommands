@@ -1,0 +1,2 @@
+module StatisticsVotingsHelper
+end

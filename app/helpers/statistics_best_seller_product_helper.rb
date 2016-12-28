@@ -1,0 +1,2 @@
+module StatisticsBestSellerProductHelper
+end

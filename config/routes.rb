@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  get 'statistics/index'
-
-  get 'users/index'
-
+    get 'statistics_best_seller_product/index'
+    get 'statistics_commands_users/index'
+    get 'statistics_earnings/index'
+    get 'statistics_votings/index'
+    get 'statistics/index'
+    get 'users/index'
     get 'emails/index'
     get 'emails/new'
     get 'emails/edit'
@@ -48,6 +50,13 @@ Rails.application.routes.draw do
     resources :command_menus
     resources :menu_products
     resources :emails
+    
+    resources :statistics, only: [:index]
+    resources :statistics_votings, only: [:index]
+    resources :statistics_earnings, only: [:index]
+    resources :statistics_commands_users, only: [:index]
+    resources :statistics_best_seller_product, only: [:index]
+
     resources :users, only: [:index]
     resources :personal_messages, only: [:new, :create]
     resources :conversations, only: [:index, :show]
