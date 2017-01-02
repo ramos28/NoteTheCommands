@@ -13,6 +13,9 @@ class Restaurant < ApplicationRecord
 	has_many :menus
 	has_many :commands
 
+	geocoded_by :address
+	after_validation :geocode
+
 
 	def ventas
 		ventas = 0

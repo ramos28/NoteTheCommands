@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'takeaway_products/index'
+
     get 'statistics_best_seller_product/index'
     get 'statistics_commands_users/index'
     get 'statistics_earnings/index'
@@ -10,7 +12,6 @@ Rails.application.routes.draw do
     get 'emails/edit'
     get 'emails/show'
     get 'emails/_form'
-    get 'product_takeaways/index'
     get 'total_restaurants/index'
     get 'total_products/index'
     get 'total_clients/index'
@@ -50,6 +51,7 @@ Rails.application.routes.draw do
     resources :command_menus
     resources :menu_products
     resources :emails
+    resources :takeaway_products
     
     resources :statistics, only: [:index]
     resources :statistics_votings, only: [:index]

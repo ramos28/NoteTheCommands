@@ -1,5 +1,5 @@
 <% if @current_role == 0 %>
-	<div class="title">Comanda de '<%= current_user.user_name %>'</div>
+	<div class="title">Comanda del Usuario '<%= current_user.user_name %>'</div>
 	<div class ="muestra-tabla">
 		<table class="pretty">
 		    <tr>
@@ -34,9 +34,8 @@
 	</div>
 
 	<div class="muestra-opciones">
-		<div class="accion">Crear nueva comanda</div>
+		<div class="accion">Crear Nueva Comanda</div>
 			<%= render 'form' %>
-			<p><%= link_to "Back to List", commands_path %></p>
 	    </div>
 	</div>
 

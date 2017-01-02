@@ -1,6 +1,6 @@
 <div class="title">Pedido al restaurante '<%= current_user.restaurant_users.find_by_restaurant_id(@current_restaurant).restaurant.name %>'</div>
 
-<div class ="muestra-tabla">
+<div class ="muestra-tabla-pedido">
 	<table class="pretty">
 	    <tr>
 	        <th><%= "Nombre" %></th>
@@ -8,7 +8,8 @@
 	        <th><%= "Día Recogida" %></th>
 	        <th><%= "Hora Recogida" %></th>
 	        <th><%= "Restaurante" %></th>
-	        <th><%= "Total Precio Selección" %></th>
+	        <th><%= "Total Precio Pedido" %></th>
+	        <th><%= "Esta Entregado" %></th>
 	    </tr>
 	    <% @takeaways.each do |takeaway| %>
 	        <tr>
@@ -18,13 +19,19 @@
 	            <td><%= takeaway.hour.strftime("%X") %></td>
 	            <td><%= takeaway.restaurant.name %></td>
 	            <td><%= takeaway.total_price_selection %></td>
-	            <td><%= link_to "Edit Takeaway", edit_takeaway_path(takeaway) %></td>                
+	            <% if takeaway.is_delivered == 0 %>
+	                <td class="b1"><%= Takeaway::DELIVERED_CATEGORY[takeaway.is_delivered]%></td>
+	            <% else %>
+	                <td class="b2"><%= Takeaway::DELIVERED_CATEGORY[takeaway.is_delivered]%></td>
+	            <% end %>
+	            <td><%= link_to "Edit Takeaway", edit_takeaway_path(takeaway) %></td>
+	            <td><%= link_to "Agregar productos", takeaway_path(takeaway) %></td>              
 	        </tr>
 	    <% end %>
 	</table>
 </div>
 
-<div class="muestra-opciones">
+<div class="muestra-opciones-pedido">
 	<div class="accion">Crear Pedido</div>
 	<%= render 'form' %>
 </div>

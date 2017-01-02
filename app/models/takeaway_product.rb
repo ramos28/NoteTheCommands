@@ -1,4 +1,4 @@
-class TakeawayProduct < ApplicationRecord
-	belongs :Takeaway
-	belongs :product
+class TakeawayProducts < ApplicationRecord
+	belongs_to :takeaway
+	belongs_to :product
 end

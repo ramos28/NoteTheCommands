@@ -57,3 +57,6 @@ gem 'will_paginate', '>=3.1'
 
 #chat
 gem 'emoji'
+
+#geolocalizacion
+#gem 'geocoder'

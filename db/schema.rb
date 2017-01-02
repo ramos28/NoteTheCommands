@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228222120) do
+ActiveRecord::Schema.define(version: 20161229171300) do
 
   create_table "blog_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
@@ -155,11 +155,11 @@ ActiveRecord::Schema.define(version: 20161228222120) do
   end
 
   create_table "products_takeaway", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "takeaway_id", null: false
-    t.integer  "product_id",  null: false
-    t.integer  "quantity",    null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "takeaway_id",             null: false
+    t.integer  "product_id",              null: false
+    t.integer  "quantity",    default: 0, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["product_id"], name: "index_products_takeaway_on_product_id", using: :btree
     t.index ["takeaway_id"], name: "index_products_takeaway_on_takeaway_id", using: :btree
   end
@@ -201,16 +201,18 @@ ActiveRecord::Schema.define(version: 20161228222120) do
   end
 
   create_table "restaurants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",          null: false
-    t.integer  "phone",         null: false
-    t.string   "address",       null: false
-    t.string   "city",          null: false
-    t.string   "country",       null: false
-    t.integer  "postal_code",   null: false
-    t.string   "email",         null: false
+    t.string   "name",                     null: false
+    t.integer  "phone",                    null: false
+    t.string   "address",                  null: false
+    t.string   "city",                     null: false
+    t.string   "country",                  null: false
+    t.integer  "postal_code",              null: false
+    t.string   "email",                    null: false
     t.string   "opening_hours"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.float    "latitude",      limit: 24
+    t.float    "longitude",     limit: 24
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["email"], name: "index_restaurants_on_email", unique: true, using: :btree
     t.index ["name"], name: "index_restaurants_on_name", unique: true, using: :btree
   end
@@ -226,15 +228,17 @@ ActiveRecord::Schema.define(version: 20161228222120) do
   end
 
   create_table "takeaways", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                             null: false
-    t.date     "date",                             null: false
-    t.time     "hour",                             null: false
+    t.string   "name",                                           null: false
+    t.date     "date",                                           null: false
+    t.time     "hour",                                           null: false
     t.integer  "phone"
+    t.float    "discount",              limit: 24, default: 0.0, null: false
+    t.integer  "is_delivered",                     default: 0,   null: false
     t.float    "total_price_selection", limit: 24
-    t.integer  "restaurant_id",                    null: false
+    t.integer  "restaurant_id",                                  null: false
     t.integer  "user_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.index ["restaurant_id"], name: "index_takeaways_on_restaurant_id", using: :btree
     t.index ["user_id"], name: "index_takeaways_on_user_id", using: :btree
   end

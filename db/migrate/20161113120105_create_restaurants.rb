@@ -9,6 +9,8 @@ class CreateRestaurants < ActiveRecord::Migration[5.0]
             t.integer :postal_code, null: false
             t.string :email, null:false
             t.string :opening_hours
+            t.float :latitude
+            t.float :longitude
 
             t.timestamps null: false
         end
