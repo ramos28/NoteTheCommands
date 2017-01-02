@@ -11,7 +11,7 @@
         </p>
         <p>
             <strong>Hora de recogida:</strong>
-            <%= @takeaway.hour %>
+            <%= @takeaway.hour.strftime("%X") %>
         </p>
         <p>
             <strong>Resaturante:</strong>
@@ -51,7 +51,7 @@
                 <%= f.number_field :quantity %>
             </div>
             </br><%= f.hidden_field :takeaway_id, value: @takeaway.id %>
-            <%= f.submit 'Guardar Productos en el Pedido'%>
+            <%= f.submit 'Agregar Producto al Pedido'%>
         <% end %>
     </div>
 </div>

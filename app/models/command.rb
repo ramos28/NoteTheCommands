@@ -4,8 +4,8 @@ class Command < ApplicationRecord
 	has_many :command_menus
 	has_many :command_products
 
-	FINISH_CATEGORY = ["NO LEIDO", "LEIDO"]
-
+	FINISH_CATEGORY = ["NO FINALIZADA", "FINALIZADA"]
+	SERVED_CATEGORY = ["NO SERVIDO", "SERVIDO"]
 
 	def command_price
 		price = 0

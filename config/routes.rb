@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'takeaway_products/index'
-
+    get 'contacts/index'
+    get 'takeaway_products/index'
     get 'statistics_best_seller_product/index'
     get 'statistics_commands_users/index'
     get 'statistics_earnings/index'
@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     resources :statistics_earnings, only: [:index]
     resources :statistics_commands_users, only: [:index]
     resources :statistics_best_seller_product, only: [:index]
+    resources :contacts, only: [:index]
 
     resources :users, only: [:index]
     resources :personal_messages, only: [:new, :create]

@@ -7,7 +7,8 @@ class CreateCommands < ActiveRecord::Migration[5.0]
 			t.references :user, null: false
 
 			t.text :description
-			t.integer :is_end, default: false, null: false
+			t.integer :is_served, default: 0, null: false
+			t.integer :is_end, default: 0, null: false
 
 			t.timestamps
 		end

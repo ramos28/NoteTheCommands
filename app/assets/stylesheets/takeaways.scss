@@ -17,7 +17,7 @@
 }
 
 .takeaway {
-    width: 95.5%;
+    width: 100%;
     overflow:hidden;
     background-image: url("fondoBlancoStart.jpg");
     border: 1px solid black;
@@ -34,13 +34,13 @@ div.takeaway_accion {
 	float: left;
 	text-align: center;
 	top: 35%;
-	width: 400px;
+	width: 30%;
 }
 
 .muestra-tabla-takeaways {
 	background-image: url("pedido.jpg");
     background-position: center;
-	width: 550px;
+	width: 45%;
     overflow:hidden;
 	float: left;
 	text-align: center;
@@ -50,7 +50,7 @@ div.takeaway_accion {
 	float: left;
 	text-align: center;
 	top: 35%;
-	width: 400px;
+	width: 25%;
 }
 
 @font-face {

@@ -9,7 +9,8 @@
 		        <th>Lugar</th>
 		        <th>Mesa</th>
 		        <th>Descripción</th>
-		        <th>¿Esta Finalizada?</th>
+		        <th>¿Servido?</th>
+		        <th>¿Comanda Finalizada?</th>
 		    </tr>
 		    <% @commands.each do |command| %>
 		    <%= command.location.restaurant_id %>
@@ -22,6 +23,7 @@
 		                <td><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
 		                <td><%= command.location.sit %></td>
 		                <td><%= command.description %></td>
+		                <td><%= command.is_served %></td>
 		                <td><%= command.is_end %></td>
 		                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
 		            </tr>
@@ -42,90 +44,97 @@
 <% elsif @current_role == 1 %>
 	<div class="title">Comandas del Camarero</div>
 	<table class="pretty">
-		    <tr>
-		        <th><%= "Comanda" %></th>
-		        <th><%= "Restaurante" %></th>
-		        <th><%= "Usuario" %></th>
-		        <th><%= "Mesa" %></th>
-		        <th><%= "Descripcion" %></th>
-		        <th><%= "¿Esta Finalizada?" %></th>
-		    </tr>
-		    <% @commands.each do |command| %>
-		    <%= command.location.restaurant_id %>
-		    <%= @current_restaurant %>
-		        <% if command.location.restaurant_id == @current_restaurant.id %>
-		            <tr>
-		                <td><%= command.title %></td>
-		                <td><%= command.location.restaurant_id %></td>
-		                <td><%= command.user.user_name %></td>
-		                <td><%= command.location.place %></td>
-		                <td><%= command.description %></td>
-		                <td><%= command.is_end %></td>
-		                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
-		            </tr>
-		        <% end %>
-		    <% end %>
-		    <tfoot>
-		    	<%= will_paginate @commands %>
-		    </tfoot>
-		</table>
+	    <tr>
+	        <th> Comanda </th>
+	        <th> Restaurante </th>
+	        <th> Usuario </th>
+	        <th> Mesa </th>
+	        <th> Descripcion </th>
+	        <th> ¿Servido? </th>
+	        <th> ¿Esta Finalizada? </th>
+	    </tr>
+	    <% @commands.each do |command| %>
+	    <%= command.location.restaurant_id %>
+	    <%= @current_restaurant %>
+	        <% if command.location.restaurant_id == @current_restaurant.id %>
+	            <tr>
+	                <td><%= command.title %></td>
+	                <td><%= command.location.restaurant_id %></td>
+	                <td><%= command.user.user_name %></td>
+	                <td><%= command.location.place %></td>
+	                <td><%= command.description %></td>
+	                <td><%= command.is_served %></td>
+	                <td><%= command.is_end %></td>
+	                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
+	            </tr>
+	        <% end %>
+	    <% end %>
+	    <tfoot>
+	    	<%= will_paginate @commands %>
+	    </tfoot>
+	</table>
 <% elsif @current_role == 2 %>
 	<div class="title">Comandas del Cocinero</div>
-		<table class="pretty">
-		    <tr>
-		        <th><%= "Comanda" %></th>
-		        <th><%= "Restaurante" %></th>
-		        <th><%= "Usuario" %></th>
-		        <th><%= "Mesa" %></th>
-		        <th><%= "Descripción" %></th>
-		        <th><%= "¿Esta Finalizada?" %></th>
-		    </tr>
-		    <% @commands.each do |command| %>
-		    <%= command.location.restaurant_id %>
-		    <%= @current_restaurant %>
-		        <% if command.location.restaurant_id == @current_restaurant.id %>
-		            <tr>
-		                <td><%= command.title %></td>
-		                <td><%= command.location.restaurant_id %></td>
-		                <td><%= command.user.user_name %></td>
-		                <td><%= command.location.place %></td>
-		                <td><%= command.description %></td>
-		                <td><%= command.is_end %></td>
-		                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
-		            </tr>
-		        <% end %>
-		    <% end %>
-		    <tfoot>
-		    	<%= will_paginate @commands %>
-		    </tfoot>
-		</table>
-		
+	<table class="pretty">
+	    <tr>
+	        <th> Comanda </th>
+	        <th> Restaurante </th>
+	        <th> Usuario </th>
+	        <th> Mesa </th>
+	        <th> Descripcion </th>
+	        <th> ¿Servido? </th>
+	        <th> ¿Esta Finalizada? </th>
+	    </tr>
+	    <% @commands.each do |command| %>
+	    <%= command.location.restaurant_id %>
+	    <%= @current_restaurant %>
+	        <% if command.location.restaurant_id == @current_restaurant.id %>
+	            <tr>
+	                <td><%= command.title %></td>
+	                <td><%= command.location.restaurant_id %></td>
+	                <td><%= command.user.user_name %></td>
+	                <td><%= command.location.place %></td>
+	                <td><%= command.description %></td>
+	                <td><%= command.is_served %></td>
+	                <td><%= command.is_end %></td>
+	                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
+	            </tr>
+	        <% end %>
+	    <% end %>
+	    <tfoot>
+	    	<%= will_paginate @commands %>
+	    </tfoot>
+	</table>
 <% elsif @current_role == 3 %>
 	<div class="title">Comandas del Restaurante</div>
 	<table class="pretty">
-		    <tr>
-		        <th><%= "Comanda" %></th>
-		        <th><%= "Restaurante" %></th>
-		        <th><%= "Usuario" %></th>
-		        <th><%= "Mesa" %></th>
-		        <th><%= "Descripcion" %></th>
-		        <th><%= "¿Esta Finalizada?" %></th>
-		    </tr>
-		    <% @commands.each do |command| %>
-		        <% if command.location.restaurant_id == @current_restaurant.id %>
-		            <tr>
-		                <td><%= command.title %></td>
-		                <td><%= command.location.restaurant_id %></td>
-		                <td><%= command.user.user_name %></td>
-		                <td><%= command.location.place %></td>
-		                <td><%= command.description %></td>
-		                <td><%= command.is_end %></td>
-		                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
-		            </tr>
-		        <% end %>
-		    <% end %>
-		    <tfoot>
-		    	<%= will_paginate @commands %>
-		    </tfoot>
-		</table>
+	    <tr>
+	        <th> Comanda </th>
+	        <th> Restaurante </th>
+	        <th> Usuario </th>
+	        <th> Mesa </th>
+	        <th> Descripcion </th>
+	        <th> ¿Servido? </th>
+	        <th> ¿Esta Finalizada? </th>
+	    </tr>
+	    <% @commands.each do |command| %>
+	    <%= command.location.restaurant_id %>
+	    <%= @current_restaurant %>
+	        <% if command.location.restaurant_id == @current_restaurant.id %>
+	            <tr>
+	                <td><%= command.title %></td>
+	                <td><%= command.location.restaurant_id %></td>
+	                <td><%= command.user.user_name %></td>
+	                <td><%= command.location.place %></td>
+	                <td><%= command.description %></td>
+	                <td><%= command.is_served %></td>
+	                <td><%= command.is_end %></td>
+	                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
+	            </tr>
+	        <% end %>
+	    <% end %>
+	    <tfoot>
+	    	<%= will_paginate @commands %>
+	    </tfoot>
+	</table>
 <% end %>
