@@ -9,6 +9,8 @@
             <th><%= "Ciudad" %></th>
             <th><%= "Pais" %></th>
             <th><%= "Código postal" %></th>
+            <th><%= "Coord. Latitud" %></th>
+            <th><%= "Coord. Longitud" %></th>
             <th><%= "Horario apertura" %></th>
             <th><%= "Fecha registrado" %></th>
             <th><%= "Fecha modificación" %></th>
@@ -24,9 +26,11 @@
                 <td><%= total_restaurants.city %></td>
                 <td><%= total_restaurants.country %></td>
                 <td><%= total_restaurants.postal_code %></td>
+                <td><%= total_restaurants.latitude %></td>
+                <td><%= total_restaurants.longitude %></td>
                 <td><%= total_restaurants.opening_hours %></td>
-                <td><%= total_restaurants.created_at %></td>
-                <td><%= total_restaurants.updated_at %></td>
+                <td><%= total_restaurants.created_at.strftime("%d %B %Y - %X") %></td>
+                <td><%= total_restaurants.updated_at.strftime("%d %B %Y - %X") %></td>
             </tr>
         <% end %>
     </tbody>

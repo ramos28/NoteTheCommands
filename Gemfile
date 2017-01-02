@@ -59,4 +59,4 @@ gem 'will_paginate', '>=3.1'
 gem 'emoji'
 
 #geolocalizacion
-#gem 'geocoder'
+gem 'geocoder'

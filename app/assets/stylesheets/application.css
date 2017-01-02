@@ -114,11 +114,26 @@ div.sesion {
 
 footer {
 	clear: both;
-	text-align: right;
-	font-weight: bold;
+	background-image: url("fondoFooter.jpg");
+	text-align: center;
 	padding: 20px;
-	background-color: white;
+	color: white;
+	height: 70px;
 	border: 1px solid white;
+}
+
+div.uam {
+	padding-right: 10%;
+    float: right;
+    height: 10%;
+    width: 10%;
+}
+
+div.eps {
+	padding-left: 5%;
+    float: left;
+    height: 10%;
+    width: 10%;
 }
 
 section {

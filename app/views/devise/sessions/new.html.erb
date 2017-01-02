@@ -1,25 +1,25 @@
 <div class="title">Bienvenido</div>
 <div class ="muestra-tabla">
     </br></br></br></br><div class="accion">Acceda sin Registro</div> 
-    <%= button_to 'Usuario invitado', guests_index_path, :method => "get" %>
+    </br><%= button_to 'Usuario invitado', guests_index_path, :method => "get" %>
 </div>
 
 <div class="muestra-opciones">
     </br></br><div class="accion">Acceso Usuario Registrado</div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
-            <%= f.label :correo %><br />
+            </br><%= f.label :correo %><br />
             <%= f.email_field :email, autofocus: true %>
         </div>
 
         <div class="field">
-            <%= f.label :Contraseña %><br/>
+            </br><%= f.label :Contraseña %><br/>
             <%= f.password_field :password, autocomplete: "off" %>
         </div>
 
         <% if devise_mapping.rememberable? -%>
             <div class="field">
-                <%= f.check_box :remember_me %>
+                </br><%= f.check_box :remember_me %>
                 <%= f.label :recordarme %>
             </div>
         <% end -%>

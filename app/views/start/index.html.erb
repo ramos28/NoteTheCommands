@@ -86,7 +86,7 @@
 			</div>
 		<% end %>
 	<% end %>
-	<% if @current_role == 0 || @current_role == 1 || @current_role == 2 || @current_role == 3 %>
+	<% if !current_user.superadmin %>
 		<%= link_to restaurant_users_path do %>
 			<div class="starts">
 				<div class="imagen">
@@ -234,16 +234,16 @@
 			<div class="clear"></div>
 		</div>
 	<% end %>
-	<%= link_to blogs_index_path do %>
-		<div class="starts">
-			<div class="imagen">
-				<%= image_tag('blog.png', :alt => 'blog')%>
-			</div>
-			<p>Aqui podremos ver las noticias, ofertas o demas información que el gerente del restaurante en el que estamos registrados publique</p>
-			<div class="clear"></div>
-		</div>
-	<% end %>
 	<% if @current_role == 0 || @current_role == 1 || @current_role == 2 || @current_role == 3 %>
+		<%= link_to blogs_index_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('blog.png', :alt => 'blog')%>
+				</div>
+				<p>Aqui podremos ver las noticias, ofertas o demas información que el gerente del restaurante en el que estamos registrados publique</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
 		<%= link_to profile_index_path do %>
 			<div class="starts">
 				<div class="imagen">
