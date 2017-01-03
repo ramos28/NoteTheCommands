@@ -60,3 +60,5 @@ gem 'emoji'
 
 #geolocalizacion
 gem 'geocoder'
+
+gem 'gmaps4rails'

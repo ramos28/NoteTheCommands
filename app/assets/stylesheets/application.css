@@ -17,6 +17,7 @@ header{
 	height: 200px;
 	text-align: right;
 	background-image: url("logoAPP.jpg");
+	
 }
 
 body
@@ -77,6 +78,20 @@ div.accion {
     text-align: center;		
     font-size: 40px;
     color: white;
+}
+
+.muestra-tabla-anonimous {
+	float: left;
+	text-align: center;
+	top: 35%;
+	width: 50%;
+}
+
+.muestra-tabla-login {
+	float: left;
+	text-align: center;
+	top: 35%;
+	width: 50%;
 }
 
 .muestra-tabla {

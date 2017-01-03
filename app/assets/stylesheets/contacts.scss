@@ -1,3 +1,46 @@
 // Place all the styles related to the contacts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#map-container {
+	height: 400px;
+	width: 100%;
+	border-radius: 16px 16px;
+	border-color: #444444;
+	border-style: solid;
+	box-shadow: 2px 2px 10px #B1B1B1;
+	margin-top: 25px;
+	border-width: 7px;
+}
+
+#map {
+	height: 400px;
+	width: 100%;
+}
+
+.contact {
+    width: 100%;
+    background-image: url("fondoBlancoStart.jpg");
+    border: 1px solid black;
+    overflow:hidden;
+}
+
+.contact-map-container {
+	float:left;
+	padding-left: 2%;
+    width: 50%;
+}
+
+.contact-map-info {
+	float:left;
+	text-align: center;
+    width: 50%;
+}
+
+
+div.accion-contacto {
+    font-family: titleProfile;
+    text-align: center;		
+    font-size: 50px;
+    color: black;
+}

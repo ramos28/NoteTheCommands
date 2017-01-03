@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require conversations
+//= require underscore
+//= require gmaps/google
 //= require_tree 
 
 

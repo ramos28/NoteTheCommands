@@ -1,10 +1,10 @@
 <div class="title">Bienvenido</div>
-<div class ="muestra-tabla">
+<div class ="muestra-tabla-anonimous">
     </br></br></br></br><div class="accion">Acceda sin Registro</div> 
     </br><%= button_to 'Usuario invitado', guests_index_path, :method => "get" %>
 </div>
 
-<div class="muestra-opciones">
+<div class="muestra-tabla-login">
     </br></br><div class="accion">Acceso Usuario Registrado</div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
