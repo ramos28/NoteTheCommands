@@ -2,5 +2,5 @@ class Blog < ApplicationRecord
 	belongs_to :restaurant
 	belongs_to :user
 
-	has_many :blog_user
+	has_many :blog_users
 end

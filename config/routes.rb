@@ -64,6 +64,8 @@ Rails.application.routes.draw do
     resources :personal_messages, only: [:new, :create]
     resources :conversations, only: [:index, :show]
 
+    resources :blog_users, only: [:create]
+
     get 'select_restaurant', to: 'restaurants_users#new'
     #get 'restaurants_user', to: 'restaurants_users#index'
     get 'location_user', to: 'location#new'

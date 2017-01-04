@@ -17,7 +17,7 @@
                     <tr>
                         <td><%= reservation.name %></td>
                         <td><%= reservation.num_persons %></td>
-                        <td><%= reservation.menu.name %></td>
+                        <td><%= reservation.menu.name if !reservation.menu.blank? %></td>
                         <td><%= reservation.date.strftime("%d %B %Y") %></td>
                         <td><%= reservation.hour.strftime("%X") %></td>
                         <td><%= reservation.restaurant.name %></td>

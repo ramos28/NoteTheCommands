@@ -21,24 +21,24 @@
                 <h3>Comentarios</h3>
             </head>
             <article>
-                <%= form_for @blog_comments do |blog_comments| %>
-                    <%= blog_comments.error_messages %>
+
+                <% noticia.blog_users.each do |bu| %>
                      <head>
-                        <%= blog_comments.user.email %>
-                        <p>Posted on <%= blog_comments.created_at.strftime("%d %B %Y -- %X") %></p>
+                        <%= bu.user.email %>
+                        <p>Posted on <%= bu.created_at.strftime("%d %B %Y -- %X") %></p>
                     </head>
-                    <p><%= blog_comments.comment %></p>
+                    <p><%= bu.description %></p>
                 <% end %>
             </article>
 
             <head>
                 <h3>Post a comment</h3>
             </head>
-            <%= form_for @blog_comment do |blog_comment| %>
+            <%= form_for :blog_user, url: blog_users_path do |blog_comment| %>
                 <%= blog_comment.error_messages %>
                 <div class="field">
-                    </br><%= blog_comment.label :comentario %><br />
-                    <%= blog_comment.text_area :comment, :cols => 30, rows: 4 %>
+                    </br><%= blog_comment.label :description %><br />
+                    <%= blog_comment.text_area :description, :cols => 30, rows: 4 %>
                 </div>
                 <%= blog_comment.hidden_field :blog_id, :value => noticia.id %>
                 <%= blog_comment.hidden_field :user_id, :value => current_user.id %>
@@ -52,7 +52,7 @@
 
 <div class="muestra-blogs">
     <% @blogs_view.each do |blog| %>
-        <%= blog.error_messages %>
+        <%#= blog.error_messages %>
         <div class="accion-blog"><li><%= link_to blog.title, blogs_path(blog) %></li></div>
     <% end %>
 </div>

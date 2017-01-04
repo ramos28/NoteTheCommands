@@ -13,8 +13,13 @@
 ActiveRecord::Schema.define(version: 20161229171300) do
 
   create_table "blog_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "blog_id"
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["blog_id"], name: "index_blog_users_on_blog_id", using: :btree
+    t.index ["user_id"], name: "index_blog_users_on_user_id", using: :btree
   end
 
   create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

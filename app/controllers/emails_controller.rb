@@ -10,12 +10,10 @@ class EmailsController < ApplicationController
         #Bandeja de entrada donde los correos del restaurante aparecen asociados con los correos del usuario
         #Bandeja de entrada
         if @current_role == RestaurantUser::ROLES.index('GERENTE')
-            @emails_in = Email.where("user_for = ? OR user_for = ?", "#{current_user.email}", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
-        else 
             @emails_in = Email.where("user_for = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page])
-            if !current_user.superadmin
-                @email_rest = Restaurant.where("email = ?", "#{@current_restaurant.email}")
-            end
+            @emails_in += Email.where("user_for = ?", "#{@current_restaurant.email}")
+        else 
+            @emails_in = Email.where("user_for = ? OR user_for = ?", "#{current_user.email}", "#{@current_restaurant.email}").paginate(:per_page => 5, :page => params[:page])
         end
         #Bandeja de enviados
         if @current_role == RestaurantUser::ROLES.index('GERENTE')
