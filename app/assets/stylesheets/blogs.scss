@@ -21,9 +21,17 @@
 	width: 30%;
 }
 
-div.accion-blog {
+div.accion-blog-title {
     font-family: accionesFont;
     text-align: center;		
     font-size: 60px;
+    color: black;
+}
+
+div.accion-blog {
+    font-family: accionesFont;
+    padding-left: 2%;
+    text-align: left;		
+    font-size: 25px;
     color: black;
 }

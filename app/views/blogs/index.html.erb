@@ -3,18 +3,17 @@
 <div class="muestra-blog">
     <article class=”blogPost”>
         <% @blogs.each do |noticia| %>
-            <%= will_paginate @blogs %>
             <head>
-                <div class="accion-blog"><%= noticia.title %></div>
-                <p>Posted on <%= noticia.created_at.strftime("%d %B %Y -- %X") %> – <a href=”#comments”>3 comments</a>
-                    <%if @current_role != 0%>
+                <div class="accion-blog-title"><%= noticia.title %></div>
+                <p>Posted on <%= noticia.created_at.strftime("%d %B %Y -- %X") %>
+                    <%if @current_role == 3%>
                         | <%= link_to "Edit Blog", edit_blog_path(noticia), style: "color: white" %>
                         | <%= link_to "Destroy", @blog, :confirm => 'Are you sure?', :method => :delete, style: "color: white" %>
                         | <%= link_to "New Blogs", new_blog_path, style: "color: white" %>
                     <% end %>
                 </p>
             </head>
-
+            <%= will_paginate @blogs %>
             <p><%= noticia.description %></p>
             
             <head>
@@ -22,28 +21,27 @@
             </head>
             <article>
 
-                <% noticia.blog_users.each do |bu| %>
+                <% noticia.blog_users.each do |blog_users| %>
                      <head>
-                        <%= bu.user.email %>
-                        <p>Posted on <%= bu.created_at.strftime("%d %B %Y -- %X") %></p>
+                        <p>Usuario: <%= blog_users.user.email %> - Posted on <%= blog_users.created_at.strftime("%d %B %Y -- %X") %></p>
                     </head>
-                    <p><%= bu.description %></p>
+                    <p><%= blog_users.description %></p>
                 <% end %>
             </article>
 
             <head>
-                <h3>Post a comment</h3>
+                <h3>Realizar un comentario</h3>
             </head>
             <%= form_for :blog_user, url: blog_users_path do |blog_comment| %>
                 <%= blog_comment.error_messages %>
                 <div class="field">
-                    </br><%= blog_comment.label :description %><br />
+                    </br><%= blog_comment.label :descripción %><br />
                     <%= blog_comment.text_area :description, :cols => 30, rows: 4 %>
                 </div>
                 <%= blog_comment.hidden_field :blog_id, :value => noticia.id %>
                 <%= blog_comment.hidden_field :user_id, :value => current_user.id %>
                 <div class="field">
-                    <p><%= blog_comment.submit %></p>
+                    <p><%= blog_comment.submit%></p>
                 </div>
             <% end %>
 	    <% end %>
@@ -53,6 +51,6 @@
 <div class="muestra-blogs">
     <% @blogs_view.each do |blog| %>
         <%#= blog.error_messages %>
-        <div class="accion-blog"><li><%= link_to blog.title, blogs_path(blog) %></li></div>
+        <div class="accion-blog"><li><%= link_to blog.title, blogs_path(blog), style: "color: black"  %></li></div>
     <% end %>
 </div>

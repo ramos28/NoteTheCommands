@@ -244,7 +244,7 @@
 				<div class="clear"></div>
 			</div>
 		<% end %>
-		<%= link_to profile_index_path do %>
+		<%= link_to contacts_path do %>
 			<div class="starts">
 				<div class="imagen">
 					<%= image_tag('contactar.png', :alt => 'contactar')%>
@@ -254,7 +254,7 @@
 			</div>
 		<% end %>
 	<% end %>
-	<%= link_to destroy_user_session_path do %>
+	<%= link_to destroy_user_session_path, method: :delete do %>
 			<div class="starts">
 				<div class="imagen">
 					<%= image_tag('cerrar_sesion.png', :alt => 'cerrar_sesion')%>

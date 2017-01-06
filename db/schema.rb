@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20161229171300) do
     t.integer  "location_id",                           null: false
     t.integer  "user_id",                               null: false
     t.text     "description", limit: 65535
+    t.integer  "is_served",                 default: 0, null: false
     t.integer  "is_end",                    default: 0, null: false
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false

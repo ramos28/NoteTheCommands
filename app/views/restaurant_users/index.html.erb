@@ -17,7 +17,7 @@
 					<td><%= RestaurantUser::ROLES[restaurant_user.rol] %></td>
 					<td class="price"><%= number_to_currency(restaurant_user.discount, :unit => "%") %></td>
 					<% if !current_user.superadmin %>
-						<td><%= link_to "Select", restaurants_select_path(restaurant_user_id: restaurant_user.id) %></td>
+						<td><%= link_to "Seleccionar", restaurants_select_path(restaurant_user_id: restaurant_user.id) %></td>
 					<% end%>
 				</tr>
 			<% end %>
@@ -41,7 +41,7 @@
 			<% if current_user.superadmin %>
 				<div class="field">
 					</br><%= f.label :selecione_usuario %>
-					<%= f.select :user_id, options_from_collection_for_select( User.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%"), :id, :email)%>
+					<%= f.select :user_id, options_from_collection_for_select( User.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%"), :id, :email )%>
 				</div>
 				<div class="field">
 					</br><%= f.label :función_usuario %>
