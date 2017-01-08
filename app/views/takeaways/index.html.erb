@@ -20,9 +20,9 @@
 	            <td><%= takeaway.restaurant.name %></td>
 	            <td><%= takeaway.total_price_selection %></td>
 	            <% if takeaway.is_delivered == 0 %>
-	                <td class="b1"><%= Takeaway::DELIVERED_CATEGORY[takeaway.is_delivered]%></td>
+	                <td class="b1"><%= takeaway.is_delivered%></td>
 	            <% else %>
-	                <td class="b2"><%= Takeaway::DELIVERED_CATEGORY[takeaway.is_delivered]%></td>
+	                <td class="b2"><%=takeaway.is_delivered%></td>
 	            <% end %>
 	            <td><%= link_to "Edit Takeaway", edit_takeaway_path(takeaway) %></td>
 	            <td><%= link_to "Agregar productos", takeaway_path(takeaway) %></td>              

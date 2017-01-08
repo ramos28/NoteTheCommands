@@ -15,10 +15,10 @@
 					<td><%= restaurant_user.restaurant.name %></td>
 					<td><%= restaurant_user.user.user_name %></td>
 					<td><%= RestaurantUser::ROLES[restaurant_user.rol] %></td>
-					<td class="price"><%= number_to_currency(restaurant_user.discount, :unit => "%") %></td>
+					<td class="price" title="<%= restaurant_user.restaurant.name%>"><%= number_to_currency(restaurant_user.discount, :unit => "%") %></td>
 					<% if !current_user.superadmin %>
 						<td><%= link_to "Seleccionar", restaurants_select_path(restaurant_user_id: restaurant_user.id) %> |
-							<%= link_to "Darme de baja", restaurant_user_path(restaurant_user.id), method: :delete %>
+							<%= link_to "Darme de baja", restaurant_user_path(restaurant_user.id), method: :delete, data: { confirm: "Are you sure?"} %>
 							
 						</td>
 

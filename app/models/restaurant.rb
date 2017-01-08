@@ -11,6 +11,7 @@ class Restaurant < ApplicationRecord
 	has_many :takeaways
 	has_many :locations
 	has_many :menus
+	has_many :curriculums
 
 	geocoded_by :full_address
 	after_validation :geocode

@@ -45,14 +45,14 @@
                                     <ul>
                                           <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
                                                 <li><%= link_to "Contactar", contacts_path%></li>
-                                                <li><%= link_to "¿Quieres trabajar con nosotros?", new_user_registration_path%></li>
+                                                <li><%= link_to "¿Quieres trabajar con nosotros?", new_curriculum_path%></li>
                                           <% end %>
                                     </ul>
                               <% else %>
                                     <ul>
                                         <li><%= link_to "Empresa desarrolladora", new_user_registration_path%></li>
                                         <li><%= link_to "Donde estamos", new_user_registration_path%></li>
-                                        <li><%= link_to "¿Quieres trabajar con nosotros?", new_user_registration_path%></li>
+                                        <li><%= link_to "¿Quieres trabajar con nosotros?", new_curriculum_path%></li>
                                     </ul>
                               <% end %>
                         </li>

@@ -2,5 +2,5 @@ class Takeaway < ApplicationRecord
 	belongs_to :restaurant
 	has_many :takeaway_product
 
-	DELIVERED_CATEGORY = ["PENDIENTE", "ENTREGADO"]
+	has_many :products, through: :takeaway_product
 end

@@ -62,3 +62,6 @@ gem 'emoji'
 gem 'geocoder'
 
 gem 'gmaps4rails'
+
+
+gem "paperclip", "~> 5.0.0"

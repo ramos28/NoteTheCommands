@@ -35,7 +35,9 @@
 
     </br></br><div class="muestra-tabla-takeaways"> 
         <div class="letra_takeaway">Lista Productos</div>
-            
+        <% @takeaway.products.each do |product| %>
+            <p><%= product.name %></p>
+        <% end %>
         <div class="takeaway_tipo">Precio:   <%= @takeaway.total_price_selection %> €</div>
     </div>
 
@@ -44,7 +46,7 @@
         <%= form_for :takeaway_product, url: takeaway_products_path do |f| %>
             <div class="field">
                 </br><%= f.label :producto %><br />
-                <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}"), :id, :name)%>
+                <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @takeaway.products, :id, :name)%>
             </div>
             <div class="field">
                 </br><%= f.label :cantidad %><br />

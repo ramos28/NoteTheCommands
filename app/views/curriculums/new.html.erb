@@ -1,0 +1,10 @@
+<%= form_for :curriculum, url: curriculums_path do |f| %>
+	<%= f.file_field :file %>
+	<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+	<%= f.submit %>
+<% end %>
+
+
+<% @current_restaurant.curriculums.each do |curriculum| %>
+<p><%= link_to 'Ver CV', curriculum.file.url %></p>
+<% end %>
