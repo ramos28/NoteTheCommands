@@ -28,14 +28,14 @@
                               <% if current_user %>
                                     <ul>
                                           <li><%= link_to "Tareas", start_path%></li>
-                                          <% if (@current_role == 1 || @current_role == 3)%>
-                                              <li><%= link_to "Comandas para Camarero", commands_path %></li>
+                                          <% if (@current_role == 1 || @current_role  == 2 || @current_role == 3)%>
+                                              <li><%= link_to "Comandas Restaurante", commands_path %></li>
                                           <% end %>
-                                          <% if (@current_role  == 2 || @current_role  == 3)%>
-                                              <li><%= link_to "Comandas para Cocinero", commands_path %></li>
+                                          <% if (@current_role == 1 || @current_role  == 2 || @current_role == 3)%>
+                                              <li><%= link_to "Pedidos Online", commands_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 0)%>
-                                              <li><%= link_to "Mi comanda", commands_path%></li>
+                                              <li><%= link_to "Mis comandas", commands_path%></li>
                                           <% end %>
                                     </ul>
                               <% end %>
@@ -51,8 +51,6 @@
                               <% else %>
                                     <ul>
                                         <li><%= link_to "Empresa desarrolladora", new_user_registration_path%></li>
-                                        <li><%= link_to "Donde estamos", new_user_registration_path%></li>
-                                        <li><%= link_to "¿Quieres trabajar con nosotros?", new_curriculum_path%></li>
                                     </ul>
                               <% end %>
                         </li>
@@ -78,12 +76,11 @@
                                         <li><%= link_to "Cuestionarios", questionnaires_path%></li>
                                         <li><%= link_to "Estadísticas", statistics_index_path %></li>
                                     <% end %>
-                                    <% if (@current_role  == 0 || @current_role  == 3)%>
+                                    <% if (@current_role  == 0)%>
                                         <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
                                     <% end %>
                                     <% if (@current_role  == 0)%>
                                         <li><%= link_to "Solicitar Reclamación", new_user_registration_path %></li>
-                                        <li><%= link_to "Votaciones", votings_path %></li>
                                         <li><%= link_to "Pedido Online", takeaways_path %></li>
                                     <% end %>
                                     <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2)%>

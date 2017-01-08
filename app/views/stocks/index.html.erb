@@ -5,6 +5,7 @@
         <tr>
             <%= form_tag stocks_path, method: :get do %>
                 <th>Restaurante</th>
+                <th>Tipo Producto</th>
                 <th>Nombre Producto</th>
                 <th>Descipción<p><%= text_field_tag :description_stock, params[:description_stock], class: "form-control", placeholder: "Descripcion Stock" %></p></th>
                 <th>Coste de venta</th>
@@ -18,11 +19,12 @@
         <% @stocks.each do |stock| %>
             <tr>
                 <td><%= stock.product.restaurant.name %></td>
+                <td><%= Product::PRODUCT_CATEGORY[stock.product.product_type] %></td>
                 <td><%= stock.product.name %></td>
                 <td><%= stock.description_stock %></td>
-                <td class="price"><%= number_to_currency(stock.product.unit_price, :unit => "€") %></td>
+                <td class="price"><%= number_to_currency(stock.product.price, :unit => "€") %></td>
                 <td><%= stock.quantity %></td>
-                <td class="price"><%= number_to_currency(stock.price_buy_unity) %></td>
+                <td class="price"><%= number_to_currency(stock.price_buy_unity, :unit => "€") %></td>
                 <td class="price"><%= number_to_currency(stock.quantity * stock.price_buy_unity, :unit => "€") %></td>
                 <td><%= link_to "Edit Stock", edit_stock_path(stock) %></td>
             </tr>

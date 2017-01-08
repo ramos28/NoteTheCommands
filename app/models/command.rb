@@ -12,7 +12,7 @@ class Command < ApplicationRecord
 	def command_price
 		price = 0
 		self.command_products.each do |cp|
-			price += cp.product.unit_price * cp.quantity
+			price += cp.product.price * cp.quantity
 		end
 
 		self.command_menus.each do |cm|

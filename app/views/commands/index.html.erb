@@ -1,5 +1,5 @@
 <% if @current_role == 0 %>
-	<div class="title">Comanda del Usuario '<%= current_user.user_name %>'</div>
+	<div class="title">Comandas del Usuario '<%= current_user.user_name %>'</div>
 	<div class ="muestra-tabla">
 		<table class="pretty">
 		    <tr>
@@ -9,20 +9,28 @@
 		        <th>Lugar</th>
 		        <th>Mesa</th>
 		        <th>Descripción</th>
-		        <th>¿Servido?</th>
-		        <th>¿Comanda Finalizada?</th>
+		        <th title="Rojo claro si no esta servida y verde claro si lo está">¿Servido?</th>
+		        <th title="Rojo si no esta finalizada y verde si lo está">¿Está Finalizada?</th>
 		    </tr>
 		    <% @commands.each do |command| %>
 		        <% if command.location.restaurant_id == @current_restaurant.id %>
 		            <tr>
 		                <td><%= command.title %></td>
-		                <td><%= command.location.restaurant_id %></td>
+		                <td><%= command.location.restaurant.name %></td>
 		                <td><%= command.user.user_name %></td>
 		                <td><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
 		                <td><%= command.location.sit %></td>
 		                <td><%= command.description %></td>
-		                <td><%= command.is_served %></td>
-		                <td><%= command.is_end %></td>
+		                <% if command.is_served %>
+		                	<td class="b5"><%= command.is_served %></td>
+		                <% else %>
+							<td class="b6"><%= command.is_served %></td>
+		                <% end %>
+		                <% if !command.is_end %>
+		                	<td class="b1"><%= command.is_end %></td>
+		                <% else %>
+							<td class="b2"><%= command.is_end %></td>
+		                <% end %>
 		                <td><%= link_to "Edit Command", edit_command_path(command) %> | <%= link_to "Ver Command", command_path(command) %></td>                
 		            </tr>
 		        <% end %>
@@ -34,10 +42,8 @@
 	</div>
 
 	<div class="muestra-opciones">
-		<div class="accion">
-
-		<%= link_to 'Crear Nueva Comanda', new_location_path %>
-	    </div>
+		</br><div class="accion">Crear una nueva Comanda</div>
+		</br></br><%= button_to 'Crear Comanda', new_location_path, :method => "get" %>
 	</div>
 
 <% elsif @current_role == 1 %>
@@ -49,19 +55,27 @@
 	        <th> Usuario </th>
 	        <th> Mesa </th>
 	        <th> Descripcion </th>
-	        <th> ¿Servido? </th>
-	        <th> ¿Esta Finalizada? </th>
+	        <th title="Azul si no esta servida y morado si lo está">¿Servido?</th>
+		    <th title="Rojo si no esta finalizada y verde si lo está">¿Comanda Finalizada?</th>
 	    </tr>
 	    <% @commands.each do |command| %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
 	            <tr>
 	                <td><%= command.title %></td>
-	                <td><%= command.location.restaurant_id %></td>
+	                <td><%= command.location.restaurant.name %></td>
 	                <td><%= command.user.user_name %></td>
 	                <td><%= command.location.place %></td>
 	                <td><%= command.description %></td>
-	                <td><%= command.is_served %></td>
-	                <td><%= command.is_end %></td>
+	                <% if command.is_served %>
+	                	<td class="b5"><%= command.is_served %></td>
+	                <% else %>
+						<td class="b6"><%= command.is_served %></td>
+	                <% end %>
+	                <% if !command.is_end %>
+	                	<td class="b1"><%= command.is_end %></td>
+	                <% else %>
+						<td class="b2"><%= command.is_end %></td>
+	                <% end %>
 	                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
 
 					<td>
@@ -75,12 +89,6 @@
 					        </div>
 					    <% end %>
 					</td>
-
-
-
-
-
-
 	            </tr>
 	        <% end %>
 	    <% end %>
@@ -97,19 +105,27 @@
 	        <th> Usuario </th>
 	        <th> Mesa </th>
 	        <th> Descripcion </th>
-	        <th> ¿Servido? </th>
-	        <th> ¿Esta Finalizada? </th>
+	        <th title="Azul si no esta servida y morado si lo está">¿Servido?</th>
+		    <th title="Rojo si no esta finalizada y verde si lo está">¿Comanda Finalizada?</th>
 	    </tr>
 	    <% @commands.each do |command| %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
 	            <tr>
 	                <td><%= command.title %></td>
-	                <td><%= command.location.restaurant_id %></td>
+	                <td><%= command.location.restaurant.name %></td>
 	                <td><%= command.user.user_name %></td>
 	                <td><%= command.location.place %></td>
 	                <td><%= command.description %></td>
-	                <td><%= command.is_served %></td>
-	                <td><%= command.is_end %></td>
+	                <% if command.is_served %>
+	                	<td class="b5"><%= command.is_served %></td>
+	                <% else %>
+						<td class="b6"><%= command.is_served %></td>
+	                <% end %>
+	                <% if !command.is_end %>
+	                	<td class="b1"><%= command.is_end %></td>
+	                <% else %>
+						<td class="b2"><%= command.is_end %></td>
+	                <% end %>
 	                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
 	            </tr>
 	        <% end %>
@@ -127,19 +143,27 @@
 	        <th> Usuario </th>
 	        <th> Mesa </th>
 	        <th> Descripcion </th>
-	        <th> ¿Servido? </th>
-	        <th> ¿Esta Finalizada? </th>
+	        <th title="Azul si no esta servida y morado si lo está">¿Servido?</th>
+		    <th title="Rojo si no esta finalizada y verde si lo está">¿Comanda Finalizada?</th>
 	    </tr>
 	    <% @commands.each do |command| %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
 	            <tr>
 	                <td><%= command.title %></td>
-	                <td><%= command.location.restaurant_id %></td>
+	                <td><%= command.location.restaurant.name %></td>
 	                <td><%= command.user.user_name %></td>
 	                <td><%= command.location.place %></td>
 	                <td><%= command.description %></td>
-	                <td><%= command.is_served %></td>
-	                <td><%= command.is_end %></td>
+	                <% if command.is_served %>
+	                	<td class="b5"><%= command.is_served %></td>
+	                <% else %>
+						<td class="b6"><%= command.is_served %></td>
+	                <% end %>
+	                <% if !command.is_end %>
+	                	<td class="b1"><%= command.is_end %></td>
+	                <% else %>
+						<td class="b2"><%= command.is_end %></td>
+	                <% end %>
 	                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
 	            </tr>
 	        <% end %>

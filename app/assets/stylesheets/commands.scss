@@ -10,14 +10,64 @@
 	float: left;
 	text-align: center;
 	top: 35%;
-	height: 422px;
-	width: 580px;
+	width: 50%;
 }
 
 .muestra-eleccion-comanda {
 	float: left;
 	text-align: center;
 	top: 35%;
-	height: 422px;
-	width: 700px;
+	width: 50%;
 }
+
+td.b5 {
+	background-color: #C1FC6D;
+	color: black;
+}
+
+td.b6 {
+	background-color: #FE6767;
+	color: black;
+}
+
+
+.muestra-comandas {
+	float: left;
+	text-align: center;
+	top: 35%;
+	width: 23%;
+}
+
+.muestra-tabla-comandas {
+	background-image: url("pizarra.jpg");
+    background-position: center;
+	width: 55%;
+    overflow:hidden;
+	float: left;
+	text-align: center;
+}
+
+.muestra-eleccion-comanda {
+	float: left;
+	padding-left: 1%;
+	text-align: center;
+	top: 35%;
+	width: 20%;
+}
+
+div.accion-command {
+    font-family: accionesFont;
+    text-align: center;		
+    font-size: 40px;
+    color: black;
+}
+
+table.command {
+	width: 96.5%;
+    border: 1px solid white;
+}
+
+th.command, td.command {
+	border: 1px solid white;
+}
+

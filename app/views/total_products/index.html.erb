@@ -18,7 +18,7 @@
                 <td><%= total_products.restaurant.name %></td>
                 <td><%= Product::PRODUCT_CATEGORY[total_products.product_type] %></td>
                 <td><%= total_products.description %></td>
-                <td class="price"><%= number_to_currency(total_products.unit_price, :unit => "€") %></td>
+                <td class="price"><%= number_to_currency(total_products.price, :unit => "€") %></td>
                 <td><%= total_products.created_at %></td>
                 <td><%= total_products.updated_at %></td>
             </tr>

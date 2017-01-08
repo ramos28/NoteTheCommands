@@ -29,9 +29,9 @@
                     <td><%= incidence.restaurant.name %></td>
                     <td><%= incidence.user.user_name %></td>
                     <% if incidence.is_solved == 0 %>
-                        <td class="b1"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                        <td class="b1"><%= incidence.is_solved %></td>
                     <% else %>
-                        <td class="b2"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                        <td class="b2"><%= incidence.is_solved %></td>
                     <% end %>
                 </tr>
             <% end %>
@@ -57,9 +57,9 @@
                     <td><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
                     <td><%= incidence.user.user_name %></td>
                     <% if incidence.is_solved == 0 %>
-                        <td class="b1"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                        <td class="b1"><%= incidence.is_solved %></td>
                     <% else %>
-                        <td class="b2"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                        <td class="b2"><%= incidence.is_solved %></td>
                     <% end %>
                     <td><%= link_to "Edit Incidencia", edit_incidence_path(incidence) %></td>
                 </tr>
@@ -84,9 +84,9 @@
                     <td><%= incidence.date_solution.strftime("%d %B %Y -- %X") %></td>
                     <td><%= incidence.user.user_name %></td>
                     <% if incidence.is_solved == 0 %>
-                        <td class="b1"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                        <td class="b1"><%= incidence.is_solved %></td>
                     <% else %>
-                        <td class="b2"><%= Incidence::SOLVED_CATEGORY[incidence.is_solved]%></td>
+                        <td class="b2"><%= incidence.is_solved %></td>
                     <% end %>
                 </tr>
             <% end %>

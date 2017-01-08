@@ -14,6 +14,6 @@
 
     <p>
     <%= link_to "Edit", edit_voting_path(@voting) %> |
-    <%= link_to "Destroy", @voting, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "Destroy", @voting, :method => :delete, data: { confirm: "Are you sure?"} %> |
     <%= link_to "View All", votings_path %>
 </p>

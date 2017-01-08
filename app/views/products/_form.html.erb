@@ -6,11 +6,11 @@
     </div>
     <div class="field">
         </br><%= f.label :tipo_producto %>
-        <%= f.select :product_type, options_for_select(Product::PRODUCT_CATEGORY.map.with_index {|index, value| [index, value]})%>
+        <%= f.select :type, options_for_select(Product::PRODUCT_CATEGORY.map.with_index {|index, value| [index, value]})%>
     </div>
     <div class="field">
         </br><%= f.label :precio_producto %><br />
-        <%= f.text_field :unit_price %>
+        <%= f.text_field :price %>
     </div>
     <div class="field">
         </br><%= f.label :breve_descripción_de_ingredientes %><br />

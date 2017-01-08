@@ -1,4 +1,6 @@
-<%= form_for :curriculum, url: curriculums_path do |f| %>
+<div class="title">¡Mandenos su Curriculum Vitae!</div>
+
+</br><%= form_for :curriculum, url: curriculums_path do |f| %>
 	<%= f.file_field :file %>
 	<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
 	<%= f.submit %>

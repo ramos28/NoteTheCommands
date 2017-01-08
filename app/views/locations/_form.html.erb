@@ -6,7 +6,7 @@
 	</div>
 	<div class="field">
 	    </br><%= f.label :Mesa %><br />
-	    <%= f.text_field :sit %>
+	    <%= f.number_field :sit %>
 	</div>
 	
 	<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>

@@ -19,7 +19,7 @@
 	            <td><%= takeaway.hour.strftime("%X") %></td>
 	            <td><%= takeaway.restaurant.name %></td>
 	            <td><%= takeaway.total_price_selection %></td>
-	            <% if takeaway.is_delivered == 0 %>
+	            <% if !takeaway.is_delivered %>
 	                <td class="b1"><%= takeaway.is_delivered%></td>
 	            <% else %>
 	                <td class="b2"><%=takeaway.is_delivered%></td>

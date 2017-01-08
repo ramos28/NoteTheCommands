@@ -35,6 +35,6 @@
 
 <p>
     <%= link_to "Edit", edit_restaurant_path(@restaurant) %> |
-    <%= link_to "Destroy", @restaurant, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "Destroy", @restaurant, :method => :delete, data: { confirm: "Are you sure?"} %> |
     <%= link_to "View All", restaurants_path %>
 </p>

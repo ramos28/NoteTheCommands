@@ -12,7 +12,9 @@
 			<% @questionnaires.each do |questionnaire| %>
 			    <tr>
 					<td><%= questionnaire.question %></td>
-					<td><%= questionnaire.restaurant.name %></td>                  
+					<td><%= questionnaire.restaurant.name %></td>
+					<td><%#= link_to "Eliminar", @questionnaire, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar?"} %> | <%#= link_to "Modificar", edit_questionnaire_path(@questionnaire) %></td>  
+
 			    </tr>
 			<% end %>
 		</tbody>

@@ -18,9 +18,8 @@
             <%= @menu.description %>
         </p>
         <p>
-            <%= link_to "Edit", edit_menu_product_path(@menu) %> |
-            <%= link_to "Destroy", @menu, :confirm => 'Are you sure?', :method => :delete %> |
-            <%= link_to "View All", menus_path %>
+            <%= link_to "Modificar", edit_menu_product_path(@menu) %> |
+            <%= link_to "Eliminar", @menu, :method => :delete, data: { confirm: "Are you sure?"} %>
         </p>
     </div>
 
@@ -71,7 +70,7 @@
                 <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}"), :id, :name)%>
             </div>
             </br><%= f.hidden_field :menu_id, value: @menu.id %>
-            <%= f.submit 'Guardar Productos en el Menú'%>
+            <%= f.submit 'Añadir Producto'%>
         <% end %>
     </div>
 </div>

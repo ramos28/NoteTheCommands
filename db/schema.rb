@@ -89,14 +89,14 @@ ActiveRecord::Schema.define(version: 20170108133629) do
   end
 
   create_table "emails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "subject",                                   null: false
-    t.text     "description", limit: 65535,                 null: false
-    t.boolean  "is_view",                   default: false, null: false
-    t.boolean  "is_sent",                   default: false, null: false
-    t.string   "user_for",                                  null: false
-    t.string   "user_from",                                 null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.string   "subject",                               null: false
+    t.text     "description", limit: 65535,             null: false
+    t.integer  "is_view",                   default: 0, null: false
+    t.integer  "is_sent",                   default: 0, null: false
+    t.string   "user_for",                              null: false
+    t.string   "user_from",                             null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "incidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -161,13 +161,14 @@ ActiveRecord::Schema.define(version: 20170108133629) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                     null: false
-    t.integer  "product_type",             null: false
+    t.string   "name",                                    null: false
+    t.integer  "type",                                    null: false
     t.string   "description"
-    t.float    "unit_price",    limit: 24, null: false
+    t.float    "price",         limit: 24,                null: false
+    t.boolean  "younger",                  default: true, null: false
     t.integer  "restaurant_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
   end
 

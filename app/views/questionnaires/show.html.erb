@@ -11,6 +11,6 @@
 
     <p>
     <%= link_to "Edit", edit_questionnaire_path(@questionnaire) %> |
-    <%= link_to "Destroy", @questionnaire, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "Destroy", @questionnaire, :method => :delete, data: { confirm: "Are you sure?"} %> |
     <%= link_to "View All", questionnaires_path %>
 </p>

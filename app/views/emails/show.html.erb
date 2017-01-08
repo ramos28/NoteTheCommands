@@ -23,6 +23,6 @@
 
 <p>
     <%= link_to "Edit", edit_email_path(@email) %> |
-    <%= link_to "Destroy", @email, :confirm => 'Are you sure?', :method => :delete %> |
+    <%= link_to "Destroy", @email, :method => :delete, data: { confirm: "Are you sure?"} %> |
     <%= link_to "View All", emails_path %>
 </p>

@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
   	private
 
   	def product_params
-  		params.require(:product).permit(:name, :product_type, :description, :unit_price, :restaurant_id) 
+  		params.require(:product).permit(:name, :type, :description, :price, :restaurant_id) 
   	end
 
   	def sort_column

@@ -1,13 +1,13 @@
 <div class="title">Agregar Productos a la Comanda</div>
-<div class="muestra-menus">
-    <div class="accion">Comanda</div>
+</br><div class="muestra-comandas">
+    </br></br><div class="accion">Comanda</div>
     <p>
         <strong>Nombre:</strong>
         <%= @command.title %>
     </p>
     <p>
-        <strong>Localizacion:</strong>
-        <%= @command.location.place %>
+        <strong>Localización:</strong>
+        <%= Location::LOCATION_CATEGORY[@command.location.place] %>
     </p>
     <p>
         <strong>Mesa:</strong>
@@ -23,75 +23,85 @@
     </p>
 
     <p>
-        <%= link_to "Edit", edit_command_path(@command) %> |
-        <%= link_to "Destroy", @command, :confirm => 'Are you sure?', :method => :delete %> |
-        <%= link_to "View All", commands_path %>
+        <%= link_to "Edit", edit_command_path(@command), style: "color: white"  %> |
+        <%= link_to "Destroy", @command, :method => :delete, data: { confirm: "Are you sure?"}, style: "color: white"  %> |
+        <%= link_to "View All", commands_path, style: "color: white"  %>
     </p>
 </div>
 
-<div class="muestra-tabla-menus">
-    <table class="pretty">
-        <tr>
-            <th>Nombre menu/producto</th>
-            <th>Cantidad</th>
+</br><div class="muestra-tabla-comandas">
+    <table class="command">
+        <tr class="command">
+            <th class="command">Nombre menu/producto</th>
+            <th class="command">Precio Unidad</th>
+            <th class="command">Cantidad</th>
+            <th class="command">Coste</th>
         </tr>
         <% @command.command_products.each do |cp| %>
-            <tr>
-                <td><%= cp.product.name %></td>
-                <td><%= cp.quantity %></td>      
+            <tr class="command">
+                <td class="command"><%= cp.product.name %></td>
+                <td class="command"><%= cp.product.price %> €</td>
+                <td class="command"><%= cp.quantity %></td>
+                <td class="command"><%= cp.product.price * cp.quantity %> €</td> 
             </tr>
         <% end %>
         <% @command.command_menus.each do |cp| %>
-            <tr>
-                <td><%= cp.menu.name %></td>
-                <td><%= cp.quantity %></td>
+            <tr class="command">
+                <td class="command"><%= cp.menu.name %></td>
+                <td class="command"><%= cp.menu.price %> €</td>
+                <td class="command"><%= cp.quantity %></td>
+                <td class="command"><%= cp.menu.price * cp.quantity %> €</td>
             </tr>
         <% end %>
-
     </table>
 </div>
 
 
 
-<% if !@command.is_end %>
-    <div class="muestra-eleccion">
-        <div class="accion">Agregar Productos</div>
-        <%= form_for :command_product, url: command_products_path do |f| %>
-            <div class="field">
-                <%= f.label :producto %><br />
-                <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+<% if !@command.is_end %>    
+    <div class="muestra-eleccion-comanda">
+    <ul class="tabs">
+        <li><a href="#tab1">Productos</a></li>
+        <li><a href="#tab2">Menus</a></li>
+    </ul>
+        <div class="contenedor_tab">
+            <div id="tab1" class="contenido_tab">
+                </br></br><div class="accion-command">Agregar Productos</div>
+                <%= form_for :command_product, url: command_products_path do |f| %>
+                    <div class="field">
+                        </br><%= f.label :producto %><br />
+                        <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_products, :id, :name)%>
+                    </div>
+                    <div class="field">
+                        </br><%= f.label :cantidad %><br />
+                        <%= f.number_field :quantity %>
+                    </div>
+                    <%= f.hidden_field :command_id, value: @command.id %>
+                    </br><%= f.submit 'Agregar Producto' %>
+                <% end %>
             </div>
-            <div class="field">
-                <%= f.label :quantity %><br />
-                <%= f.text_field :quantity %>
+            <div id="tab2" class="contenido_tab">
+                </br></br><div class="accion-command">Agragar Menu</div>
+                <%= form_for :command_menu, url: command_menus_path do |f| %>
+                    <div class="field">
+                        </br><%= f.label :menu %><br />
+                        <%= f.select :menu_id, options_from_collection_for_select( Menu.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_menus, :id, :name)%>
+                    </div>
+                    <div class="field">
+                        </br><%= f.label :cantidad %><br />
+                        <%= f.number_field :quantity %>
+                    </div>
+                    <%= f.hidden_field :command_id, value: @command.id %>
+                    </br><%= f.submit 'Agregar Menu' %>
+                <% end %>
             </div>
-            <%= f.hidden_field :command_id, value: @command.id %>
-            <%= f.submit %>
-        <% end %>
+        </div>
     </div>
-
-    <div class="muestra-eleccion">
-        <div class="accion">Agragar Menu</div>
-        <%= form_for :command_menu, url: command_menus_path do |f| %>
-            <div class="field">
-                <%= f.label :menu %><br />
-                <%= f.select :menu_id, options_from_collection_for_select( Menu.all, :id, :name)%>
-            </div>
-            <div class="field">
-                <%= f.label :quantity %><br />
-                <%= f.text_field :quantity %>
-            </div>
-            <%= f.hidden_field :command_id, value: @command.id %>
-            <%= f.submit %>
-        <% end %>
-    </div>
-
-
+    <div style="clear:both;"></div>
+    
     <% if @command.is_served %>
-
         <%= form_for @command do |f| %>
             <%= f.error_messages %>
-
             <%= f.hidden_field :is_end, :value => 1 %>
             <div class="field">
                 </br><%= f.submit 'Cerrar Comanda'%>
@@ -100,5 +110,5 @@
         <% end %>
     <% end %>
 <% else %>
-    <%= link_to 'Pedir cuenta', command_finish_path(@command) %>
+    <%= link_to 'Pedir cuenta', command_finish_path(@command), style: "color: white"  %>
 <% end %>
