@@ -55,14 +55,14 @@ ActiveRecord::Schema.define(version: 20161229171300) do
   end
 
   create_table "commands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title",                                 null: false
-    t.integer  "location_id",                           null: false
-    t.integer  "user_id",                               null: false
+    t.string   "title",                                     null: false
+    t.integer  "location_id",                               null: false
+    t.integer  "user_id",                                   null: false
     t.text     "description", limit: 65535
-    t.integer  "is_served",                 default: 0, null: false
-    t.integer  "is_end",                    default: 0, null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.boolean  "is_served",                 default: false, null: false
+    t.boolean  "is_end",                    default: false, null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
     t.index ["location_id"], name: "index_commands_on_location_id", using: :btree
     t.index ["user_id"], name: "index_commands_on_user_id", using: :btree
   end
@@ -78,28 +78,28 @@ ActiveRecord::Schema.define(version: 20161229171300) do
   end
 
   create_table "emails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "subject",                               null: false
-    t.text     "description", limit: 65535,             null: false
-    t.integer  "is_view",                   default: 0, null: false
-    t.integer  "is_sent",                               null: false
-    t.string   "user_for",                              null: false
-    t.string   "user_from",                             null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.string   "subject",                                   null: false
+    t.text     "description", limit: 65535,                 null: false
+    t.boolean  "is_view",                   default: false, null: false
+    t.boolean  "is_sent",                   default: false, null: false
+    t.string   "user_for",                                  null: false
+    t.string   "user_from",                                 null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "incidences", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "category",                                null: false
-    t.integer  "priority",                                null: false
-    t.string   "title",                                   null: false
-    t.text     "description",   limit: 65535,             null: false
-    t.integer  "is_solved",                   default: 0, null: false
-    t.datetime "date_start",                              null: false
+    t.integer  "category",                                    null: false
+    t.integer  "priority",                                    null: false
+    t.string   "title",                                       null: false
+    t.text     "description",   limit: 65535,                 null: false
+    t.boolean  "is_solved",                   default: false, null: false
+    t.datetime "date_start",                                  null: false
     t.datetime "date_solution"
-    t.integer  "restaurant_id",                           null: false
-    t.integer  "user_id",                                 null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.integer  "restaurant_id",                               null: false
+    t.integer  "user_id",                                     null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.index ["restaurant_id"], name: "index_incidences_on_restaurant_id", using: :btree
     t.index ["user_id"], name: "index_incidences_on_user_id", using: :btree
   end
@@ -234,17 +234,17 @@ ActiveRecord::Schema.define(version: 20161229171300) do
   end
 
   create_table "takeaways", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                                           null: false
-    t.date     "date",                                           null: false
-    t.time     "hour",                                           null: false
+    t.string   "name",                                             null: false
+    t.date     "date",                                             null: false
+    t.time     "hour",                                             null: false
     t.integer  "phone"
-    t.float    "discount",              limit: 24, default: 0.0, null: false
-    t.integer  "is_delivered",                     default: 0,   null: false
+    t.float    "discount",              limit: 24, default: 0.0,   null: false
+    t.boolean  "is_delivered",                     default: false, null: false
     t.float    "total_price_selection", limit: 24
-    t.integer  "restaurant_id",                                  null: false
+    t.integer  "restaurant_id",                                    null: false
     t.integer  "user_id"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.index ["restaurant_id"], name: "index_takeaways_on_restaurant_id", using: :btree
     t.index ["user_id"], name: "index_takeaways_on_user_id", using: :btree
   end

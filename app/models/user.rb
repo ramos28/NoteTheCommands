@@ -16,4 +16,9 @@ class User < ApplicationRecord
 
 	#Validacion de los paramtros insertados en el registro	
 	validates :user_name, length: { maximum: 30 }
+
+
+	def age
+		 (Time.zone.now - self.birth_date.to_datetime).to_i / 1.year
+	end
 end

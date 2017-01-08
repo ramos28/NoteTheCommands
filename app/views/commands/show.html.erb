@@ -51,34 +51,54 @@
     </table>
 </div>
 
-<div class="muestra-eleccion">
-    <div class="accion">Agregar Productos</div>
-    <%= form_for :command_product, url: command_products_path do |f| %>
-        <div class="field">
-            <%= f.label :producto %><br />
-            <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
-        </div>
-        <div class="field">
-            <%= f.label :quantity %><br />
-            <%= f.text_field :quantity %>
-        </div>
-        <%= f.hidden_field :command_id, value: @command.id %>
-        <%= f.submit %>
-    <% end %>
-</div>
 
-<div class="muestra-eleccion">
-    <div class="accion">Agragar Menu</div>
-    <%= form_for :command_menu, url: command_menus_path do |f| %>
-        <div class="field">
-            <%= f.label :menu %><br />
-            <%= f.select :menu_id, options_from_collection_for_select( Menu.all, :id, :name)%>
-        </div>
-        <div class="field">
-            <%= f.label :quantity %><br />
-            <%= f.text_field :quantity %>
-        </div>
-        <%= f.hidden_field :command_id, value: @command.id %>
-        <%= f.submit %>
+
+<% if !@command.is_end %>
+    <div class="muestra-eleccion">
+        <div class="accion">Agregar Productos</div>
+        <%= form_for :command_product, url: command_products_path do |f| %>
+            <div class="field">
+                <%= f.label :producto %><br />
+                <%= f.select :product_id, options_from_collection_for_select( Product.all, :id, :name)%>
+            </div>
+            <div class="field">
+                <%= f.label :quantity %><br />
+                <%= f.text_field :quantity %>
+            </div>
+            <%= f.hidden_field :command_id, value: @command.id %>
+            <%= f.submit %>
+        <% end %>
+    </div>
+
+    <div class="muestra-eleccion">
+        <div class="accion">Agragar Menu</div>
+        <%= form_for :command_menu, url: command_menus_path do |f| %>
+            <div class="field">
+                <%= f.label :menu %><br />
+                <%= f.select :menu_id, options_from_collection_for_select( Menu.all, :id, :name)%>
+            </div>
+            <div class="field">
+                <%= f.label :quantity %><br />
+                <%= f.text_field :quantity %>
+            </div>
+            <%= f.hidden_field :command_id, value: @command.id %>
+            <%= f.submit %>
+        <% end %>
+    </div>
+
+
+    <% if @command.is_served %>
+
+        <%= form_for @command do |f| %>
+            <%= f.error_messages %>
+
+            <%= f.hidden_field :is_end, :value => 1 %>
+            <div class="field">
+                </br><%= f.submit 'Cerrar Comanda'%>
+                </br></br></br></br></br>
+            </div>
+        <% end %>
     <% end %>
-</div>
+<% else %>
+    <%= link_to 'Pedir cuenta', command_finish_path(@command) %>
+<% end %>

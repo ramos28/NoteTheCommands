@@ -46,7 +46,9 @@ Rails.application.routes.draw do
     resources :takeaways
     resources :locations
     resources :menus
-    resources :commands
+    resources :commands do
+        get 'finish' 
+    end
     resources :command_products
     resources :command_menus
     resources :menu_products

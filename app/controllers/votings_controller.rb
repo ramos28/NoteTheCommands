@@ -6,7 +6,12 @@ class VotingsController < ApplicationController
   		@voting = Voting.new
 	end
 
+  def new
+    @voting = Voting.new
+  end
+
 	def create
+    debugger
         params[:voting][:questions].keys.each do |question_id|
         @voting = Voting.new(restaurant_id: params[:voting][:restaurant_id], questionnaire_id: question_id, answer: params[:voting][:questions][question_id][:answer])
         @voting.save

@@ -13,8 +13,6 @@
 		        <th>¿Comanda Finalizada?</th>
 		    </tr>
 		    <% @commands.each do |command| %>
-		    <%= command.location.restaurant_id %>
-		    <%= @current_restaurant %>
 		        <% if command.location.restaurant_id == @current_restaurant.id %>
 		            <tr>
 		                <td><%= command.title %></td>
@@ -25,19 +23,20 @@
 		                <td><%= command.description %></td>
 		                <td><%= command.is_served %></td>
 		                <td><%= command.is_end %></td>
-		                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
+		                <td><%= link_to "Edit Command", edit_command_path(command) %> | <%= link_to "Ver Command", command_path(command) %></td>                
 		            </tr>
 		        <% end %>
 		    <% end %>
 		    <tfoot>
-		        <%= will_paginate @commands %>
+		        <%#= will_paginate @commands %>
 		    </tfoot>
 		</table>
 	</div>
 
 	<div class="muestra-opciones">
-		<div class="accion">Crear Nueva Comanda</div>
-			<%= render 'form' %>
+		<div class="accion">
+
+		<%= link_to 'Crear Nueva Comanda', new_location_path %>
 	    </div>
 	</div>
 
@@ -54,8 +53,6 @@
 	        <th> ¿Esta Finalizada? </th>
 	    </tr>
 	    <% @commands.each do |command| %>
-	    <%= command.location.restaurant_id %>
-	    <%= @current_restaurant %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
 	            <tr>
 	                <td><%= command.title %></td>
@@ -66,11 +63,29 @@
 	                <td><%= command.is_served %></td>
 	                <td><%= command.is_end %></td>
 	                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
+
+					<td>
+					    <%= form_for command do |f| %>
+					        <%= f.error_messages %>
+
+					        <%= f.hidden_field :is_served, :value => true %>
+					        <div class="field">
+					            </br><%= f.submit 'Servir'%>
+					            </br></br></br></br></br>
+					        </div>
+					    <% end %>
+					</td>
+
+
+
+
+
+
 	            </tr>
 	        <% end %>
 	    <% end %>
 	    <tfoot>
-	    	<%= will_paginate @commands %>
+	    	<%#= will_paginate @commands %>
 	    </tfoot>
 	</table>
 <% elsif @current_role == 2 %>
@@ -86,8 +101,6 @@
 	        <th> ¿Esta Finalizada? </th>
 	    </tr>
 	    <% @commands.each do |command| %>
-	    <%= command.location.restaurant_id %>
-	    <%= @current_restaurant %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
 	            <tr>
 	                <td><%= command.title %></td>
@@ -102,7 +115,7 @@
 	        <% end %>
 	    <% end %>
 	    <tfoot>
-	    	<%= will_paginate @commands %>
+	    	<%#= will_paginate @commands %>
 	    </tfoot>
 	</table>
 <% elsif @current_role == 3 %>
@@ -118,8 +131,6 @@
 	        <th> ¿Esta Finalizada? </th>
 	    </tr>
 	    <% @commands.each do |command| %>
-	    <%= command.location.restaurant_id %>
-	    <%= @current_restaurant %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
 	            <tr>
 	                <td><%= command.title %></td>
@@ -134,7 +145,7 @@
 	        <% end %>
 	    <% end %>
 	    <tfoot>
-	    	<%= will_paginate @commands %>
+	    	<%#= will_paginate @commands %>
 	    </tfoot>
 	</table>
 <% end %>

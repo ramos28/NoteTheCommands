@@ -1,5 +1,7 @@
 class Location < ApplicationRecord
 	belongs_to :restaurant
+	has_many :commands
+
 
 	LOCATION_CATEGORY = ["SALON", "TERRAZA", "BARRA"]
 

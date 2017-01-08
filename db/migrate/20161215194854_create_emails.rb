@@ -3,8 +3,8 @@ class CreateEmails < ActiveRecord::Migration[5.0]
 		create_table :emails do |t|
 			t.string :subject, null: false
 			t.text :description, null: false
-			t.integer :is_view, default: 0, null: false
-			t.integer :is_sent, null: false
+			t.boolean :is_view, default: false, null: false
+			t.boolean :is_sent, default: false, null: false
 			t.string :user_for, null: false
 
 			t.string :user_from, null: false

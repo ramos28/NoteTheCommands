@@ -1,7 +1,8 @@
 class CommandsController < ApplicationController
 	def index
-		@restaurant_users = RestaurantUser.all
-		@commands = Command.all.paginate(:per_page => 5, :page => params[:page])
+		@commands = @current_restaurant.locations.map {|l| l.commands}.flatten
+		@commands.select{|command| command.created_at >= Time.now.beginning_of_day}
+
 		@command = Command.new
 	end
 
@@ -33,7 +34,7 @@ class CommandsController < ApplicationController
 	    @command = Command.find(params[:id])
 	    if @command.update_attributes(command_params)
 	      	flash[:notice] = "Successfully updated command."
-	      	redirect_to @command
+	      	redirect_to :back
 	    else
 	      	render :action => 'edit'
 	    end
@@ -45,11 +46,33 @@ class CommandsController < ApplicationController
 	    	flash[:notice] = "Successfully destroyed command."
 	    	redirect_to commands_url
   	end
+
+  	def finish
+  		@command = Command.find(params[:command_id])
+  		@command.command_products.pluck(:product_id, :quantity).each do |command_product|
+  			stock = Stock.find_by_product_id(command_product[0])
+  			if !stock.blank?
+  				stock.update(:quantity, stock.quantity - command_product[1])
+  			end
+
+  		end
+  		
+  		@command.command_menus.each do |command_menu|
+			command_menu.menu.products.each do |product|
+				stock = Stock.find_by_product_id(product.id)
+  				if !stock.blank?
+  					stock.update(:quantity, stock.quantity - command_menu.quantity)
+  				end
+			end
+  		end
+
+  		redirect_to new_voting_path
+  	end
   
   	private
   	
   	def command_params
-  		params.require(:command).permit(:title, :location_id, :user_id, :description, :is_end)
+  		params.require(:command).permit(:title, :location_id, :user_id, :description, :is_end, :is_served)
 
   	end
 

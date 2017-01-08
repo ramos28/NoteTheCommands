@@ -17,7 +17,12 @@
 					<td><%= RestaurantUser::ROLES[restaurant_user.rol] %></td>
 					<td class="price"><%= number_to_currency(restaurant_user.discount, :unit => "%") %></td>
 					<% if !current_user.superadmin %>
-						<td><%= link_to "Seleccionar", restaurants_select_path(restaurant_user_id: restaurant_user.id) %></td>
+						<td><%= link_to "Seleccionar", restaurants_select_path(restaurant_user_id: restaurant_user.id) %> |
+							<%= link_to "Darme de baja", restaurant_user_path(restaurant_user.id), method: :delete %>
+							
+						</td>
+
+
 					<% end%>
 				</tr>
 			<% end %>

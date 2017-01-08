@@ -23,6 +23,13 @@ class RestaurantUsersController < ApplicationController
         redirect_to root_path
     end
 
+    def destroy
+       @restaurant_user = RestaurantUser.find(params[:id])
+       @restaurant_user.destroy
+     
+        redirect_to :back
+    end
+
     private
 
     def restaurant_user_params

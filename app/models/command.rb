@@ -4,6 +4,8 @@ class Command < ApplicationRecord
 	has_many :command_menus
 	has_many :command_products
 
+	scope :by_restaurant, -> (locations) {where("location_id => ?", locations)}
+
 	FINISH_CATEGORY = ["NO FINALIZADA", "FINALIZADA"]
 	SERVED_CATEGORY = ["NO SERVIDO", "SERVIDO"]
 
