@@ -1,6 +1,7 @@
 // Place all the styles related to the commands controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .muestra-comanda {
 	background-image: url("group6.png");
 	background-size: cover;
@@ -10,6 +11,7 @@
 	float: left;
 	text-align: center;
 	top: 35%;
+	height: 422px;
 	width: 50%;
 }
 
@@ -17,6 +19,7 @@
 	float: left;
 	text-align: center;
 	top: 35%;
+	height: 422px;
 	width: 50%;
 }
 
@@ -47,7 +50,7 @@ td.b6 {
 	text-align: center;
 }
 
-.muestra-eleccion-comanda {
+.muestra-eleccion-comandas {
 	float: left;
 	padding-left: 1%;
 	text-align: center;

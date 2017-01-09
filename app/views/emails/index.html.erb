@@ -31,7 +31,7 @@
                         <% else %>
                             <td class="b4"><%= email_in.user_for %></td>
                         <% end %>
-                        <td class="contenido"><%= email_in.description %></td>
+                        <td class="contenido"><div id="mostrar"> <%= email_in.description %> </div></td>
                         <td><%= email_in.created_at.strftime("%d %B %Y -- %X") %></td>
                         <% if email_in.is_view == 0 %>
                             <td class="b1"><%= Email::VIEW_CATEGORY[email_in.is_view]%></td>

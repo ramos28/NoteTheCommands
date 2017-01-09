@@ -14,7 +14,7 @@
     </div>
     <div class="field">
         <%= f.label :Coste_materia_prima_unidad %><br />
-        <%= f.text_field :price_buy_unity %>
+        <%= f.number_field :price_buy_unity, :step => "0.01" %>
     </div>
     <div class="field">
         </br><%= f.submit %>

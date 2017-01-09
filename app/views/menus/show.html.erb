@@ -18,8 +18,8 @@
             <%= @menu.description %>
         </p>
         <p>
-            <%= link_to "Modificar", edit_menu_product_path(@menu) %> |
-            <%= link_to "Eliminar", @menu, :method => :delete, data: { confirm: "Are you sure?"} %>
+            <%= link_to "Modificar", edit_menu_path(@menu) %> |
+            <%= link_to "Eliminar", @menu, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el Menú?"} %>
         </p>
     </div>
 
@@ -28,38 +28,38 @@
             <div class="menu_tipo">Entrante</div>
             <% @menu.menu_products.each do |mp| %>
                 <% if mp.category == 0 %>
-                    <div class="menu_tipo_seleccion"><td><%= mp.product.name %>: (<%= mp.product.description %>)</td></div>
+                    <div class="menu_tipo_seleccion" title="<%= mp.product.ingredients %>"><td><%= mp.product.name %></td></div>
                 <% end %>
             <% end %>
             <div class="menu_tipo">Primer Plato</div>
             <% @menu.menu_products.each do |mp| %>
                 <% if mp.category == 1 %>
-                    <div class="menu_tipo_seleccion"><td><%= mp.product.name %>: (<%= mp.product.description %>)</td></div>
+                    <div class="menu_tipo_seleccion" title="<%= mp.product.ingredients %>"><td><%= mp.product.name %></td></div>
                 <% end %>
             <% end %>
             <div class="menu_tipo">Segundo Plato</div>
             <% @menu.menu_products.each do |mp| %>
                 <% if mp.category == 2 %>
-                    <div class="menu_tipo_seleccion"><td><%= mp.product.name %>: (<%= mp.product.description %>)</td></div>
+                    <div class="menu_tipo_seleccion" title="<%= mp.product.ingredients %>"><td><%= mp.product.name %></td></div>
                 <% end %>
             <% end %>
             <div class="menu_tipo">Postre</div>
             <% @menu.menu_products.each do |mp| %>
                 <% if mp.category == 3 %>
-                    <div class="menu_tipo_seleccion"><td><%= mp.product.name %>: (<%= mp.product.description %>)</td></div>
+                    <div class="menu_tipo_seleccion" title="<%= mp.product.ingredients %>"><td><%= mp.product.name %></td></div>
                 <% end %>
             <% end %>
             <div class="menu_tipo">Bebida</div>
             <% @menu.menu_products.each do |mp| %>
                 <% if mp.category == 4 %>
-                    <div class="menu_tipo_seleccion"><td><%= mp.product.name %></td></div>
+                    <div class="menu_tipo_seleccion" title="<%= mp.product.ingredients %>"><td><%= mp.product.name %></td></div>
                 <% end %>
             <% end %>
         <div class="menu_tipo">Precio:   <%= @menu.price %> €</div>
     </div>
 
     <div class="muestra-eleccion">
-        </br></br></br></br><div class="menu_accion">Insertar Producto</div>
+        </br></br><div class="menu_accion">Insertar Producto</div>
         <%= form_for :menu_product, url: menu_products_path do |f| %>
             <div class="field">
                 </br><%= f.label :category %>
@@ -72,5 +72,7 @@
             </br><%= f.hidden_field :menu_id, value: @menu.id %>
             <%= f.submit 'Añadir Producto'%>
         <% end %>
+        </br></br><div class="menu_accion">Terminar Menu</div>
+        </br><%= button_to 'Finalizar Menú', menus_path, :method => "get" %>
     </div>
 </div>

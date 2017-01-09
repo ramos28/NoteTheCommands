@@ -2,7 +2,7 @@ class Product < ApplicationRecord
 
 	belongs_to :restaurant
 
-	PRODUCT_CATEGORY = ["BEBIDA", "RACION", "BOCADILLO", "POSTRE", "GENERAL"]
+	PRODUCT_CATEGORY = ["RACION", "CALDOS", "PESCADOS", "CARNES", "ENSALADAS", "BOCADILLO", "POSTRE", "BEBIDA", "BEBIDAS ALCOHOLICAS", "APERITIVO", "TACO", "BURRITO", "WRAP", "GENERAL", "EXTRAS"]
 
 	#definimos una clase metodo search
   	def self.search(search)

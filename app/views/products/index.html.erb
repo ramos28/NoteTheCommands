@@ -7,7 +7,8 @@
 				<%= form_tag products_path, method: :get do %>
 				    <th>Nombre<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre producto" %></p></th>
 				    <th>Categoría</th>
-				    <th>Descripción</th>
+				    <th>Ingredientes</th>
+				    <th>¿Consumo menores?</th>
 				    <th>Coste Venta Unidad</th>
 				    <th>Resturante</th>
 				<% end %>
@@ -17,8 +18,9 @@
 			<% @products.each do |product| %>
 			    <tr>
 			          <td><%= product.name %></td>
-			          <td><%= Product::PRODUCT_CATEGORY[product.product_type] %></td>
-			          <td><%= product.description %></td>
+			          <td><%= Product::PRODUCT_CATEGORY[product.type_product] %></td>
+			          <td title="<%= product.ingredients %>"><%= product.ingredients %></td>
+			          <td><%= product.younger %></td>
 			          <td class="price"><%= number_to_currency(product.price, :unit => "€") %></td>
 			          <td><%= product.restaurant.name %></td>
 			          <td><%= link_to "Edit Stock", edit_product_path(product) %></td>                

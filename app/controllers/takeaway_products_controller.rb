@@ -6,7 +6,6 @@ class TakeawayProductsController < ApplicationController
 
     def create
         @takeaway_product = TakeawayProduct.new(takeaway_product_params)
-        debugger
         if @takeaway_product.save
             flash[:notice] = "Successfully created takeaway_product."
             redirect_to :back

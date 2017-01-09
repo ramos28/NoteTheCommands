@@ -59,7 +59,7 @@
 
 
 <% if !@command.is_end %>    
-    <div class="muestra-eleccion-comanda">
+    <div class="muestra-eleccion-comandas">
     <ul class="tabs">
         <li><a href="#tab1">Productos</a></li>
         <li><a href="#tab2">Menus</a></li>
@@ -103,8 +103,9 @@
         <%= form_for @command do |f| %>
             <%= f.error_messages %>
             <%= f.hidden_field :is_end, :value => 1 %>
+            </br></br><div class="accion">Cerrar la Comanda</div>
             <div class="field">
-                </br><%= f.submit 'Cerrar Comanda'%>
+                </br><%= f.submit 'Cerrar'%>
                 </br></br></br></br></br>
             </div>
         <% end %>

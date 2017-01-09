@@ -161,14 +161,15 @@ ActiveRecord::Schema.define(version: 20170108133629) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                                    null: false
-    t.integer  "type",                                    null: false
-    t.string   "description"
-    t.float    "price",         limit: 24,                null: false
-    t.boolean  "younger",                  default: true, null: false
+    t.string   "name",                        null: false
+    t.integer  "type_product",                null: false
+    t.text     "ingredients",   limit: 65535
+    t.text     "preparation",   limit: 65535
+    t.float    "price",         limit: 24,    null: false
+    t.boolean  "younger",                     null: false
     t.integer  "restaurant_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
   end
 

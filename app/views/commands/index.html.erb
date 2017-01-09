@@ -44,6 +44,7 @@
 	<div class="muestra-opciones">
 		</br><div class="accion">Crear una nueva Comanda</div>
 		</br></br><%= button_to 'Crear Comanda', new_location_path, :method => "get" %>
+		</br></br></br></br></br></br>
 	</div>
 
 <% elsif @current_role == 1 %>
@@ -84,8 +85,7 @@
 
 					        <%= f.hidden_field :is_served, :value => true %>
 					        <div class="field">
-					            </br><%= f.submit 'Servir'%>
-					            </br></br></br></br></br>
+					            <%= f.submit 'Servir'%>
 					        </div>
 					    <% end %>
 					</td>

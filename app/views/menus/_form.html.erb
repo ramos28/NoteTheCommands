@@ -14,7 +14,7 @@
     </div>
     <div class="field">
         </br><%= f.label :precio %><br />
-        <%= f.number_field :price %> €
+        <%= f.number_field :price, :step => "0.01", max: 10 %> €
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>

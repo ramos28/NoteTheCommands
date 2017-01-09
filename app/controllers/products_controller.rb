@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 	helper_method :sort_column, :sort_direction
 
   	def index
-  		@products = Product.where("restaurant_id = ?", "#{@current_restaurant.id}").order("product_type DESC").search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 7, :page => params[:page])
+  		@products = Product.where("restaurant_id = ?", "#{@current_restaurant.id}").order("type_product DESC").search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 7, :page => params[:page])
 		@product = Product.new
 	    if params[:name].present?
 	      	@products = @products.where("name LIKE ?", "%#{params[:name]}%")
@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
   	private
 
   	def product_params
-  		params.require(:product).permit(:name, :type, :description, :price, :restaurant_id) 
+  		params.require(:product).permit(:name, :type_product, :ingredients, :preparation, :price, :younger, :restaurant_id) 
   	end
 
   	def sort_column
@@ -62,5 +62,3 @@ class ProductsController < ApplicationController
     	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   	end
 end
-
-

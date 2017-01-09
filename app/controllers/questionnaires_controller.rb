@@ -2,18 +2,15 @@ class QuestionnairesController < ApplicationController
 	helper_method :sort_column, :sort_direction
 
   	def index
-  		@restaurant_users = RestaurantUser.all
-  		@questionnaires = Questionnaire.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 7, :page => params[:page])
+  		@questionnaires = Questionnaire.where("restaurant_id = ?", "#{@current_restaurant.id}").paginate(:per_page => 7, :page => params[:page])
 		@questionnaire = Questionnaire.new
 	end
 
 	def show
-		@restaurant_users = RestaurantUser.all
 		@questionnaire = Questionnaire.find(params[:id])
 	end
 
 	def new
-		@restaurant_users = RestaurantUser.all
 		@questionnaire = Questionnaire.new
 	end
 
