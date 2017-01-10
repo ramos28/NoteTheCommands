@@ -1,5 +1,5 @@
 <div class="title">Stock del Restaurante</div>
-
+</br>
 <table id="stocks" class="display">
     <thead>
         <tr>
@@ -19,14 +19,14 @@
         <% @stocks.each do |stock| %>
             <tr>
                 <td><%= stock.product.restaurant.name %></td>
-                <td><%= Product::PRODUCT_CATEGORY[stock.product.product_type] %></td>
+                <td><%= Product::PRODUCT_CATEGORY[stock.product.type_product] %></td>
                 <td><%= stock.product.name %></td>
                 <td><%= stock.description_stock %></td>
                 <td class="price"><%= number_to_currency(stock.product.price, :unit => "€") %></td>
                 <td><%= stock.quantity %></td>
                 <td class="price"><%= number_to_currency(stock.price_buy_unity, :unit => "€") %></td>
                 <td class="price"><%= number_to_currency(stock.quantity * stock.price_buy_unity, :unit => "€") %></td>
-                <td><%= link_to "Edit Stock", edit_stock_path(stock) %></td>
+                <td><%= link_to "Edit Stock", edit_stock_path(stock), :class => 'buton azul' %></td>
             </tr>
         <% end %>
     </tbody>
@@ -35,5 +35,5 @@
     </tfoot>
 </table>
 
-<p><%= button_to "Añadir Producto al Stock", new_stock_path, :method => "get" %></p>
+<p><%= button_to "Añadir Producto al Stock", new_stock_path, :method => "get", :class => 'boton azul' %></p>
 

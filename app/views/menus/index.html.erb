@@ -1,5 +1,5 @@
-<div class="title">Menus del Restaurante</div>
-
+<div class="title">Menús del Restaurante '<%= @current_restaurant.name %>'</div>
+</br>
 <div class ="muestra-tabla">
 	<table class="pretty">
 		<tr>
@@ -19,8 +19,8 @@
 				<td><%= menu.restaurant.name %></td>
 				<td><%= menu.user.user_name %></td>
 				<% if (@current_role == 3 || @current_role == 2 || @current_role == 1) %>
-					<td><%= link_to "Edit menu", edit_menu_path(menu) %></td>
-					<td><%= link_to "Agregar productos", menu_path(menu) %></td>
+					<td><%= link_to "Edit menu", edit_menu_path(menu), :class => 'boton azul' %>
+					| <%= link_to "Agregar productos", menu_path(menu), :class => 'boton azul' %></td>
 				<% end %>       
 		    </tr>
 		<% end %>
@@ -29,7 +29,7 @@
 </div>
 
 <div class="muestra-opciones">
-	<div class="accion">Crear nuevo Menu</div>
+	</br><div class="accion">Crear Nuevo Menú</div>
 	<%= render 'form' %>
 </div>
     

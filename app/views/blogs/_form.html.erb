@@ -1,17 +1,17 @@
 <%= form_for @blog do |f| %>
     <%= f.error_messages %>
     <div class="field">
-        </br><%= f.label :noticia %><br />
+        <%= f.label :noticia %>
         <%= f.text_field :title %>
     </div>
     <div class="field">
-        </br><%= f.label :descripción %><br />
+        <%= f.label :descripción %>
         <%= f.text_area :description, :cols => 30, rows: 5 %>
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="field">
-        <p><%= f.submit %></p>
+        <p><%= f.submit 'Crear Blog', :class => 'boton azul' %></p>
     </div>
     </br></br></br>
 <% end %>

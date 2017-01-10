@@ -2,17 +2,21 @@
 <div class ="muestra-tabla">
 	<table class="pretty">
 	    <tr>
-	        <th><%=  "Nombre" %></th>
-	        <th><%=  "Telefono" %></th>
-	        <th><%=  "Correo Electronico" %></th>
-	        <th><%=  "Pais" %></th>
+	    	<%= form_tag restaurants_path, method: :get do %>
+		    	<th>Nombre<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Restaurante" %></p></th>
+		    	<th>Pais</th>
+		    	<th>Ciudad</th>
+		        <th>Telefono</th>
+		        <th>Correo Electronico</th>
+	        <% end %>
 	    </tr>
 	    <% @restaurants.each do |restaurant| %>
 	        <tr>
-	            <td><%= restaurant.name %></td>
+	        	<td><%= restaurant.name %></td>
+	        	<td><%= restaurant.country %></td>
+	        	<td><%= restaurant.city %></td>
 	            <td><%= restaurant.phone %></td>
 	            <td><%= restaurant.email %></td>
-	            <td><%= restaurant.country %></td>
 	        </tr>
 	    <% end %>
 	</table>

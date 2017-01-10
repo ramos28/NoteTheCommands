@@ -1,14 +1,15 @@
 <div class="title">Productos Registrados</div>
+</br>
 <table>
     <thead>
         <tr>
-            <th><%= "Producto" %></th>
-            <th><%= "Restaurante perteneciente" %></th>
-            <th><%= "Categoría producto" %></th>
-            <th><%= "Descripción" %></th>
-            <th><%= "Precio unidad" %></th>
-            <th><%= "Fecha de alta" %></th>
-            <th><%= "Fecha modificación" %></th>
+            <th>Producto</th>
+            <th>Restaurante perteneciente</th>
+            <th>Categoría producto</th>
+            <th>Ingredientes"</th>
+            <th>Precio unidad</th>
+            <th>Fecha de alta"</th>
+            <th>Fecha modificación"</th>
         </tr>
     </thead>
     <tbody>
@@ -16,8 +17,8 @@
             <tr>
                 <td><%= total_products.name %></td>
                 <td><%= total_products.restaurant.name %></td>
-                <td><%= Product::PRODUCT_CATEGORY[total_products.product_type] %></td>
-                <td><%= total_products.description %></td>
+                <td><%= Product::PRODUCT_CATEGORY[total_products.type_product] %></td>
+                <td><%= total_products.ingredients %></td>
                 <td class="price"><%= number_to_currency(total_products.price, :unit => "€") %></td>
                 <td><%= total_products.created_at %></td>
                 <td><%= total_products.updated_at %></td>

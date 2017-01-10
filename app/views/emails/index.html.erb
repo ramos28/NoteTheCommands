@@ -1,5 +1,5 @@
-<div class="title">Mensajes de '<%= current_user.user_name %>'</div></br>
-
+<div class="title">Mensajes de '<%= current_user.user_name %>'</div>
+</br>
 <ul class="tabs">
     <li><a href="#tab1">Mensajes recibidos</a></li>
     <li><a href="#tab2">Mensajes enviados</a></li>
@@ -7,8 +7,8 @@
 <div class="contenedor_tab">
     <div id="tab1" class="contenido_tab">
         <table class="pretty">
-            <%= button_to "New email", new_email_path, :method => "get" %>
-            <%= button_to "Destroy", @email, :confirm => 'Estas seguro?', :method => :delete %>
+            <%= button_to "New email", new_email_path, :method => "get", :class => 'boton azul' %>   
+            <%= button_to "Destroy", @email, :confirm => '¿Esta seguro que dese eliminar el mensaje?', :method => :delete, :class => 'boton azul' %>
             <thead>
                 <tr>
                     <th> Selecciona </th>
@@ -38,7 +38,7 @@
                         <% else %>
                             <td class="b2"><%= Email::VIEW_CATEGORY[email_in.is_view]%></td>
                         <% end %>
-                        <td><%= link_to "Leer Mensaje", emails_show_path(email_in.id) %></td>
+                        <td><%= link_to "Leer Mensaje", emails_show_path(email_in.id), :class => 'boton azul' %></td>
                     </tr>
                 <% end %>
             </tbody>

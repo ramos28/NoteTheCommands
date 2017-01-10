@@ -31,7 +31,9 @@
 		                <% else %>
 							<td class="b2"><%= command.is_end %></td>
 		                <% end %>
-		                <td><%= link_to "Edit Command", edit_command_path(command) %> | <%= link_to "Ver Command", command_path(command) %></td>                
+		                <% if !command.is_end %>
+		                	<td><%= link_to "Edit Command", edit_command_path(command), :class => 'boton azul' %><%= link_to "Ver Command", command_path(command), :class => 'boton azul' %></td>
+		                <% end %>          
 		            </tr>
 		        <% end %>
 		    <% end %>
@@ -42,8 +44,8 @@
 	</div>
 
 	<div class="muestra-opciones">
-		</br><div class="accion">Crear una nueva Comanda</div>
-		</br></br><%= button_to 'Crear Comanda', new_location_path, :method => "get" %>
+		</br><div class="accion">Crear una Nueva Comanda</div>
+		</br></br><%= button_to 'Crear Comanda', new_location_path, :method => "get", :class => 'boton azul' %>
 		</br></br></br></br></br></br>
 	</div>
 
@@ -77,7 +79,7 @@
 	                <% else %>
 						<td class="b2"><%= command.is_end %></td>
 	                <% end %>
-	                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
+	                <td><%= link_to "Edit Command", edit_command_path(command), :class => 'boton azul' %></td>                
 
 					<td>
 					    <%= form_for command do |f| %>
@@ -85,7 +87,7 @@
 
 					        <%= f.hidden_field :is_served, :value => true %>
 					        <div class="field">
-					            <%= f.submit 'Servir'%>
+					            <%= f.submit 'Servir', :class => 'boton azul'%>
 					        </div>
 					    <% end %>
 					</td>

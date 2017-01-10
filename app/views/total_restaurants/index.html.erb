@@ -2,18 +2,20 @@
 <table>
     <thead>
         <tr>
-            <th><%= "Restaurante" %></th>
-            <th><%= "Email" %></th>
-            <th><%= "Telefono" %></th>
-            <th><%= "Direccion" %></th>
-            <th><%= "Ciudad" %></th>
-            <th><%= "Pais" %></th>
-            <th><%= "Código postal" %></th>
-            <th><%= "Coord. Latitud" %></th>
-            <th><%= "Coord. Longitud" %></th>
-            <th><%= "Horario apertura" %></th>
-            <th><%= "Fecha registrado" %></th>
-            <th><%= "Fecha modificación" %></th>
+            <%= form_tag total_restaurants_index_path, method: :get do %>
+                <th>Restaurante<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Restaurante" %></p></th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Ciudad</th>
+                <th>Pais</th>
+                <th>Código postal</th>
+                <th>Coord. Latitud</th>
+                <th>Coord. Longitud</th>
+                <th>Horario Apertura</th>
+                <th>Fecha Registrado</th>
+                <th>Fecha Modificación</th>
+            <% end %>
         </tr>
     </thead>
     <tbody>

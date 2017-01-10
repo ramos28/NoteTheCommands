@@ -1,18 +1,18 @@
 <%= form_for @location do |f| %>
 	<%= f.error_messages %>
 	<div class="field">
-	    </br><%= f.label :Lugar %><br />
+	    </br><%= f.label :Lugar %>
 	    <%= f.select :place, options_for_select(Location::LOCATION_CATEGORY.map.with_index {|index, value| [index, value]})%>
 	</div>
 	<div class="field">
-	    </br><%= f.label :Mesa %><br />
+	    </br><%= f.label :Mesa %>
 	    <%= f.number_field :sit %>
 	</div>
 	
 	<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<div class="field">
-		</br><%= f.submit %>
+		</br><%= f.submit 'Seleccionar Mesa', :class => 'boton azul' %>
 	</div>
 	</br></br></br></br></br></br></br></br></br>
 <% end %>

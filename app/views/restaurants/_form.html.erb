@@ -1,39 +1,39 @@
 <%= form_for @restaurant do |f| %>
     <%= f.error_messages %>
     <div class="field">
-        </br><%= f.label :nombre %>
+        <%= f.label :nombre %>
         <%= f.text_field :name %>
     </div>
     <div class="field">
-        </br><%= f.label :teléfono %>
+        <%= f.label :teléfono %>
         <%= f.text_field :phone %>
     </div>
     <div class="field">
-        </br><%= f.label :dirección %>
+        <%= f.label :dirección %>
         <%= f.text_field :address %>
     </div>
     <div class="field">
-        </br><%= f.label :ciudad %>
+        <%= f.label :ciudad %>
         <%= f.text_field :city %>
     </div>
     <div class="field">
-        </br><%= f.label :pais %>
+        <%= f.label :pais %>
         <%= f.text_field :country %>
     </div>
     <div class="field">
-        </br><%= f.label :código_postal %>
+        <%= f.label :código_postal %>
         <%= f.text_field :postal_code %>
     </div>
     <div class="field">
-        </br><%= f.label :correo_electrónico %>
+        <%= f.label :correo_electrónico %>
         <%= f.text_field :email %>
     </div>
     <div class="field">
-        </br><%= f.label :horario_apertura %>
+        <%= f.label :horario_apertura %>
         <%= f.text_field :opening_hours %>
     </div>    
     <div class="field">
-        </br><%= f.submit %>
+        </br><%= f.submit 'Registrar Restaurante', :class => 'boton azul' %>
     </div>
     </br></br>
 <% end %>

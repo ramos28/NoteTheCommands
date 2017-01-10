@@ -14,7 +14,7 @@
         <%= @command.location.sit %>
     </p>
     <p>
-        <strong>Descripcion:</strong>
+        <strong>Descripción:</strong>
         <%= @command.description %>
     </p>
     <p>
@@ -66,22 +66,33 @@
     </ul>
         <div class="contenedor_tab">
             <div id="tab1" class="contenido_tab">
-                </br></br><div class="accion-command">Agregar Productos</div>
+                </br><div class="accion-command">Agregar Productos</div>
                 <%= form_for :command_product, url: command_products_path do |f| %>
                     <div class="field">
-                        </br><%= f.label :producto %><br />
+                        </br><%= f.label :producto %><br/>
                         <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_products, :id, :name)%>
                     </div>
                     <div class="field">
-                        </br><%= f.label :cantidad %><br />
+                        </br><%= f.label :cantidad %><br/>
                         <%= f.number_field :quantity %>
                     </div>
                     <%= f.hidden_field :command_id, value: @command.id %>
-                    </br><%= f.submit 'Agregar Producto' %>
+                    </br><%= f.submit 'Agregar Producto', :class => 'boton azul'  %>
+                    <% if @command.is_served %>
+                        <%= form_for @command do |f| %>
+                            <%= f.error_messages %>
+                            <%= f.hidden_field :is_end, :value => 1 %>
+                            </br></br><div class="accion-command">Cerrar la Comanda</div>
+                            <div class="field">
+                                </br><%= f.submit 'Cerrar Comanda', :class => 'boton azul' %>
+                                </br></br>
+                            </div>
+                        <% end %>
+                    <% end %>
                 <% end %>
             </div>
             <div id="tab2" class="contenido_tab">
-                </br></br><div class="accion-command">Agragar Menu</div>
+                </br><div class="accion-command">Agragar Menu</div>
                 <%= form_for :command_menu, url: command_menus_path do |f| %>
                     <div class="field">
                         </br><%= f.label :menu %><br />
@@ -92,24 +103,23 @@
                         <%= f.number_field :quantity %>
                     </div>
                     <%= f.hidden_field :command_id, value: @command.id %>
-                    </br><%= f.submit 'Agregar Menu' %>
+                    </br><%= f.submit 'Agregar Menu', :class => 'boton azul'  %>
+                    <% if @command.is_served %>
+                        <%= form_for @command do |f| %>
+                            <%= f.error_messages %>
+                            <%= f.hidden_field :is_end, :value => 1 %>
+                            </br></br><div class="accion-command">Cerrar la Comanda</div>
+                            <div class="field">
+                                </br><%= f.submit 'Cerrar Comanda', :class => 'boton azul' %>
+                                </br></br>
+                            </div>
+                        <% end %>
+                    <% end %>
                 <% end %>
             </div>
         </div>
     </div>
     <div style="clear:both;"></div>
-    
-    <% if @command.is_served %>
-        <%= form_for @command do |f| %>
-            <%= f.error_messages %>
-            <%= f.hidden_field :is_end, :value => 1 %>
-            </br></br><div class="accion">Cerrar la Comanda</div>
-            <div class="field">
-                </br><%= f.submit 'Cerrar'%>
-                </br></br></br></br></br>
-            </div>
-        <% end %>
-    <% end %>
 <% else %>
     <%= link_to 'Pedir cuenta', command_finish_path(@command), style: "color: white"  %>
 <% end %>

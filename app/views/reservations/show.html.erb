@@ -1,4 +1,4 @@
-<h1>Reservas</h1>
+<div class="title">Reservas</div>
 <p>
   <strong>Nombre:</strong>
   <%= @reservation.name %>
@@ -28,7 +28,7 @@
   <%= @reservation.phone %>
 </p>
 <p>
-  <%= link_to "Edit", edit_reservation_path(@reservation) %> |
-  <%= link_to "Destroy", @reservation, :method => :delete, data: { confirm: "Are you sure?"} %> |
-  <%= link_to "View All", reservations_path %>
+  <%= link_to "Modificar", edit_reservation_path(@reservation), style: "color: white" %> |
+  <%= link_to "Eliminar", @reservation, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar la Reserva?"}, style: "color: white" %> |
+  <%= link_to "Terminar", start_path, style: "color: white" %>
 </p>

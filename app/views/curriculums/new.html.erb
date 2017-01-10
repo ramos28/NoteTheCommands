@@ -1,24 +1,17 @@
 <div class="title">¡Mandenos su Curriculum Vitae!</div>
+<div class="contacto"> <p>¿Te apetece trabajar con nosotros?</p>
+<p>Entonces ¡estás de enhorabuena! Somos una empresa joven y buscamos un equipo de personas con ganas de hacer un gran trabajo mientras se divierten. En '<%= @current_restaurant.name %>' cuidamos especialmente la atención al cliente para ofrecerle una experiencia de consumo perfecta. Tenemos diferentes perfiles definidos para nuestros restaurantes. Si encajas en algún puesto y quieres que contemos contigo en próximos procesos de selección, este es tu momento. ¿a qué esperas?</p>
 
-¿Te apetece trabajar donde además te diviertas?
-Entonces ¡estás de enhorabuena! Somos una empresa joven y buscamos un equipo de personas con ganas de hacer un gran trabajo mientras se divierten. En Taco Bell cuidamos especialmente la atención al cliente para ofrecerle una experiencia de consumo perfecta.Tenemos diferentes perfiles definidos para nuestros restaurantes. Si encajas en algún puesto y quieres que contemos contigo en próximos procesos de selección, este es tu momento. ¿a qué esperas?
+<p>– GERENTE:
+Responsable máximo del restaurante, cuya responsabilidad es implantar y desarrollar las políticas, principios y directrices marcadas por la Cía.  Responsable de potenciar el desarrollo profesional y personal del equipo, asegurando un excelente clima laboral.</p>
 
-– GERENTE:
-Responsable máximo del restaurante, cuya responsabilidad es implantar y desarrollar las políticas, principios y directrices marcadas por la Cía.  Responsable de potenciar el desarrollo profesional y personal del equipo, asegurando un excelente clima laboral.
-
-– SUBGERENTE:
-2º Responsable máximo del restaurante, cuya responsabilidad es apoyar en todo momento al Gerente a implantar y desarrollar las políticas, principios y directrices marcadas por la Cía. Deberá responsabilizarse también de aportar mejoras en la gestión.
-
-– LÍDER DE EQUIPO:
-Responsable de turno, cuya responsabilidad es apoyar en todo momento al EE.GG. Responsable  como parte del equipo de trabajo para alcanzar las metas de satisfacción del cliente. Debe asegurar el control de productos, servicio y efectivo durante su turno.
-
-– PERSONAL DE EQUIPO:
-Responsable de alcanzar metas de satisfacción del cliente. Es un puesto perfecto para personal con iniciativa, ganas de trabajar en equipo, de formarse y crecer en una gran compañía.
-
-</br></br></br></br><%= form_for :curriculum, url: curriculums_path do |f| %>
-	<%= f.file_field :file %>
+<p>– PERSONAL:
+Responsable de alcanzar metas de satisfacción del cliente. Es un puesto perfecto para personal con iniciativa, ganas de trabajar en equipo, de formarse y crecer en una gran compañía.</p>
+</div>
+</br><%= form_for :curriculum, url: curriculums_path do |f| %>
+	<%= f.file_field :file, style: "color: white"  %>
 	<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-	<%= f.submit 'Enviar Curriculum' %>
+	<%= f.submit 'Enviar Curriculum', :class => 'boton azul' %>
 <% end %>
 
 <% if @current_role  == 3 %>

@@ -43,6 +43,13 @@ div.p1 {
     color: white;
 }
 
+div.contacto {
+    font-family: logoFont;
+    text-align: center;		
+    font-size: 35px;
+    color: white;
+}
+
 @font-face {
     font-family: titleFont;
     src: url(tituloCabecera.ttf);
@@ -75,7 +82,7 @@ div.title {
 div.accion {
     font-family: accionesFont;
     text-align: center;		
-    font-size: 40px;
+    font-size: 30px;
     color: white;
 }
 
@@ -114,12 +121,23 @@ h1 {
 	color: white;
 }
 
+@font-face {
+    font-family: accionesTitulos;
+    src: url(titulo.ttf);
+}
+
+@font-face {
+    font-family: accionesTitulos;
+    src: url(titulo.ttf);
+    font-weight: bold;
+}
+
 div.sesion {
 	background-image: url("papiro.png");
-    font-family: logoFont;
+    font-family: accionesTitulos;
     padding-left: 10px;
     text-align: center;	
-    font-size: 20px;
+    font-size: 17px;
     float: right;
     color: black;
     height: 110px;
@@ -242,5 +260,43 @@ nav ul ul li a:hover {
 
 .error_messages ul {
   margin: 0;
+}
+
+.boton{
+	text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+	text-align:center;
+	text-decoration: none;
+	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+	display:inline-block;
+	color: #FFF;
+	background: #7F8C8D;
+	padding: 6px 20px;
+	white-space: nowrap;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.azul{
+  background: #6E6E6E;
+}
+
+.azul:hover{
+  background: #2E2E2E;
+}
+
+label {
+  display: block;
+  margin: .5em 0 0 0;
+}
+
+.field {
+    font-family: accionesTitulos;
+    font-size: 17px;
 }
 

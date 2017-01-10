@@ -1,17 +1,19 @@
 <div class="title">Perfil</div>
 </br><div class="profile">
-	</br><div class="accion-perfil">Perfil del usuario '<%=current_user.user_name%>'</div>
+	</br><div class="accion-perfil">Perfil del Usuario '<%=current_user.user_name%>'</div>
 	<div id="logo_profile">
 		<%= image_tag "perfil.png"%>
+
 	</div>
-	</br><div id = "profile_info">
-		<div class="p2">Correo:   <%= current_user.email%></div>
+	</br></br></br><div id = "profile_info">
+		<div class="p2">Correo:   <%= current_user.email %></div>
 		<div class="p2">Teléfono:   <%= current_user.phone%></div>
 		<div class="p2">Edad:	  <%= current_user.age %> años</div>
 		<div class="p2">Fecha de Alta:	  <%= current_user.created_at.strftime("%d %B %Y") %></div>
 		<div class="p2">Número logins:	  <%= current_user.sign_in_count%></div>
+		</br>
 	</div>
-		</br></br><div class="accion-perfil">Modificar datos de Usuario</div>
-		</br><p><%= button_to "Editar usuario", edit_user_registration_path, :method => "get" %></p>
-
+		</br></br><div class="accion-perfil">Modificar Datos de Usuario</div>
+		</br><p><%= button_to "Modificar Usuario", edit_user_registration_path, :method => "get", :class => 'boton azul' %></p>
+	</br></br>
 </div>

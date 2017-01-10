@@ -1,11 +1,11 @@
 <div class="title">Productos del Restaurante</div>
-
+</br>
 <div class ="muestra-tabla">
 	<table class="pretty">
 		<thead>
 			<tr>
 				<%= form_tag products_path, method: :get do %>
-				    <th>Nombre<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre producto" %></p></th>
+				    <th>Nombre<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Producto" %></p></th>
 				    <th>Categoría</th>
 				    <th>Ingredientes</th>
 				    <th>¿Consumo menores?</th>
@@ -23,7 +23,7 @@
 			          <td><%= product.younger %></td>
 			          <td class="price"><%= number_to_currency(product.price, :unit => "€") %></td>
 			          <td><%= product.restaurant.name %></td>
-			          <td><%= link_to "Edit Stock", edit_product_path(product) %></td>                
+			          <td><%= link_to "Edit Stock", edit_product_path(product), :class => 'boton azul' %></td>                
 			    </tr>
 			<% end %>
 		</tbody>
@@ -34,6 +34,6 @@
 </div>
 
 <div class="muestra-opciones">
-	<div class="accion">Agregar productos al restaurante</div>
+	</br><div class="accion">Registrar Producto al Restaurante</div>
 	<%= render 'form' %>
 </div>

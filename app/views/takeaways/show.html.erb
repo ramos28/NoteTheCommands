@@ -44,11 +44,11 @@
         </br></br></br></br><div class="takeaway_accion">Insertar Producto</div>
         <%= form_for :takeaway_product, url: takeaway_products_path do |f| %>
             <div class="field">
-                </br><%= f.label :producto %><br />
+                </br><%= f.label :producto %>
                 <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @takeaway.products, :id, :name)%>
             </div>
             <div class="field">
-                </br><%= f.label :cantidad %><br />
+                </br><%= f.label :cantidad %>
                 <%= f.number_field :quantity %>
             </div>
             </br><%= f.hidden_field :takeaway_id, value: @takeaway.id %>

@@ -1,8 +1,11 @@
 class RestaurantsController < ApplicationController
 
   	def index
-  		@restaurants = Restaurant.all.paginate(:per_page => 7, :page => params[:page])
+  		@restaurants = Restaurant.all.paginate(:per_page => 13, :page => params[:page])
   		@restaurant = Restaurant.new
+  		if params[:name].present?
+	      	@restaurants = @restaurants.where("name LIKE ?", "%#{params[:name]}%")
+	    end
 	end
 
 	def show

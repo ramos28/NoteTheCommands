@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
 		@hash = Gmaps4rails.build_markers(@restaurants) do |restaurant, marker|
 			marker.lat restaurant.latitude
 			marker.lng restaurant.longitude
-			marker.infowindow restaurant.opening_hours
+			marker.infowindow "Restaurante: " + restaurant.name + ". " +restaurant.address + ", " + restaurant.city
 		end
 	end
 end

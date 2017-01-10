@@ -1,32 +1,32 @@
 <%= form_for @product do |f| %>
     <%= f.error_messages %>
     <div class="field">
-        </br><%= f.label :nombre %><br />
+        <%= f.label :nombre %>
         <%= f.text_field :name %>
     </div>
     <div class="field">
-        </br><%= f.label :tipo_producto %>
+        <%= f.label :tipo_producto %>
         <%= f.select :type_product, options_for_select(Product::PRODUCT_CATEGORY.map.with_index {|index, value| [index, value]})%>
     </div>
     <div class="field">
-        </br><%= f.label :precio_producto %><br />
-        <%= f.text_field :price %>
+        <%= f.label :precio_producto %>
+        <%= f.number_field :price, :step => "0.01" %>
     </div>
     <div class="field">
-        </br><%= f.label :breve_descripción_de_ingredientes %><br />
+        <%= f.label :breve_descripción_de_ingredientes %>
         <%= f.text_area :ingredients, :cols => 30, rows: 5 %>
     </div>
     <div class="field">
-        </br><%= f.label :breve_descripción_de_la_preparación %><br />
+        <%= f.label :breve_descripción_de_la_preparación %>
         <%= f.text_area :preparation, :cols => 30, rows: 5 %>
     </div>
     <div class="field">
-        </br><%= f.label :venta_menores %>
+        <%= f.label :venta_menores %>
         <%= f.select :younger, [['Permitido', true], ['Prohibido', false]], :selected => 'Permitido' %>
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <div class="field">
-        <p><%= f.submit 'Crear Producto'%></p>
+        <p><%= f.submit 'Crear Producto', :class => 'boton azul' %></p>
     </div>
 <% end %>
 

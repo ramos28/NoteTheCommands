@@ -1,6 +1,6 @@
 <div class="menu">
     <div class="muestra-menus">
-        </br></br></br></br></br><div class="menu_accion">Menu</div>
+        </br></br></br></br></br><div class="menu_accion">Menú</div>
         <p>
             <strong>Nombre:</strong>
             <%= @menu.name %>
@@ -23,12 +23,24 @@
         </p>
     </div>
 
-    <div class="muestra-tabla-menus"> 
+    <div class="muestra-tabla-menus">
         <div class="letra_menu">Menú <%= Menu::MENU_CATEGORY[@menu.type_menu] %></div>
             <div class="menu_tipo">Entrante</div>
             <% @menu.menu_products.each do |mp| %>
                 <% if mp.category == 0 %>
-                    <div class="menu_tipo_seleccion" title="<%= mp.product.ingredients %>"><td><%= mp.product.name %></td></div>
+                    <div class="menu_tipo_seleccion" title="<%= mp.product.ingredients %>"><td><%= mp.product.name %>       <a href="#" class="mostrarmodal"><font color="white">(Elaboración)</font></a></td></div>
+                    <div class="cajaexterna">
+                        <div class="cajainterna animated">
+                            <div class="cajacentrada">
+                                <h2>Receta: <%= mp.product.name %></h2>
+                                <p><div class="field">Ingredientes:</div> <%= mp.product.ingredients %></p>
+                                <p><div class="field">Preparación:</div><%= mp.product.preparation %></p>
+                                <div class="cierramodal">
+                                    <a href="#" class="cerrarmodal">Cerrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <% end %>
             <% end %>
             <div class="menu_tipo">Primer Plato</div>
@@ -66,13 +78,13 @@
                 <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
             </div>
             <div class="field">
-                </br><%= f.label :producto %><br />
+                </br><%= f.label :producto %>
                 <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}"), :id, :name)%>
             </div>
             </br><%= f.hidden_field :menu_id, value: @menu.id %>
-            <%= f.submit 'Añadir Producto'%>
+            <%= f.submit 'Añadir', :class => 'boton azul'%>
         <% end %>
-        </br></br><div class="menu_accion">Terminar Menu</div>
-        </br><%= button_to 'Finalizar Menú', menus_path, :method => "get" %>
+        </br></br><div class="menu_accion">Finalizar Menú</div>
+        </br><%= button_to 'Terminar', menus_path, :method => "get", :class => 'boton azul' %>
     </div>
 </div>

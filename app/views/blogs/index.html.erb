@@ -1,5 +1,5 @@
 <div class="title">Noticias del Restaurante '<%= @current_restaurant.name %>'</div>
-
+</br>
 <div class="muestra-blog">
     <article class=”blogPost”>
         <% @blogs.each do |noticia| %>
@@ -35,19 +35,19 @@
             <%= form_for :blog_user, url: blog_users_path do |blog_comment| %>
                 <%= blog_comment.error_messages %>
                 <div class="field">
-                    </br><%= blog_comment.label :descripción %><br />
+                    </br><%= blog_comment.label :descripción %>
                     <%= blog_comment.text_area :description, :cols => 30, rows: 4 %>
                 </div>
                 <%= blog_comment.hidden_field :blog_id, :value => noticia.id %>
                 <%= blog_comment.hidden_field :user_id, :value => current_user.id %>
                 <div class="field">
-                    <p><%= blog_comment.submit 'Comentar'%></p>
+                    <p><%= blog_comment.submit 'Comentar', :class => 'boton azul'%></p>
                 </div>
             <% end %>
 	    <% end %>
     </article>
 </div>
-</br>
+
 <div class="muestra-blogs">
     <% @blogs_view.each do |blog| %>
         <%#= blog.error_messages %>

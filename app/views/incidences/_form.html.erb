@@ -5,35 +5,35 @@
         <%= f.select :category, options_for_select(Incidence::INCIDENCE_CATEGORY.map.with_index {|index, value| [index, value]})%>
     </div>
     <div class="field"> <div class="field">
-        </br><%= f.label :prioridad %>
+        <%= f.label :prioridad %>
         <%= f.select :priority, options_for_select(Incidence::PRIORITY_CATEGORY.map.with_index {|index, value| [index, value]})%>
     </div>
     <div class="field">
-        </br><%= f.label :titulo %>
+        <%= f.label :titulo %>
         <%= f.text_field :title %>
     </div>
     <div class="field">
-        </br><%= f.label :fecha_creación %>
+        <%= f.label :fecha_creación %>
         <%= f.date_field :date_start %>
     </div>
     <div class="field">
-        </br><%= f.label :descripción %><br />
+        </br><%= f.label :descripción %>
         <%= f.text_area :description, :cols => 30, rows: 5 %>
     </div>
     <% if @current_role  == 3 %>
         <div class="field">
-            </br><%= f.label :fecha_solución %>
+            <%= f.label :fecha_solución %>
             <%= f.date_field :date_solution %>
         </div>
         <div class="field">
-            </br><%= f.label :esta_solucionado %>
+            <%= f.label :esta_solucionado %>
             <%= f.select :is_solved, options_for_select(Incidence::SOLVED_CATEGORY.map.with_index {|index, value| [index, value]})%>
         </div>
     <% end %>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="field">
-        </br><%= f.submit %>
+        </br><%= f.submit 'Crear Incidencia', :class => 'boton azul' %>
     </div>
     </br></br>
 <% end %>

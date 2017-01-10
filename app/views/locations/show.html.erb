@@ -36,7 +36,7 @@
             <%= f.text_field :title %>
         </div>
         <div class="field">
-            </br><%= f.label :descripción %><br />
+            </br><%= f.label :descripción %>
             <%= f.text_area :description %>
         </div>
         <% if @current_role  == 3 %>
@@ -48,7 +48,7 @@
         <%= f.hidden_field :location_id, :value => @location.id %>
         <%= f.hidden_field :user_id, :value => current_user.id %>
         <div class="field">
-            </br><%= f.submit %>
+            </br><%= f.submit 'Crear Comanda', :class => 'boton azul' %>
         </div>
     <% end %>
 </div>

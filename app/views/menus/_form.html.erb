@@ -1,25 +1,25 @@
 <%= form_for @menu do |f| %>
     <%= f.error_messages %>
     <div class="field">
-        </br><%= f.label :nombre_menu %><br />
+        </br><%= f.label :nombre_menú %>
         <%= f.text_field :name %>
     </div>
     <div class="field">
-        </br><%= f.label :tipo_menu %>
+        <%= f.label :tipo_menú %>
         <%= f.select :type_menu, options_for_select(Menu::MENU_CATEGORY.map.with_index {|index, value| [index, value]})%>
     </div>
     <div class="field">
-        </br><%= f.label :descripción %><br />
+        <%= f.label :descripción %>
         <%= f.text_area :description, :cols => 30, rows: 5 %>
     </div>
     <div class="field">
-        </br><%= f.label :precio %><br />
-        <%= f.number_field :price, :step => "0.01", max: 10 %> €
+        <%= f.label :precio %>
+        <%= f.number_field :price, :step => "0.01"%> €
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="field">
-        <p><%= f.submit 'Crear Menú'%></p>
+        <p><%= f.submit 'Crear Menú', :class => 'boton azul'%></p>
     </div>
     </br></br>
 <% end %>

@@ -1,36 +1,36 @@
-<h1>Incidencia</h1>
+<div class="title">Incidencia</div>
 <p>
-  <strong>category:</strong>
-  <%= @incidence.category %>
+  <strong>Çategoría:</strong>
+  <%= Incidence::INCIDENCE_CATEGORY[@incidence.category] %>
 </p>
 <p>
   <strong>Prioridad:</strong>
   <%= @incidence.priority %>
 </p>
 <p>
-  <strong>title:</strong>
+  <strong>Titulo:</strong>
   <%= @incidence.title %>
 </p>
 <p>
-  <strong>description:</strong>
+  <strong>Descripción:</strong>
   <%= @incidence.description %>
 </p>
 <p>
-  <strong>is_solved:</strong>
+  <strong>¿Está Resuelto?:</strong>
   <%= @incidence.is_solved %>
 </p>
 <p>
-  <strong>date_start:</strong>
-  <%= @incidence.date_start %>
+  <strong>Dia Reportar:</strong>
+  <%= @incidence.date_start.strftime("%d %B %Y -- %X") %> %>
 </p>
 <p>
-  <strong>restaurant:</strong>
+  <strong>Restaurante:</strong>
   <%= @incidence.restaurant.name %>
 </p>
 
 
 <p>
-  <%= link_to "Edit", edit_incidence_path(@incidence) %> |
-  <%= link_to "Destroy", @incidence, :method => :delete, data: { confirm: "Are you sure?"} %> |
-  <%= link_to "View All", incidences_path %>
+  <%= link_to "Modificar", edit_incidence_path(@incidence), style: "color: white" %> |
+  <%= link_to "Eliminar", @incidence, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar la incidencia?"}, style: "color: white" %> |
+  <%= link_to "Incidencias", incidences_path, style: "color: white" %>
 </p>
