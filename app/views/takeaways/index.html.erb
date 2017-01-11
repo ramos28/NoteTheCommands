@@ -1,27 +1,27 @@
 <div class="title">Pedido al restaurante '<%= current_user.restaurant_users.find_by_restaurant_id(@current_restaurant).restaurant.name %>'</div>
 
 <div class ="muestra-tabla-pedido">
-	<table class="tab2">
+	<table class="tabla2">
 		<thead>
-		    <tr class="tab2">
-		        <th class="tab2" title="Nombre del Pedido">Nombre</th>
-		        <th class="tab2" title="Teléfono del Usuario que ha realizado el pedido">Teléfono</th>
-		        <th class="tab2" title="Día de recogida del pedido">Día Recogida</th>
-		        <th class="tab2" title="Nombre del Restaurante al que esta Registrado el Usuario">Hora Recogida</th>
-		        <th class="tab2" title="Nombre del Restaurante al que se ha realizado el pedido">Restaurante</th>
-		        <th class="tab2" title="Total del precio del pedido">Total Precio Pedido</th>
-		        <th class="tab2" title="Muestra si el pedido esta o no entregado">Esta Entregado</th>
+		    <tr class="tabla2">
+		        <th class="tabla2" title="Nombre del Pedido">Nombre</th>
+		        <th class="tabla2" title="Teléfono del Usuario que ha realizado el pedido">Teléfono</th>
+		        <th class="tabla2" title="Día de recogida del pedido">Día Recogida</th>
+		        <th class="tabla2" title="Nombre del Restaurante al que esta Registrado el Usuario">Hora Recogida</th>
+		        <th class="tabla2" title="Nombre del Restaurante al que se ha realizado el pedido">Restaurante</th>
+		        <th class="tabla2" title="Total del precio del pedido">Total Precio Pedido</th>
+		        <th class="tabla2" title="Muestra si el pedido esta o no entregado">Esta Entregado</th>
 		    </tr>
 		</thead>
 		<tbody>
 		    <% @takeaways.each do |takeaway| %>
-		        <tr class="tab2">
-		            <td class="tab2"><%= takeaway.name %></td>
-		            <td class="tab2"><%= takeaway.phone %></td>
-		            <td class="tab2"><%= takeaway.date.strftime("%d %B %Y") %></td>
-		            <td class="tab2"><%= takeaway.hour.strftime("%X") %></td>
-		            <td class="tab2"><%= takeaway.restaurant.name %></td>
-		            <td class="tab2"><%= takeaway.total_price_selection %></td>
+		        <tr class="tabla2">
+		            <td class="tabla2"><%= takeaway.name %></td>
+		            <td class="tabla2"><%= takeaway.phone %></td>
+		            <td class="tabla2"><%= takeaway.date.strftime("%d %B %Y") %></td>
+		            <td class="tabla2"><%= takeaway.hour.strftime("%X") %></td>
+		            <td class="tabla2"><%= takeaway.restaurant.name %></td>
+		            <td class="tabla2"><%= takeaway.total_price_selection %></td>
 		            <% if !takeaway.is_delivered %>
 		                <td class="b1"><%= takeaway.is_delivered%></td>
 		            <% else %>
@@ -33,8 +33,8 @@
 		    <% end %>
 		</tbody>
 		<tfoot>
-			<tr class="tab2">
-				<th class="tab2" colspan="7">
+			<tr class="tabla2">
+				<th class="tabla2" colspan="7">
 					<%= will_paginate @takeaways %>
 				</th>
 			</tr>
