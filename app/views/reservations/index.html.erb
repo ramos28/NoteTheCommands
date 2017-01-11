@@ -1,31 +1,42 @@
 <% if @current_role == 1 || @current_role == 2 || @current_role == 3 %>
     <div class="title">Reservas del Restaurante</div>
     <div class ="muestra-tabla">
-            <table class="pretty">
-                <tr>
-                    <th><%= "Nombre reserva" %></th>
-                    <th><%= "Número de personas" %></th>
-                    <th><%= "Menu" %></th>
-                    <th><%= "Dia reserva" %></th>
-                    <th><%= "Hora reserva" %></th>
-                    <th><%= "Restaurante" %></th>
-                    <th><%= "Teléfono contacto" %></th>
-                    <th><%= "Reserva realizada por:" %></th>
-                    <th><%= "Rol" %></th>
-                </tr>
-                <% @reservations.each do |reservation| %>
-                    <tr>
-                        <td><%= reservation.name %></td>
-                        <td><%= reservation.num_persons %></td>
-                        <td><%= reservation.menu.name if !reservation.menu.blank? %></td>
-                        <td><%= reservation.date.strftime("%d %B %Y") %></td>
-                        <td><%= reservation.hour.strftime("%X") %></td>
-                        <td><%= reservation.restaurant.name %></td>
-                        <td><%= reservation.phone %></td>
-                        <td><%= reservation.user.user_name %></td>
-                        <td><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+            <table class="tabla2">
+                <thead>
+                    <tr class="tabla2">
+                        <th class="tabla2"><%= "Nombre reserva" %></th>
+                        <th class="tabla2"><%= "Número de personas" %></th>
+                        <th class="tabla2"><%= "Menu" %></th>
+                        <th class="tabla2"><%= "Dia reserva" %></th>
+                        <th class="tabla2"><%= "Hora reserva" %></th>
+                        <th class="tabla2"><%= "Restaurante" %></th>
+                        <th class="tabla2"><%= "Teléfono contacto" %></th>
+                        <th class="tabla2"><%= "Reserva realizada por:" %></th>
+                        <th class="tabla2"><%= "Rol" %></th>
                     </tr>
-                <% end %>
+                </thead>
+                <tbody>
+                    <% @reservations.each do |reservation| %>
+                        <tr class="tabla2">
+                            <td class="tabla2"><%= reservation.name %></td>
+                            <td class="tabla2"><%= reservation.num_persons %></td>
+                            <td class="tabla2"><%= reservation.menu.name if !reservation.menu.blank? %></td>
+                            <td class="tabla2"><%= reservation.date.strftime("%d %B %Y") %></td>
+                            <td class="tabla2"><%= reservation.hour.strftime("%X") %></td>
+                            <td class="tabla2"><%= reservation.restaurant.name %></td>
+                            <td class="tabla2"><%= reservation.phone %></td>
+                            <td class="tabla2"><%= reservation.user.user_name %></td>
+                            <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                <tfoot>
+                    <tr class="tabla2">
+                        <th class="tabla2" colspan="9">
+                            <%#= will_paginate @reservations %>
+                        </th>
+                    </tr>
+                </tfoot>
             </table>
     </div>
     <div class="muestra-opciones">
@@ -33,6 +44,6 @@
             <%= render 'form' %>
     </div>
 <%else%>
-        </br><div class="accion">Realizar Reserva</div>
+        </br><div class="title">Realizar Reserva</div>
         <%= render 'form' %>
 <% end %>

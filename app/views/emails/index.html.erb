@@ -6,65 +6,67 @@
 </ul>
 <div class="contenedor_tab">
     <div id="tab1" class="contenido_tab">
-        <table class="pretty">
-            <%= button_to "New email", new_email_path, :method => "get", :class => 'boton azul' %>   
-            <%= button_to "Destroy", @email, :confirm => '¿Esta seguro que dese eliminar el mensaje?', :method => :delete, :class => 'boton azul' %>
+        <table class="tabla4">
+            <%= button_to "New email", new_email_path, :method => "get", :class => 'boton grey' %>   
+            <%= button_to "Destroy", @email, :confirm => '¿Esta seguro que dese eliminar el mensaje?', :method => :delete, :class => 'boton grey' %><br/>
             <thead>
-                <tr>
-                    <th> Selecciona </th>
-                    <th> Asunto </th>
-                    <th> Emisor. De: </th>
-                    <th> Receptor. Para: </th>
-                    <th> Descripción </th>
-                    <th> Fecha Recibido </th>
-                    <th> Esta leido </th>
+                <tr class="tabla4">
+                    <th class="tabla4"> Selecciona </th>
+                    <th class="tabla4"> Asunto </th>
+                    <th class="tabla4"> Emisor. De: </th>
+                    <th class="tabla4"> Receptor. Para: </th>
+                    <th class="tabla4"> Descripción </th>
+                    <th class="tabla4"> Fecha Recibido </th>
+                    <th class="tabla4"> Esta leido </th>
                 </tr>
             </thead>
             <tbody>
                 <% @emails_in.each do |email_in| %>
-                    <tr>
-                        <td><%= check_box_tag "alternate_numbers" %></td>
-                        <td><%= email_in.subject %></td>
-                        <td><%= email_in.user_from %></td>
+                    <tr class="tabla4">
+                        <td class="tabla4"><%= check_box_tag "alternate_numbers" %></td>
+                        <td class="tabla4"><%= email_in.subject %></td>
+                        <td class="tabla4"><%= email_in.user_from %></td>
                         <% if @current_restaurant.email == email_in.user_for %>
                             <td class="b3"><%= email_in.user_for %></td>
                         <% else %>
                             <td class="b4"><%= email_in.user_for %></td>
                         <% end %>
-                        <td class="contenido"><div id="mostrar"> <%= email_in.description %> </div></td>
-                        <td><%= email_in.created_at.strftime("%d %B %Y -- %X") %></td>
+                        <td class="tabla4"><%= email_in.description %></td>
+                        <td class="tabla4"><%= email_in.created_at.strftime("%d %B %Y -- %X") %></td>
                         <% if email_in.is_view == 0 %>
                             <td class="b1"><%= Email::VIEW_CATEGORY[email_in.is_view]%></td>
                         <% else %>
                             <td class="b2"><%= Email::VIEW_CATEGORY[email_in.is_view]%></td>
                         <% end %>
-                        <td><%= link_to "Leer Mensaje", emails_show_path(email_in.id), :class => 'boton azul' %></td>
+                        <td><%= link_to "Leer Mensaje", emails_show_path(email_in.id), :class => 'boton grey' %></td>
                     </tr>
                 <% end %>
             </tbody>
             <tfoot>
-                <%#= will_paginate @emails_in %>
+                <tr class="tabla4">
+                    <td class="tabla4" colspan="7"><%#= will_paginate @emails_in %></td>
+                </tr>
             </tfoot>
         </table>
     </div>
     <div id="tab2" class="contenido_tab">
-         <table class="pretty">
+         <table class="tabla4">
             <thead>
-                <tr>
-                    <th> Asunto </th>
-                    <th> Enviado por: </th>
-                    <th> Descripción </th>
-                    <th> Fecha Envío </th>
-                    <th> Esta leido </th>
+                <tr class="tabla4">
+                    <th class="tabla4"> Asunto </th>
+                    <th class="tabla4"> Enviado por: </th>
+                    <th class="tabla4"> Descripción </th>
+                    <th class="tabla4"> Fecha Envío </th>
+                    <th class="tabla4"> Esta leido </th>
                 </tr>
             </thead>
             <tbody>
                 <% @emails_out.each do |email_out| %>
-                    <tr>
-                        <td><%= email_out.subject %></td>
-                        <td><%= email_out.user_for %></td>
-                        <td class="contenido"><%= email_out.description %></td>
-                        <td><%= email_out.created_at %></td>
+                    <tr class="tabla4">
+                        <td class="tabla4"><%= email_out.subject %></td>
+                        <td class="tabla4"><%= email_out.user_for %></td>
+                        <td class="tabla4"><%= email_out.description %></td>
+                        <td class="tabla4"><%= email_out.created_at %></td>
                         <% if email_out.is_sent == 0 %>
                             <td class="b1"><%= Email::SENT_CATEGORY[email_out.is_sent]%></td>
                         <% else %>
@@ -74,10 +76,11 @@
                 <% end %>
             </tbody>
             <tfoot>
-                <%#= will_paginate @emails_out %>
+                <tr class="tabla4">
+                    <td class="tabla4" colspan="5"><%#= will_paginate @emails_in %></td>
+                </tr>
             </tfoot>
         </table>
     </div>
 <div style="clear:both;">
-
 </div>

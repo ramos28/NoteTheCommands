@@ -1,6 +1,6 @@
 <div class="title">Perfil</div>
 </br><div class="profile">
-	</br><div class="accion-perfil">Perfil del Usuario '<%=current_user.user_name%>'</div>
+	</br><div class="accion-perfil">Perfil de Usuario '<%=current_user.user_name%>'</div>
 	<div id="logo_profile">
 		<%= image_tag "perfil.png"%>
 
@@ -13,7 +13,7 @@
 		<div class="p2">Número logins:	  <%= current_user.sign_in_count%></div>
 		</br>
 	</div>
-		</br></br><div class="accion-perfil">Modificar Datos de Usuario</div>
-		</br><p><%= button_to "Modificar Usuario", edit_user_registration_path, :method => "get", :class => 'boton azul' %></p>
-	</br></br>
+		</br></br><div class="accion-perfil2">Modificar Datos de Usuario</div>
+		</br><p><%= button_to "Modificar Usuario", edit_user_registration_path, :method => "get", :class => 'boton grey' %></p>
+	</br></br></br></br></br></br></br></br>
 </div>

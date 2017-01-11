@@ -17,7 +17,8 @@
 	text-overflow: ellipsis;
 }
 
-table {
+//Table app comanda del restaurante usuario
+table.tabla2 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px; 
 	margin: 15px;
@@ -26,7 +27,7 @@ table {
 	border_collapse: collapse;
 }
 
-th {
+th.tabla2 {
 	font-size: 15px;
 	font-weight: normal;
 	padding: 8px;
@@ -35,21 +36,22 @@ th {
 	color: #ffffff;
 }
 
-td {
+td.tabla2 {
 	padding: 8px;
 	background: #bbbbbb;
 	border-botton: 1px solid #fff;
 	color: #669;
+	white-space: nowrap;
 	border-top: 1px solid transparent;
 }
 
-td.contenido {
+td.tabla2.contenido {
     overflow:hidden;
     white-space:nowrap;
     text-overflow: ellipsis;
 }
 
-tr:hover td {
+tr.tabla2:hover td.tabla2 {
 	background: #d0dafd;
 	color: #339;
 }

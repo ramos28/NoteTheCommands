@@ -1,39 +1,43 @@
 <div class="title">Productos del Restaurante</div>
 </br>
 <div class ="muestra-tabla">
-	<table class="pretty">
+	<table class="tabla1">
 		<thead>
-			<tr>
+			<tr class="tabla1">
 				<%= form_tag products_path, method: :get do %>
-				    <th>Nombre<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Producto" %></p></th>
-				    <th>Categoría</th>
-				    <th>Ingredientes</th>
-				    <th>¿Consumo menores?</th>
-				    <th>Coste Venta Unidad</th>
-				    <th>Resturante</th>
+				    <th class="tabla1" title="Nombre del Producto que está registrado en el Restaurante">Nombre<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Producto" %></p></th>
+				    <th class="tabla1" title="Categoría por la que se clasifica el producto (RACION, CALDOS, PESCADOS, CARNES, ENSALADAS, BOCADILLO, POSTRE, BEBIDA, BEBIDAS ALCOHOLICAS, APERITIVO, TACO, BURRITO, WRAP, GENERAL, EXTRAS)">Categoría</th>
+				    <th class="tabla1" title="Muestra los ingredientes que se han utilizado para la elaboración del producto">Ingredientes</th>
+				    <th class="tabla1" title="Nos dice si está permitida la venta del producto a menores de edad">¿Consumo menores?</th>
+				    <th class="tabla1" title="Coste de venta del Producto por Unidad">Coste Venta Unidad</th>
+				    <th class="tabla1" title="Nombre del Restaurante al que pertenece el Producto">Resturante</th>
 				<% end %>
 			</tr>
 		</thead>
 		<tbody>
 			<% @products.each do |product| %>
-			    <tr>
-			          <td><%= product.name %></td>
-			          <td><%= Product::PRODUCT_CATEGORY[product.type_product] %></td>
-			          <td title="<%= product.ingredients %>"><%= product.ingredients %></td>
-			          <td><%= product.younger %></td>
-			          <td class="price"><%= number_to_currency(product.price, :unit => "€") %></td>
-			          <td><%= product.restaurant.name %></td>
-			          <td><%= link_to "Edit Stock", edit_product_path(product), :class => 'boton azul' %></td>                
+			    <tr class="tabla1">
+			          <td class="tabla1"><%= product.name %></td>
+			          <td class="tabla1"><%= Product::PRODUCT_CATEGORY[product.type_product] %></td>
+			          <td class="tabla1" title="<%= product.ingredients %>"><%= product.ingredients %></td>
+			          <td class="tabla1"><%= product.younger %></td>
+			          <td class="tabla1" class="price"><%= number_to_currency(product.price, :unit => "€") %></td>
+			          <td class="tabla1"><%= product.restaurant.name %></td>
+			          <td><%= link_to "Edit Stock", edit_product_path(product), :class => 'boton grey' %></td>                
 			    </tr>
 			<% end %>
 		</tbody>
 		<tfoot>
-			<%= will_paginate @products %>
+			<tr class="tabla1">
+				<th class="tabla1" colspan="6">
+					<%= will_paginate @products %>
+				</th>
+			</tr>
 		</tfoot>
 	</table>
 </div>
 
 <div class="muestra-opciones">
-	</br><div class="accion">Registrar Producto al Restaurante</div>
+	</br><div class="accion">Registrar Producto en Restaurante</div>
 	<%= render 'form' %>
 </div>

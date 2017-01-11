@@ -6,32 +6,93 @@
 .muestra-blog {
 	float: left;
 	overflow:hidden;
-    background-image: url("fondoBlancoStart.jpg");
 	text-align: center;
 	top: 35%;
-	width: 70%;
+	width: 100%;
 }
 
 .muestra-blogs {
 	float: left;
-	background-image: url("blog_lateral.jpg");
+	overflow:hidden;
+    background-image: url("papel.jpg");
+	text-align: center;
+	top: 35%;
+	width: 70%;
+	border: 5px solid black;
+}
+
+.comentar {
+	float: left;
+	background-image: url("fondoBlancoStart.jpg");
 	overflow:hidden;
 	text-align: center;
 	top: 35%;
-	width: 30%;
+	width: 29%;
+	border: 2px solid black;
 }
 
 div.accion-blog-title {
     font-family: accionesFont;
     text-align: center;		
-    font-size: 60px;
+    font-size: 85px;
     color: black;
 }
 
 div.accion-blog {
     font-family: accionesFont;
-    padding-left: 2%;
-    text-align: left;		
-    font-size: 25px;
+    text-align: center;
+    padding-left: 2%;		
+    font-size: 40px;
     color: black;
+}
+
+//Font periodico
+@font-face {
+    font-family: fontPeriodico;
+    src: url(periodico.ttf);
+}
+
+@font-face {
+    font-family: fontPeriodico;
+    src: url(periodico.ttf);
+    font-weight: bold;
+}
+
+div.periodico {
+    font-family: fontPeriodico;
+    text-align: center;		
+    font-size: 20px;
+    color: black;
+}
+
+//Tabla de los comentarios del blog
+table.tabla5 {
+	margin: 0 auto;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 20px;
+	text-align: center;
+	width: 80%;
+    border: 1px solid black;
+    border_collapse: collapse;
+}
+
+th.tabla5 {
+	background: #585858;
+	font-weight: normal;
+	font-size: 20px;
+	color: white;
+	border: 1px solid black;
+} 
+
+td.tabla5 {
+	font-size: 15px;
+	color: black;
+	border: 1px solid black;
+}
+
+td.tabla5:hover {
+  width: auto;
+  white-space: initial;
+  overflow:visible;
+  cursor: pointer;
 }

@@ -30,5 +30,5 @@
 <p>
   <%= link_to "Modificar", edit_reservation_path(@reservation), style: "color: white" %> |
   <%= link_to "Eliminar", @reservation, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar la Reserva?"}, style: "color: white" %> |
-  <%= link_to "Terminar", start_path, style: "color: white" %>
+  <%= link_to "Terminar", start_path, style: "color: white", data: { confirm: "¿Está seguro que desea realizar la Reserva?"} %>
 </p>

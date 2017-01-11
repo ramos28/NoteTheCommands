@@ -18,8 +18,10 @@
             <%= @menu.description %>
         </p>
         <p>
-            <%= link_to "Modificar", edit_menu_path(@menu) %> |
-            <%= link_to "Eliminar", @menu, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el Menú?"} %>
+            <% if @current_role == 3 %>
+                <%= link_to "Modificar", edit_menu_path(@menu) %> |
+                <%= link_to "Eliminar", @menu, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el Menú?"} %>
+            <% end %>
         </p>
     </div>
 
@@ -71,20 +73,27 @@
     </div>
 
     <div class="muestra-eleccion">
-        </br></br><div class="menu_accion">Insertar Producto</div>
-        <%= form_for :menu_product, url: menu_products_path do |f| %>
-            <div class="field">
-                </br><%= f.label :category %>
-                <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
+        <% if @current_role == 3 %>
+            </br></br><div class="menu_accion">Insertar Producto</div>
+            <%= form_for :menu_product, url: menu_products_path do |f| %>
+                <div class="field">
+                    </br><%= f.label :category %>
+                    <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
+                </div>
+                <div class="field">
+                    </br><%= f.label :producto %>
+                    <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}"), :id, :name)%>
+                </div>
+                </br><%= f.hidden_field :menu_id, value: @menu.id %>
+                <%= f.submit 'Añadir', :class => 'boton grey'%>
+            <% end %>
+            </br></br><div class="menu_accion">Finalizar Menú</div>
+            </br><%= button_to 'Terminar', menus_path, :method => "get", :class => 'boton grey' %>
+        <% else %>
+            <div class="contacto-menu"> 
+            </br>¿Te gustan los Menús?<br/>
+            Menús elaborados por los mejores cocineros, con los productos mas exclusivos del mercado que hará que siempre tengas ganas de volver aunque recuerda.."El placer de los banquetes debe medirse no por la abundancia de los manjares, sino por la reunión de los amigos y por su conversación.."<br/>
             </div>
-            <div class="field">
-                </br><%= f.label :producto %>
-                <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}"), :id, :name)%>
-            </div>
-            </br><%= f.hidden_field :menu_id, value: @menu.id %>
-            <%= f.submit 'Añadir', :class => 'boton azul'%>
         <% end %>
-        </br></br><div class="menu_accion">Finalizar Menú</div>
-        </br><%= button_to 'Terminar', menus_path, :method => "get", :class => 'boton azul' %>
     </div>
 </div>

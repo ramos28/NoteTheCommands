@@ -7,90 +7,131 @@
 </ul>
 <div class="contenedor_tab">
     <div id="tab1" class="contenido_tab">
-       <table>
-            <tr>
-                <th><%=  "Titulo" %></th>
-                <th><%=  "Categoría" %></th>
-                <th><%=  "Prioridad" %></th>
-                <th><%=  "Descripción" %></th>
-                <th><%=  "Fecha creación" %></th>
-                <th><%=  "Fecha solución" %></th>
-                <th><%=  "Restaurante" %></th>
-                <th><%=  "Usuario" %></th>
-                <th><%=  "¿Esta resuelto?" %></th>
-            </tr>
-            <% @incidences.each do |incidence| %>
-                <tr>
-                    <td><%= incidence.title %></td>
-                    <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-                    <td><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                    <td><%= incidence.description %></td>
-                    <td><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
-                    <td><%= incidence.date_solution.strftime("%d %B %Y -- %X") %></td>
-                    <td><%= incidence.restaurant.name %></td>
-                    <td><%= incidence.user.user_name %></td>
-                    <% if incidence.is_solved == 0 %>
-                        <td class="b1"><%= incidence.is_solved %></td>
-                    <% else %>
-                        <td class="b2"><%= incidence.is_solved %></td>
-                    <% end %>
+        <table class="tabla4">
+            <thead>
+                <tr class="tabla4">
+                    <th class="tabla4"><%=  "Titulo" %></th>
+                    <th class="tabla4"><%=  "Categoría" %></th>
+                    <th class="tabla4"><%=  "Prioridad" %></th>
+                    <th class="tabla4"><%=  "Descripción" %></th>
+                    <th class="tabla4"><%=  "Fecha creación" %></th>
+                    <th class="tabla4"><%=  "Fecha solución" %></th>
+                    <th class="tabla4"><%=  "Restaurante" %></th>
+                    <th class="tabla4"><%=  "Usuario" %></th>
+                    <th class="tabla4"><%=  "¿Esta resuelto?" %></th>
                 </tr>
-            <% end %>
+            </thead>
+            <tbody>
+                <% @incidences.each do |incidence| %>
+                    <tr>
+                        <td class="tabla4"><%= incidence.title %></td>
+                        <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
+                        <td class="tabla4"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
+                        <td class="tabla4"><%= incidence.description %></td>
+                        <td class="tabla4"><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                        <% if incidence.date_solution != nil %>
+                            <td class="tabla4"><%= incidence.date_solution.strftime("%d %B %Y -- %X") %></td>
+                        <% else %>
+                            <td class="tabla4"></td>
+                        <% end %>
+                        <td class="tabla4"><%= incidence.restaurant.name %></td>
+                        <td class="tabla4"><%= incidence.user.user_name %></td>
+                        <% if !incidence.is_solved %>
+                            <td class="b1"><%= incidence.is_solved %></td>
+                        <% else %>
+                            <td class="b2"><%= incidence.is_solved %></td>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+            <tfoot>
+                <tr class="tabla4">
+                    <th class="tabla4" colspan="9">
+                        <%#= will_paginate @incidences %>
+                    </th>
+                </tr>
+            </tfoot>
         </table>
     </div>
     <div id="tab2" class="contenido_tab">
-         <table>
-            <tr>
-                <th><%=  "Titulo" %></th>
-                <th><%=  "Categoría" %></th>
-                <th><%=  "Prioridad" %></th>
-                <th><%=  "Descripción" %></th>
-                <th><%=  "Fecha creación" %></th>
-                <th><%=  "Usuario" %></th>
-                <th><%=  "¿Esta resuelto?" %></th>
-            </tr>
-            <% @incidences.each do |incidence| %>
-                <tr>
-                    <td><%= incidence.title %></td>
-                    <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-                    <td><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                    <td><%= incidence.description %></td>
-                    <td><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
-                    <td><%= incidence.user.user_name %></td>
-                    <% if incidence.is_solved == 0 %>
-                        <td class="b1"><%= incidence.is_solved %></td>
-                    <% else %>
-                        <td class="b2"><%= incidence.is_solved %></td>
-                    <% end %>
-                    <td><%= link_to "Edit Incidencia", edit_incidence_path(incidence) %></td>
+         <table class="tabla4">
+            <thead>
+                <tr class="tabla4">
+                    <th class="tabla4"><%=  "Titulo" %></th>
+                    <th class="tabla4"><%=  "Categoría" %></th>
+                    <th class="tabla4"><%=  "Prioridad" %></th>
+                    <th class="tabla4"><%=  "Descripción" %></th>
+                    <th class="tabla4"><%=  "Fecha creación" %></th>
+                    <th class="tabla4"><%=  "Usuario" %></th>
+                    <th class="tabla4"><%=  "¿Esta resuelto?" %></th>
                 </tr>
-            <% end %>
+            </thead>
+            <tbody>
+                <% @incidences.each do |incidence| %>
+                    <tr class="tabla4">
+                        <td class="tabla4"><%= incidence.title %></td>
+                        <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
+                        <td class="tabla4"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
+                        <td class="tabla4"><%= incidence.description %></td>
+                        <td class="tabla4"><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                        <td class="tabla4"><%= incidence.user.user_name %></td>
+                        <% if !incidence.is_solved %>
+                            <td class="b1"><%= incidence.is_solved %></td>
+                        <% else %>
+                            <td class="b2"><%= incidence.is_solved %></td>
+                        <% end %>
+                        <td><%= link_to "Edit Incidencia", edit_incidence_path(incidence), :class => 'boton grey' %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+            <tfoot>
+                <tr class="tabla4">
+                    <th class="tabla4" colspan="7">
+                        <%#= will_paginate @incidences %>
+                    </th>
+                </tr>
+            </tfoot>
         </table>
     </div>
     <div id="tab3" class="contenido_tab">
-         <table>
-            <tr>
-                <th><%=  "Titulo" %></th>
-                <th><%=  "Categoría" %></th>
-                <th><%=  "Fecha creación" %></th>
-                <th><%=  "Fecha solución" %></th>
-                <th><%=  "Usuario" %></th>
-                <th><%=  "¿Esta resuelto?" %></th>
-            </tr>
-            <% @incidences.each do |incidence| %>
-                <tr>
-                    <td><%= incidence.title %></td>
-                    <td><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-                    <td><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
-                    <td><%= incidence.date_solution.strftime("%d %B %Y -- %X") %></td>
-                    <td><%= incidence.user.user_name %></td>
-                    <% if incidence.is_solved == 0 %>
-                        <td class="b1"><%= incidence.is_solved %></td>
-                    <% else %>
-                        <td class="b2"><%= incidence.is_solved %></td>
-                    <% end %>
+         <table class="tabla4">
+            <thead>
+                <tr class="tabla4">
+                    <th class="tabla4"><%=  "Titulo" %></th>
+                    <th class="tabla4"><%=  "Categoría" %></th>
+                    <th class="tabla4"><%=  "Fecha creación" %></th>
+                    <th class="tabla4"><%=  "Fecha solución" %></th>
+                    <th class="tabla4"><%=  "Usuario" %></th>
+                    <th class="tabla4"><%=  "¿Esta resuelto?" %></th>
                 </tr>
-            <% end %>
+            </thead>
+            <tbody>
+                <% @incidences.each do |incidence| %>
+                    <tr class="tabla4">
+                        <td class="tabla4"><%= incidence.title %></td>
+                        <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
+                        <td class="tabla4"><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                        <% if incidence.date_solution != nil %>
+                            <td class="tabla4"><%= incidence.date_solution.strftime("%d %B %Y -- %X") %></td>
+                        <% else %>
+                            <td class="tabla4"></td>
+                        <% end %>
+                        <td class="tabla4"><%= incidence.user.user_name %></td>
+                        <% if !incidence.is_solved %>
+                            <td class="b1"><%= incidence.is_solved %></td>
+                        <% else %>
+                            <td class="b2"><%= incidence.is_solved %></td>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+            <tfoot>
+                <tr class="tabla4">
+                    <th class="tabla4" colspan="6">
+                        <%#= will_paginate @incidences %>
+                    </th>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>

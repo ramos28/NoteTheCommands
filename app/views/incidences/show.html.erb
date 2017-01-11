@@ -32,5 +32,5 @@
 <p>
   <%= link_to "Modificar", edit_incidence_path(@incidence), style: "color: white" %> |
   <%= link_to "Eliminar", @incidence, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar la incidencia?"}, style: "color: white" %> |
-  <%= link_to "Incidencias", incidences_path, style: "color: white" %>
+  <%= link_to "Incidencias", incidences_path, data: { confirm: "¿Está seguro que desea Enviar la incidencia?"}, style: "color: white" %>
 </p>

@@ -13,13 +13,13 @@
         <%= f.time_field :hour %>
     </div>
     <div class="field">
-        <%= f.label :teléfono %> 
-        <%= f.text_field :phone %> (opcional)
+        <%= f.label :teléfono_opcional %> 
+        <%= f.text_field :phone %> 
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user %>
     <div class="field">
-        </br><%= f.submit 'Guardar Cambios', :class => 'boton azul'%>
+        </br><%= f.submit 'Guardar Cambios', :class => 'boton grey'%>
     </div>
     </br></br></br></br>
 <% end %>

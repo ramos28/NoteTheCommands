@@ -2,26 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-td.b1 {
-	background-color:red;
-	color: black;
-}
-
-td.b2 {
-	background-color:green;
-	color: black;
-}
-
-td.b3 {
-	background-color:#F4FA58;
-	color: black;
-}
-
-td.b4 {
-	background-color:#58ACFA;
-	color: black;
-}
-
 .contenedor_tab {
 	float:left;
 	clear:both;
@@ -96,4 +76,103 @@ ul.tabs li.activa,ul.tabs li.activa a,ul.tabs li.activa a:hover {
 	margin:0 20px 20px 0;
 	border:1px solid #ddd;
 	padding:5px
+}
+
+
+
+
+
+
+
+table.tabla1 {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px; 
+	margin: 15px;
+	width:98%;
+	text-align: center;
+	border_collapse: collapse;
+}
+
+th.tabla1 {
+	font-size: 15px;
+	font-weight: normal;
+	padding: 8px;
+	background: #4b545f;
+	border-botton: 1px solid #fff;
+	color: #ffffff;
+}
+
+td.tabla1 {
+	padding: 8px;
+	background: #bbbbbb;
+	border-botton: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid transparent;
+}
+
+td.tabla1.contenido {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+tr.tabla1:hover td.tabla1 {
+	background: #d0dafd;
+	color: #339;
+}
+
+//Tabla de mensajeria
+table.tabla4 {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	text-align: center;
+	width: 100%;
+    border: 1px solid black;
+    border_collapse: collapse;
+}
+
+th.tabla4 {
+	background: #585858;
+	font-weight: normal;
+	font-size: 15px;
+	color: white;
+	border: 1px solid black;
+} 
+
+td.tabla4 {
+	font-size: 10px;
+	color: black;
+	border: 1px solid black;
+
+	text-overflow:ellipsis;
+	white-space:nowrap; 
+	overflow:hidden; 
+}
+
+td.tabla4:hover {
+  width: auto;
+  white-space: initial;
+  overflow:visible;
+  cursor: pointer;
+}
+
+
+td.b1 {
+	background-color:red;
+	color: black;
+}
+
+td.b2 {
+	background-color:green;
+	color: black;
+}
+
+td.b3 {
+	background-color:#F4FA58;
+	color: black;
+}
+
+td.b4 {
+	background-color:#58ACFA;
+	color: black;
 }

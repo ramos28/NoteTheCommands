@@ -3,54 +3,76 @@
 <div class="muestra-blog">
     <article class=”blogPost”>
         <% @blogs.each do |noticia| %>
-            <head>
-                <div class="accion-blog-title"><%= noticia.title %></div>
-                <p>Posted on <%= noticia.created_at.strftime("%d %B %Y -- %X") %>
-                    <%if @current_role == 3%>
-                        | <%= link_to "Edit Blog", edit_blog_path(noticia), style: "color: white" %>
-                        | <%= link_to "Destroy", @blog, :method => :delete, data: { confirm: "Are you sure?"}, style: "color: white" %>
-                        | <%= link_to "New Blogs", new_blog_path, style: "color: white" %>
+            <div class="muestra-blogs">
+                <head>
+                    </br><div class="accion-blog-title"><%= noticia.title %></div>
+                    <p>Posted on <%= noticia.created_at.strftime("%d %B %Y -- %X") %>
+                        <%if @current_role == 3%>
+                            | <%= link_to "Modificar blog", edit_blog_path(noticia), style: "color: black" %>
+                            | <%= link_to "Eliminar", @blog, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el blog?"}, style: "color: black" %>
+                        <% end %>
+                    </p>
+                </head>
+                <%= will_paginate @blogs %>
+                </br><div class="periodico"><%= noticia.description %></div></br>
+                <head>
+                    </br><div class="accion-blog">Comentarios</div>
+                </head>
+                <article>
+
+                    <% noticia.blog_users.each do |blog_users| %>
+                        <head>
+                            <table class="tabla5">
+                                <thead>
+                                    <tr class="tabla5">
+                                        <th class="tabla5"><%= blog_users.user.email %> - Comento el <%= blog_users.created_at.strftime("%d %B %Y, a las %X") %></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="tabla5">
+                                        <td class="tabla5"><%= blog_users.description %></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="tabla5">
+                                        <th class="tabla5" colspan="1">
+                                            <%#= will_paginate @blogs %>
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            </br>
+                        </head>
                     <% end %>
-                </p>
-            </head>
-            <%= will_paginate @blogs %>
-            <p><%= noticia.description %></p>
-            
-            <head>
-                <h3>Comentarios</h3>
-            </head>
-            <article>
-
-                <% noticia.blog_users.each do |blog_users| %>
-                     <head>
-                        <p>Usuario: <%= blog_users.user.email %> - Posted on <%= blog_users.created_at.strftime("%d %B %Y -- %X") %></p>
-                    </head>
-                    <p><%= blog_users.description %></p>
+                </article>
+            </div>
+            <div class="comentar">
+                <head>
+                    </br><div class="accion-blog">Realizar un Comentario en la Noticia</div>
+                </head>
+                <%= form_for :blog_user, url: blog_users_path do |blog_comment| %>
+                    <%= blog_comment.error_messages %>
+                    <div class="field">
+                        </br><%= blog_comment.text_area :description, :cols => 30, rows: 4 %>
+                    </div>
+                    <%= blog_comment.hidden_field :blog_id, :value => noticia.id %>
+                    <%= blog_comment.hidden_field :user_id, :value => current_user.id %>
+                    <div class="field">
+                        <p><%= blog_comment.submit 'Comentar', :class => 'boton grey'%></p>
+                    </div>
                 <% end %>
-            </article>
 
-            <head>
-                <h3>Realizar un comentario</h3>
-            </head>
-            <%= form_for :blog_user, url: blog_users_path do |blog_comment| %>
-                <%= blog_comment.error_messages %>
-                <div class="field">
-                    </br><%= blog_comment.label :descripción %>
-                    <%= blog_comment.text_area :description, :cols => 30, rows: 4 %>
-                </div>
-                <%= blog_comment.hidden_field :blog_id, :value => noticia.id %>
-                <%= blog_comment.hidden_field :user_id, :value => current_user.id %>
-                <div class="field">
-                    <p><%= blog_comment.submit 'Comentar', :class => 'boton azul'%></p>
-                </div>
-            <% end %>
+                <%if @current_role == 3%>
+                    <head>
+                        </br></br><div class="accion-blog">Crear una Nueva Noticia</div>
+                    </head>
+                    </br>
+                    <%= link_to "Crear Nueva Noticia", new_blog_path, :class => 'boton grey' %>
+                    </br></br></br>
+                <% end %>
+            </div>
 	    <% end %>
     </article>
 </div>
 
-<div class="muestra-blogs">
-    <% @blogs_view.each do |blog| %>
-        <%#= blog.error_messages %>
-        <div class="accion-blog"><li><%= link_to blog.title, blogs_path(blog), style: "color: black"  %></li></div>
-    <% end %>
-</div>
+

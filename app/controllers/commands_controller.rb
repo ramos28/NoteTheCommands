@@ -1,7 +1,7 @@
 class CommandsController < ApplicationController
 	def index
 		@commands = @current_restaurant.locations.map {|l| l.commands}.flatten
-		@commands.select{|command| command.created_at >= Time.now.beginning_of_day}
+		@commands += @commands.select{|command| command.created_at >= Time.now.beginning_of_day}
 
 		@command = Command.new
 	end

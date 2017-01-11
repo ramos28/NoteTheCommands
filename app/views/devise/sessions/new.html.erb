@@ -1,10 +1,10 @@
 <div class="title">Bienvenido</div>
 <div class ="muestra-tabla-anonimous">
-    </br></br><div class="accion">¿Aún no está regristrado? A que esperas para beneficiarte..</div>
-    </br><%= button_to 'Registrarse', new_registration_path(:user), :method => "get", :class => 'boton azul'  %>
+    </br></br><div class="accion">¿Aún no está regristrado? A que esperas para hacerlo..</div>
+    </br><%= button_to 'Registrarse', new_registration_path(:user), :method => "get", :class => 'boton grey'  %>
 
     </br></br></br><div class="accion">Acceda sin Registro</div> 
-    </br><%= button_to 'Usuario Invitado', guests_index_path, :method => "get", :class => 'boton azul'  %>
+    </br><%= button_to 'Usuario Invitado', guests_index_path, :method => "get", :class => 'boton grey'  %>
 </div>
 
 <div class="muestra-tabla-login">
@@ -22,13 +22,12 @@
 
         <% if devise_mapping.rememberable? -%>
             <div class="field">
-                </br><%= f.check_box :remember_me %>
-                <%= f.label :recordarme %>
+                </br><%= f.check_box :remember_me %>  Recordarme
             </div>
         <% end -%>
 
-        <div class="actions"><br/>
-            </br><%= f.submit "Iniciar", :class => 'boton azul' %>
+        <div class="actions">
+            </br></br><%= f.submit "Iniciar", :class => 'boton grey' %>
         </div>
     <% end %>
     <%= render "devise/shared/links" %>

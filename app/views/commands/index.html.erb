@@ -1,26 +1,26 @@
 <% if @current_role == 0 %>
 	<div class="title">Comandas del Usuario '<%= current_user.user_name %>'</div>
 	<div class ="muestra-tabla">
-		<table class="pretty">
-		    <tr>
-		        <th>Comanda</th>
-		        <th>Restaurante</th>
-		        <th>Usuario</th>
-		        <th>Lugar</th>
-		        <th>Mesa</th>
-		        <th>Descripción</th>
-		        <th title="Rojo claro si no esta servida y verde claro si lo está">¿Servido?</th>
-		        <th title="Rojo si no esta finalizada y verde si lo está">¿Está Finalizada?</th>
+		<table class="tabla1">
+		    <tr class="tabla1">
+		        <th class="tabla1" title="Nombre de la Comanda">Comanda</th>
+		        <th class="tabla1" title="Nombre del Restaurante">Restaurante</th>
+		        <th class="tabla1" title="Nombre del Usuario">Usuario</th>
+		        <th class="tabla1" title="Lugar donde se ha pedido la Comanda">Lugar</th>
+		        <th class="tabla1" title="Número de la Mesa desde donde se realiza la Comanda">Mesa</th>
+		        <th class="tabla1" title="Breve descripción de la Comanda">Descripción</th>
+		        <th class="tabla1" title="Rojo claro si no esta servida y verde claro si lo está">¿Servido?</th>
+		        <th class="tabla1" title="Rojo si no esta finalizada y verde si lo está">¿Está Finalizada?</th>
 		    </tr>
 		    <% @commands.each do |command| %>
 		        <% if command.location.restaurant_id == @current_restaurant.id %>
-		            <tr>
-		                <td><%= command.title %></td>
-		                <td><%= command.location.restaurant.name %></td>
-		                <td><%= command.user.user_name %></td>
-		                <td><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
-		                <td><%= command.location.sit %></td>
-		                <td><%= command.description %></td>
+		            <tr class="tabla1">
+		                <td class="tabla1"><%= command.title %></td>
+		                <td class="tabla1"><%= command.location.restaurant.name %></td>
+		                <td class="tabla1"><%= command.user.user_name %></td>
+		                <td class="tabla1"><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
+		                <td class="tabla1"><%= command.location.sit %></td>
+		                <td class="tabla1"><%= command.description %></td>
 		                <% if command.is_served %>
 		                	<td class="b5"><%= command.is_served %></td>
 		                <% else %>
@@ -32,43 +32,47 @@
 							<td class="b2"><%= command.is_end %></td>
 		                <% end %>
 		                <% if !command.is_end %>
-		                	<td><%= link_to "Edit Command", edit_command_path(command), :class => 'boton azul' %><%= link_to "Ver Command", command_path(command), :class => 'boton azul' %></td>
+		                	<td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %>  <%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>
 		                <% end %>          
 		            </tr>
 		        <% end %>
 		    <% end %>
 		    <tfoot>
-		        <%#= will_paginate @commands %>
-		    </tfoot>
+				<tr class="tabla1">
+					<th class="tabla1" colspan="8">
+						<%#= will_paginate @commands %>
+					</th>
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 
 	<div class="muestra-opciones">
 		</br><div class="accion">Crear una Nueva Comanda</div>
-		</br></br><%= button_to 'Crear Comanda', new_location_path, :method => "get", :class => 'boton azul' %>
+		</br></br><%= button_to 'Crear Comanda', new_location_path, :method => "get", :class => 'boton grey' %>
 		</br></br></br></br></br></br>
 	</div>
 
 <% elsif @current_role == 1 %>
 	<div class="title">Comandas del Camarero</div>
-	<table class="pretty">
-	    <tr>
-	        <th> Comanda </th>
-	        <th> Restaurante </th>
-	        <th> Usuario </th>
-	        <th> Mesa </th>
-	        <th> Descripcion </th>
-	        <th title="Azul si no esta servida y morado si lo está">¿Servido?</th>
-		    <th title="Rojo si no esta finalizada y verde si lo está">¿Comanda Finalizada?</th>
+	<table class="tabla1">
+	    <tr class="tabla1">
+			<th class="tabla1" title="Nombre de la Comanda">Comanda</th>
+			<th class="tabla1" title="Nombre del Restaurante">Restaurante</th>
+			<th class="tabla1" title="Nombre del Usuario">Usuario</th>
+			<th class="tabla1" title="Lugar donde se ha pedido la Comanda">Lugar</th>
+			<th class="tabla1" title="Número de la Mesa desde donde se realiza la Comanda">Mesa</th>
+			<th class="tabla1" title="Rojo claro si no esta servida y verde claro si lo está">¿Servido?</th>
+			<th class="tabla1" title="Rojo si no esta finalizada y verde si lo está">¿Está Finalizada?</th>
 	    </tr>
 	    <% @commands.each do |command| %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
-	            <tr>
-	                <td><%= command.title %></td>
-	                <td><%= command.location.restaurant.name %></td>
-	                <td><%= command.user.user_name %></td>
-	                <td><%= command.location.place %></td>
-	                <td><%= command.description %></td>
+	            <tr class="tabla1">
+	                <td class="tabla1"><%= command.title %></td>
+	                <td class="tabla1"><%= command.location.restaurant.name %></td>
+	                <td class="tabla1"><%= command.user.user_name %></td>
+	                <td class="tabla1"><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
+	                <td class="tabla1"><%= command.location.sit %></td>
 	                <% if command.is_served %>
 	                	<td class="b5"><%= command.is_served %></td>
 	                <% else %>
@@ -79,7 +83,7 @@
 	                <% else %>
 						<td class="b2"><%= command.is_end %></td>
 	                <% end %>
-	                <td><%= link_to "Edit Command", edit_command_path(command), :class => 'boton azul' %></td>                
+	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %></td>                
 
 					<td>
 					    <%= form_for command do |f| %>
@@ -87,7 +91,7 @@
 
 					        <%= f.hidden_field :is_served, :value => true %>
 					        <div class="field">
-					            <%= f.submit 'Servir', :class => 'boton azul'%>
+					            <%= f.submit 'Servir', :class => 'boton grey'%>
 					        </div>
 					    <% end %>
 					</td>
@@ -95,29 +99,33 @@
 	        <% end %>
 	    <% end %>
 	    <tfoot>
-	    	<%#= will_paginate @commands %>
-	    </tfoot>
+			<tr class="tabla1">
+				<th class="tabla1" colspan="7">
+					<%#= will_paginate @commands %>
+				</th>
+			</tr>
+		</tfoot>
 	</table>
 <% elsif @current_role == 2 %>
 	<div class="title">Comandas del Cocinero</div>
-	<table class="pretty">
-	    <tr>
-	        <th> Comanda </th>
-	        <th> Restaurante </th>
-	        <th> Usuario </th>
-	        <th> Mesa </th>
-	        <th> Descripcion </th>
-	        <th title="Azul si no esta servida y morado si lo está">¿Servido?</th>
-		    <th title="Rojo si no esta finalizada y verde si lo está">¿Comanda Finalizada?</th>
+	<table  class="tabla1">
+	    <tr class="tabla1">
+			<th class="tabla1" title="Nombre de la Comanda">Comanda</th>
+			<th class="tabla1" title="Nombre del Restaurante">Restaurante</th>
+			<th class="tabla1" title="Nombre del Usuario">Usuario</th>
+			<th class="tabla1" title="Número de la Mesa desde donde se realiza la Comanda">Mesa</th>
+			<th class="tabla1" title="Breve descripción de la Comanda">Descripción</th>
+			<th class="tabla1" title="Rojo claro si no esta servida y verde claro si lo está">¿Servido?</th>
+			<th class="tabla1" title="Rojo si no esta finalizada y verde si lo está">¿Está Finalizada?</th>
 	    </tr>
 	    <% @commands.each do |command| %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
-	            <tr>
-	                <td><%= command.title %></td>
-	                <td><%= command.location.restaurant.name %></td>
-	                <td><%= command.user.user_name %></td>
-	                <td><%= command.location.place %></td>
-	                <td><%= command.description %></td>
+	            <tr class="tabla1">
+	                <td class="tabla1"><%= command.title %></td>
+	                <td class="tabla1"><%= command.location.restaurant.name %></td>
+	                <td class="tabla1"><%= command.user.user_name %></td>
+	                <td class="tabla1"><%= command.location.sit %></td>
+	                <td class="tabla1"><%= command.description %></td>
 	                <% if command.is_served %>
 	                	<td class="b5"><%= command.is_served %></td>
 	                <% else %>
@@ -128,34 +136,40 @@
 	                <% else %>
 						<td class="b2"><%= command.is_end %></td>
 	                <% end %>
-	                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
+	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %></td>                
 	            </tr>
 	        <% end %>
 	    <% end %>
 	    <tfoot>
-	    	<%#= will_paginate @commands %>
-	    </tfoot>
+			<tr class="tabla1">
+				<th class="tabla1" colspan="7">
+					<%#= will_paginate @commands %>
+				</th>
+			</tr>
+		</tfoot>
 	</table>
 <% elsif @current_role == 3 %>
 	<div class="title">Comandas del Restaurante</div>
-	<table class="pretty">
-	    <tr>
-	        <th> Comanda </th>
-	        <th> Restaurante </th>
-	        <th> Usuario </th>
-	        <th> Mesa </th>
-	        <th> Descripcion </th>
-	        <th title="Azul si no esta servida y morado si lo está">¿Servido?</th>
-		    <th title="Rojo si no esta finalizada y verde si lo está">¿Comanda Finalizada?</th>
+	<table  class="tabla1">
+	    <tr class="tabla1">
+	       	<th class="tabla1" title="Nombre de la Comanda">Comanda</th>
+			<th class="tabla1" title="Nombre del Restaurante">Restaurante</th>
+			<th class="tabla1" title="Nombre del Usuario">Usuario</th>
+			<th class="tabla1" title="Lugar donde se ha pedido la Comanda">Lugar</th>
+			<th class="tabla1" title="Número de la Mesa desde donde se realiza la Comanda">Mesa</th>
+			<th class="tabla1" title="Breve descripción de la Comanda">Descripción</th>
+			<th class="tabla1" title="Rojo claro si no esta servida y verde claro si lo está">¿Servido?</th>
+			<th class="tabla1" title="Rojo si no esta finalizada y verde si lo está">¿Está Finalizada?</th>
 	    </tr>
 	    <% @commands.each do |command| %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
-	            <tr>
-	                <td><%= command.title %></td>
-	                <td><%= command.location.restaurant.name %></td>
-	                <td><%= command.user.user_name %></td>
-	                <td><%= command.location.place %></td>
-	                <td><%= command.description %></td>
+	            <tr class="tabla1">
+	                <td class="tabla1"><%= command.title %></td>
+	                <td class="tabla1"><%= command.location.restaurant.name %></td>
+	                <td class="tabla1"><%= command.user.user_name %></td>
+	                <td class="tabla1"><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
+	                <td class="tabla1"><%= command.location.sit %></td>
+	                <td class="tabla1"><%= command.description %></td>
 	                <% if command.is_served %>
 	                	<td class="b5"><%= command.is_served %></td>
 	                <% else %>
@@ -166,12 +180,16 @@
 	                <% else %>
 						<td class="b2"><%= command.is_end %></td>
 	                <% end %>
-	                <td><%= link_to "Edit Command", edit_command_path(command) %></td>                
+	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %></td>                
 	            </tr>
 	        <% end %>
 	    <% end %>
 	    <tfoot>
-	    	<%#= will_paginate @commands %>
-	    </tfoot>
+			<tr class="tabla1">
+				<th class="tabla1" colspan="8">
+					<%#= will_paginate @commands %>
+				</th>
+			</tr>
+		</tfoot>
 	</table>
 <% end %>

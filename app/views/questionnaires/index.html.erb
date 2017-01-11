@@ -1,25 +1,29 @@
 <div class="title">Cuestionarios del Restaurante</div>
 </br>
 <div class ="muestra-tabla">
-	<table class="pretty">
+	<table class="tabla2">
 		<thead>
-			<tr>
-			    <th>Pregunta</th>
-			    <th>Restaurante</th>
+			<tr class="tabla2">
+			    <th class="tabla2" title="Preguntas que elabora el gerenete del restaurante para obtener datos relevantes de su Restaurante">Pregunta</th>
+			    <th class="tabla2" title="Nombre del Restaurnate al que pertenece la pregunta">Restaurante</th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @questionnaires.each do |questionnaire| %>
-			    <tr>
-					<td><%= questionnaire.question %></td>
-					<td><%= questionnaire.restaurant.name %></td>
-					<td><%#= link_to "Eliminar", @questionnaire, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar?"} %> | <%#= link_to "Modificar", edit_questionnaire_path(@questionnaire) %></td>  
+			    <tr class="tabla2">
+					<td class="tabla2"><%= questionnaire.question %></td>
+					<td class="tabla2"><%= questionnaire.restaurant.name %></td>
+					<td><%#= link_to "Eliminar", questionnaires_path(questionnaire), :method => :delete, data: { confirm: "¿Está seguro que desea eliminar?"} %>  <%#= link_to "Modificar", edit_questionnaire_path(@questionnaire) %></td>  
 
 			    </tr>
 			<% end %>
 		</tbody>
 		<tfoot>
-			<%= will_paginate @questionnaires %>
+			<tr class="tabla2">
+				<th class="tabla2" colspan="2">
+					<%= will_paginate @questionnaires %>
+				</th>
+			</tr>
 		</tfoot>
 	</table>
 </div>

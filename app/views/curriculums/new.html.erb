@@ -1,17 +1,17 @@
 <div class="title">¡Mandenos su Curriculum Vitae!</div>
-<div class="contacto"> <p>¿Te apetece trabajar con nosotros?</p>
-<p>Entonces ¡estás de enhorabuena! Somos una empresa joven y buscamos un equipo de personas con ganas de hacer un gran trabajo mientras se divierten. En '<%= @current_restaurant.name %>' cuidamos especialmente la atención al cliente para ofrecerle una experiencia de consumo perfecta. Tenemos diferentes perfiles definidos para nuestros restaurantes. Si encajas en algún puesto y quieres que contemos contigo en próximos procesos de selección, este es tu momento. ¿a qué esperas?</p>
+<div class="contacto"> </br>¿Te apetece trabajar con nosotros?<br/>
+Entonces ¡estás de enhorabuena! Somos una empresa joven y buscamos un equipo de personas con ganas de hacer un gran trabajo mientras se divierten. En '<%= @current_restaurant.name %>' cuidamos especialmente la atención al cliente para ofrecerle una experiencia de consumo perfecta. Tenemos diferentes perfiles definidos para nuestros restaurantes. Si encajas en algún puesto y quieres que contemos contigo en próximos procesos de selección, este es tu momento. ¿a qué esperas?<br/>
 
-<p>– GERENTE:
-Responsable máximo del restaurante, cuya responsabilidad es implantar y desarrollar las políticas, principios y directrices marcadas por la Cía.  Responsable de potenciar el desarrollo profesional y personal del equipo, asegurando un excelente clima laboral.</p>
+– GERENTE:
+Responsable máximo del restaurante, cuya responsabilidad es implantar y desarrollar las políticas, principios y directrices marcadas por la Cía.  Responsable de potenciar el desarrollo profesional y personal del equipo, asegurando un excelente clima laboral.<br/>
 
-<p>– PERSONAL:
-Responsable de alcanzar metas de satisfacción del cliente. Es un puesto perfecto para personal con iniciativa, ganas de trabajar en equipo, de formarse y crecer en una gran compañía.</p>
+– PERSONAL:
+Responsable de alcanzar metas de satisfacción del cliente. Es un puesto perfecto para personal con iniciativa, ganas de trabajar en equipo, de formarse y crecer en una gran compañía.<br/><br/>
 </div>
 </br><%= form_for :curriculum, url: curriculums_path do |f| %>
 	<%= f.file_field :file, style: "color: white"  %>
 	<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-	<%= f.submit 'Enviar Curriculum', :class => 'boton azul' %>
+	<%= f.submit 'Enviar Curriculum', :class => 'boton grey' %>
 <% end %>
 
 <% if @current_role  == 3 %>

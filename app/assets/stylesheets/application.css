@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+p {
+	font-size: 17px;
+}
+
 header{
 	height: 200px;
 	text-align: right;
@@ -182,6 +186,7 @@ section {
 /*Menu deplegable*/
 nav {
 	text-align: center;
+	font-size: 17px;
 }
 
 nav ul ul {
@@ -270,7 +275,7 @@ nav ul ul li a:hover {
 	display:inline-block;
 	color: #FFF;
 	background: #7F8C8D;
-	padding: 6px 20px;
+	padding: 6px 15px;
 	white-space: nowrap;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -280,13 +285,14 @@ nav ul ul li a:hover {
 	-moz-transition: all 0.2s ease-in-out;
 	-o-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
+	border: 0.2px solid white;
 }
 
-.azul{
-  background: #6E6E6E;
+.grey{
+  background: #585858;
 }
 
-.azul:hover{
+.grey:hover{
   background: #2E2E2E;
 }
 
@@ -297,6 +303,6 @@ label {
 
 .field {
     font-family: accionesTitulos;
-    font-size: 17px;
+    font-size: 16px;
 }
 

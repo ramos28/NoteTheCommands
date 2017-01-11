@@ -65,12 +65,68 @@ div.accion-command {
     color: black;
 }
 
-table.command {
-	width: 96.5%;
-    border: 1px solid white;
+//Table app que muestra las comandas
+table.tabla1 {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px; 
+	margin: 15px;
+	width:98%;
+	text-align: center;
+	border_collapse: collapse;
 }
 
-th.command, td.command {
+th.tabla1 {
+	font-size: 15px;
+	font-weight: normal;
+	padding: 8px;
+	background: #4b545f;
+	border-botton: 1px solid #fff;
+	color: #ffffff;
+}
+
+td.tabla1 {
+	padding: 8px;
+	background: #bbbbbb;
+	border-botton: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid transparent;
+}
+
+td.tabla1.contenido {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+tr.tabla1:hover td.tabla1 {
+	background: #d0dafd;
+	color: #339;
+}
+
+//Tabla que muestra el contenido de la comanda
+//table takeaway
+//thead {color:green;}
+//tbody {color:blue;}
+//tfoot {color:red;}
+
+//table, th, td {
+//    border: 1px solid black;
+//}
+
+table.tabla3 {
+	width: 100%;
+    border: 1px solid white;
+    border_collapse: collapse;
+}
+
+th.tabla3 {
+	font-size: 20px;
+	color: white;
+	border: 1px solid white;
+} 
+
+td.tabla3 {
+	font-size: 15px;
+	color: white;
 	border: 1px solid white;
 }
-

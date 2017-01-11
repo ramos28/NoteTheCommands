@@ -10,7 +10,7 @@
     </div>
     <div class="field">
         <%= f.label :numero_personas %>
-        <%= f.text_field :num_persons %>
+        <%= f.number_field :num_persons %>
     </div>
     <div class="field">
         <%= f.label :dia_reserva %>
@@ -27,7 +27,7 @@
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="field">
-        </br><%= f.submit 'Realizar Reserva', :class => 'boton azul' %>
+        </br><%= f.submit 'Realizar Reserva', :class => 'boton grey' %>
     </div>
     </br></br></br>
 <% end %>

@@ -1,35 +1,78 @@
 <div class="title">Menús del Restaurante '<%= @current_restaurant.name %>'</div>
 </br>
-<div class ="muestra-tabla">
-	<table class="pretty">
-		<tr>
-		    <th>Nombre</th>
-		    <th>Tipo</th>
-		    <th>Precio</th>
-		    <th>Descripción</th>
-		    <th>Resturante</th>
-		    <th>Realizado por:</th>
-		</tr>
-		<% @menus.each do |menu| %>
-		    <tr>
-				<td><%= menu.name %></td>
-				<td><%= Menu::MENU_CATEGORY[menu.type_menu] %></td>
-				<td class="price"><%= number_to_currency(menu.price, :unit => "€") %></td>
-				<td><%= menu.description %></td>
-				<td><%= menu.restaurant.name %></td>
-				<td><%= menu.user.user_name %></td>
-				<% if (@current_role == 3 || @current_role == 2 || @current_role == 1) %>
-					<td><%= link_to "Edit menu", edit_menu_path(menu), :class => 'boton azul' %>
-					| <%= link_to "Agregar productos", menu_path(menu), :class => 'boton azul' %></td>
-				<% end %>       
-		    </tr>
-		<% end %>
-	</table>
-	<%= will_paginate @menus %>
-</div>
-
-<div class="muestra-opciones">
-	</br><div class="accion">Crear Nuevo Menú</div>
-	<%= render 'form' %>
+<% if (@current_role == 3 || @current_role == 2 || @current_role == 1) %>
+	<div class ="muestra-tabla">
+		<table class="tabla2">
+			<thead>
+				<tr class="tabla2">
+				    <th class="tabla2" title="Nombre del Menú">Nombre</th>
+				    <th class="tabla2" title="Tipo de Menú que puede ser: LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO, ESPECIAL, INFANTIL">Tipo</th>
+				    <th class="tabla2" title="Precio del Menú">Precio</th>
+				    <th class="tabla2" title="Breve descripción del menú">Descripción</th>
+				    <th class="tabla2" title="Nombre del Restaurante al que pertenece">Resturante</th>
+				    <th class="tabla2" title="Nombre del Usuario que ha realizado el Menú">Realizado por:</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @menus.each do |menu| %>
+				    <tr class="tabla2">
+						<td class="tabla2"><%= menu.name %></td>
+						<td class="tabla2"><%= Menu::MENU_CATEGORY[menu.type_menu] %></td>
+						<td class="tabla2" class="price"><%= number_to_currency(menu.price, :unit => "€") %></td>
+						<td class="tabla2"><%= menu.description %></td>
+						<td class="tabla2"><%= menu.restaurant.name %></td>
+						<td class="tabla2"><%= menu.user.user_name %></td>
+						<td><%= link_to "Editar Menú", edit_menu_path(menu), :class => 'boton grey' %>
+							  <%= link_to "Agregar Productos", menu_path(menu), :class => 'boton grey' %></td>      
+				    </tr>
+				<% end %>
+			</tbody>
+			<tfoot>
+				<tr class="tabla2">
+					<th class="tabla2" colspan="6">
+						<%= will_paginate @menus %>
+					</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<div class="muestra-opciones">
+		</br><div class="accion">Crear Nuevo Menú</div>
+		<%= render 'form' %>
+	</div>
+	<% else %>
+		<table class="tabla2">
+			<thead>
+				<tr class="tabla2">
+				    <th class="tabla2" title="Nombre del Menú">Nombre</th>
+				    <th class="tabla2" title="Tipo de Menú que puede ser: LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO, ESPECIAL, INFANTIL">Tipo</th>
+				    <th class="tabla2" title="Precio del Menú">Precio</th>
+				    <th class="tabla2" title="Breve descripción del menú">Descripción</th>
+				    <th class="tabla2" title="Nombre del Restaurante al que pertenece">Resturante</th>
+				    <th class="tabla2" title="Nombre del Usuario que ha realizado el Menú">Realizado por:</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @menus.each do |menu| %>
+				    <tr class="tabla2">
+						<td class="tabla2"><%= menu.name %></td>
+						<td class="tabla2"><%= Menu::MENU_CATEGORY[menu.type_menu] %></td>
+						<td class="tabla2" class="price"><%= number_to_currency(menu.price, :unit => "€") %></td>
+						<td class="tabla2"><%= menu.description %></td>
+						<td class="tabla2"><%= menu.restaurant.name %></td>
+						<td class="tabla2"><%= menu.user.user_name %></td>
+						<td><%= link_to "Ver Menú", menu_path(menu), :class => 'boton grey' %></td>   
+				    </tr>
+				<% end %>
+			</tbody>
+			<tfoot>
+				<tr class="tabla2">
+					<th class="tabla2" colspan="6">
+						<%= will_paginate @menus %>
+					</th>
+				</tr>
+			</tfoot>
+		</table>
+	<% end %>
 </div>
     
