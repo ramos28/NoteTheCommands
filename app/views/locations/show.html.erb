@@ -21,9 +21,9 @@
         <%= @location.total_price_command %>
     </p>
     <p>    
-        <%= link_to "Edit", edit_location_path(@location) %> |
-        <%= link_to "Destroy", @location, :method => :delete, data: { confirm: "Are you sure?"} %> |
-        <%= link_to "View All", locations_path %>
+        <%= link_to "Editar", edit_location_path(@location) %> |
+        <%= link_to "Eliminar", @location, :method => :delete, data: { confirm: "Está seguro que desea eliminar la comanda¿?"} %> |
+        <%= link_to "Volver", locations_path %>
     </p>
 </div>
 

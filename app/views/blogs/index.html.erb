@@ -8,7 +8,7 @@
                     </br><div class="accion-blog-title"><%= noticia.title %></div>
                     <p>Posted on <%= noticia.created_at.strftime("%d %B %Y -- %X") %>
                         <%if @current_role == 3%>
-                            | <%= link_to "Modificar blog", edit_blog_path(noticia), style: "color: black" %>
+                            | <%= link_to "Modificar Blog", edit_blog_path(noticia), style: "color: black" %>
                             | <%= link_to "Eliminar", @blog, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el blog?"}, style: "color: black" %>
                         <% end %>
                     </p>
@@ -19,10 +19,9 @@
                     </br><div class="accion-blog">Comentarios</div>
                 </head>
                 <article>
-
-                    <% noticia.blog_users.each do |blog_users| %>
-                        <head>
-                            <table class="tabla5">
+                    <head>
+                        <table class="tabla5">
+                            <% noticia.blog_users.each do |blog_users| %>
                                 <thead>
                                     <tr class="tabla5">
                                         <th class="tabla5"><%= blog_users.user.email %> - Comento el <%= blog_users.created_at.strftime("%d %B %Y, a las %X") %></th>
@@ -33,17 +32,17 @@
                                         <td class="tabla5"><%= blog_users.description %></td>
                                     </tr>
                                 </tbody>
-                                <tfoot>
-                                    <tr class="tabla5">
-                                        <th class="tabla5" colspan="1">
-                                            <%#= will_paginate @blogs %>
-                                        </th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                            </br>
-                        </head>
-                    <% end %>
+                            <% end %>
+                            <tfoot>
+                                <tr class="tabla5">
+                                    <th class="tabla5" colspan="1">
+                                        <%#= will_paginate @blogs %>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        </br>
+                    </head>
                 </article>
             </div>
             <div class="comentar">
