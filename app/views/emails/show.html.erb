@@ -22,7 +22,6 @@
 </p>
 
 <p>
-    <%= link_to "Edit", edit_email_path(@email) %> |
-    <%= link_to "Destroy", @email, :method => :delete, data: { confirm: "¿Está seguro que desea Eliminar el mensaje?"} %> |
-    <%= link_to "View All", emails_path %>
+    <%= link_to "Modificar", edit_email_path(@email) %> |
+    <%= link_to "Eliminar", @email, :method => :delete, data: { confirm: "¿Está seguro que desea Eliminar el mensaje?"} %>
 </p>

@@ -1,12 +1,12 @@
 <div class="menu">
     <div class="muestra-menus">
-        </br></br></br></br></br><div class="menu_accion">Menú</div>
+        </br></br></br></br><div class="menu_accion">Menú</div>
         <p>
             <strong>Nombre:</strong>
             <%= @menu.name %>
         </p>
         <p>
-            <strong>Tipo menu:</strong>
+            <strong>Tipo Menú:</strong>
             <%= Menu::MENU_CATEGORY[@menu.type_menu] %>
         </p>
         <p>
@@ -77,7 +77,7 @@
             </br></br><div class="menu_accion">Insertar Producto</div>
             <%= form_for :menu_product, url: menu_products_path do |f| %>
                 <div class="field">
-                    </br><%= f.label :category %>
+                    </br><%= f.label :seleccione_categoría %>
                     <%= f.select :category, options_for_select(MenuProduct::CONTENT_CATEGORY.map.with_index {|index, value| [index, value]})%>
                 </div>
                 <div class="field">
@@ -88,7 +88,7 @@
                 <%= f.submit 'Añadir', :class => 'boton grey'%>
             <% end %>
             </br></br><div class="menu_accion">Finalizar Menú</div>
-            </br><%= button_to 'Terminar', menus_path, :method => "get", :class => 'boton grey' %>
+            </br><%= button_to 'Terminar', menus_path, :method => "get", data: { confirm: "¿Está seguro que Terminar el Menú?"}, :class => 'boton grey' %>
         <% else %>
             <div class="contacto-menu"> 
             </br>¿Te gustan los Menús?<br/>

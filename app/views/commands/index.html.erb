@@ -83,7 +83,7 @@
 	                <% else %>
 						<td class="b2"><%= command.is_end %></td>
 	                <% end %>
-	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %></td>                
+	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %><%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>                
 
 					<td>
 					    <%= form_for command do |f| %>
@@ -136,7 +136,7 @@
 	                <% else %>
 						<td class="b2"><%= command.is_end %></td>
 	                <% end %>
-	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %></td>                
+	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %><%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>                
 	            </tr>
 	        <% end %>
 	    <% end %>
@@ -180,7 +180,7 @@
 	                <% else %>
 						<td class="b2"><%= command.is_end %></td>
 	                <% end %>
-	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %></td>                
+	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %><%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>                
 	            </tr>
 	        <% end %>
 	    <% end %>

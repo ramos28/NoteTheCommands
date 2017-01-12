@@ -26,8 +26,8 @@
             <%= f.date_field :date_solution %>
         </div>
         <div class="field">
-            <%= f.label :esta_solucionado %>
-            <%= f.select :is_solved, options_for_select(Incidence::SOLVED_CATEGORY.map.with_index {|index, value| [index, value]})%>
+            <%= f.label :esta_resuelto %>
+            <%= f.select :is_solved, [['Resuelto', true], ['No Resuelto', false]], :selected => 'Permitido' %>
         </div>
     <% end %>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>

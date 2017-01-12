@@ -16,7 +16,7 @@ class Command < ApplicationRecord
 		end
 
 		self.command_menus.each do |cm|
-			price += cm.menu.price * cp.quantity
+			price += cm.menu.price * cm.quantity
 		end
 
 		return price

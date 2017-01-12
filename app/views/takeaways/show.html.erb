@@ -22,37 +22,44 @@
             <%= @takeaway.discount %>%
         </p>
         <p>
-            <strong>Precio Total:</strong>
-            <%= @takeaway.total_price_selection %>
+            <strong>Coste Total Pedido:</strong>
+            <%= @takeaway.total_price_selection %> €
         </p>
 
         <p>
-            <%= link_to "Modificar", edit_takeaway_path(@takeaway) %> |
-            <%= link_to "Eliminar", @takeaway, :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar la comanda?"} %>
+            <% if @current_role == 0 %>
+                <%= link_to "Modificar", edit_takeaway_path(@takeaway) %> |
+                <%= link_to "Eliminar", @takeaway, :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar la comanda?"} %>
+            <% end %>
         </p>
     </div>
 
     </br></br><div class="muestra-tabla-takeaways"> 
         <div class="letra_takeaway">Lista Productos</div>
         <% @takeaway.products.each do |product| %>
-            <div class="takeaway_tipo_seleccion" title="<%= product.ingredients %>"><%= product.name %> | <%= link_to "Eliminar", product, :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar el producto de la comanda?"}, style: "color: white" %></div>
+            <div class="takeaway_tipo_seleccion" title="<%= product.ingredients %>"><%= product.name %> | <%= link_to "Eliminar", product, :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar el producto de la comanda?"}, style: "color: white" if @current_role == 0 %> | <%#= @takeaway.quantity %> | <%#= @takeaway.price %></div>
         <% end %>
         <div class="takeaway_tipo">Precio:   <%= @takeaway.total_price_selection %> €</div>
     </div>
 
     <div class="muestra-eleccion">
-        </br></br></br></br><div class="takeaway_accion">Insertar Producto</div>
-        <%= form_for :takeaway_product, url: takeaway_products_path do |f| %>
-            <div class="field">
-                </br><%= f.label :producto %>
-                <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @takeaway.products, :id, :name)%>
-            </div>
-            <div class="field">
-                </br><%= f.label :cantidad %>
-                <%= f.number_field :quantity %>
-            </div>
-            </br><%= f.hidden_field :takeaway_id, value: @takeaway.id %>
-            <%= f.submit 'Añadir Producto'%>
+        <% if @current_role == 0 %>
+            </br></br></br></br><div class="takeaway_accion">Insertar Producto</div>
+            <%= form_for :takeaway_product, url: takeaway_products_path do |f| %>
+                <div class="field">
+                    </br><%= f.label :producto %>
+                    <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @takeaway.products, :id, :name)%>
+                </div>
+                <div class="field">
+                    </br><%= f.label :cantidad %>
+                    <%= f.number_field :quantity %>
+                </div>
+                </br><%= f.hidden_field :takeaway_id, value: @takeaway.id %>
+                <%= f.submit 'Añadir Producto'%>
+            <% end %>
+        <% else %>
+            </br></br><div class="takeaway_accion">Datos Usuario</div>
+
         <% end %>
     </div>
 </div>

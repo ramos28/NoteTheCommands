@@ -32,7 +32,7 @@
                                               <li><%= link_to "Comandas Restaurante", commands_path %></li>
                                           <% end %>
                                           <% if (@current_role == 1 || @current_role  == 2 || @current_role == 3)%>
-                                              <li><%= link_to "Pedidos Online", commands_path %></li>
+                                              <li><%= link_to "Pedidos Online", takeaways_path %></li>
                                           <% end %>
                                           <% if (@current_role  == 0)%>
                                               <li><%= link_to "Mis comandas", commands_path%></li>
@@ -72,7 +72,7 @@
                                     <% if (@current_role  == 3) %>
                                         <li><%= link_to "Productos", products_path%></li>
                                         <li><%= link_to "Stock", stocks_path%></li>
-                                        <li><%= link_to "Menus", menus_path%></li>
+                                        <li><%= link_to "Menús", menus_path%></li>
                                         <li><%= link_to "Cuestionarios", questionnaires_path%></li>
                                         <li><%= link_to "Estadísticas", statistics_index_path %></li>
                                     <% end %>

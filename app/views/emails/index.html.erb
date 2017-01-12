@@ -38,7 +38,7 @@
                         <% else %>
                             <td class="b2"><%= Email::VIEW_CATEGORY[email_in.is_view]%></td>
                         <% end %>
-                        <td><%= link_to "Leer Mensaje", emails_show_path(email_in.id), :class => 'boton grey' %></td>
+                        <td><%= link_to "Leer Mensaje", email_in, :class => 'boton grey' %></td>
                     </tr>
                 <% end %>
             </tbody>

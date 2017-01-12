@@ -1,17 +1,14 @@
 class ReservationsController < ApplicationController
 	def index
-		@restaurant_users = RestaurantUser.all
-		@reservations = Reservation.all.paginate(:per_page => 7, :page => params[:page])
+		@reservations = Reservation.where("restaurant_id = ?", "#{@current_restaurant.id}").order("date DESC").paginate(:per_page => 7, :page => params[:page])
 		@reservation = Reservation.new
 	end
 
 	def show
-		@restaurant_users = RestaurantUser.all
 		@reservation = Reservation.find(params[:id])
 	end
 
 	def new
-		@restaurant_users = RestaurantUser.all
 		@reservation = Reservation.new
 	end
 
