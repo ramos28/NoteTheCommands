@@ -4,14 +4,55 @@
     <thead>
         <tr class="tabla2">
             <%= form_tag stocks_path, method: :get do %>
-                <th class="tabla2" title="Nombre del Restaurante">Restaurante</th>
-                <th class="tabla2" title="Tipo de Producto que puede ser: RACION, CALDOS, PESCADOS, CARNES, ENSALADAS, BOCADILLO, POSTRE, BEBIDA, BEBIDAS ALCOHOLICAS, APERITIVO, TACO, BURRITO, WRAP, GENERAL, EXTRAS">Tipo Producto</th>
-                <th class="tabla2" title="Nombre del Producto">Nombre Producto</th>
-                <th class="tabla2" title="Breve descripcion del Stock de dicho producto">Descipción<p><%= text_field_tag :description_stock, params[:description_stock], class: "form-control", placeholder: "Descripcion Stock" %></p></th>
-                <th class="tabla2" title="Coste por el que se vende el producto">Coste de venta</th>
-                <th class="tabla2" title="Cantidad de productos que hay en el Sctok">Cantidad en Stock</th>
-                <th class="tabla2" title="Coste de la materia prima por unidad">Coste Materia Prima Unidad</th>
-                <th class="tabla2" title="Coste de la materia prima total de un producto en stock">Coste Total Materia Prima</th>
+                <th class="tabla2" >
+                    <div class="cssToolTip">
+                        <%= "Restaurante" %>
+                        <span>Nombre del Restaurante</span> 
+                    </div>
+                </th>
+                <th class="tabla2" >
+                    <div class="cssToolTip">
+                        <%= "Tipo Producto" %>
+                        <span>Tipo de Producto que puede ser: RACION, CALDOS, PESCADOS, CARNES, ENSALADAS, BOCADILLO, POSTRE, BEBIDA, BEBIDAS ALCOHOLICAS, APERITIVO, TACO, BURRITO, WRAP, GENERAL, EXTRAS</span> 
+                    </div>
+                </th>
+                <th class="tabla2" >
+                    <div class="cssToolTip">
+                        <%= "Nombre Producto" %>
+                        <span>Nombre del Producto</span> 
+                    </div>
+                </th>
+                <th class="tabla2" >
+                    <div class="cssToolTip">
+                        <%= "Descipción" %>
+                        <span>Breve descripcion del Stock de dicho Producto</span> 
+                    </div>
+                    <p><%= text_field_tag :description_stock, params[:description_stock], class: "form-control", placeholder: "Descripcion Stock" %></p>
+                </th>
+                <th class="tabla2" >
+                    <div class="cssToolTip">
+                        <%= "Coste de venta" %>
+                        <span>Coste por el que se vende el Producto</span> 
+                    </div>
+                </th>
+                <th class="tabla2" >
+                    <div class="cssToolTip">
+                        <%= "Cantidad en Stock" %>
+                        <span>Cantidad de Productos que hay en el Sctok</span> 
+                    </div>
+                </th>
+                <th class="tabla2" >
+                    <div class="cssToolTip">
+                        <%= "Coste Materia Prima Unidad" %>
+                        <span>Coste de la Materia Prima por Unidad</span> 
+                    </div>
+                </th>
+                <th class="tabla2" >
+                    <div class="cssToolTip">
+                        <%= "Coste Total Materia Prima" %>
+                        <span>Coste de la Materia Prima total de un Producto en Stock (Cantidad del Producto * Coste por Unidad)</span> 
+                    </div>
+                </th>
             <% end %>
         </tr>
     </thead>

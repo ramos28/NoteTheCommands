@@ -306,3 +306,31 @@ label {
     font-size: 16px;
 }
 
+/* Clase que tendra el tooltip */  
+.cssToolTip {
+	position: static; /* Esta clase tiene que tener posicion relativa */
+	color: white; /* Color del texto */
+	cursor: progress;
+}
+ 
+/* El tooltip */
+.cssToolTip span {
+	background: rgba(20,20,20,0.9) url('information.png') left 5px no-repeat;
+	border: 2px solid #87cefa;
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px #333;
+	color: #87cefa;
+	display: none; /* El tooltip por defecto estara oculto */
+	font-size: 13px;
+	padding: 10px 10px 10px 40px;
+	max-width: 750px;
+	position: absolute; /* El tooltip se posiciona de forma absoluta para no modificar el aspezto del resto de la pagina */
+	top: 50%; /* Posicion apartir de la parte superior del primer elemento padre con posicion relativa */
+	left: 3%; /* Posicion apartir de la parte izquierda del primer elemento padre con posicion relativa */
+	z-index: 100; /* Poner un z-index alto para que aparezca por encima del resto de elementos */
+}
+ 
+/* El tooltip cuando se muestra */
+.cssToolTip:hover span {
+	display: inline; /* Para mostrarlo simplemente usamos display block por ejemplo */
+}

@@ -1,16 +1,13 @@
 class IncidencesController < ApplicationController
   def index
-		@restaurant_users = RestaurantUser.all
-		@incidences = Incidence.all
+		@incidences = Incidence.where("restaurant_id = ?", "#{@current_restaurant.id}").order("priority DESC").paginate(:per_page => 7, :page => params[:page])
 	end
 
 	def show
-		@restaurant_users = RestaurantUser.all
 		@incidence = Incidence.find(params[:id])
 	end
 
 	def new
-		@restaurant_users = RestaurantUser.all
 		@incidence = Incidence.new
 	end
 

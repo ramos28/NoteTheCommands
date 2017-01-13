@@ -1,5 +1,5 @@
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-	</br><%= link_to "¿Ha olvidado la contraseña?", new_password_path(resource_name), style: "color: white" %><br />
+	</p><%= link_to "¿Ha olvidado la contraseña?", new_password_path(resource_name), style: "color: white" %></p>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

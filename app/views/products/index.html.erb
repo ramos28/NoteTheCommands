@@ -5,12 +5,43 @@
 		<thead>
 			<tr class="tabla1">
 				<%= form_tag products_path, method: :get do %>
-				    <th class="tabla1" title="Nombre del Producto que está registrado en el Restaurante">Nombre<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Producto" %></p></th>
-				    <th class="tabla1" title="Categoría por la que se clasifica el producto (RACION, CALDOS, PESCADOS, CARNES, ENSALADAS, BOCADILLO, POSTRE, BEBIDA, BEBIDAS ALCOHOLICAS, APERITIVO, TACO, BURRITO, WRAP, GENERAL, EXTRAS)">Categoría</th>
-				    <th class="tabla1" title="Muestra los ingredientes que se han utilizado para la elaboración del producto">Ingredientes</th>
-				    <th class="tabla1" title="Nos dice si está permitida la venta del producto a menores de edad">¿Consumo menores?</th>
-				    <th class="tabla1" title="Coste de venta del Producto por Unidad">Coste Venta Unidad</th>
-				    <th class="tabla1" title="Nombre del Restaurante al que pertenece el Producto">Resturante</th>
+				    <th class="tabla1" >
+						<div class="cssToolTip">
+						    <%= "Nombre" %>
+							<span>Nombre del Producto que está registrado en el Restaurante</span> 
+						</div>
+						<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Producto" %></p>
+				    </th>
+				    <th class="tabla1" >
+						<div class="cssToolTip">
+						    <%= "Categoría" %>
+							<span>Categoría por la que se clasifica el producto (RACION, CALDOS, PESCADOS, CARNES, ENSALADAS, BOCADILLO, POSTRE, BEBIDA, BEBIDAS ALCOHOLICAS, APERITIVO, TACO, BURRITO, WRAP, GENERAL, EXTRAS)</span> 
+						</div>
+				    </th>
+				    <th class="tabla1" >
+						<div class="cssToolTip">
+						    <%= "Ingredientes" %>
+							<span>Muestra los ingredientes que se han utilizado para la elaboración del producto</span> 
+						</div>
+				    </th>
+				    <th class="tabla1" >
+						<div class="cssToolTip">
+						    <%= "¿Consumo menores?" %>
+							<span>Nos dice si está permitida la venta del producto a menores de edad</span> 
+						</div>
+				    </th>
+				    <th class="tabla1" >
+						<div class="cssToolTip">
+						    <%= "Coste Venta Unidad" %>
+							<span>Coste de venta del Producto por Unidad</span> 
+						</div>
+				    </th>
+				    <th class="tabla1" >
+						<div class="cssToolTip">
+						    <%= "Resturante" %>
+							<span>Nombre del Restaurante al que pertenece el Producto</span> 
+						</div>
+				    </th>
 				<% end %>
 			</tr>
 		</thead>

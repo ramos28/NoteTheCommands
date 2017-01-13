@@ -5,9 +5,42 @@
 td.b1 {
 	background-color:red;
 	color: black;
+	border: 1px solid black;
 }
 
 td.b2 {
 	background-color:green;
 	color: black;
+	border: 1px solid black;
+}
+
+//Colores Jerarquia Incidencias: #4F2F4F, #990099, #EE82EE, #EAADEA, #EED2EE
+td.inc1 {
+	background-color: #4F2F4F;
+	color: black;
+	border: 1px solid black;
+}
+
+td.inc2 {
+	background-color: #990099;
+	color: black;
+	border: 1px solid black;
+}
+
+td.inc3 {
+	background-color: #EE82EE;
+	color: black;
+	border: 1px solid black;
+}
+
+td.inc4 {
+	background-color: #EAADEA;
+	color: black;
+	border: 1px solid black;
+}
+
+td.inc5 {
+	background-color: #EED2EE;
+	color: black;
+	border: 1px solid black;	
 }

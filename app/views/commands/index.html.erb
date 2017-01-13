@@ -3,14 +3,54 @@
 	<div class ="muestra-tabla">
 		<table class="tabla1">
 		    <tr class="tabla1">
-		        <th class="tabla1" title="Nombre de la Comanda">Comanda</th>
-		        <th class="tabla1" title="Nombre del Restaurante">Restaurante</th>
-		        <th class="tabla1" title="Nombre del Usuario">Usuario</th>
-		        <th class="tabla1" title="Lugar donde se ha pedido la Comanda">Lugar</th>
-		        <th class="tabla1" title="Número de la Mesa desde donde se realiza la Comanda">Mesa</th>
-		        <th class="tabla1" title="Breve descripción de la Comanda">Descripción</th>
-		        <th class="tabla1" title="Rojo claro si no esta servida y verde claro si lo está">¿Servido?</th>
-		        <th class="tabla1" title="Rojo si no esta finalizada y verde si lo está">¿Está Finalizada?</th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Comanda
+						<span>Nombre de la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Restaurante
+						<span>Nombre del Restaurante</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Usuario
+						<span>Nombre del Usuario</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Lugar
+						<span>Lugar donde se ha pedido la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Mesa
+						<span>Número de la Mesa desde donde se realiza la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Descripción
+						<span>Breve descripción de la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    ¿Servido?
+						<span>Rojo claro si no esta servida y verde claro si lo está</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    ¿Está Finalizada?
+						<span>Rojo si no esta finalizada y verde si lo está</span> 
+					</div>
+		        </th>
 		    </tr>
 		    <% @commands.each do |command| %>
 		        <% if command.location.restaurant_id == @current_restaurant.id %>
@@ -57,13 +97,48 @@
 	<div class="title">Comandas del Camarero</div>
 	<table class="tabla1">
 	    <tr class="tabla1">
-			<th class="tabla1" title="Nombre de la Comanda">Comanda</th>
-			<th class="tabla1" title="Nombre del Restaurante">Restaurante</th>
-			<th class="tabla1" title="Nombre del Usuario">Usuario</th>
-			<th class="tabla1" title="Lugar donde se ha pedido la Comanda">Lugar</th>
-			<th class="tabla1" title="Número de la Mesa desde donde se realiza la Comanda">Mesa</th>
-			<th class="tabla1" title="Rojo claro si no esta servida y verde claro si lo está">¿Servido?</th>
-			<th class="tabla1" title="Rojo si no esta finalizada y verde si lo está">¿Está Finalizada?</th>
+	    	<th class="tabla1" >
+				<div class="cssToolTip">
+				    Comanda
+					<span>Nombre de la Comanda</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Restaurante
+					<span>Nombre del Restaurante</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Usuario
+					<span>Nombre del Usuario</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Lugar
+					<span>Lugar donde se ha pedido la Comanda</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Mesa
+					<span>Número de la Mesa desde donde se realiza la Comanda</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    ¿Servido?
+					<span>Rojo claro si no esta servida y verde claro si lo está</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    ¿Está Finalizada?
+					<span>Rojo si no esta finalizada y verde si lo está</span> 
+				</div>
+	        </th>
 	    </tr>
 	    <% @commands.each do |command| %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
@@ -110,13 +185,48 @@
 	<div class="title">Comandas del Cocinero</div>
 	<table  class="tabla1">
 	    <tr class="tabla1">
-			<th class="tabla1" title="Nombre de la Comanda">Comanda</th>
-			<th class="tabla1" title="Nombre del Restaurante">Restaurante</th>
-			<th class="tabla1" title="Nombre del Usuario">Usuario</th>
-			<th class="tabla1" title="Número de la Mesa desde donde se realiza la Comanda">Mesa</th>
-			<th class="tabla1" title="Breve descripción de la Comanda">Descripción</th>
-			<th class="tabla1" title="Rojo claro si no esta servida y verde claro si lo está">¿Servido?</th>
-			<th class="tabla1" title="Rojo si no esta finalizada y verde si lo está">¿Está Finalizada?</th>
+	    	<th class="tabla1" >
+				<div class="cssToolTip">
+				    Comanda
+					<span>Nombre de la Comanda</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Restaurante
+					<span>Nombre del Restaurante</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Usuario
+					<span>Nombre del Usuario</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Mesa
+					<span>Número de la Mesa desde donde se realiza la Comanda</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Descripción
+					<span>Breve descripción de la Comanda</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    ¿Servido?
+					<span>Rojo claro si no esta servida y verde claro si lo está</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    ¿Está Finalizada?
+					<span>Rojo si no esta finalizada y verde si lo está</span> 
+				</div>
+	        </th>
 	    </tr>
 	    <% @commands.each do |command| %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>
@@ -152,14 +262,54 @@
 	<div class="title">Comandas del Restaurante</div>
 	<table  class="tabla1">
 	    <tr class="tabla1">
-	       	<th class="tabla1" title="Nombre de la Comanda">Comanda</th>
-			<th class="tabla1" title="Nombre del Restaurante">Restaurante</th>
-			<th class="tabla1" title="Nombre del Usuario">Usuario</th>
-			<th class="tabla1" title="Lugar donde se ha pedido la Comanda">Lugar</th>
-			<th class="tabla1" title="Número de la Mesa desde donde se realiza la Comanda">Mesa</th>
-			<th class="tabla1" title="Breve descripción de la Comanda">Descripción</th>
-			<th class="tabla1" title="Rojo claro si no esta servida y verde claro si lo está">¿Servido?</th>
-			<th class="tabla1" title="Rojo si no esta finalizada y verde si lo está">¿Está Finalizada?</th>
+			<th class="tabla1" >
+				<div class="cssToolTip">
+				    Comanda
+					<span>Nombre de la Comanda</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Restaurante
+					<span>Nombre del Restaurante</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Usuario
+					<span>Nombre del Usuario</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Lugar
+					<span>Lugar donde se ha pedido la Comanda</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Mesa
+					<span>Número de la Mesa desde donde se realiza la Comanda</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    Descripción
+					<span>Breve descripción de la Comanda</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    ¿Servido?
+					<span>Rojo claro si no esta servida y verde claro si lo está</span> 
+				</div>
+	        </th>
+	        <th class="tabla1" >
+				<div class="cssToolTip">
+				    ¿Está Finalizada?
+					<span>Rojo si no esta finalizada y verde si lo está</span> 
+				</div>
+	        </th>
 	    </tr>
 	    <% @commands.each do |command| %>
 	        <% if command.location.restaurant_id == @current_restaurant.id %>

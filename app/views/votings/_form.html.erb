@@ -6,7 +6,7 @@
 			<div class="accion"><%= q.question %></div>
 			<fieldset>
 				<% answers.each do |ans| %>
-					<div class="sesion">
+					<div class="votings">
 						<%= radio_button_tag "[voting][questions][#{q.id}][answer]", ans[1] %>
 						<label for="<%#= id %>"><%= ans[0] %></label>
 					</div>
