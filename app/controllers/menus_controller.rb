@@ -46,6 +46,6 @@ class MenusController < ApplicationController
   	private
 
   	def menu_params
-  		params.require(:menu).permit(:name, :type_menu, :price, :description, :restaurant_id, :user_id)
+  		params.require(:menu).permit(:name, :type_menu, :price, :description, :restaurant_id, :user_id, :is_available)
   	end
 end

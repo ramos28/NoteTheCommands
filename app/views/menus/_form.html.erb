@@ -10,11 +10,15 @@
     </div>
     <div class="field">
         <%= f.label :descripción %>
-        <%= f.text_area :description, :cols => 30, rows: 5 %>
+        <%= f.text_area :description, :cols => 30, rows: 5, placeholder: "Breve descripción del Menú..." %>
     </div>
     <div class="field">
         <%= f.label :precio %>
         <%= f.number_field :price, :step => "0.01"%> €
+    </div>
+    <div class="field">
+        <%= f.label :disponibilidad %>
+        <%= f.select :is_available, [['Disponible', true], ['No Disponible', false]], :selected => 'Disponible' %>
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>

@@ -7,6 +7,7 @@ class CreateTakeaways < ActiveRecord::Migration[5.0]
 			t.integer :phone
 			t.float :discount, default: 0, null: false
 			t.boolean :is_delivered, default: false, null: false
+			t.boolean :is_end, default: false, null: false
 			t.float :total_price_selection
 
 			t.references :restaurant, null: false

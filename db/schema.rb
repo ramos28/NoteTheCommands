@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 20170108133629) do
     t.integer  "type_menu",                   null: false
     t.float    "price",         limit: 24,    null: false
     t.text     "description",   limit: 65535, null: false
+    t.boolean  "is_available",                null: false
     t.integer  "restaurant_id",               null: false
     t.integer  "user_id"
     t.datetime "created_at",                  null: false
@@ -253,6 +254,7 @@ ActiveRecord::Schema.define(version: 20170108133629) do
     t.integer  "phone"
     t.float    "discount",              limit: 24, default: 0.0,   null: false
     t.boolean  "is_delivered",                     default: false, null: false
+    t.boolean  "is_end",                           default: false, null: false
     t.float    "total_price_selection", limit: 24
     t.integer  "restaurant_id",                                    null: false
     t.integer  "user_id"

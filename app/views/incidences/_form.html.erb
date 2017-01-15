@@ -18,7 +18,7 @@
     </div>
     <div class="field">
         </br><%= f.label :descripción %>
-        <%= f.text_area :description, :cols => 30, rows: 5 %>
+        <%= f.text_area :description, :cols => 30, rows: 5, placeholder: "Redacción de la Incidencia..." %>
     </div>
     <% if @current_role  == 3 %>
         <div class="field">

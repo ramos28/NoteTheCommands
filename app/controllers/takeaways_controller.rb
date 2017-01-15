@@ -1,6 +1,6 @@
 class TakeawaysController < ApplicationController
 	def index
-		@takeaways = Takeaway.where("restaurant_id = ?", "#{@current_restaurant.id}").order("created_at DESC").paginate(:per_page => 7, :page => params[:page])
+		@takeaways = Takeaway.where("restaurant_id = ?", "#{@current_restaurant.id}").order("created_at ASC").paginate(:per_page => 7, :page => params[:page])
 		@takeaway = Takeaway.new
 	end
 
@@ -46,7 +46,7 @@ class TakeawaysController < ApplicationController
   	private
 
   	def takeaway_params
-  		params.require(:takeaway).permit(:name, :date, :hour, :total_price_selection, :restaurant_id)
+  		params.require(:takeaway).permit(:name, :date, :hour, :total_price_selection, :restaurant_id, :is_end)
 
   	end
 

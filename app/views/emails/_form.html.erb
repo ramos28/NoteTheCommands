@@ -21,7 +21,7 @@
     <% end %>
     <div class="field">
         </br><%= f.label :descripción %><br/>
-        <%= f.text_area :description, :cols => 100, rows: 12 %>
+        <%= f.text_area :description, :cols => 100, rows: 12, placeholder: "Redacción del Mensaje..." %>
     </div>
     <%= f.hidden_field :is_sent, :value => 1 %>
     <%= f.hidden_field :user_from, :value => current_user.email %>

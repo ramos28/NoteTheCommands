@@ -26,12 +26,6 @@
 				    </th>
 				    <th class="tabla1" >
 						<div class="cssToolTip">
-						    <%= "¿Consumo menores?" %>
-							<span>Nos dice si está permitida la venta del producto a menores de edad</span> 
-						</div>
-				    </th>
-				    <th class="tabla1" >
-						<div class="cssToolTip">
 						    <%= "Coste Venta Unidad" %>
 							<span>Coste de venta del Producto por Unidad</span> 
 						</div>
@@ -42,19 +36,29 @@
 							<span>Nombre del Restaurante al que pertenece el Producto</span> 
 						</div>
 				    </th>
+				    <th class="tabla1" >
+						<div class="cssToolTip">
+						    <%= "¿Consumo menores?" %>
+							<span>Nos dice si está permitida la venta del producto a menores de edad</span> 
+						</div>
+				    </th>
 				<% end %>
 			</tr>
 		</thead>
 		<tbody>
 			<% @products.each do |product| %>
 			    <tr class="tabla1">
-			          <td class="tabla1"><%= product.name %></td>
-			          <td class="tabla1"><%= Product::PRODUCT_CATEGORY[product.type_product] %></td>
-			          <td class="tabla1" title="<%= product.ingredients %>"><%= product.ingredients %></td>
-			          <td class="tabla1"><%= product.younger %></td>
-			          <td class="tabla1" class="price"><%= number_to_currency(product.price, :unit => "€") %></td>
-			          <td class="tabla1"><%= product.restaurant.name %></td>
-			          <td><%= link_to "Edit Stock", edit_product_path(product), :class => 'boton grey' %></td>                
+					<td class="tabla1"><%= product.name %></td>
+					<td class="tabla1"><%= Product::PRODUCT_CATEGORY[product.type_product] %></td>
+					<td class="tabla1" title="<%= product.ingredients %>"><%= product.ingredients %></td>
+					<td class="tabla1" class="price"><%= number_to_currency(product.price, :unit => "€") %></td>
+					<td class="tabla1"><%= product.restaurant.name %></td>
+					<% if product.younger %>
+						<td class="b5"><%= product.younger %></td>
+					<% else %>
+						<td class="b6"><%= product.younger %></td>
+					<% end %>
+					<td><%= link_to "Edit Stock", edit_product_path(product), :class => 'boton grey' %></td>
 			    </tr>
 			<% end %>
 		</tbody>

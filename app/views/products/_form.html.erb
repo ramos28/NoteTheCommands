@@ -13,12 +13,12 @@
         <%= f.number_field :price, :step => "0.01" %>
     </div>
     <div class="field">
-        <%= f.label :breve_descripción_de_ingredientes %>
-        <%= f.text_area :ingredients, :cols => 30, rows: 5 %>
+        <%= f.label :descripción_de_ingredientes %>
+        <%= f.text_area :ingredients, :cols => 30, rows: 5, placeholder: "Breve descripción de los Ingredientes del Producto..." %>
     </div>
     <div class="field">
-        <%= f.label :breve_descripción_de_la_preparación %>
-        <%= f.text_area :preparation, :cols => 30, rows: 5 %>
+        <%= f.label :descripción_de_la_preparación %>
+        <%= f.text_area :preparation, :cols => 30, rows: 5, placeholder: "Breve descripción de la Preparación del Producto..." %>
     </div>
     <div class="field">
         <%= f.label :venta_menores %>

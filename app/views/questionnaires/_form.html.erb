@@ -2,7 +2,7 @@
 	<%= f.error_messages %>
 	<div class="field">
 		</br><%= f.label :redactar_pregunta %>
-		<%= f.text_area :question, :cols => 30, rows: 2 %>
+		<%= f.text_area :question, :cols => 35, rows: 7, placeholder: "Redacción de la Pregunta..." %>
 	</div>
 	<%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
 	<div class="field">

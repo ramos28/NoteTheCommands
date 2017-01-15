@@ -23,7 +23,7 @@
 							<span>Día de recogida del pedido</span> 
 						</div>
 			        </th>
-			        <th class="tabla2" >Hora Recogida
+			        <th class="tabla2" >
 						<div class="cssToolTip">
 						    <%= "Hora Recogida" %>
 							<span>Nombre del Restaurante al que esta Registrado el Usuario</span> 
@@ -43,8 +43,14 @@
 			        </th>
 			        <th class="tabla2" >
 						<div class="cssToolTip">
-						    <%= "Esta Entregado" %>
-							<span>Muestra si el pedido esta o no entregado</span> 
+						    <%= "¿Está Finalizada?" %>
+							<span>Muestra si el pedido está finalizado (Ya no se pueden seleccionar mas productos)</span> 
+						</div>
+			        </th>
+			        <th class="tabla2" >
+						<div class="cssToolTip">
+						    <%= "¿Está Entregado?" %>
+							<span>Muestra si el pedido esta o no entregado (El cliente ya se ha venido a recoger el pedido y se lo ha llevado)</span> 
 						</div>
 			        </th>
 			    </tr>
@@ -58,19 +64,24 @@
 			            <td class="tabla2"><%= takeaway.hour.strftime("%X") %></td>
 			            <td class="tabla2"><%= takeaway.restaurant.name %></td>
 			            <td class="tabla2"><%= takeaway.total_price_selection %></td>
-			            <% if !takeaway.is_delivered %>
-			                <td class="b1"><%= takeaway.is_delivered%></td>
+			            <% if takeaway.is_end %>
+			                <td class="b5"><%= takeaway.is_end %></td>
 			            <% else %>
-			                <td class="b2"><%=takeaway.is_delivered%></td>
+			                <td class="b6"><%=takeaway.is_end %></td>
 			            <% end %>
-			            <td><%= link_to "Editar Takeaway", edit_takeaway_path(takeaway), :class => 'boton grey' %></td>
+			            <% if !takeaway.is_delivered %>
+			                <td class="b1"><%= takeaway.is_delivered %></td>
+			            <% else %>
+			                <td class="b2"><%=takeaway.is_delivered %></td>
+			            <% end %>
+			            <td><%= link_to "Editar", edit_takeaway_path(takeaway), :class => 'boton grey' %></td>
 			            <td><%= link_to "Agregar Productos", takeaway_path(takeaway), :class => 'boton grey'  %></td>              
 			        </tr>
 			    <% end %>
 			</tbody>
 			<tfoot>
 				<tr class="tabla2">
-					<th class="tabla2" colspan="7">
+					<th class="tabla2" colspan="8">
 						<%= will_paginate @takeaways %>
 					</th>
 				</tr>
@@ -79,7 +90,7 @@
 	</div>
 
 	<div class="muestra-opciones-pedido">
-		<div class="accion">Crear Pedido</div>
+		</br><div class="accion">Crear Pedido</div>
 		<%= render 'form' %>
 	</div>
 <% else %>
@@ -104,7 +115,7 @@
 							<span>Día de recogida del pedido</span> 
 						</div>
 			        </th>
-			        <th class="tabla2" >Hora Recogida
+			        <th class="tabla2" >
 						<div class="cssToolTip">
 						    <%= "Hora Recogida" %>
 							<span>Nombre del Restaurante al que esta Registrado el Usuario</span> 
@@ -124,7 +135,13 @@
 			        </th>
 			        <th class="tabla2" >
 						<div class="cssToolTip">
-						    <%= "Esta Entregado" %>
+						    <%= "¿Está Finalizada?" %>
+							<span>Muestra si el pedido está finalizado (Ya no se pueden seleccionar mas productos)</span> 
+						</div>
+			        </th>
+			        <th class="tabla2" >
+						<div class="cssToolTip">
+						    <%= "¿Esta Entregado?" %>
 							<span>Muestra si el pedido esta o no entregado</span> 
 						</div>
 			        </th>
@@ -139,12 +156,26 @@
 			            <td class="tabla2"><%= takeaway.hour.strftime("%X") %></td>
 			            <td class="tabla2"><%= takeaway.restaurant.name %></td>
 			            <td class="tabla2"><%= takeaway.total_price_selection %></td>
+			            <% if takeaway.is_end %>
+			                <td class="b5"><%= takeaway.is_end %></td>
+			            <% else %>
+			                <td class="b6"><%=takeaway.is_end %></td>
+			            <% end %>
 			            <% if !takeaway.is_delivered %>
 			                <td class="b1"><%= takeaway.is_delivered%></td>
 			            <% else %>
 			                <td class="b2"><%=takeaway.is_delivered%></td>
 			            <% end %>
-			            <td><%= link_to "Ver Pedido", takeaway_path(takeaway), :class => 'boton grey'  %></td>              
+			            <td><%= link_to "Ver Pedido", takeaway_path(takeaway), :class => 'boton grey'  %></td>
+			            <td>
+					    <%= form_for takeaway do |f| %>
+					        <%= f.error_messages %>
+					        <%= f.hidden_field :is_delivered, :value => true %>
+					        <div class="field">
+					            <%= f.submit 'Entregar', :class => 'boton grey'%>
+					        </div>
+					    <% end %>
+					</td>            
 			        </tr>
 			    <% end %>
 			</tbody>

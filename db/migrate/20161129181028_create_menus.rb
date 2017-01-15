@@ -7,6 +7,8 @@ class CreateMenus < ActiveRecord::Migration[5.0]
 			t.float :price, null: false
 			t.text :description, null: false
 
+			t.boolean :is_available, null: false
+
 			t.references :restaurant, null: false
 			t.references :user
 
