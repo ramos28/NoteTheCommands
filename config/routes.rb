@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+    get 'see_curriculums/index'
     get 'contacts/index'
     get 'takeaway_products/index'
     get 'statistics_best_seller_product/index'
@@ -69,6 +70,7 @@ Rails.application.routes.draw do
     resources :blog_users, only: [:create]
 
     resources :curriculums
+    resources :see_curriculums, only: [:index]
 
     get 'select_restaurant', to: 'restaurants_users#new'
     #get 'restaurants_user', to: 'restaurants_users#index'

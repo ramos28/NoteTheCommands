@@ -71,7 +71,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% @incidences.each do |incidence| %>
+                <% @incidences_pending.each do |incidence| %>
                     <tr class="tabla4">
                         <td class="tabla4"><%= incidence.title %></td>
                         <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
@@ -121,7 +121,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% @incidences.each do |incidence| %>
+                <% @incidences_solved.each do |incidence| %>
                     <tr class="tabla4">
                         <td class="tabla4"><%= incidence.title %></td>
                         <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>

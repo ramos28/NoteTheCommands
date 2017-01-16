@@ -1,11 +1,12 @@
   <!DOCTYPE html>
 <html>
       <head>
-            <link rel="image" type="image/png" href="icon.png">
             <title>NoteTheCommands</title>
             <%= csrf_meta_tags %>
             <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
             <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+            <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+            <%= favicon_link_tag 'favicon.ico' %>
       </head>
 
       <body>
@@ -78,10 +79,11 @@
                                     <% end %>
                                     <% if (@current_role  == 0)%>
                                         <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
-                                    <% end %>
-                                    <% if (@current_role  == 0)%>
-                                        <li><%= link_to "Solicitar Reclamación", new_user_registration_path %></li>
                                         <li><%= link_to "Pedido Online", takeaways_path %></li>
+                                        <li><%= link_to "Ver Menús", menus_path%></li>
+                                    <% end %>
+                                    <% if (@current_role  == 1 || @current_role  == 2 )%>
+                                        <li><%= link_to "Ver Menús", menus_path%></li>
                                     <% end %>
                                     <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2)%>
                                         <li><%= link_to "Crear Incidencias", new_incidence_path %></li>

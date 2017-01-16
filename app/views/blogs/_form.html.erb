@@ -6,7 +6,7 @@
     </div>
     <div class="field">
         <%= f.label :descripción %>
-        <%= f.text_area :description, :cols => 100, rows: 10, placeholder: "Redacción de la Noticia del Blog..." %>
+        <%= f.text_area :description, :cols => 100, rows: 10, placeholder: "Redacción de la Nueva Noticia del Blog..." %>
     </div>
     <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
     <%= f.hidden_field :user_id, :value => current_user.id %>

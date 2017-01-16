@@ -41,6 +41,12 @@
 							<span>Nombre del Usuario que ha realizado el Menú</span> 
 						</div>
 				    </th>
+				    <th class="tabla2" >
+						<div class="cssToolTip">
+						    ¿Disponible?
+							<span>Verde si está disponible el Menú y rojo en caso contrario</span> 
+						</div>
+				    </th>
 				</tr>
 			</thead>
 			<tbody>
@@ -52,6 +58,11 @@
 						<td class="tabla2"><%= menu.description %></td>
 						<td class="tabla2"><%= menu.restaurant.name %></td>
 						<td class="tabla2"><%= menu.user.user_name %></td>
+						<% if menu.is_available %>
+		                	<td class="b5"><%= menu.is_available %></td>
+		                <% else %>
+							<td class="b6"><%= menu.is_available %></td>
+		                <% end %>
 						<td><%= link_to "Editar Menú", edit_menu_path(menu), :class => 'boton grey' %>
 							  <%= link_to "Agregar Productos", menu_path(menu), :class => 'boton grey' %></td>      
 				    </tr>
@@ -59,7 +70,7 @@
 			</tbody>
 			<tfoot>
 				<tr class="tabla2">
-					<th class="tabla2" colspan="6">
+					<th class="tabla2" colspan="7">
 						<%= will_paginate @menus %>
 					</th>
 				</tr>
@@ -110,6 +121,12 @@
 							<span>Nombre del Usuario que ha realizado el Menú</span> 
 						</div>
 				    </th>
+				    <th class="tabla2" >
+						<div class="cssToolTip">
+						    ¿Disponible?
+							<span>Verde si está disponible el Menú y rojo en caso contrario</span> 
+						</div>
+				    </th>
 				</tr>
 			</thead>
 			<tbody>
@@ -121,13 +138,18 @@
 						<td class="tabla2"><%= menu.description %></td>
 						<td class="tabla2"><%= menu.restaurant.name %></td>
 						<td class="tabla2"><%= menu.user.user_name %></td>
+						<% if menu.is_available %>
+		                	<td class="b5"><%= menu.is_available %></td>
+		                <% else %>
+							<td class="b6"><%= menu.is_available %></td>
+		                <% end %>
 						<td><%= link_to "Ver Menú", menu_path(menu), :class => 'boton grey' %></td>   
 				    </tr>
 				<% end %>
 			</tbody>
 			<tfoot>
 				<tr class="tabla2">
-					<th class="tabla2" colspan="6">
+					<th class="tabla2" colspan="7">
 						<%= will_paginate @menus %>
 					</th>
 				</tr>

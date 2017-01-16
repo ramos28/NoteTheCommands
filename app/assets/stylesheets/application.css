@@ -17,6 +17,11 @@ p {
 	font-size: 17px;
 }
 
+hr {
+  background-color: black;
+  height: 3px;
+}
+
 header{
 	height: 200px;
 	text-align: right;

@@ -6,7 +6,7 @@
     </div>
     <div class="field">
         </br><%= f.label :descripción %><br />
-        <%= f.text_area :description %>
+        <%= f.text_area :description, placeholder: "(Opcional)" %>
     </div>
     <% if @current_role  == 3 %>
         <div class="field">
@@ -15,7 +15,7 @@
         </div>
     <% end %>
     <%= f.hidden_field :location_id, :value => @current_restaurant %>
-    <%= f.hidden_field :user_id, :value => current_user.user_name %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     <div class="field">
         </br><%= f.submit 'Crear Comanda'%>
         </br></br></br></br></br>

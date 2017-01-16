@@ -100,10 +100,10 @@
                     <% end %>
                 </div>
                 <div id="tab2" class="contenido_tab">
-                    </br><div class="accion-command">Agregar Menu</div>
+                    </br><div class="accion-command">Agregar Menú</div>
                     <%= form_for :command_menu, url: command_menus_path do |f| %>
                         <div class="field">
-                            </br><%= f.label :menu %><br />
+                            </br><%= f.label :menú %><br />
                             <%= f.select :menu_id, options_from_collection_for_select( Menu.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_menus, :id, :name)%>
                         </div>
                         <div class="field">
@@ -111,7 +111,7 @@
                             <%= f.number_field :quantity %>
                         </div>
                         <%= f.hidden_field :command_id, value: @command.id %>
-                        </br><%= f.submit 'Agregar Menu', :class => 'boton grey'  %>
+                        </br><%= f.submit 'Agregar Menú', :class => 'boton grey'  %>
                         <% if @command.is_served %>
                             <%= form_for @command do |f| %>
                                 <%= f.error_messages %>

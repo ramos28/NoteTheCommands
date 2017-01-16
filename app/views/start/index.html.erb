@@ -159,15 +159,6 @@
 				<div class="clear"></div>
 			</div>
 		<% end %>
-		<%= link_to menus_path do %>
-			<div class="starts">
-				<div class="imagen">
-					<%= image_tag('menu.png', :alt => 'menu')%>
-				</div>
-				<p>En esta sección el gerente podrá registrar, consultar y modificar los menus del restaurante</p>
-				<div class="clear"></div>
-			</div>
-		<% end %>
 		<%= link_to statistics_index_path do %>
 			<div class="starts">
 				<div class="imagen">
@@ -205,6 +196,15 @@
 			</div>
 		<% end %>
 	<% end %>
+	<%= link_to menus_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('menu.png', :alt => 'menu')%>
+				</div>
+				<p>En esta sección el gerente podrá registrar, consultar y modificar los menus del restaurante</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
 	<%= link_to emails_index_path do %>
 		<div class="starts">
 			<div class="imagen">

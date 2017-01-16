@@ -1,18 +1,164 @@
-<%= form_for @location do |f| %>
-	<%= f.error_messages %>
-	<div class="field">
-	    </br><%= f.label :Lugar %>
-	    <%= f.select :place, options_for_select(Location::LOCATION_CATEGORY.map.with_index {|index, value| [index, value]})%>
-	</div>
-	<div class="field">
-	    </br><%= f.label :Mesa %>
-	    <%= f.number_field :sit %>
-	</div>
-	
-	<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<div class="field">
-		</br><%= f.submit 'Seleccionar Mesa', :class => 'boton grey' %>
-	</div>
-	</br></br></br></br></br></br></br></br></br>
-<% end %>
+<ul class="tabs">
+    <li><a href="#tab1">Salón</a></li>
+    <li><a href="#tab2">Salón Principal</a></li>
+    <li><a href="#tab3">Terraza</a></li>
+</ul>
+<div class="contenedor_table">
+	<%= form_for @location do |f| %>
+	    <div id="tab1" class="contenido_tab">
+	        <table>
+	            <tbody>
+	            	<tr>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('puertaBaños.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	            	<tr>
+	            		<td><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('puertaSalon.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	            </tbody>
+	        </table>
+	        <hr>
+	        <div class="vista">
+		        <div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>Información
+					<span>
+						<%= image_tag('mesaSelected.png', :alt => 'mesaSelected')%>Seleccionada
+				        <%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%>Disponible
+				        <%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%>Ocupada
+					</span> 
+				</div>
+			</div>
+			<%= f.error_messages %>
+			<div class="field">
+			    </br><%= f.label :Lugar %>
+			    <%= f.select :place, options_for_select(Location::LOCATION_CATEGORY.map.with_index {|index, value| [index, value]})%>
+			</div>
+			<div class="field">
+			    </br><%= f.label :Mesa %>
+			    <%= f.number_field :sit %>
+			</div>
+			
+			<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<div class="field">
+				</br><%= f.submit 'Seleccionar Mesa', :class => 'boton grey' %>
+			</div>
+			</br>
+	    </div>
+	    <div id="tab2" class="contenido_tab">
+	         <table>
+	            <tbody>
+	            	<tr>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaSelected.png', :alt => 'mesaSelected')%></td>
+	            		<td></td>
+	            		<td><%= image_tag('barra.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	                <tr>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            	</tr>
+	            	<tr>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('puertaSalon.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>            	
+	            		<td><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('puertaRestaurante.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	            </tbody>
+	        </table>
+	        <hr>
+	        <div class="vista">
+		        <div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>Información
+					<span>
+						<%= image_tag('mesaSelected.png', :alt => 'mesaSelected')%>Seleccionada
+				        <%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%>Disponible
+				        <%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%>Ocupada
+					</span> 
+				</div>
+			</div>
+			<%= f.error_messages %>
+			<div class="field">
+			    </br><%= f.label :Lugar %>
+			    <%= f.select :place, options_for_select(Location::LOCATION_CATEGORY.map.with_index {|index, value| [index, value]})%>
+			</div>
+			<div class="field">
+			    </br><%= f.label :Mesa %>
+			    <%= f.number_field :sit %>
+			</div>
+			
+			<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<div class="field">
+				</br><%= f.submit 'Seleccionar Mesa', :class => 'boton grey' %>
+			</div>
+			</br>
+	    </div>
+	    <div id="tab3" class="contenido_tab">
+	         <table>
+	            <tbody>
+	                <tr>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('puertaRestaurante.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	            	<tr>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	            </tbody>
+	        </table>
+	        <hr>
+	        <div class="vista">
+		        <div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>Información
+					<span>
+						<%= image_tag('mesaSelected.png', :alt => 'mesaSelected')%>Seleccionada
+				        <%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%>Disponible
+				        <%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%>Ocupada
+					</span> 
+				</div>
+			</div>
+			<%= f.error_messages %>
+			<div class="field">
+			    </br><%= f.label :Lugar %>
+			    <%= f.select :place, options_for_select(Location::LOCATION_CATEGORY.map.with_index {|index, value| [index, value]})%>
+			</div>
+			<div class="field">
+			    </br><%= f.label :Mesa %>
+			    <%= f.number_field :sit %>
+			</div>
+			
+			<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<div class="field">
+				</br><%= f.submit 'Seleccionar Mesa', :class => 'boton grey' %>
+			</div>
+			</br>
+	    </div>
+	<% end %>
+<div style="clear:both;">
+</div>

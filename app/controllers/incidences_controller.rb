@@ -1,6 +1,8 @@
 class IncidencesController < ApplicationController
   def index
 		@incidences = Incidence.where("restaurant_id = ?", "#{@current_restaurant.id}").order("priority DESC").paginate(:per_page => 7, :page => params[:page])
+		@incidences_solved = Incidence.where("restaurant_id = ? AND is_solved = true", "#{@current_restaurant.id}").order("priority DESC").paginate(:per_page => 7, :page => params[:page])
+		@incidences_pending = Incidence.where("restaurant_id = ? AND is_solved = false", "#{@current_restaurant.id}").order("priority DESC").paginate(:per_page => 7, :page => params[:page])
 	end
 
 	def show

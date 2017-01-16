@@ -1,5 +1,5 @@
 <div class="title">¡Mandenos su Curriculum Vitae!</div>
-<div class="contacto"> </br>¿Te apetece trabajar con nosotros?<br/>
+<div class="contacto"> </br>¿Te apetece trabajar en <%= @current_restaurant.name %>?<br/>
 Entonces ¡estás de enhorabuena! Somos una empresa joven y buscamos un equipo de personas con ganas de hacer un gran trabajo mientras se divierten. En '<%= @current_restaurant.name %>' cuidamos especialmente la atención al cliente para ofrecerle una experiencia de consumo perfecta. Tenemos diferentes perfiles definidos para nuestros restaurantes. Si encajas en algún puesto y quieres que contemos contigo en próximos procesos de selección, este es tu momento. ¿a qué esperas?<br/>
 
 – GERENTE:
@@ -15,7 +15,5 @@ Responsable de alcanzar metas de satisfacción del cliente. Es un puesto perfect
 <% end %>
 
 <% if @current_role  == 3 %>
-	<% @current_restaurant.curriculums.each do |curriculum| %>
-		<p><%= link_to 'Ver CV', curriculum.file.url %></p>
-	<% end %>
+	</br><%= button_to 'Ver Curriculums', see_curriculums_path, :method => "get", :class => 'boton grey'  %>
 <% end %>

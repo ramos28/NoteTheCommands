@@ -1,0 +1,7 @@
+<div class="title">Ver Curriculums del Restaurante '<%= @current_restaurant.name %>'</div>
+<div class="vista">
+	</br><% @current_restaurant.curriculums.each do |curriculum| %>
+		<%= link_to 'Ver CV', curriculum.file.url, :class => 'boton grey' %>
+	<% end %>
+	</br></br></br>
+</div>

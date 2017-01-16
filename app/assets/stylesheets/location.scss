@@ -1,3 +1,17 @@
 // Place all the styles related to the location controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.contenedor_table {
+	float:left;
+	clear:both;
+	width:100%;
+	padding:0px;
+	margin:0 auto;
+	display:block;
+	background-image: url("sueloSalon.png");
+	border:1px solid #333;
+	-moz-border-radius:0 0 7px 7px;
+	-webkit-border-radius:0 0 7pc 7px;
+	border-radius: 0 0 7px 7px;
+}
