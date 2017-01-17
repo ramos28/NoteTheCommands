@@ -58,6 +58,15 @@
 			</div>
 		<% end %>
 	<% elsif @current_role == 1 %>
+		<%= link_to menus_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('menu.png', :alt => 'menu')%>
+				</div>
+				<p>En esta sección el camarero podrán consultar los Menús del Restaurante</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
 		<%= link_to commands_path do %>
 			<div class="starts">
 				<div class="imagen">
@@ -68,6 +77,15 @@
 			</div>
 		<% end %>
 	<% elsif @current_role == 2 %>
+		<%= link_to menus_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('menu.png', :alt => 'menu')%>
+				</div>
+				<p>En esta sección el cocinero podrán consultar los Menús del Restaurante</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
 		<%= link_to commands_path do %>
 			<div class="starts">
 				<div class="imagen">
@@ -119,6 +137,15 @@
 		<% end %>
 	<% end %>
 	<% if @current_role == 0 %>
+		<%= link_to menus_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('menu.png', :alt => 'menu')%>
+				</div>
+				<p>En esta sección el cliente podrá consultar los Menús del Restaurante</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
 		<%= link_to takeaways_path do %>
 			<div class="starts">
 				<div class="imagen">
@@ -159,7 +186,16 @@
 				<div class="clear"></div>
 			</div>
 		<% end %>
-		<%= link_to statistics_index_path do %>
+		<%= link_to menus_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('menu.png', :alt => 'menu')%>
+				</div>
+				<p>En esta sección el gerente podrá registrar, consultar y modificar los menus del restaurante</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
+		<%= link_to reservations_path do %>
 			<div class="starts">
 				<div class="imagen">
 					<%= image_tag('ver_reservas.png', :alt => 'ver_reservas')%>
@@ -196,15 +232,6 @@
 			</div>
 		<% end %>
 	<% end %>
-	<%= link_to menus_path do %>
-			<div class="starts">
-				<div class="imagen">
-					<%= image_tag('menu.png', :alt => 'menu')%>
-				</div>
-				<p>En esta sección el gerente podrá registrar, consultar y modificar los menus del restaurante</p>
-				<div class="clear"></div>
-			</div>
-		<% end %>
 	<%= link_to emails_index_path do %>
 		<div class="starts">
 			<div class="imagen">

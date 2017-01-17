@@ -8,8 +8,12 @@
         <%= Product::PRODUCT_CATEGORY[@product.type_product] %>
     </p>
     <p>
-        <strong>Descripcion Producto:</strong>
-        <%= @product.description %> €
+        <strong>Ingredientes del Producto:</strong>
+        <%= @product.ingredients %>
+    </p>
+    <p>
+        <strong>Preparación del Producto:</strong>
+        <%= @product.preparation %>
     </p>
     <p>
         <strong>Precio:</strong>
@@ -21,6 +25,6 @@
     </p>
 
     <p>
-    <%= link_to "Modificar", edit_product_path(@product) %> |
-    <%= link_to "Eliminar", @product, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"} %> |
+    <%= link_to "Modificar", edit_product_path(@product), style: "color: white" %> |
+    <%= link_to "Eliminar", @product, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, style: "color: white" %>
 </p>

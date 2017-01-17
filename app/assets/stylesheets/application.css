@@ -123,6 +123,20 @@ div.accion {
 	width: 30%;
 }
 
+.muestra-tabla1 {
+	float: left;
+	text-align: center;
+	top: 35%;
+	width: 80%;
+}
+
+.muestra-opciones1 {
+	float: left;
+	text-align: center;
+	top: 35%;
+	width: 20%;
+}
+
 h1 {
 	text-align: center;
 	font-size: x-large;

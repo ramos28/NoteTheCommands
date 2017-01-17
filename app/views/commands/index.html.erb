@@ -1,6 +1,6 @@
 <% if @current_role == 0 %>
 	<div class="title">Comandas del Usuario '<%= current_user.user_name %>'</div>
-	<div class ="muestra-tabla">
+	<div class ="muestra-tabla1">
 		<table class="tabla1">
 		    <tr class="tabla1">
 		        <th class="tabla1" >
@@ -41,6 +41,12 @@
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
+					    Fecha Creación
+						<span>Fecha de cuando se creó la comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
 					    ¿Servido?
 						<span>Rojo claro si no esta servida y verde claro si lo está</span> 
 					</div>
@@ -60,6 +66,7 @@
 		                <td class="tabla1"><%= command.user.user_name %></td>
 		                <td class="tabla1"><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
 		                <td class="tabla1"><%= command.location.sit %></td>
+		                <td class="tabla1"><%= command.created_at.strftime("%d %B %Y -- %X") %></td>
 		                <td class="tabla1"><%= command.description %></td>
 		                <% if command.is_served %>
 		                	<td class="b5"><%= command.is_served %></td>
@@ -79,7 +86,7 @@
 		    <% end %>
 		    <tfoot>
 				<tr class="tabla1">
-					<th class="tabla1" colspan="8">
+					<th class="tabla1" colspan="9">
 						<%#= will_paginate @commands %>
 					</th>
 				</tr>
@@ -87,7 +94,7 @@
 		</table>
 	</div>
 
-	<div class="muestra-opciones">
+	<div class="muestra-opciones1">
 		</br><div class="accion">Crear una Nueva Comanda</div>
 		</br></br><%= button_to 'Crear Comanda', new_location_path, :method => "get", :class => 'boton grey' %>
 		</br></br></br></br></br></br>
@@ -293,6 +300,12 @@
 				</div>
 	        </th>
 	        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Fecha Creación
+						<span>Fecha de cuando se creó la comanda</span> 
+					</div>
+		        </th>
+	        <th class="tabla1" >
 				<div class="cssToolTip">
 				    Descripción
 					<span>Breve descripción de la Comanda</span> 
@@ -319,6 +332,7 @@
 	                <td class="tabla1"><%= command.user.user_name %></td>
 	                <td class="tabla1"><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
 	                <td class="tabla1"><%= command.location.sit %></td>
+	                <td class="tabla1"><%= command.created_at.strftime("%d %B %Y -- %X") %></td>
 	                <td class="tabla1"><%= command.description %></td>
 	                <% if command.is_served %>
 	                	<td class="b5"><%= command.is_served %></td>
@@ -336,7 +350,7 @@
 	    <% end %>
 	    <tfoot>
 			<tr class="tabla1">
-				<th class="tabla1" colspan="8">
+				<th class="tabla1" colspan="9">
 					<%#= will_paginate @commands %>
 				</th>
 			</tr>

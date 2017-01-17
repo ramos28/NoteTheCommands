@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   	def index
 		@restaurant_users = RestaurantUser.all
-		@blogs = Blog.where("restaurant_id = ?", "#{@current_restaurant.id}").paginate(:per_page => 1, :page => params[:page])
+		@blogs = Blog.where("restaurant_id = ?", "#{@current_restaurant.id}").order('created_at DESC').paginate(:per_page => 1, :page => params[:page])
 		@blogs_view = Blog.where("restaurant_id = ?", "#{@current_restaurant.id}").paginate(:per_page => 20, :page => params[:page])
 		@blog = Blog.new
 		@blog_comments = BlogUser.all.paginate(:per_page => 3, :page => params[:page])

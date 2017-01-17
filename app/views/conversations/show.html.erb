@@ -1,15 +1,14 @@
 <div class="title">Chateando con '<%= @conversation.with(current_user).user_name %>'</div>
 
 <div id="conversation-main">
-  <div id="conversation-body">
-    <%= render @conversation.personal_messages %>
-  </div>
+    <div id="conversation-body">
+        <%= render @conversation.personal_messages %>
+    </div>
 
-  <%= form_for @personal_message do |f| %>
-    <%= hidden_field_tag 'conversation_id', @conversation.id %>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-	<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-    <%= f.submit %>
-  <% end %>
+    <%= form_for @personal_message do |f| %>
+        <%= hidden_field_tag 'conversation_id', @conversation.id %>
+        <%= f.text_area :body, :cols => 40, rows: 4, placeholder: "Escribir mensaje..." %>
+        <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+        <%= f.submit 'Enviar', :class => 'boton grey' %>
+    <% end %>
 </div>
