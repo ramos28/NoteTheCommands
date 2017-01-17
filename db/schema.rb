@@ -55,15 +55,17 @@ ActiveRecord::Schema.define(version: 20170108133629) do
   end
 
   create_table "commands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title",                                     null: false
-    t.integer  "location_id",                               null: false
-    t.integer  "user_id",                                   null: false
-    t.text     "description", limit: 65535
-    t.boolean  "is_served",                 default: false, null: false
-    t.boolean  "is_end",                    default: false, null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.index ["location_id"], name: "index_commands_on_location_id", using: :btree
+    t.string   "title",                                             null: false
+    t.integer  "place",                                             null: false
+    t.integer  "user_id",                                           null: false
+    t.integer  "restaurant_id",                                     null: false
+    t.text     "description",         limit: 65535
+    t.boolean  "is_served",                         default: false, null: false
+    t.boolean  "is_end",                            default: false, null: false
+    t.float    "total_price_command", limit: 24,    default: 0.0,   null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.index ["restaurant_id"], name: "index_commands_on_restaurant_id", using: :btree
     t.index ["user_id"], name: "index_commands_on_user_id", using: :btree
   end
 
@@ -115,18 +117,6 @@ ActiveRecord::Schema.define(version: 20170108133629) do
     t.index ["user_id"], name: "index_incidences_on_user_id", using: :btree
   end
 
-  create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "place",                                        null: false
-    t.integer  "sit",                                          null: false
-    t.float    "total_price_command", limit: 24, default: 0.0, null: false
-    t.integer  "restaurant_id",                                null: false
-    t.integer  "user_id",                                      null: false
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.index ["restaurant_id"], name: "index_locations_on_restaurant_id", using: :btree
-    t.index ["user_id"], name: "index_locations_on_user_id", using: :btree
-  end
-
   create_table "menu_products", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "menu_id",    null: false
     t.integer  "product_id", null: false
@@ -174,7 +164,7 @@ ActiveRecord::Schema.define(version: 20170108133629) do
     t.index ["restaurant_id"], name: "index_products_on_restaurant_id", using: :btree
   end
 
-  create_table "products_takeaway", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "products_takeaway", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "takeaway_id",             null: false
     t.integer  "product_id",              null: false
     t.integer  "quantity",    default: 0, null: false

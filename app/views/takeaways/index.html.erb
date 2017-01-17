@@ -168,13 +168,9 @@
 			            <% end %>
 			            <td><%= link_to "Ver Pedido", takeaway_path(takeaway), :class => 'boton grey'  %></td>
 			            <td>
-					    <%= form_for takeaway do |f| %>
-					        <%= f.error_messages %>
-					        <%= f.hidden_field :is_delivered, :value => true %>
-					        <div class="field">
-					            <%= f.submit 'Entregar', :class => 'boton grey'%>
-					        </div>
-					    <% end %>
+						<% if !takeaway.is_delivered %>
+			            	<%= link_to 'Entregar', takeaway_deliver_path(takeaway), :class => 'boton grey' %>
+						<% end %>
 					</td>            
 			        </tr>
 			    <% end %>

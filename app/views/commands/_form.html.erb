@@ -1,23 +1,154 @@
-<%= form_for @command do |f| %>
-    <%= f.error_messages %>
-    <div class="field">
-        </br><%= f.label :nombre_comanda %>
-        <%= f.text_field :title %>
-    </div>
-    <div class="field">
-        </br><%= f.label :descripción %><br />
-        <%= f.text_area :description, placeholder: "(Opcional)" %>
-    </div>
-    <% if @current_role  == 3 %>
-        <div class="field">
-            </br><%= f.label :esta_finalizada %>
-            <%= f.select :is_end, options_for_select(Command::FINISH_CATEGORY.map.with_index {|index, value| [index, value]})%>
-        </div>
-    <% end %>
-    <%= f.hidden_field :location_id, :value => @current_restaurant %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <div class="field">
-        </br><%= f.submit 'Crear Comanda'%>
-        </br></br></br></br></br>
-    </div>
-<% end %>
+<ul class="tabs">
+    <li><a href="#tab1">Salón</a></li>
+    <li><a href="#tab2">Salón Principal</a></li>
+    <li><a href="#tab3">Terraza</a></li>
+</ul>
+<div class="contenedor_table">
+
+	<%= form_for :command, url: commands_path do |f| %>	
+
+		 <div class="field">
+	        </br><%= f.label :nombre_comanda %>
+	        <%= f.text_field :title %>
+	    </div>
+	    <div class="field">
+	        </br><%= f.label :descripción %><br />
+	        <%= f.text_area :description, placeholder: "(Opcional)" %>
+	    </div>
+	    <%= f.hidden_field :place %>
+		<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+
+		<% locations_ocuped = @current_restaurant.commands.where(:is_end => false).pluck(:place) %>
+	    <div id="tab1" class="contenido_tab">
+	        <table>
+	            <tbody>
+	            	<tr>
+	            		<td class="location" data-place="1"><%= ocuped(1, locations_ocuped) %></td>
+	            		<td class="location" data-place="2"><%= image_tag('puertaBaños.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="3"<%= ocuped(3, locations_ocuped) %></td>
+	            		<td class="location" data-place="4"><%= ocuped(4, locations_ocuped) %></td>
+	            		<td class="location" data-place="5"><%= ocuped(5, locations_ocuped) %></td>
+	            		<td class="location" data-place="6"><%= ocuped(6, locations_ocuped) %></td>
+	            	</tr>
+	            	<tr>
+	            		<td class="location" data-place="7"><%= ocuped(7, locations_ocuped) %></td>
+	            		<td class="location" data-place="8"><%= image_tag('puertaSalon.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="9"><%= ocuped(9, locations_ocuped) %></td>
+	            		<td class="location" data-place="10"><%= ocuped(10, locations_ocuped) %></td>
+	            		<td class="location" data-place="11"<%= ocuped(11, locations_ocuped) %></td>
+	            		<td class="location" data-place="12"><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	            </tbody>
+	        </table>
+	        <hr>
+	        <div class="vista">
+		        <div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>Información
+					<span>
+						<%= image_tag('mesaSelected.png', :alt => 'mesaSelected')%>Seleccionada
+				        <%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%>Disponible
+				        <%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%>Ocupada
+					</span> 
+				</div>
+			</div>
+
+			<div class="field">
+				</br><%= f.submit 'Seleccionar Mesa', :class => 'boton grey' %>
+			</div>
+			</br>
+	    </div>
+	    <div id="tab2" class="contenido_tab">
+	         <table>
+	            <tbody>
+	            	<tr>
+	            		<td class="location" data-place="13"><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td class="location" data-place="14"><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="15"><%= image_tag('mesaSelected.png', :alt => 'mesaSelected')%></td>
+	            		<td class="location" data-place="16"></td>
+	            		<td class="location" data-place="17"><%= image_tag('barra.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	                <tr>
+	            		<td class="location" data-place="18"><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td class="location" data-place="19"><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="20"><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="21"><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="22"><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="23"><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            	</tr>
+	            	<tr>
+	            		<td class="location" data-place="24"><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td class="location" data-place="25"><%= image_tag('puertaSalon.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="26"><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>            	
+	            		<td class="location" data-place="27"><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="28"><%= image_tag('puertaRestaurante.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="29"><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	            </tbody>
+	        </table>
+	        <hr>
+	        <div class="vista">
+		        <div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>Información
+					<span>
+						<%= image_tag('mesaSelected.png', :alt => 'mesaSelected')%>Seleccionada
+				        <%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%>Disponible
+				        <%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%>Ocupada
+					</span> 
+				</div>
+			</div>
+			
+			<div class="field">
+				</br><%= f.submit 'Seleccionar Mesa', :class => 'boton grey' %>
+			</div>
+			</br>
+	    </div>
+	    <div id="tab3" class="contenido_tab">
+	         <table>
+	            <tbody>
+	                <tr>
+	            		<td class="location" data-place="30"><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td class="location" data-place="31"><%= image_tag('puertaRestaurante.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="32"><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td class="location" data-place="33"><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="34"><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="35"><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	            	<tr>
+	            		<td class="location" data-place="36"><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td class="location" data-place="37"><%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%></td>
+	            		<td class="location" data-place="38"><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="39"><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="40"><%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%></td>
+	            		<td class="location" data-place="41"><%= image_tag('mesaNotSelected2.png', :alt => 'mesaNotSelected')%></td>
+	            	</tr>
+	            </tbody>
+	        </table>
+	        <hr>
+	        <div class="vista">
+		        <div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>Información
+					<span>
+						<%= image_tag('mesaSelected.png', :alt => 'mesaSelected')%>Seleccionada
+				        <%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%>Disponible
+				        <%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%>Ocupada
+					</span> 
+				</div>
+			</div>
+			<div class="field">
+				</br><%= f.submit 'Seleccionar Mesa', :class => 'boton grey' %>
+			</div>
+			</br>
+	    </div>
+	<% end %>
+<div style="clear:both;">
+</div>
+
+
+
+
+<script type="text/javascript">
+	$(".location img").click(function(){
+		$("#command_place").val($(this).parent().data('place'));
+	});
+</script>

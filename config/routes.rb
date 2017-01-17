@@ -44,7 +44,9 @@ Rails.application.routes.draw do
     resources :messages
     resources :incidences
     resources :reservations
-    resources :takeaways
+    resources :takeaways do
+        get 'deliver'
+    end
     resources :locations
     resources :menus
     resources :commands do

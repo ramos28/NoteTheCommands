@@ -14,6 +14,12 @@ class TakeawayProductsController < ApplicationController
         end
     end
 
+    def destroy
+        @takeaway_product = TakeawayProduct.find(params[:id])
+        @takeaway_product.destroy
+        redirect_to :back
+    end
+
     private
 
     def takeaway_product_params

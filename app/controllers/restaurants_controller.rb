@@ -52,7 +52,7 @@ class RestaurantsController < ApplicationController
       	rol = current_user.restaurant_users.find(params[:restaurant_user_id]).rol
 
   		if rol == 0
-	   		redirect_to new_location_path
+	   		redirect_to new_command_path
   		else
   			redirect_to start_path
   		end	

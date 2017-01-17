@@ -9,9 +9,9 @@ class Restaurant < ApplicationRecord
 	has_many :blogs
 	has_many :reservations
 	has_many :takeaways
-	has_many :locations
 	has_many :menus
 	has_many :curriculums
+	has_many :commands
 
 	geocoded_by :full_address
 	after_validation :geocode
@@ -22,10 +22,10 @@ class Restaurant < ApplicationRecord
 
 	def ventas
 		ventas = 0
-		locations_ids = self.locations.pluck(:id)
-		Command.where(location_id: locations_ids).each do |command|
-			ventas += command.command_price
-		end
+		#locations_ids = self.locations.pluck(:id)
+		#Command.where(location_id: locations_ids).each do |command|
+		#	ventas += command.command_price
+		#end
 
 		return ventas
 	end

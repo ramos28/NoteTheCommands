@@ -17,6 +17,7 @@ class CommandsController < ApplicationController
 	end
 
 	def create
+		debugger
 		@command = Command.new(command_params)
 		if @command.save
 			flash[:notice] = "Successfully created command."
@@ -72,8 +73,7 @@ class CommandsController < ApplicationController
   	private
   	
   	def command_params
-  		params.require(:command).permit(:title, :location_id, :user_id, :description, :is_end, :is_served)
-
+  		params.require(:command).permit(:title, :place, :user_id, :restaurant_id, :description, :is_end, :is_served)
   	end
 
 end

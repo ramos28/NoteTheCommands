@@ -28,7 +28,13 @@ class TakeawaysController < ApplicationController
 
 	def update
 	    @takeaway = Takeaway.find(params[:id])
-	    if @takeaway.update_attributes(takeaway_params)
+	    price = 0
+		debugger
+	    @takeaway.takeaway_product.each do |tp|
+	    	price = tp.quantity * tp.product.price
+	    end 
+
+	    if @takeaway.update_attributes(:is_end => true, total_price_selection: price)
 	      	flash[:notice] = "Successfully updated takeaway."
 	      	redirect_to @takeaway
 	    else
@@ -42,6 +48,17 @@ class TakeawaysController < ApplicationController
 	    	flash[:notice] = "Successfully destroyed takeaway."
 	    	redirect_to takeaways_url
   	end
+
+  	def deliver
+		@takeaway = Takeaway.find(params[:takeaway_id])
+		debugger
+	
+	    if @takeaway.update_attributes(:is_delivered => true)
+	      	flash[:notice] = "Successfully updated takeaway."
+	      	redirect_to :back
+	    else
+	      	render :action => 'edit'
+	    end  	end
   
   	private
 
