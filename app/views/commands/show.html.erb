@@ -2,15 +2,15 @@
 </br><div class="muestra-comandas">
     </br></br><div class="accion">Comanda</div>
     <p>
-        <strong>Nombre:</strong>
+        <strong style="color: white" >Nombre:</strong>
         <%= @command.title %>
     </p>
     <p>
-        <strong>Mesa:</strong>
+        <strong style="color: white" >Mesa:</strong>
         <%= @command.place %>
     </p>
     <p>
-        <strong>Esta Finalizada:</strong>
+        <strong style="color: white">¿Está Finalizada?:</strong>
         <%= @command.is_end %>
     </p>
 
@@ -18,7 +18,7 @@
         <% if @current_role == 0 %>
             <%= link_to "Modificar", edit_command_path(@command), style: "color: white"  %> |
             <%= link_to "Eliminar", @command, :method => :delete, data: { confirm: "¿Está seguro que desea modificar la Comanda?"}, style: "color: white"  %> |
-            <%= link_to "Ver Todas", commands_path, style: "color: white"  %>
+            <%= link_to "Ver Todas", commands_path, style: "color: white" %>
         <% end %>
     </p>
 </div>
@@ -26,6 +26,7 @@
 </br>
 <% if @current_role == 0 %>
     <div class="muestra-tabla-comandas">
+        <% total_price_command = 0 %>
         <table class="tabla3">
             <thead>
                 <tr class="tabla3">
@@ -37,14 +38,18 @@
             </thead>
             <tbody>
                 <% @command.command_products.each do |cp| %>
+                    <% price_command = cp.product.price * cp.quantity %>
+                    <% total_price_command += price_command %>
                     <tr class="tabla3">
                         <td class="tabla3"><%= cp.product.name %></td>
                         <td class="tabla3"><%= cp.quantity %> Unds</td>
                         <td class="tabla3"><%= cp.product.price %> €/Unds</td>
-                        <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td> 
+                        <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td>
                     </tr>
                 <% end %>
                 <% @command.command_menus.each do |cp| %>
+                    <% price_command = cp.menu.price * cp.quantity %>
+                    <% total_price_command += price_command %>
                     <tr class="tabla3">
                         <td class="tabla3"><%= cp.menu.name %></td>
                         <td class="tabla3"><%= cp.quantity %> Unds</td>
@@ -56,7 +61,7 @@
             <tfoot>
                 <tr class="tabla3">
                     <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                    <td class="tabla3" colspan="3">xxx €</td>
+                    <td class="tabla3" colspan="3"><%= total_price_command %> €</td>
                 </tr>
             </tfoot>
         </table>

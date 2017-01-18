@@ -53,6 +53,15 @@ div.takeaway_tipo_seleccion {
 	text-align: center;
 }
 
+.muestra-tabla-takeaways2 {
+    background-image: url("pedido.jpg");
+    background-position: center;
+    width: 65%;
+    overflow:hidden;
+    float: left;
+    text-align: center;
+}
+
 .muestra-eleccion {
 	float: left;
 	text-align: center;
@@ -74,7 +83,7 @@ div.takeaway_tipo_seleccion {
 div.letra_takeaway {
     font-family: menuFont;
     text-align: center;		
-    font-size: 55px;
+    font-size: 300%;
     color: white;
 }
 

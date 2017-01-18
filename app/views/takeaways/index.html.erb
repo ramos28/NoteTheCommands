@@ -7,7 +7,7 @@
 			    <tr class="tabla2">
 			        <th class="tabla2" >
 						<div class="cssToolTip">
-						    <%= "Comanda" %>
+						    <%= "Nombre del Pedido" %>
 							<span>Nombre del Pedido</span> 
 						</div>
 			        </th>
@@ -37,20 +37,20 @@
 			        </th>
 			        <th class="tabla2" >
 						<div class="cssToolTip">
-						    <%= "Total Precio Pedido" %>
-							<span>Total del precio del pedido</span> 
+						    <%= "Coste Pedido" %>
+							<span>Coste total del pedido</span> 
 						</div>
 			        </th>
 			        <th class="tabla2" >
 						<div class="cssToolTip">
 						    <%= "¿Está Finalizada?" %>
-							<span>Muestra si el pedido está finalizado (Ya no se pueden seleccionar mas productos)</span> 
+							<span>Muestra si el pedido está finalizado (Ya no se pueden seleccionar mas productos), en rojo clarito es que no esta finalizado (false), es decir, se encuntra en la cesta y en amarillo claro es que se ha finalizado (true)</span> 
 						</div>
 			        </th>
 			        <th class="tabla2" >
 						<div class="cssToolTip">
 						    <%= "¿Está Entregado?" %>
-							<span>Muestra si el pedido esta o no entregado (El cliente ya se ha venido a recoger el pedido y se lo ha llevado)</span> 
+							<span>Muestra si el pedido está o no entregado (El cliente ya ha venido a recoger el pedido y se lo ha llevado), en rojo oscuro es que no esta entregado (false) y en verde es que está entregado (true) </span> 
 						</div>
 			        </th>
 			    </tr>
@@ -63,7 +63,7 @@
 			            <td class="tabla2"><%= takeaway.date.strftime("%d %B %Y") %></td>
 			            <td class="tabla2"><%= takeaway.hour.strftime("%X") %></td>
 			            <td class="tabla2"><%= takeaway.restaurant.name %></td>
-			            <td class="tabla2"><%= takeaway.total_price_selection %></td>
+			            <td class="tabla2"><%= takeaway.total_price_selection %> €</td>
 			            <% if takeaway.is_end %>
 			                <td class="b5"><%= takeaway.is_end %></td>
 			            <% else %>
@@ -99,7 +99,7 @@
 			    <tr class="tabla2">
 			        <th class="tabla2" >
 						<div class="cssToolTip">
-						    <%= "Comanda" %>
+						    <%= "Nombre del Pedido" %>
 							<span>Nombre del Pedido</span> 
 						</div>
 			        </th>
@@ -129,8 +129,8 @@
 			        </th>
 			        <th class="tabla2" >
 						<div class="cssToolTip">
-						    <%= "Total Precio Pedido" %>
-							<span>Total del precio del pedido</span> 
+						    <%= "Ganancia Pedido" %>
+							<span>Ganancia del Restaurante con dicho Pedido</span> 
 						</div>
 			        </th>
 			        <th class="tabla2" >
@@ -155,7 +155,7 @@
 			            <td class="tabla2"><%= takeaway.date.strftime("%d %B %Y") %></td>
 			            <td class="tabla2"><%= takeaway.hour.strftime("%X") %></td>
 			            <td class="tabla2"><%= takeaway.restaurant.name %></td>
-			            <td class="tabla2"><%= takeaway.total_price_selection %></td>
+			            <td class="tabla2"><%= takeaway.total_price_selection %> €</td>
 			            <% if takeaway.is_end %>
 			                <td class="b5"><%= takeaway.is_end %></td>
 			            <% else %>

@@ -1,7 +1,7 @@
 class CommandsController < ApplicationController
 	def index
-		@commands = @current_restaurant.locations.map {|l| l.commands}.flatten
-		@commands.select{|command| command.created_at >= Time.now.beginning_of_day}
+		@commands = Command.where("restaurant_id = ?", "#{@current_restaurant.id}")
+		@commands += @commands.select{|command| command.created_at >= Time.now.beginning_of_day}
 
 		@command = Command.new
 	end
@@ -17,7 +17,6 @@ class CommandsController < ApplicationController
 	end
 
 	def create
-		debugger
 		@command = Command.new(command_params)
 		if @command.save
 			flash[:notice] = "Successfully created command."

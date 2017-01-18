@@ -1,3 +1,8 @@
-<li>
-  <%= user.user_name %> | <%= link_to 'send a message', new_personal_message_path(receiver_id: user) %>
-</li>
+
+<div id="select-chat-left">
+	<%= user.user_name %>
+</div>
+<div id="select-chat-right">
+	<%= link_to 'Chatear', new_personal_message_path(receiver_id: user), :class => 'boton grey' %>
+</div>
+<hr>

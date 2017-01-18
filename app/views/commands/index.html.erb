@@ -23,26 +23,20 @@
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    Lugar
-						<span>Lugar donde se ha pedido la Comanda</span> 
-					</div>
-		        </th>
-		        <th class="tabla1" >
-					<div class="cssToolTip">
 					    Mesa
 						<span>Número de la Mesa desde donde se realiza la Comanda</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    Descripción
-						<span>Breve descripción de la Comanda</span> 
+					    Precio Comanda
+						<span>Precio total que costó la Comanda al Usuario</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
 					    Fecha Creación
-						<span>Fecha de cuando se creó la comanda</span> 
+						<span>Fecha de cuando se creó la Comanda</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
@@ -59,15 +53,14 @@
 		        </th>
 		    </tr>
 		    <% @commands.each do |command| %>
-		        <% if command.location.restaurant_id == @current_restaurant.id %>
+		        <% if command.restaurant_id == @current_restaurant.id %>
 		            <tr class="tabla1">
 		                <td class="tabla1"><%= command.title %></td>
-		                <td class="tabla1"><%= command.location.restaurant.name %></td>
+		                <td class="tabla1"><%= command.restaurant.name %></td>
 		                <td class="tabla1"><%= command.user.user_name %></td>
-		                <td class="tabla1"><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
-		                <td class="tabla1"><%= command.location.sit %></td>
+		                <td class="tabla1"><%= command.place %></td>
+		                <td class="tabla1"><%= command.total_price_command %> €</td>
 		                <td class="tabla1"><%= command.created_at.strftime("%d %B %Y -- %X") %></td>
-		                <td class="tabla1"><%= command.description %></td>
 		                <% if command.is_served %>
 		                	<td class="b5"><%= command.is_served %></td>
 		                <% else %>
@@ -86,7 +79,7 @@
 		    <% end %>
 		    <tfoot>
 				<tr class="tabla1">
-					<th class="tabla1" colspan="9">
+					<th class="tabla1" colspan="8">
 						<%#= will_paginate @commands %>
 					</th>
 				</tr>
@@ -124,12 +117,6 @@
 	        </th>
 	        <th class="tabla1" >
 				<div class="cssToolTip">
-				    Lugar
-					<span>Lugar donde se ha pedido la Comanda</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
 				    Mesa
 					<span>Número de la Mesa desde donde se realiza la Comanda</span> 
 				</div>
@@ -148,13 +135,12 @@
 	        </th>
 	    </tr>
 	    <% @commands.each do |command| %>
-	        <% if command.location.restaurant_id == @current_restaurant.id %>
+	        <% if command.restaurant_id == @current_restaurant.id %>
 	            <tr class="tabla1">
 	                <td class="tabla1"><%= command.title %></td>
-	                <td class="tabla1"><%= command.location.restaurant.name %></td>
+	                <td class="tabla1"><%= command.restaurant.name %></td>
 	                <td class="tabla1"><%= command.user.user_name %></td>
-	                <td class="tabla1"><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
-	                <td class="tabla1"><%= command.location.sit %></td>
+	                <td class="tabla1"><%= command.place %></td>
 	                <% if command.is_served %>
 	                	<td class="b5"><%= command.is_served %></td>
 	                <% else %>
@@ -236,12 +222,12 @@
 	        </th>
 	    </tr>
 	    <% @commands.each do |command| %>
-	        <% if command.location.restaurant_id == @current_restaurant.id %>
+	        <% if command.restaurant_id == @current_restaurant.id %>
 	            <tr class="tabla1">
 	                <td class="tabla1"><%= command.title %></td>
-	                <td class="tabla1"><%= command.location.restaurant.name %></td>
+	                <td class="tabla1"><%= command.restaurant.name %></td>
 	                <td class="tabla1"><%= command.user.user_name %></td>
-	                <td class="tabla1"><%= command.location.sit %></td>
+	                <td class="tabla1"><%= command.place %></td>
 	                <td class="tabla1"><%= command.description %></td>
 	                <% if command.is_served %>
 	                	<td class="b5"><%= command.is_served %></td>
@@ -289,12 +275,6 @@
 	        </th>
 	        <th class="tabla1" >
 				<div class="cssToolTip">
-				    Lugar
-					<span>Lugar donde se ha pedido la Comanda</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
 				    Mesa
 					<span>Número de la Mesa desde donde se realiza la Comanda</span> 
 				</div>
@@ -307,8 +287,8 @@
 		        </th>
 	        <th class="tabla1" >
 				<div class="cssToolTip">
-				    Descripción
-					<span>Breve descripción de la Comanda</span> 
+				    Ganancia por Comanda
+					<span>Dinero que se gastó el Usuario en la Comanda</span> 
 				</div>
 	        </th>
 	        <th class="tabla1" >
@@ -325,15 +305,14 @@
 	        </th>
 	    </tr>
 	    <% @commands.each do |command| %>
-	        <% if command.location.restaurant_id == @current_restaurant.id %>
+	        <% if command.restaurant_id == @current_restaurant.id %>
 	            <tr class="tabla1">
 	                <td class="tabla1"><%= command.title %></td>
-	                <td class="tabla1"><%= command.location.restaurant.name %></td>
+	                <td class="tabla1"><%= command.restaurant.name %></td>
 	                <td class="tabla1"><%= command.user.user_name %></td>
-	                <td class="tabla1"><%= Location::LOCATION_CATEGORY[command.location.place] %></td>
-	                <td class="tabla1"><%= command.location.sit %></td>
+	                <td class="tabla1"><%= command.place %></td>
 	                <td class="tabla1"><%= command.created_at.strftime("%d %B %Y -- %X") %></td>
-	                <td class="tabla1"><%= command.description %></td>
+	                <td class="tabla1"><%= command.total_price_command %> €</td>
 	                <% if command.is_served %>
 	                	<td class="b5"><%= command.is_served %></td>
 	                <% else %>

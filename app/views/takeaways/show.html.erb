@@ -1,3 +1,4 @@
+<div class="title">Pedido Online '<%= current_user.user_name %>'</div>
 <div class="takeaway">
     <div class="muestra-takeaways">
         </br></br></br></br></br><div class="takeaway_accion">Pedido Online</div>
@@ -21,10 +22,6 @@
             <strong>Descuento adicional:</strong>
             <%= @takeaway.discount %>%
         </p>
-        <p>
-            <strong>Coste Total Pedido:</strong>
-            <%= @takeaway.total_price_selection %> €
-        </p>
 
         <p>
             <% if @current_role == 0 %>
@@ -39,17 +36,38 @@
         </br></br><div class="muestra-tabla-takeaways"> 
             <div class="letra_takeaway">Lista Productos</div>
             <% total_price = 0 %>
-
-            <% @takeaway.products.each do |product| %>
-                <% takeaway_product = product.takeaway_products.find_by_takeaway_id(@takeaway.id) %>
-                <% price = takeaway_product.quantity * product.price %>
-                <% total_price += price %>
-                <div class="takeaway_tipo_seleccion" title="<%= product.ingredients %>"><%= product.name %> | <%= takeaway_product.quantity %> | <%= price %></div>
-                <% if @current_role == 0 %>
-                    | <%= link_to "Eliminar", takeaway_product_path(takeaway_product), :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar el producto de la comanda?"}, style: "color: white" %>
-                <% end %>
-            <% end %>
-            <div class="takeaway_tipo">Precio:  <%= total_price %> <%= @takeaway.total_price_selection %> €</div>
+            <table class="tabla3">
+                <thead>
+                    <tr class="tabla3">
+                        <th class="tabla3" title="Nombre del Producto seleccionado para el pedido">Nombre Producto</th>
+                        <th class="tabla3" title="Cantidad seleccionada de un mismo Producto">Cantidad</th>
+                        <th class="tabla3" title="Precio por unidad del Producto">Precio</th>
+                        <th class="tabla3" title="Coste del Producto total (Cantidad x Precio Unidad)">Coste</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @takeaway.products.each do |product| %>
+                        <% takeaway_product = product.takeaway_products.find_by_takeaway_id(@takeaway.id) %>
+                        <% price = takeaway_product.quantity * product.price %>
+                        <% total_price += price %>
+                        <tr class="tabla3">
+                            <td class="tabla3"><%= product.name %></td>
+                            <td class="tabla3"><%= takeaway_product.quantity %> Unds</td>
+                            <td class="tabla3"><%= product.price %> €/Unds</td>
+                            <td class="tabla3"><%= price %> €</td>
+                            <% if @current_role == 0 %>
+                                <td class="tabla3"><%= link_to "Eliminar", takeaway_product_path(takeaway_product), :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar el producto de la comanda?"}, style: "color: white" %></td>
+                            <% end %>
+                        </tr>
+                    <% end %>
+                </tbody>
+                <tfoot>
+                    <tr class="tabla3">
+                        <th class="tabla3" title="Precio total de la comanda">Total: </th>
+                        <td class="tabla3" colspan="3"><%= total_price %> €</td>
+                    </tr>
+                </tfoot>
+            </table> 
         </div>
 
         <div class="muestra-eleccion">
@@ -67,15 +85,50 @@
                     </br><%= f.hidden_field :takeaway_id, value: @takeaway.id %>
                     <%= f.submit 'Añadir Producto'%>
                 <% end %>
-                </br></br><div class="menu_accion">Finalizar Pedido</div>
-                </br>
-                     <% if !@takeaway.products.blank? %>
-                        <%= button_to 'Finalizar Pedido', takeaway_path(@takeaway), :method => :put, data: { confirm: "¿Está seguro que Terminar el Pedido Online?"}, :class => 'boton grey' %></br></br>
-                    <% end %>
+               
+                <% if !@takeaway.products.blank? %>
+                     </br></br><div class="menu_accion">Finalizar Pedido</div>
+                    </br>
+                    <%= button_to 'Finalizar Pedido', takeaway_path(@takeaway), :method => :put, data: { confirm: "¿Está seguro que Terminar el Pedido Online?"}, :class => 'boton grey' %></br></br>
+                <% end %>
             <% else %>
                 </br></br><div class="takeaway_accion">Datos Usuario</div>
 
             <% end %>
+        </div>
+    <% else %>
+        </br></br><div class="muestra-tabla-takeaways2"> 
+            <div class="letra_takeaway">Lista Productos '<%= @takeaway.name %>'</div>
+            <% total_price = 0 %>
+            <table class="tabla3">
+                <thead>
+                    <tr class="tabla3">
+                        <th class="tabla3" title="Nombre del Producto seleccionado para el pedido">Nombre Producto</th>
+                        <th class="tabla3" title="Cantidad seleccionada de un mismo Producto">Cantidad</th>
+                        <th class="tabla3" title="Precio por unidad del Producto">Precio</th>
+                        <th class="tabla3" title="Coste del Producto total (Cantidad x Precio Unidad)">Coste</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @takeaway.products.each do |product| %>
+                        <% takeaway_product = product.takeaway_products.find_by_takeaway_id(@takeaway.id) %>
+                        <% price = takeaway_product.quantity * product.price %>
+                        <% total_price += price %>
+                        <tr class="tabla3">
+                            <td class="tabla3"><%= product.name %></td>
+                            <td class="tabla3"><%= takeaway_product.quantity %> Unds</td>
+                            <td class="tabla3"><%= product.price %> €/Unds</td>
+                            <td class="tabla3"><%= price %> €</td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                <tfoot>
+                    <tr class="tabla3">
+                        <th class="tabla3" title="Precio total de la comanda">Total: </th>
+                        <td class="tabla3" colspan="3"><%= @takeaway.total_price_selection %> €</td>
+                    </tr>
+                </tfoot>
+            </table> 
         </div>
     <% end %>
 </div>

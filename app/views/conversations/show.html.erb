@@ -1,14 +1,20 @@
 <div class="title">Chateando con '<%= @conversation.with(current_user).user_name %>'</div>
 
-<div id="conversation-main">
+<div id="conversation-main" >
     <div id="conversation-body">
         <%= render @conversation.personal_messages %>
     </div>
-
-    <%= form_for @personal_message do |f| %>
-        <%= hidden_field_tag 'conversation_id', @conversation.id %>
-        <%= f.text_area :body, :cols => 40, rows: 4, placeholder: "Escribir mensaje..." %>
-        <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-        <%= f.submit 'Enviar', :class => 'boton grey' %>
-    <% end %>
+	</br></br><div class="comentar-chat">
+		</br><div class="accion-blog">Enviar Mensaje</div>
+	    <%= form_for @personal_message do |f| %>
+	        </br><%= hidden_field_tag 'conversation_id', @conversation.id %>
+	        <%= f.text_area :body, style: "resize: none;", :cols => 40, rows: 4, placeholder: "Escribir mensaje..." %>
+	        <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+	        <%= f.submit 'Enviar', :class => 'boton grey' %><br />
+	    <% end %>
+	</div>
 </div>
+<script type="text/javascript">
+	var objDiv = document.getElementById("conversation-body");
+		objDiv.scrollTop = objDiv.scrollHeight;
+</script>

@@ -29,9 +29,8 @@ class TakeawaysController < ApplicationController
 	def update
 	    @takeaway = Takeaway.find(params[:id])
 	    price = 0
-		debugger
 	    @takeaway.takeaway_product.each do |tp|
-	    	price = tp.quantity * tp.product.price
+	    	price += tp.quantity * tp.product.price
 	    end 
 
 	    if @takeaway.update_attributes(:is_end => true, total_price_selection: price)
@@ -50,9 +49,7 @@ class TakeawaysController < ApplicationController
   	end
 
   	def deliver
-		@takeaway = Takeaway.find(params[:takeaway_id])
-		debugger
-	
+		@takeaway = Takeaway.find(params[:takeaway_id])	
 	    if @takeaway.update_attributes(:is_delivered => true)
 	      	flash[:notice] = "Successfully updated takeaway."
 	      	redirect_to :back

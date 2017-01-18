@@ -1,8 +1,16 @@
-<div class="title">New message to '<%= @receiver.user_name %>'</div>
-  
-  	<%= form_for @personal_message do |f| %>
-		<%= f.error_messages %>
-			<%= f.text_area :body %>
-			<%= f.submit %>
-		<%= hidden_field_tag 'receiver_id', @receiver.id %>
-	<% end %>
+<div class="title">Comenzando Chat con '<%= @receiver.user_name %>'</div>
+<div class="all">
+	</br></br><div class="send-msg">
+		<div class="accion-blog">Enviar Mensaje</div>
+	    <%= form_for @personal_message do |f| %>
+			<%= f.error_messages %>
+			<%= f.text_area :body, style: "resize: none;", :cols => 40, rows: 4, placeholder: "Escribir mensaje..." %>
+			<%= hidden_field_tag 'receiver_id', @receiver.id %>
+			<%= f.submit 'Enviar', :class => 'boton grey'%>
+		<% end %>
+	</div>
+</div>
+ 
+    
+
+  	

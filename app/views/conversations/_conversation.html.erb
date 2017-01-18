@@ -1,8 +1,9 @@
 <div>
-	Chatting with <%= conversation.with(current_user).user_name %>
+	<p>Chateando con <%= conversation.with(current_user).user_name %>
 	<br>
 		<em><%= conversation.personal_messages.last.body.truncate(50) %></em>
 	<br>
-		<%= link_to 'View conversation', conversation_path(conversation) %>
+	</p>
+		<%= link_to 'Ver Conversacion', conversation_path(conversation), :class => 'boton grey' %>
 	<hr>
 </div>

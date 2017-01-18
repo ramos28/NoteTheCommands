@@ -2,6 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.contenedor_table {
+	float:left;
+	clear:both;
+	width:100%;
+	padding:0px;
+	margin:0 auto;
+	display:block;
+	background-image: url("sueloSalon.png");
+	border:1px solid #333;
+	-moz-border-radius:0 0 7px 7px;
+	-webkit-border-radius:0 0 7pc 7px;
+	border-radius: 0 0 7px 7px;
+}
+
+.vista2 {
+	float: left;
+	font-size:15px;
+	width: 27%;
+	padding: 10px;
+}
+
 .muestra-comanda {
 	background-image: url("group6.png");
 	background-size: cover;

@@ -1,29 +1,21 @@
-<div id="wrapper">  
-<% if personal_message.user.user_name ==  current_user.user_name %>
-	<div class="bubble" style="background: red; border-color: red;">
-		<p><%= emojify personal_message.body %></p>
-			at <strong><%= personal_message.created_at %></strong><br>
-			  by <strong><%= personal_message.user.user_name %></strong>
-	</div>
-<% else %>
-	<div class="bubble" style="background: green; border-color: green;">
-		<p><%= emojify personal_message.body %></p>
-			at <strong><%= personal_message.created_at %></strong><br>
-			  by <strong><%= personal_message.user.user_name %></strong>
-	</div>
-<% end %>    
-</div>  
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>  
-<script type="text/javascript">  
-// jQuery Document  
-$(document).ready(function(){  
-console.log("loading")
-var oldscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height before the request  
-var newscrollHeight = $("#chatbox").attr("scrollHeight") - 20; //Scroll height after the request  
-        if(newscrollHeight > oldscrollHeight){  
-            height = $('#checkbox').offset().top;
-			$("#chatbox").animate({ scrollTop: height+ $('#checkbox').height()}, 'normal'); 
-            }
-}); 
-</script>  
+
+<ol class="chat"> 
+	<% if personal_message.user.user_name !=  current_user.user_name %>
+		<li class="other">
+			<div class="avatar"><%= image_tag('avatar1', :size => "30x30", class: "css-style", :alt => 'avatar1') %></div>
+			<div class="msg">
+				<p><%= emojify personal_message.body %></p>
+				<time><%= personal_message.created_at.strftime("%d %B %Y - %X") %><%= personal_message.user.user_name %></time>
+			</div>
+		</li>
+	<% else %>
+		<li class="self">
+			<div class="avatar"><%= image_tag('avatar2', :size => "30x30", class: "css-style", :alt => 'avatar2')%></div>
+			<div class="msg">
+				<p><%= emojify personal_message.body %></p>
+				<time><%= personal_message.created_at.strftime("%d %B %Y - %X") %><%= personal_message.user.user_name %></time>
+			</div>
+		</li>
+	<% end %> 
+</ol> 
 

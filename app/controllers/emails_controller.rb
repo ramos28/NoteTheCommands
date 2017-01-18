@@ -37,7 +37,7 @@ class EmailsController < ApplicationController
         @email = Email.new(email_params)
         if @email.save
             flash[:notice] = "Successfully created email."
-            redirect_to @email
+            redirect_to emails_url
         else
             render :action =>'new'
         end

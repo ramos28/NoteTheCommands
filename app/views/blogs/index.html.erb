@@ -52,7 +52,7 @@
                 <%= form_for :blog_user, url: blog_users_path do |blog_comment| %>
                     <%= blog_comment.error_messages %>
                     <div class="field">
-                        </br><%= blog_comment.text_area :description, :cols => 40, rows: 4, placeholder: "Comentario..." %>
+                        </br><%= blog_comment.text_area :description, style: "resize: none;", :cols => 40, rows: 4, placeholder: "Comentario..." %>
                     </div>
                     <%= blog_comment.hidden_field :blog_id, :value => noticia.id %>
                     <%= blog_comment.hidden_field :user_id, :value => current_user.id %>

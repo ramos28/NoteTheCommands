@@ -1,9 +1,21 @@
-<div class="title">Conversaciones de Chat</div>
+<div class="title">Chat</div>
 <div class="muestra-tabla-conversacion">
-	<%= render @users %>
+	<div class="conversation">
+		</br><div class="accion-chat">Personas con Quien Chatear</div>
+		<div id="chat-body">
+			<%= render @users %>
+		</div>
+	</div>
 </div>
-<div class="conversation">
-	<%= render @conversations %>
+<div class="muestra-tabla-conversacion">
+	<div class="conversation">
+		<div class="title-chat">
+			</br><div class="accion-chat">Conversaciones Abiertas</div>
+		</div>
+		<div id="chat-body">
+			<%= render @conversations %>
+		</div>
+	</div>
 </div>
 <div class="explain">
 	
