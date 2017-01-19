@@ -81,12 +81,10 @@
                                         <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
                                         <li><%= link_to "Pedido Online", takeaways_path %></li>
                                         <li><%= link_to "Ver Menús", menus_path%></li>
+                                        <li><%= link_to "Crear Incidencias", new_incidence_path %></li>
                                     <% end %>
                                     <% if (@current_role  == 1 || @current_role  == 2 )%>
                                         <li><%= link_to "Ver Menús", menus_path%></li>
-                                    <% end %>
-                                    <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2)%>
-                                        <li><%= link_to "Crear Incidencias", new_incidence_path %></li>
                                     <% end %>
                                     <% if current_user.superadmin %>
                                         <li><%= link_to "Dar de Alta Restaurante", restaurants_path %></li>
@@ -106,8 +104,8 @@
                               <% if current_user %>
                                     <ul>
                                           <li><%= link_to "Mi Perfil", profile_index_path%></li>
-                                          <% if (@current_role  == 3) %>
-                                                <li><%= link_to "Ver Incidencias", incidences_index_path%></li>
+                                          <% if (@current_role  == 3 || @current_role == 1) %>
+                                                <li><%= link_to "Incidencias", incidences_index_path%></li>
                                                 <li><%= link_to "Ver Reservas", reservations_index_path%></li>
                                           <% end %>
                                           <% if (@current_role  == 0) %>

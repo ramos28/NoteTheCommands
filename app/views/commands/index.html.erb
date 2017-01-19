@@ -52,7 +52,7 @@
 					</div>
 		        </th>
 		    </tr>
-		    <% @commands.each do |command| %>
+		    <% @commands_clients.each do |command| %>
 		        <% if command.restaurant_id == @current_restaurant.id %>
 		            <tr class="tabla1">
 		                <td class="tabla1"><%= command.title %></td>
@@ -80,18 +80,21 @@
 		    <tfoot>
 				<tr class="tabla1">
 					<th class="tabla1" colspan="8">
-						<%#= will_paginate @commands %>
+						<div class="digg_pagination">
+						    <%= will_paginate @commands_clients, :container => false %>
+						  </div>
 					</th>
 				</tr>
 			</tfoot>
 		</table>
 	</div>
-
-	<div class="muestra-opciones1">
-		</br><div class="accion">Crear una Nueva Comanda</div>
-		</br></br><%= button_to 'Crear Comanda', new_command_path, :method => "get", :class => 'boton grey' %>
-		</br></br></br></br></br></br>
-	</div>
+	<% if @commands_ends.blank? %>
+		<div class="muestra-opciones1">
+			</br><div class="accion">Crear una Nueva Comanda</div>
+			</br></br><%= button_to 'Crear Comanda', new_command_path, :method => "get", :class => 'boton grey' %>
+			</br></br></br></br></br></br>
+		</div>
+	<% end %>
 
 <% elsif @current_role == 1 %>
 	<div class="title">Comandas del Camarero</div>
@@ -169,7 +172,7 @@
 	    <tfoot>
 			<tr class="tabla1">
 				<th class="tabla1" colspan="7">
-					<%#= will_paginate @commands %>
+					<%= will_paginate @commands %>
 				</th>
 			</tr>
 		</tfoot>
@@ -246,7 +249,7 @@
 	    <tfoot>
 			<tr class="tabla1">
 				<th class="tabla1" colspan="7">
-					<%#= will_paginate @commands %>
+					<%= will_paginate @commands %>
 				</th>
 			</tr>
 		</tfoot>
@@ -330,7 +333,7 @@
 	    <tfoot>
 			<tr class="tabla1">
 				<th class="tabla1" colspan="9">
-					<%#= will_paginate @commands %>
+					<%= will_paginate @commands %>
 				</th>
 			</tr>
 		</tfoot>

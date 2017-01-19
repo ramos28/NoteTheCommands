@@ -76,6 +76,15 @@
 				<div class="clear"></div>
 			</div>
 		<% end %>
+		<%= link_to incidences_index_path do %>
+			<div class="starts">
+				<div class="imagen">
+					<%= image_tag('incidencia.png', :alt => 'incidencia')%>
+				</div>
+				<p>Aquí el Camarero podrá ver las incidencias sobre la comida que le han sido reportadas</p>
+				<div class="clear"></div>
+			</div>
+		<% end %>
 	<% elsif @current_role == 2 %>
 		<%= link_to menus_path do %>
 			<div class="starts">

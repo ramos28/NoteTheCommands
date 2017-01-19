@@ -3,6 +3,10 @@ class IncidencesController < ApplicationController
 		@incidences = Incidence.where("restaurant_id = ?", "#{@current_restaurant.id}").order("priority DESC").paginate(:per_page => 7, :page => params[:page])
 		@incidences_solved = Incidence.where("restaurant_id = ? AND is_solved = true", "#{@current_restaurant.id}").order("priority DESC").paginate(:per_page => 7, :page => params[:page])
 		@incidences_pending = Incidence.where("restaurant_id = ? AND is_solved = false", "#{@current_restaurant.id}").order("priority DESC").paginate(:per_page => 7, :page => params[:page])
+
+		@incidences_waiter = Incidence.where("restaurant_id = ? AND category = 0", "#{@current_restaurant.id}").order("priority DESC").paginate(:per_page => 7, :page => params[:page])
+		@incidences_solved_waiter = Incidence.where("restaurant_id = ? AND is_solved = true  AND category = 0", "#{@current_restaurant.id}").order("priority DESC").paginate(:per_page => 7, :page => params[:page])
+		@incidences_pending_waiter = Incidence.where("restaurant_id = ? AND is_solved = false  AND category = 0", "#{@current_restaurant.id}").order("priority DESC").paginate(:per_page => 7, :page => params[:page])
 	end
 
 	def show

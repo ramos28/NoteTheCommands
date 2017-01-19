@@ -135,6 +135,7 @@
     <% end %>
 <% else %>
     <div class="muestra-tabla-comandas-entera">
+        <% total_price_command = 0 %>
         <table class="tabla3">
             <thead>
                 <tr class="tabla3">
@@ -146,6 +147,8 @@
             </thead>
             <tbody>
                 <% @command.command_products.each do |cp| %>
+                    <% price_command = cp.product.price * cp.quantity %>
+                    <% total_price_command += price_command %>
                     <tr class="tabla3">
                         <td class="tabla3"><%= cp.product.name %></td>
                         <td class="tabla3"><%= cp.quantity %> Unds</td>
@@ -154,6 +157,8 @@
                     </tr>
                 <% end %>
                 <% @command.command_menus.each do |cp| %>
+                    <% price_command = cp.menu.price * cp.quantity %>
+                    <% total_price_command += price_command %>
                     <tr class="tabla3">
                         <td class="tabla3"><%= cp.menu.name %></td>
                         <td class="tabla3"><%= cp.quantity %> Unds</td>
@@ -165,7 +170,7 @@
             <tfoot>
                 <tr class="tabla3">
                     <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                    <td class="tabla3" colspan="3">xxx €</td>
+                    <td class="tabla3" colspan="3"><%= total_price_command %> €</td>
                 </tr>
             </tfoot>
         </table>
