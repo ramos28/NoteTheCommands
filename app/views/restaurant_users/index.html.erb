@@ -60,7 +60,11 @@
 		<tfoot>
 			<tr class="tabla2">
 				<th class="tabla2" colspan="5">
-					<%= will_paginate @restaurant_users %>
+					<div class="pagination">
+                        <div class="digg_pagination">
+                            <%= will_paginate @restaurant_users, :container => false %>
+                        </div>
+                    </div>
 				</th>
 			</tr>
 		</tfoot>

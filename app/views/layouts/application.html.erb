@@ -106,7 +106,7 @@
                                           <li><%= link_to "Mi Perfil", profile_index_path%></li>
                                           <% if (@current_role  == 3 || @current_role == 1) %>
                                                 <li><%= link_to "Incidencias", incidences_index_path%></li>
-                                                <li><%= link_to "Ver Reservas", reservations_index_path%></li>
+                                                <li><%= link_to "Reservas", reservations_index_path%></li>
                                           <% end %>
                                           <% if (@current_role  == 0) %>
                                                 <li><%= link_to "Chat", conversations_path %></li>

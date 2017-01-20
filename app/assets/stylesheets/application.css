@@ -356,20 +356,25 @@ label {
 }
 
 /* Css Paginacion */
-
-.digg_pagination a, .digg_pagination span, .digg_pagination em {
-    padding: 0.2em 0.5em;
+.pagination {
+    text-align: center;
+    width: 100%;
     display: block;
     float: left;
     margin-right: 1px; 
 }
+
+
 .digg_pagination .disabled {
-    color: #999999;
-    border: 1px solid #dddddd; 
+	background: #2e6ab1;
+	padding: 0.2em 0.5em;
+    color: white;
+    border: 1px solid #2e6ab1; 
 }
 
 .digg_pagination .current {
     font-style: normal;
+    padding: 0.2em 0.5em;
     font-weight: bold;
     background: #2e6ab1;
     color: white;
@@ -378,18 +383,16 @@ label {
 
 .digg_pagination a {
     text-decoration: none;
+    padding: 0.2em 0.5em;
+    background: white;
     color: #105cb6;
-    border: 1px solid #9aafe5;
-}
-
-.digg_pagination a:hover, .digg_pagination a:focus {
-	color: #000033;
-	border-color: #000033; 
+    border: 1px solid black;
 }
 
 .digg_pagination:after {
     content: ".";
     display: block;
+    padding: 0.2em 0.5em;
     height: 0;
     clear: both;
     visibility: hidden; 

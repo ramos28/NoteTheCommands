@@ -80,7 +80,11 @@
             <tfoot>
                 <tr class="tabla4">
                     <th class="tabla4" colspan="7">
-                        <%#= will_paginate @incidences %>
+                        <div class="pagination">
+                            <div class="digg_pagination">
+                                <%#= will_paginate @incidences, :container => false %>
+                            </div>
+                        </div>
                     </th>
                 </tr>
             </tfoot>
@@ -165,7 +169,11 @@
             <tfoot>
                 <tr class="tabla4">
                     <th class="tabla4" colspan="7">
-                        <%#= will_paginate @incidences %>
+                        <div class="pagination">
+                            <div class="digg_pagination">
+                                <%= will_paginate @incidences, :container => false %>
+                            </div>
+                        </div>
                     </th>
                 </tr>
             </tfoot>
@@ -245,7 +253,11 @@
             <tfoot>
                 <tr class="tabla4">
                     <th class="tabla4" colspan="9">
-                        <%#= will_paginate @incidences %>
+                        <div class="pagination">
+                            <div class="digg_pagination">
+                                <%= will_paginate @incidences, :container => false %>
+                            </div>
+                        </div>
                     </th>
                 </tr>
             </tfoot>

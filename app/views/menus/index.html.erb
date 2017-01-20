@@ -71,7 +71,11 @@
 			<tfoot>
 				<tr class="tabla2">
 					<th class="tabla2" colspan="7">
-						<%= will_paginate @menus %>
+						<div class="pagination">
+							<div class="digg_pagination">
+							    <%= will_paginate @menus, :container => false %>
+							</div>
+						</div>
 					</th>
 				</tr>
 			</tfoot>
@@ -150,7 +154,11 @@
 			<tfoot>
 				<tr class="tabla2">
 					<th class="tabla2" colspan="7">
-						<%= will_paginate @menus %>
+						<div class="pagination">
+							<div class="digg_pagination">
+							    <%= will_paginate @menus, :container => false %>
+							</div>
+						</div>
 					</th>
 				</tr>
 			</tfoot>

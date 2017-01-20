@@ -74,7 +74,11 @@
     <tfoot>
         <tr class="tabla2">
             <th class="tabla2" colspan="8">
-                <%= will_paginate @stocks %> 
+                <div class="pagination">
+                    <div class="digg_pagination">
+                        <%= will_paginate @stocks, :container => false %>
+                    </div>
+                </div>
             </th>
         </tr>
     </tfoot>

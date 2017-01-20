@@ -7,25 +7,25 @@
                         <th class="tabla2" >
                             <div class="cssToolTip">
                                 <%= "Nombre reserva" %>
-                                <span>Nombre al que está hecha la Reserva, el color Amarillo significa que el dia de la reserva es del día de hoy en adelante y en rojo que es una Reserva ya Realizada y Finalizada</span> 
+                                <span>Nombre al que está hecha la Reserva, el color Amarillo significa que el día de la reserva es hoy y en rojo que es una Reserva ya Realizada y Finalizada</span> 
                             </div>
                         </th>
                         <th class="tabla2" >
                             <div class="cssToolTip">
                                 <%= "Número de personas" %>
-                                <span>Número de Personas de las que se compone la REserva</span>
+                                <span>Número de Personas de las que se compone la Reserva</span>
                             </div>
                         </th>
                         <th class="tabla2" title="">
                             <div class="cssToolTip">
-                                <%= "Menu" %>
+                                <%= "Menú" %>
                                 <span>Menú del cual se compone la Reserva en caso de tenerlo</span>
                             </div>
                         </th>
                         <th class="tabla2" >
                             <div class="cssToolTip">
-                                <%= "Dia reserva" %>
-                                <span>Día para el que se realiza la Reserva</span>
+                                <%= "Día reserva" %>
+                                <span>Día para el que se realiza la Reserva, en amarillo es que el dia de la reserva es hoy y en rojo es que la reserva es pasada y finalizada</span>
                             </div>
                         </th>
                         <th class="tabla2" >
@@ -43,7 +43,7 @@
                         <th class="tabla2" >
                             <div class="cssToolTip">
                                 <%= "Teléfono contacto" %>
-                                <span>Telefono de contacto opcional del Usuario que realiza la Reserva</span>
+                                <span>Teléfono de contacto opcional del Usuario que realiza la Reserva</span>
                             </div>
                         </th>
                         <th class="tabla2" >
@@ -68,7 +68,7 @@
                             <% else %>
                                 <td class="b6"><%= reservation.name %></td>
                             <% end %>
-                            <td class="tabla2"><%= reservation.num_persons %></td>
+                            <td class="b7"><%= reservation.num_persons %></td>
                             <td class="tabla2"><%= reservation.menu.name if !reservation.menu.blank? %></td>
                             <% if reservation.date >= Time.now.beginning_of_day %>
                                 <td class="b5"><%= reservation.date.strftime("%d %B %Y") %></td>
@@ -86,7 +86,11 @@
                 <tfoot>
                     <tr class="tabla2">
                         <th class="tabla2" colspan="9">
-                            <%#= will_paginate @reservations %>
+                            <div class="pagination">
+                                <div class="digg_pagination">
+                                    <%= will_paginate @reservations, :container => false %>
+                                </div>
+                            </div>
                         </th>
                     </tr>
                 </tfoot>

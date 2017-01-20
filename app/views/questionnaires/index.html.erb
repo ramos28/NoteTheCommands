@@ -21,7 +21,11 @@
 		<tfoot>
 			<tr class="tabla2">
 				<th class="tabla2" colspan="2">
-					<%= will_paginate @questionnaires %>
+					<div class="pagination">
+		                <div class="digg_pagination">
+		                    <%= will_paginate @questionnaires, :container => false %>
+		                </div>
+		            </div>
 				</th>
 			</tr>
 		</tfoot>

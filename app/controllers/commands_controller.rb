@@ -1,7 +1,7 @@
 class CommandsController < ApplicationController
 	def index
 		@commands = Command.where("restaurant_id = ? AND created_at >= ?", "#{@current_restaurant.id}", "#{Time.now.beginning_of_day}").paginate(:per_page => 8, :page => params[:page])
-		@commands_clients = Command.where("restaurant_id = ?", "#{@current_restaurant.id}").order('created_at DESC').paginate(:per_page => 3, :page => params[:page])
+		@commands_clients = Command.where("restaurant_id = ?", "#{@current_restaurant.id}").order('created_at DESC').paginate(:per_page => 8, :page => params[:page])
 		#@commands += @commands.select{|command| command.created_at >= Time.now.beginning_of_day}
 
 		@commands_ends = Command.where("restaurant_id = ? AND is_end = true", "#{@current_restaurant.id}")
