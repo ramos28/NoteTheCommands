@@ -73,36 +73,46 @@
 <div class="muestra-opciones">
 	</br></br></br>
 	<% if current_user.superadmin %>
-		<div class="accion">Registra Personal</div>                              
-		<%= form_for @restaurants_users do |f| %>
-			<div class="field">
-				</br><%= f.label :selecione_restaurante %>
-				<%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
+		<div class="accion">Registra Personal</div>
+		<div id="padre">  
+			<div id="hijo4">                           
+				<%= form_for @restaurants_users do |f| %>
+					<div class="field">
+						</br><%= f.label :selecione_restaurante %></br>
+						<%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
+					</div>
+					<% if current_user.superadmin %>
+						<div class="field">
+							</br><%= f.label :selecione_usuario %></br>
+							<%= f.select :user_id, options_from_collection_for_select( User.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%"), :id, :email )%>
+						</div>
+						<div class="field">
+							</br><%= f.label :función_usuario %></br>
+							<%= f.select :rol, options_for_select(RestaurantUser::ROLES.map.with_index {|index, value| [index, value]})%>
+						</div>
+					<% end %>
+					<div class="field">
+						</br><%= f.submit "Dar de Alta Personal", :class => 'boton grey' %>
+					</div>
+					</br></br>
+				<% end %> 
 			</div>
-			<% if current_user.superadmin %>
-				<div class="field">
-					</br><%= f.label :selecione_usuario %>
-					<%= f.select :user_id, options_from_collection_for_select( User.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%"), :id, :email )%>
-				</div>
-				<div class="field">
-					</br><%= f.label :función_usuario %>
-					<%= f.select :rol, options_for_select(RestaurantUser::ROLES.map.with_index {|index, value| [index, value]})%>
-				</div>
-			<% end %>
-			<div class="field">
-				</br><%= f.submit "Dar de Alta Personal", :class => 'boton grey' %>
-			</div>
-		<% end %>   
+		</div>  
 	<% else %>
 		<%= form_for @restaurants_users do |f| %>
 			<div class="accion">Apuntarse a un Restaurante</div>
-			<div class="field">
-				</br><%= f.label :selecione_restaurante %>
-				<%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%"), :id, :name)%>
-			</div>
-	        <%= f.hidden_field :user_id, :value => current_user.id %>
-			<div class="field">
-				</br><%= f.submit "Dar de Alta Restaurante", :class => 'boton grey' %>
+			<div id="padre">  
+    			<div id="hijo4">
+					<div class="field">
+						</br><%= f.label :selecione_restaurante %></br>
+						<%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%"), :id, :name)%>
+					</div>
+			        <%= f.hidden_field :user_id, :value => current_user.id %>
+					<div class="field">
+						</br><%= f.submit "Dar de Alta Restaurante", :class => 'boton grey' %>
+					</div>
+					</br></br>
+				</div>
 			</div>
 		<% end %>
     <% end %>

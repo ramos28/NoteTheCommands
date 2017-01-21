@@ -1,19 +1,17 @@
-// Place all the styles related to the reservations controller here.
+// Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/* Le dice al navegador que dibuje los elementos de HTML 5 como block */
 
-td.b7 {
-	background-color: #D358F7;
-	color: black;
-	border: 1px solid black;
-}
 
-#hijo3 {
+#hijo10 {
     margin: 0 auto;    
     background-image: url("fondoBlancoStart.jpg");
 	text-align: center;
+	padding-left: 5px;
+	padding-right: 5px;
 	top: 35%;
-	width: 23%;
+	width: 95%;
 	max-height: 600px;
 	overflow:auto;
 	margin-bottom: 2em;
@@ -23,4 +21,11 @@ td.b7 {
 	box-shadow: 2px 2px 10px #B1B1B1;
 	margin-top: 25px;
 	border-width: 7px;
+}
+
+div.curriculumns {
+    font-family: logoFont;
+    text-align: center;		
+    font-size: 35px;
+    color: black;
 }

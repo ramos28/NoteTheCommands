@@ -65,3 +65,17 @@ $(document).ready(function(e) {
     $("a.mostrarmodal").click(mostrar);
     $("a.cerrarmodal").click(ocultar);
 });
+
+function createEllipsis ( containerId ) {
+    $container = $("#" + containerId);
+    var containerHeight = $container.height();
+    var $text = $container.find("p");
+ 
+    while ( $text.outerHeight() > containerHeight ) {
+        $text.text(function (index, text) {
+            return text.replace(/\W*\s(\S)*$/, '...');
+        });
+    }
+}
+
+createEllipsis("container");

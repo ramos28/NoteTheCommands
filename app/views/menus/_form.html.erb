@@ -1,29 +1,33 @@
-<%= form_for @menu do |f| %>
-    <%= f.error_messages %>
-    <div class="field">
-        </br><%= f.label :nombre_menú %>
-        <%= f.text_field :name %>
+<div id="padre">  
+    <div id="hijo6">
+        <%= form_for @menu do |f| %>
+            <%= f.error_messages %>
+            <div class="field">
+                </br><%= f.label :nombre_menú %>
+                <%= f.text_field :name %>
+            </div>
+            <div class="field">
+                <%= f.label :tipo_menú %>
+                <%= f.select :type_menu, options_for_select(Menu::MENU_CATEGORY.map.with_index {|index, value| [index, value]})%>
+            </div>
+            <div class="field">
+                <%= f.label :descripción %>
+                <%= f.text_area :description, :cols => 30, rows: 5, placeholder: "Breve descripción del Menú..." %>
+            </div>
+            <div class="field">
+                <%= f.label :precio %>
+                <%= f.number_field :price, :step => "0.01"%> €
+            </div>
+            <div class="field">
+                <%= f.label :disponibilidad %>
+                <%= f.select :is_available, [['Disponible', true], ['No Disponible', false]], :selected => 'Disponible' %>
+            </div>
+            <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <div class="field">
+                <p><%= f.submit 'Crear Menú', :class => 'boton grey'%></p>
+            </div>
+            </br></br>
+        <% end %>
     </div>
-    <div class="field">
-        <%= f.label :tipo_menú %>
-        <%= f.select :type_menu, options_for_select(Menu::MENU_CATEGORY.map.with_index {|index, value| [index, value]})%>
-    </div>
-    <div class="field">
-        <%= f.label :descripción %>
-        <%= f.text_area :description, :cols => 30, rows: 5, placeholder: "Breve descripción del Menú..." %>
-    </div>
-    <div class="field">
-        <%= f.label :precio %>
-        <%= f.number_field :price, :step => "0.01"%> €
-    </div>
-    <div class="field">
-        <%= f.label :disponibilidad %>
-        <%= f.select :is_available, [['Disponible', true], ['No Disponible', false]], :selected => 'Disponible' %>
-    </div>
-    <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <div class="field">
-        <p><%= f.submit 'Crear Menú', :class => 'boton grey'%></p>
-    </div>
-    </br></br>
-<% end %>
+</div>

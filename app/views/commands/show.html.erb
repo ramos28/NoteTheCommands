@@ -1,26 +1,30 @@
 <div class="title">Agregar Productos a la Comanda</div>
 </br><div class="muestra-comandas">
     </br></br><div class="accion">Comanda</div>
-    <p>
-        <strong style="color: white" >Nombre:</strong>
-        <%= @command.title %>
-    </p>
-    <p>
-        <strong style="color: white" >Mesa:</strong>
-        <%= @command.place %>
-    </p>
-    <p>
-        <strong style="color: white">¿Está Finalizada?:</strong>
-        <%= @command.is_end %>
-    </p>
+    <div id="padre">  
+        <div id="hijo7">
+            <p>
+                <strong>Nombre:</strong>
+                <%= @command.title %>
+            </p>
+            <p>
+                <strong>Mesa:</strong>
+                <%= @command.place %>
+            </p>
+            <p>
+                <strong>¿Está Finalizada?:</strong>
+                <%= @command.is_end %>
+            </p>
 
-    <p>
-        <% if @current_role == 0 %>
-            <%= link_to "Modificar", edit_command_path(@command), style: "color: white"  %> |
-            <%= link_to "Eliminar", @command, :method => :delete, data: { confirm: "¿Está seguro que desea modificar la Comanda?"}, style: "color: white"  %> |
-            <%= link_to "Ver Todas", commands_path, style: "color: white" %>
-        <% end %>
-    </p>
+            <p>
+                <% if @current_role == 0 %>
+                    <%= link_to "Modificar", edit_command_path(@command), style: "color: black"  %> |
+                    <%= link_to "Eliminar", @command, :method => :delete, data: { confirm: "¿Está seguro que desea modificar la Comanda?"}, style: "color: black"  %> |
+                    <%= link_to "Ver Todas", commands_path, style: "color: black" %>
+                <% end %>
+            </p>
+        </div>
+    </div>
 </div>
 
 </br>

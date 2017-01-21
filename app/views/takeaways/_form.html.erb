@@ -1,25 +1,29 @@
-<%= form_for @takeaway do |f| %>
-    <%= f.error_messages %>
-    <div class="field">
-        </br><%= f.label :nombre %>
-        <%= f.text_field :name %>
+<div id="padre">  
+    <div id="hijo4">
+        <%= form_for @takeaway do |f| %>
+            <%= f.error_messages %>
+            <div class="field">
+                </br><%= f.label :nombre %>
+                <%= f.text_field :name %>
+            </div>
+            <div class="field">
+                <%= f.label :fecha_recogida %>
+                <%= f.date_field :date %>
+            </div>
+            <div class="field">
+                <%= f.label :hora %>
+                <%= f.time_field :hour %>
+            </div>
+            <div class="field">
+                <%= f.label :teléfono %> 
+                <%= f.text_field :phone, placeholder: "(Opcional)" %> 
+            </div>
+            <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+            <%= f.hidden_field :user_id, :value => current_user %>
+            <div class="field">
+                </br><%= f.submit 'Guardar Cambios', :class => 'boton grey'%>
+            </div>
+            </br></br></br>
+        <% end %>
     </div>
-    <div class="field">
-        <%= f.label :fecha_recogida %>
-        <%= f.date_field :date %>
-    </div>
-    <div class="field">
-        <%= f.label :hora %>
-        <%= f.time_field :hour %>
-    </div>
-    <div class="field">
-        <%= f.label :teléfono %> 
-        <%= f.text_field :phone, placeholder: "(Opcional)" %> 
-    </div>
-    <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-    <%= f.hidden_field :user_id, :value => current_user %>
-    <div class="field">
-        </br><%= f.submit 'Guardar Cambios', :class => 'boton grey'%>
-    </div>
-    </br></br></br></br>
-<% end %>
+</div>

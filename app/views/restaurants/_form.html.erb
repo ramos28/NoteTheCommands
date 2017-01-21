@@ -1,39 +1,43 @@
-<%= form_for @restaurant do |f| %>
-    <%= f.error_messages %>
-    <div class="field">
-        <%= f.label :nombre %>
-        <%= f.text_field :name %>
+<div id="padre">  
+    <div id="hijo4">
+        <%= form_for @restaurant do |f| %>
+            <%= f.error_messages %>
+            <div class="field">
+                <%= f.label :nombre %>
+                <%= f.text_field :name %>
+            </div>
+            <div class="field">
+                <%= f.label :teléfono %>
+                <%= f.text_field :phone %>
+            </div>
+            <div class="field">
+                <%= f.label :dirección %>
+                <%= f.text_field :address %>
+            </div>
+            <div class="field">
+                <%= f.label :ciudad %>
+                <%= f.text_field :city %>
+            </div>
+            <div class="field">
+                <%= f.label :pais %>
+                <%= f.text_field :country %>
+            </div>
+            <div class="field">
+                <%= f.label :código_postal %>
+                <%= f.text_field :postal_code %>
+            </div>
+            <div class="field">
+                <%= f.label :correo_electrónico %>
+                <%= f.text_field :email %>
+            </div>
+            <div class="field">
+                <%= f.label :horario_apertura %>
+                <%= f.text_field :opening_hours %>
+            </div>    
+            <div class="field">
+                </br><%= f.submit 'Registrar Restaurante', :class => 'boton grey' %>
+            </div>
+            </br></br>
+        <% end %>
     </div>
-    <div class="field">
-        <%= f.label :teléfono %>
-        <%= f.text_field :phone %>
-    </div>
-    <div class="field">
-        <%= f.label :dirección %>
-        <%= f.text_field :address %>
-    </div>
-    <div class="field">
-        <%= f.label :ciudad %>
-        <%= f.text_field :city %>
-    </div>
-    <div class="field">
-        <%= f.label :pais %>
-        <%= f.text_field :country %>
-    </div>
-    <div class="field">
-        <%= f.label :código_postal %>
-        <%= f.text_field :postal_code %>
-    </div>
-    <div class="field">
-        <%= f.label :correo_electrónico %>
-        <%= f.text_field :email %>
-    </div>
-    <div class="field">
-        <%= f.label :horario_apertura %>
-        <%= f.text_field :opening_hours %>
-    </div>    
-    <div class="field">
-        </br><%= f.submit 'Registrar Restaurante', :class => 'boton grey' %>
-    </div>
-    </br></br>
-<% end %>
+</div>

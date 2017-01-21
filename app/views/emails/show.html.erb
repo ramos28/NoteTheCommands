@@ -1,27 +1,24 @@
 <div class="title">Bandeja de entrada</div>
-
-<p>
-    <strong>subject:</strong>
-    <%= @email.subject %>
-</p>
-<p>
-    <strong>description:</strong>
-    <%= @email.description %>
-</p>
-<p>
-    <strong>is_view:</strong>
-    <%= Email::VIEW_CATEGORY[@email.is_view] %>
-</p>
-<p>
-    <strong>user. De:</strong>
-    <%= @email.user_from %>
-</p>
-<p>
-    <strong>user. Para::</strong>
-    <%= @email.user_for %>
-</p>
-
-<p>
-    <%= link_to "Modificar", edit_email_path(@email) %> |
-    <%= link_to "Eliminar", @email, :method => :delete, data: { confirm: "¿Está seguro que desea Eliminar el mensaje?"} %>
-</p>
+<div id="padre">  
+    <div id="hijo2"> 
+        <p>
+            <strong>Asunto</strong><br />
+            <%= @email.subject %>
+        </p>
+        <p>
+            <strong>De:</strong>
+            <%= @email.user_from %>
+        </p>
+        <p>
+            <strong>Para:</strong>
+            <%= @email.user_for %>
+        </p>
+        <p>
+            <strong>Descripción</strong><br />
+            <%= @email.description %>
+        </p>
+        <p>
+            <%= link_to "Eliminar", @email, :method => :delete, data: { confirm: "¿Está seguro que desea Eliminar el mensaje?"} %>
+        </p>
+    </div>
+</div>

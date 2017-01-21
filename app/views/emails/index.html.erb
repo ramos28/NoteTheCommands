@@ -11,27 +11,62 @@
             <%= button_to "Eliminar", @email, :confirm => '¿Esta seguro que dese eliminar el mensaje?', :method => :delete, :class => 'boton grey' %><br/>
             <thead>
                 <tr class="tabla4">
-                    <th class="tabla4"> Selecciona </th>
-                    <th class="tabla4"> Asunto </th>
-                    <th class="tabla4"> Emisor. De: </th>
-                    <th class="tabla4"> Receptor. Para: </th>
-                    <th class="tabla4"> Descripción </th>
-                    <th class="tabla4"> Fecha Recibido </th>
-                    <th class="tabla4"> Esta leido </th>
+                    <th class="tabla4"> 
+                        <div class="cssToolTip">
+                            <%= "Seleccionar" %>
+                            <span>Seleccionar el mensaje para realizar una de las funcionalidades</span> 
+                        </div>
+                    </th>
+                    <th class="tabla4">
+                        <div class="cssToolTip">
+                            <%= "Asunto" %>
+                            <span>Asunto del mensaje que ha recibido</span> 
+                        </div> 
+                    </th>
+                    <th class="tabla4">
+                        <div class="cssToolTip">
+                            <%= "De:" %>
+                            <span>Correo electrónico del emisor del mensaje</span> 
+                        </div> 
+                    </th>
+                    <th class="tabla4">
+                        <div class="cssToolTip">
+                            <%= "Para:" %>
+                            <span>Correo electrónico del receptor del mensaje</span> 
+                        </div> 
+                    </th>
+                    <th class="tabla4">
+                        <div class="cssToolTip">
+                            <%= "Descripción" %>
+                            <span>Descipción del mensaje</span> 
+                        </div>  
+                    </th>
+                    <th class="tabla4">
+                        <div class="cssToolTip">
+                            <%= "Fecha recibido" %>
+                            <span>Fecha en la que recibió el mensaje</span> 
+                        </div>
+                    </th>
+                    <th class="tabla4">
+                        <div class="cssToolTip">
+                            <%= "¿Está leido? " %>
+                            <span>Dice si el mensaje está o no leido (En rojo es que no esta leido y en verde es que lo está)</span> 
+                        </div>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 <% @emails_in.each do |email_in| %>
                     <tr class="tabla4">
                         <td class="tabla4"><%= check_box_tag "alternate_numbers" %></td>
-                        <td class="tabla4"><%= email_in.subject %></td>
-                        <td class="tabla4"><%= email_in.user_from %></td>
+                        <td class="tabla4" title="<%= email_in.subject %>"><%= email_in.subject %></td>
+                        <td class="tabla4" title="<%= email_in.user_from %>"><%= email_in.user_from %></td>
                         <% if @current_restaurant.email == email_in.user_for %>
                             <td class="b3"><%= email_in.user_for %></td>
                         <% else %>
                             <td class="b4"><%= email_in.user_for %></td>
                         <% end %>
-                        <td class="tabla4"><%= email_in.description %></td>
+                        <td class="tabla4" title="<%= email_in.description %>"><div id="container2"><%= email_in.description %></div></td>
                         <td class="tabla4"><%= email_in.created_at.strftime("%d %B %Y -- %X") %></td>
                         <% if email_in.is_view == 0 %>
                             <td class="b1"><%= Email::VIEW_CATEGORY[email_in.is_view]%></td>
@@ -44,13 +79,13 @@
             </tbody>
             <tfoot>
                 <tr class="tabla4">
-                    <td class="tabla4" colspan="7">
+                    <th class="tabla4" colspan="7">
                         <div class="pagination">
                             <div class="digg_pagination">
-                                <%#= will_paginate @emails_in, :container => false %>
+                                <%= will_paginate @emails_in, :container => false %>
                             </div>
                         </div>
-                    </td>
+                    </th>
                 </tr>
             </tfoot>
         </table>
@@ -59,19 +94,44 @@
          <table class="tabla4">
             <thead>
                 <tr class="tabla4">
-                    <th class="tabla4"> Asunto </th>
-                    <th class="tabla4"> Enviado por: </th>
-                    <th class="tabla4"> Descripción </th>
-                    <th class="tabla4"> Fecha Envío </th>
-                    <th class="tabla4"> ¿Esta Enviado? </th>
+                    <th class="tabla4">
+                        <div class="cssToolTip">
+                            <%= "Asunto" %>
+                            <span>Asunto del mensaje que ha recibido</span> 
+                        </div>
+                    </th>
+                    <th class="tabla4"> 
+                        <div class="cssToolTip">
+                            <%= "Enviado por:" %>
+                            <span>Correo del emisor del mensaje</span> 
+                        </div>
+                    </th>
+                    <th class="tabla4">
+                        <div class="cssToolTip">
+                            <%= "Descripción" %>
+                            <span>Descipción del mensaje</span> 
+                        </div>  
+                    </th>
+                    <th class="tabla4">
+                        <div class="cssToolTip">
+                            <%= "Fecha recibido" %>
+                            <span>Fecha en la que recibió el mensaje</span> 
+                        </div>
+                    </th>
+                    <th class="tabla4">
+                        <div class="cssToolTip">
+                            <%= "¿Está leido? " %>
+                            <span>Dice si el mensaje está o no leido (En rojo es que no esta leido y en verde es que lo está)</span> 
+                        </div>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 <% @emails_out.each do |email_out| %>
                     <tr class="tabla4">
-                        <td class="tabla4"><%= email_out.subject %></td>
-                        <td class="tabla4"><%= email_out.user_for %></td>
-                        <td class="tabla4"><%= email_out.description %></td>
+                        <td class="tabla4" title="<%= email_out.subject %>"><%= email_out.subject %></td>
+                        <td class="tabla4" title="<%= email_out.user_for %>"><%= email_out.user_for %></td>
+                        <td class="tabla4" title="<%= email_out.description %>"><div id="container3"><%= email_out.description %></div></td>
                         <td class="tabla4"><%= email_out.created_at %></td>
                         <% if email_out.is_sent == 0 %>
                             <td class="b1"><%= Email::SENT_CATEGORY[email_out.is_sent]%></td>
@@ -83,13 +143,13 @@
             </tbody>
             <tfoot>
                 <tr class="tabla4">
-                    <td class="tabla4" colspan="5">
+                    <th class="tabla4" colspan="5">
                         <div class="pagination">
                             <div class="digg_pagination">
-                                <%#= will_paginate @emails_out, :container => false %>
+                                <%= will_paginate @emails_out, :container => false %>
                             </div>
                         </div>
-                    </td>
+                    </th>
                 </tr>
             </tfoot>
         </table>

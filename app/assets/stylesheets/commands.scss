@@ -67,7 +67,7 @@ td.b6 {
 .muestra-tabla-comandas {
 	background-image: url("pizarra.jpg");
     background-position: center;
-	width: 55%;
+	width: 50%;
     overflow:hidden;
 	float: left;
 	text-align: center;
@@ -84,7 +84,7 @@ td.b6 {
 
 .muestra-eleccion-comandas {
 	float: left;
-	padding-left: 1%;
+	padding-left: 5%;
 	text-align: center;
 	top: 35%;
 	width: 20%;
@@ -161,4 +161,21 @@ td.tabla3 {
 	font-size: 15px;
 	color: white;
 	border: 1px solid white;
+}
+
+#hijo7 {
+    margin: 0 auto;    
+    background-image: url("fondoBlancoStart.jpg");
+	text-align: center;
+	top: 35%;
+	width: 75%;
+	max-height: 600px;
+	overflow:auto;
+	margin-bottom: 2em;
+	border-radius: 16px 16px;
+	border-color: #444444;
+	border-style: solid;
+	box-shadow: 2px 2px 10px #B1B1B1;
+	margin-top: 25px;
+	border-width: 7px;
 }

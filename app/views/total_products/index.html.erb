@@ -1,31 +1,74 @@
 <div class="title">Productos Registrados</div>
 </br>
-<table>
+<table class="tabla2">
     <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Restaurante perteneciente</th>
-            <th>Categoría producto</th>
-            <th>Ingredientes"</th>
-            <th>Precio unidad</th>
-            <th>Fecha de alta"</th>
-            <th>Fecha modificación"</th>
+        <tr class="tabla2">
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Nombre" %>
+                    <span>Nombre del Producto</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Restaurante" %>
+                    <span>Restaurante al que pertenece el Producto</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Categoría" %>
+                    <span>Categoía del Producto ("RACION", "CALDOS", "PESCADOS", "CARNES", "ENSALADAS", "BOCADILLO", "POSTRE", "BEBIDA", "BEBIDAS ALCOHOLICAS", "APERITIVO", "TACO", "BURRITO", "WRAP", "GENERAL", "EXTRAS")</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Ingredientes" %>
+                    <span>Ingredientes que lleva el Producto</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Precio" %>
+                    <span>Precio de venta del Producto al público</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Fecha de alta" %>
+                    <span>Fecha de registro del Producto</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Fecha modificación" %>
+                    <span>Fecha de última modificación del Producto</span> 
+                </div>
+            </th>
         </tr>
     </thead>
     <tbody>
         <% @products.each do |total_products| %>
-            <tr>
-                <td><%= total_products.name %></td>
-                <td><%= total_products.restaurant.name %></td>
-                <td><%= Product::PRODUCT_CATEGORY[total_products.type_product] %></td>
-                <td><%= total_products.ingredients %></td>
-                <td class="price"><%= number_to_currency(total_products.price, :unit => "€") %></td>
-                <td><%= total_products.created_at %></td>
-                <td><%= total_products.updated_at %></td>
+            <tr class="tabla2">
+                <td class="tabla2"><%= total_products.name %></td>
+                <td class="tabla2"><%= total_products.restaurant.name %></td>
+                <td class="tabla2"><%= Product::PRODUCT_CATEGORY[total_products.type_product] %></td>
+                <td class="tabla2"><div id="container"><%= total_products.ingredients %></div></td>
+                <td class="tabla2"><%= total_products.price %> €/Unidad</td>
+                <td class="tabla2"><%= total_products.created_at %></td>
+                <td class="tabla2"><%= total_products.updated_at %></td>
             </tr>
         <% end %>
     </tbody>
     <tfoot>
-        <%= will_paginate @products %>
+        <tr class="tabla2">
+            <th class="tabla2" colspan="11">
+                <div class="pagination">
+                    <div class="digg_pagination">
+                        <%= will_paginate @products, :container => false %>
+                    </div>
+                </div>
+            </th>
+        </tr>
     </tfoot>
 </table>

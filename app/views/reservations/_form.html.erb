@@ -1,33 +1,37 @@
-<%= form_for @reservation do |f| %>
-    <%= f.error_messages %>
-    <div class="field">
-        </br><%= f.label :nombre_reserva %>
-        <%= f.text_field :name %>
+<div id="padre">  
+    <div id="hijo6">
+        <%= form_for @reservation do |f| %>
+            <%= f.error_messages %>
+            <div class="field">
+                </br><%= f.label :nombre_reserva %>
+                <%= f.text_field :name %>
+            </div>
+            <div class="field">
+                <%= f.label :teléfono_de_contacto %>
+                <%= f.text_field :phone %>
+            </div>
+            <div class="field">
+                <%= f.label :número_personas %>
+                <%= f.number_field :num_persons %>
+            </div>
+            <div class="field">
+                <%= f.label :día_reserva %>
+                <%= f.date_field :date %>
+            </div>
+            <div class="field">
+                <%= f.label :hora_reserva %>
+                <%= f.time_field :hour %>
+            </div>
+            <div class="field">
+                <%= f.label :menú %>
+                <%= f.select :menu_id, options_from_collection_for_select(Menu.all, :id, :name), {:include_blank=>t(:ninguno), :value => 0}%>
+            </div>
+            <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <div class="field">
+                </br><%= f.submit 'Realizar Reserva', :class => 'boton grey' %>
+            </div>
+            </br></br></br>
+        <% end %>
     </div>
-    <div class="field">
-        <%= f.label :teléfono_de_contacto %>
-        <%= f.text_field :phone %>
-    </div>
-    <div class="field">
-        <%= f.label :número_personas %>
-        <%= f.number_field :num_persons %>
-    </div>
-    <div class="field">
-        <%= f.label :día_reserva %>
-        <%= f.date_field :date %>
-    </div>
-    <div class="field">
-        <%= f.label :hora_reserva %>
-        <%= f.time_field :hour %>
-    </div>
-    <div class="field">
-        <%= f.label :menú %>
-        <%= f.select :menu_id, options_from_collection_for_select(Menu.all, :id, :name), {:include_blank=>t(:ninguno), :value => 0}%>
-    </div>
-    <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <div class="field">
-        </br><%= f.submit 'Realizar Reserva', :class => 'boton grey' %>
-    </div>
-    </br></br></br>
-<% end %>
+</div>

@@ -1,12 +1,16 @@
-<%= form_for @questionnaire do |f| %>
-	<%= f.error_messages %>
-	<div class="field">
-		</br><%= f.label :redactar_pregunta %>
-		<%= f.text_area :question, :cols => 35, rows: 7, placeholder: "Redacción de la Pregunta..." %>
+<div id="padre">  
+    <div id="hijo6"> 
+		<%= form_for @questionnaire do |f| %>
+			<%= f.error_messages %>
+			<div class="field">
+				</br><%= f.label :redactar_pregunta %></br>
+				<%= f.text_area :question, :cols => 35, rows: 7, placeholder: "Redacción de la Pregunta..." %>
+			</div>
+			<%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
+			<div class="field">
+				<p><%= f.submit 'Crear Cuestionario', :class => 'boton grey'%></p>
+			</div>
+			</br></br>
+		<% end %>
 	</div>
-	<%= f.hidden_field :restaurant_id, :value => @current_restaurant %>
-	<div class="field">
-		<p><%= f.submit 'Crear Cuestionario', :class => 'boton grey'%></p>
-	</div>
-	</br></br></br></br></br></br></br></br>
-<% end %>
+</div>

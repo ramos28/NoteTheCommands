@@ -6,14 +6,18 @@
             <div class="muestra-blogs">
                 <head>
                     </br><div class="accion-blog-title"><%= noticia.title %></div>
-                    <p>Posted on <%= noticia.created_at.strftime("%d %B %Y -- %X") %>
+                    <p>Publicada el <%= noticia.created_at.strftime("%d %B %Y a las %X") %>
                         <%if @current_role == 3%>
                             | <%= link_to "Modificar Blog", edit_blog_path(noticia), style: "color: black" %>
                             | <%= link_to "Eliminar", @blog, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el blog?"}, style: "color: black" %>
                         <% end %>
                     </p>
                 </head>
-                <%= will_paginate @blogs %>
+                <div class="pagination">
+                    <div class="digg_pagination">
+                        <%= will_paginate @blogs, :container => false %>
+                    </div>
+                </div>
                 </br><div class="periodico"><%= noticia.description %></div></br>
                 <head>
                     </br><div class="accion-blog">Comentarios</div>
@@ -33,13 +37,6 @@
                                     </tr>
                                 </tbody>
                             <% end %>
-                            <tfoot>
-                                <tr class="tabla5">
-                                    <th class="tabla5" colspan="1">
-                                        <%#= will_paginate @blogs %>
-                                    </th>
-                                </tr>
-                            </tfoot>
                         </table>
                         </br>
                     </head>
@@ -47,7 +44,7 @@
             </div>
             <div class="comentar">
                 <head>
-                    </br><div class="accion-blog">Realizar un Comentario de la Noticia</div>
+                    </br><div class="accion-blog">Comentar Noticia</div>
                 </head>
                 <%= form_for :blog_user, url: blog_users_path do |blog_comment| %>
                     <%= blog_comment.error_messages %>
@@ -63,7 +60,7 @@
 
                 <%if @current_role == 3%>
                     <head>
-                        </br></br><div class="accion-blog">Crear una Nueva Noticia</div>
+                        </br></br><div class="accion-blog">Crear Nueva Noticia</div>
                     </head>
                     </br>
                     <%= link_to "Crear Nueva Noticia", new_blog_path, :class => 'boton grey' %>

@@ -25,48 +25,52 @@
 		</br>
 		<div class="accion-contacto">Información del Restaurante</div>
 		</br>
-		<% @restaurants.each do |restaurants| %>
-			<p>
-			    <strong>Nombre:</strong>
-			    <%= restaurants.name %>
-			</p>
-			<p>
-			    <strong>Teléfono:</strong>
-			    <%= restaurants.phone %>
-			</p>
-			<p>
-			    <strong>Dirección:</strong>
-			    <%= restaurants.address %>
-			</p>
-			<p>
-			    <strong>Ciudad:</strong>
-			    <%= restaurants.city %>
-			</p>
-			<p>
-			    <strong>País:</strong>
-			    <%= restaurants.country %>
-			</p>
-			<p>
-			    <strong>Código Postal:</strong>
-			    <%= restaurants.postal_code %>
-			</p>
-			<p>
-			    <strong>Email:</strong>
-			    <%= restaurants.email %>
-			</p>
-			<p>
-			    <strong>Horario de Apertura:</strong>
-			    <%= restaurants.opening_hours %>
-			</p>
-			<p>
-			    <strong>Latitud:</strong>
-			    <%= restaurants.latitude %>
-			</p>
-			<p>
-			    <strong>Longitud:</strong>
-			    <%= restaurants.longitude %>
-			</p>
-   		<% end %>
+		<div id="padre">  
+		    <div id="hijo11">
+				<% @restaurants.each do |restaurants| %>
+					<p>
+					    <strong>Nombre:</strong>
+					    <%= restaurants.name %>
+					</p>
+					<p>
+					    <strong>Teléfono:</strong>
+					    <%= restaurants.phone %>
+					</p>
+					<p>
+					    <strong>Dirección:</strong>
+					    <%= restaurants.address %>
+					</p>
+					<p>
+					    <strong>Ciudad:</strong>
+					    <%= restaurants.city %>
+					</p>
+					<p>
+					    <strong>País:</strong>
+					    <%= restaurants.country %>
+					</p>
+					<p>
+					    <strong>Código Postal:</strong>
+					    <%= restaurants.postal_code %>
+					</p>
+					<p>
+					    <strong>Email:</strong>
+					    <%= restaurants.email %>
+					</p>
+					<p>
+					    <strong>Horario de Apertura:</strong>
+					    <%= restaurants.opening_hours %>
+					</p>
+					<p>
+					    <strong>Latitud:</strong>
+					    <%= restaurants.latitude %>
+					</p>
+					<p>
+					    <strong>Longitud:</strong>
+					    <%= restaurants.longitude %>
+					</p>
+		   		<% end %>
+		   	</div>
+		</div>   	
    		</br>
 	</div>
 </div>

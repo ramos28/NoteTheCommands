@@ -1,23 +1,27 @@
-<%= form_for @stock do |f| %>
-    <%= f.error_messages %>
-    <div class="field">
-        </br><%= f.label :producto %>
-        <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}"), :id, :name)%>
+<div id="padre">  
+    <div id="hijo3">
+        <%= form_for @stock do |f| %>
+            <%= f.error_messages %>
+            <div class="field">
+                </br><%= f.label :producto %>
+                <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}"), :id, :name)%>
+            </div>
+            <div class="field">
+                <%= f.label :cantidad %>
+                <%= f.text_field :quantity %>
+            </div>
+            <div class="field">
+                <%= f.label :descripción_stock %>
+                <%= f.text_area :description_stock, :cols => 30, rows: 3, placeholder: "Descripción del Sctock del Product..." %>
+            </div>
+            <div class="field">
+                <%= f.label :Coste_materia_prima_unidad %>
+                <%= f.number_field :price_buy_unity, :step => "0.01" %>
+            </div>
+            <div class="field">
+                </br><%= f.submit 'Añadir Stock', :class => 'boton grey' %>
+            </div>
+            </br></br></br>
+        <% end %>
     </div>
-    <div class="field">
-        <%= f.label :cantidad %>
-        <%= f.text_field :quantity %>
-    </div>
-    <div class="field">
-        <%= f.label :descripción_stock %>
-        <%= f.text_area :description_stock, :cols => 30, rows: 3, placeholder: "Descripción del Sctock del Product..." %>
-    </div>
-    <div class="field">
-        <%= f.label :Coste_materia_prima_unidad %>
-        <%= f.number_field :price_buy_unity, :step => "0.01" %>
-    </div>
-    <div class="field">
-        </br><%= f.submit 'Añadir Stock', :class => 'boton grey' %>
-    </div>
-    </br></br></br></br></br>
-<% end %>
+</div>

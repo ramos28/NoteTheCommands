@@ -1,34 +1,80 @@
 <div class="title">Clientes Registrados</div>
-<table>
+<table class="tabla2">
     <thead>
-        <tr>
-            <th><%= "Cliente" %></th>
-            <th><%= "IP ultimo inicio" %></th>
-            <th><%= "IP Actual" %></th>
-            <th><%= "Email" %></th>
-            <th><%= "Inicios de sesion" %></th>
-            <th><%= "Teléfono" %></th>
-            <th><%= "Fecha de alta" %></th>
-            <th><%= "Gastado" %></th>
+        <tr class="tabla2">
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Nombre" %>
+                    <span>Nombre del Usuario registrado</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "IP último inicio" %>
+                    <span>Dirección IP del último inicio del Usuario</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "IP Actual" %>
+                    <span>Dirección IP actual</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Correo electrónico" %>
+                    <span>Correo electrónico del Usuario</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Inicios de sesión" %>
+                    <span>Número de inicios de sesión del Usuario</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Teléfono" %>
+                    <span>Número de teléfono del Usuario</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Fecha de alta" %>
+                    <span>Fecha de alta del Usuario al sistema</span> 
+                </div>
+            </th>
+            <th class="tabla2">
+                <div class="cssToolTip">
+                    <%= "Gastado" %>
+                    <span>Total gastado por el Usuario en el sistema</span> 
+                </div>
+            </th>
         </tr>
     </thead>
     <tbody>
         <% @users.each do |total_users| %>
-            <tr>
-                <td><%= total_users.user_name %></td>
-                <td><%= total_users.last_sign_in_ip %></td>
-                <td><%= total_users.current_sign_in_ip %></td>
-                <td><%= total_users.email %></td>
-                <td><%= total_users.sign_in_count %></td>
-                <td><%= total_users.phone %></td>
-                <td><%= total_users.created_at %></td>
-                <td class="price"><%= number_to_currency(total_users.total_spent, :unit => "€") %></td>
+            <tr class="tabla2">
+                <td class="tabla2"><%= total_users.user_name %></td>
+                <td class="tabla2"><%= total_users.last_sign_in_ip %></td>
+                <td class="tabla2"><%= total_users.current_sign_in_ip %></td>
+                <td class="tabla2"><%= total_users.email %></td>
+                <td class="tabla2"><%= total_users.sign_in_count %></td>
+                <td class="tabla2"><%= total_users.phone %></td>
+                <td class="tabla2"><%= total_users.created_at %></td>
+                <td class="tabla2"><%= total_users.total_spent %> €</td>
             </tr>
         <% end %>
     </tbody>
     <tfoot>
-        <tr>
-            <%= will_paginate @users %>
+        <tr class="tabla2">
+            <th class="tabla2" colspan="11">
+                <div class="pagination">
+                    <div class="digg_pagination">
+                        <%= will_paginate @users, :container => false %>
+                    </div>
+                </div>
+            </th>
         </tr>
     </tfoot>
 </table>

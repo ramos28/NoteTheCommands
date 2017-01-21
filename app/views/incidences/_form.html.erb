@@ -1,39 +1,43 @@
-<%= form_for @incidence do |f| %>
-    <%= f.error_messages %>
-    <div class="field">
-        </br><%= f.label :categoria %>
-        <%= f.select :category, options_for_select(Incidence::INCIDENCE_CATEGORY.map.with_index {|index, value| [index, value]})%>
+<div id="padre">  
+    <div id="hijo5"> 
+        <%= form_for @incidence do |f| %>
+            <%= f.error_messages %>
+            <div class="field">
+                </br><%= f.label :categoría %>
+                <%= f.select :category, options_for_select(Incidence::INCIDENCE_CATEGORY.map.with_index {|index, value| [index, value]})%>
+            </div>
+            <div class="field"> <div class="field">
+                <%= f.label :prioridad %>
+                <%= f.select :priority, options_for_select(Incidence::PRIORITY_CATEGORY.map.with_index {|index, value| [index, value]})%>
+            </div>
+            <div class="field">
+                <%= f.label :asunto %>
+                <%= f.text_field :title %>
+            </div>
+            <div class="field">
+                <%= f.label :fecha_creación %>
+                <%= f.date_field :date_start %>
+            </div>
+            <div class="field">
+                </br><%= f.label :descripción %>
+                <%= f.text_area :description, :cols => 60, rows: 5, placeholder: "Redacción de la Incidencia..." %>
+            </div>
+            <% if @current_role  == 3 %>
+                <div class="field">
+                    <%= f.label :fecha_solución %>
+                    <%= f.date_field :date_solution %>
+                </div>
+                <div class="field">
+                    <%= f.label :está_resuelto? %>
+                    <%= f.select :is_solved, [['Resuelto', true], ['No Resuelto', false]], :selected => 'Permitido' %>
+                </div>
+            <% end %>
+            <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <div class="field">
+                </br><%= f.submit 'Crear Incidencia', :class => 'boton grey' %>
+            </div>
+            </br></br>
+        <% end %>
     </div>
-    <div class="field"> <div class="field">
-        <%= f.label :prioridad %>
-        <%= f.select :priority, options_for_select(Incidence::PRIORITY_CATEGORY.map.with_index {|index, value| [index, value]})%>
-    </div>
-    <div class="field">
-        <%= f.label :titulo %>
-        <%= f.text_field :title %>
-    </div>
-    <div class="field">
-        <%= f.label :fecha_creación %>
-        <%= f.date_field :date_start %>
-    </div>
-    <div class="field">
-        </br><%= f.label :descripción %>
-        <%= f.text_area :description, :cols => 30, rows: 5, placeholder: "Redacción de la Incidencia..." %>
-    </div>
-    <% if @current_role  == 3 %>
-        <div class="field">
-            <%= f.label :fecha_solución %>
-            <%= f.date_field :date_solution %>
-        </div>
-        <div class="field">
-            <%= f.label :esta_resuelto %>
-            <%= f.select :is_solved, [['Resuelto', true], ['No Resuelto', false]], :selected => 'Permitido' %>
-        </div>
-    <% end %>
-    <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <div class="field">
-        </br><%= f.submit 'Crear Incidencia', :class => 'boton grey' %>
-    </div>
-    </br></br>
-<% end %>
+</div>

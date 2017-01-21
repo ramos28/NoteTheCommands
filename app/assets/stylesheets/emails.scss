@@ -121,7 +121,7 @@ tr.tabla1:hover td.tabla1 {
 //Tabla de mensajeria
 table.tabla4 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
+	font-size: 14px;
 	text-align: center;
 	width: 100%;
     border: 1px solid black;
@@ -137,7 +137,7 @@ th.tabla4 {
 } 
 
 td.tabla4 {
-	font-size: 10px;
+	font-size: 14px;
 	color: black;
 	border: 1px solid black;
 
@@ -176,4 +176,57 @@ td.b4 {
 	background-color:#58ACFA;
 	color: black;
 	border: 1px solid black;
+}
+
+#container2 {
+	width: 250px;
+	height: 15px;
+	overflow: hidden;
+}
+
+#container3 {
+	width: 450px;
+	height: 15px;
+	overflow: hidden;
+}
+
+#padre {
+    text-align: center;
+    width: 100%;
+}
+
+#hijo {
+    margin: 0 auto;    
+    background-image: url("fondoBlancoStart.jpg");
+	text-align: left;
+	padding-left: 20px;
+	top: 35%;
+	width: 57%;
+	max-height: 600px;
+	overflow:auto;
+	margin-bottom: 2em;
+	border-radius: 16px 16px;
+	border-color: #444444;
+	border-style: solid;
+	box-shadow: 2px 2px 10px #B1B1B1;
+	margin-top: 25px;
+	border-width: 7px;
+}
+
+#hijo2 {
+    margin: 0 auto;    
+    background-image: url("fondoBlancoStart.jpg");
+	text-align: center;
+	padding-left: 20px;
+	top: 35%;
+	width: 57%;
+	max-height: 600px;
+	overflow:auto;
+	margin-bottom: 2em;
+	border-radius: 16px 16px;
+	border-color: #444444;
+	border-style: solid;
+	box-shadow: 2px 2px 10px #B1B1B1;
+	margin-top: 25px;
+	border-width: 7px;
 }

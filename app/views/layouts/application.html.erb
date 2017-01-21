@@ -1,151 +1,147 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-      <head>
-            <title>NoteTheCommands</title>
-            <%= csrf_meta_tags %>
-            <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-            <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-            <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-            <%= favicon_link_tag 'favicon.ico' %>
-      </head>
-
-      <body>
-            <header>
-              <div class="p1"><i>Note The Commands</i></div>
-              <% if user_signed_in? %>
-                  <div class="sesion">
+    <head>
+        <title>NoteTheCommands</title>
+        <%= csrf_meta_tags %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+        <%= favicon_link_tag 'favicon.ico' %>
+    </head>
+    <body>
+        <header>
+            <div class="p1"><i>Note The Commands</i></div>
+            <% if user_signed_in? %>
+                <div class="sesion">
                     </br>Sesión: <%= current_user.user_name %>
                     <% if @current_restaurant %>
                         </br>Rol: <%= RestaurantUser::ROLES[@current_role] %>
                         </br>Rest: <%= @current_restaurant.name %>
                         </br>Desc: <%= @current_discount %>%
                     <% end %>
-                  </div>
-              <%end%>
-            </header>
-            <nav>
-                  <ul>  
-                        <li><%= link_to "Inicio"%>
-                              <% if current_user %>
-                                    <ul>
-                                          <li><%= link_to "Tareas", start_path%></li>
-                                          <% if (@current_role == 1 || @current_role  == 2 || @current_role == 3)%>
-                                              <li><%= link_to "Comandas Restaurante", commands_path %></li>
-                                          <% end %>
-                                          <% if (@current_role == 1 || @current_role  == 2 || @current_role == 3)%>
-                                              <li><%= link_to "Pedidos Online", takeaways_path %></li>
-                                          <% end %>
-                                          <% if (@current_role  == 0)%>
-                                              <li><%= link_to "Mis comandas", commands_path%></li>
-                                          <% end %>
-                                    </ul>
-                              <% end %>
-                        </li>                     
-                        <li><%= link_to "Acerca de" %>
-                              <% if current_user %>
-                                    <ul>
-                                          <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
-                                                <li><%= link_to "Contactar", contacts_path%></li>
-                                                <li><%= link_to "¿Quieres trabajar con nosotros?", new_curriculum_path%></li>
-                                          <% end %>
-                                    </ul>
-                              <% else %>
-                                    <ul>
-                                        <li><%= link_to "Empresa desarrolladora", new_user_registration_path%></li>
-                                    </ul>
-                              <% end %>
-                        </li>
-                        <li><%= link_to "Noticias" %>
-                              <% if current_user %>
-                                    <ul>
-                                          <% if (@current_role  == 3) %>
-                                                <li><%= link_to "Publicar Noticia", new_blog_path %></li>
-                                          <% end %>
-                                          <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
-                                                <li><%= link_to "Blog", blogs_index_path %></li>
-                                          <% end %>
-                                    </ul>
-                              <% end %>
-                        </li> 
-                        <li><%= link_to "Gestiones" %>
-                            <% if current_user %>
-                                <ul>
-                                    <% if (@current_role  == 3) %>
-                                        <li><%= link_to "Productos", products_path%></li>
-                                        <li><%= link_to "Stock", stocks_path%></li>
-                                        <li><%= link_to "Menús", menus_path%></li>
-                                        <li><%= link_to "Cuestionarios", questionnaires_path%></li>
-                                        <li><%= link_to "Estadísticas", statistics_index_path %></li>
-                                    <% end %>
-                                    <% if (@current_role  == 0)%>
-                                        <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
-                                        <li><%= link_to "Pedido Online", takeaways_path %></li>
-                                        <li><%= link_to "Ver Menús", menus_path%></li>
-                                        <li><%= link_to "Crear Incidencias", new_incidence_path %></li>
-                                    <% end %>
-                                    <% if (@current_role  == 1 || @current_role  == 2 )%>
-                                        <li><%= link_to "Ver Menús", menus_path%></li>
-                                    <% end %>
-                                    <% if current_user.superadmin %>
-                                        <li><%= link_to "Dar de Alta Restaurante", restaurants_path %></li>
-                                        <li><%= link_to "Dar de Alta Empleado", restaurant_users_path %></li>
-                                        <li> <%= link_to "Ver más"%>
-                                            <ul>
-                                              <li><%= link_to "Restaurantes Registrados", total_restaurants_index_path %></li>
-                                              <li><%= link_to "Clientes Registrados", total_clients_index_path %></li>
-                                              <li><%= link_to "Productos Registrados", total_products_index_path %></li>
-                                            </ul>
-                                        </li>
-                                    <% end %>
-                                </ul>
+                </div>
+            <%end%>
+        </header>
+        <nav>
+            <ul>  
+                <li><%= link_to "Inicio"%>
+                    <% if current_user %>
+                        <ul>
+                            <li><%= link_to "Tareas", start_path%></li>
+                            <% if (@current_role == 1 || @current_role  == 2 || @current_role == 3)%>
+                                <li><%= link_to "Comandas Restaurante", commands_path %></li>
                             <% end %>
-                        </li>
-                        <li><%= link_to "Panel de Control" %>
-                              <% if current_user %>
+                            <% if (@current_role == 1 || @current_role  == 2 || @current_role == 3)%>
+                                <li><%= link_to "Pedidos Online", takeaways_path %></li>
+                            <% end %>
+                            <% if (@current_role  == 0)%>
+                                <li><%= link_to "Mis comandas", commands_path%></li>
+                            <% end %>
+                        </ul>
+                    <% end %>
+                </li>                     
+                <li><%= link_to "Acerca de" %>
+                    <% if current_user %>
+                        <ul>
+                            <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
+                                <li><%= link_to "Contactar", contacts_path%></li>
+                                <li><%= link_to "¿Quieres trabajar con nosotros?", new_curriculum_path%></li>
+                            <% else %>
+                                <li><%= link_to "Empresa desarrolladora", new_user_registration_path%></li>
+                            <% end %>
+                        </ul>
+                    <% end %>
+                </li>
+                <li><%= link_to "Noticias" %>
+                    <% if current_user %>
+                        <ul>
+                            <% if (@current_role  == 3) %>
+                                <li><%= link_to "Publicar Noticia", new_blog_path %></li>
+                            <% end %>
+                            <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
+                                <li><%= link_to "Blog", blogs_index_path %></li>
+                            <% end %>
+                        </ul>
+                    <% end %>
+                </li> 
+                <li><%= link_to "Gestiones" %>
+                    <% if current_user %>
+                        <ul>
+                            <% if (@current_role  == 3) %>
+                                <li><%= link_to "Productos", products_path%></li>
+                                <li><%= link_to "Stock", stocks_path%></li>
+                                <li><%= link_to "Menús", menus_path%></li>
+                                <li><%= link_to "Cuestionarios", questionnaires_path%></li>
+                                <li><%= link_to "Estadísticas", statistics_index_path %></li>
+                            <% end %>
+                            <% if (@current_role  == 0)%>
+                                <li><%= link_to "Realizar Reserva", reservations_index_path %></li>
+                                <li><%= link_to "Pedido Online", takeaways_path %></li>
+                                <li><%= link_to "Menús", menus_path%></li>
+                                <li><%= link_to "Crear Incidencias", new_incidence_path %></li>
+                            <% end %>
+                            <% if (@current_role  == 1 || @current_role  == 2 )%>
+                                <li><%= link_to "Ver Menús", menus_path%></li>
+                            <% end %>
+                            <% if current_user.superadmin %>
+                                <li><%= link_to "Dar de Alta Restaurante", restaurants_path %></li>
+                                <li><%= link_to "Dar de Alta Empleado", restaurant_users_path %></li>
+                                <li> <%= link_to "Ver más"%>
                                     <ul>
-                                          <li><%= link_to "Mi Perfil", profile_index_path%></li>
-                                          <% if (@current_role  == 3 || @current_role == 1) %>
-                                                <li><%= link_to "Incidencias", incidences_index_path%></li>
-                                                <li><%= link_to "Reservas", reservations_index_path%></li>
-                                          <% end %>
-                                          <% if (@current_role  == 0) %>
-                                                <li><%= link_to "Chat", conversations_path %></li>
-                                          <% end %>
-                                          <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3 ) %>
-                                                <li><%= link_to "Bandeja Mensajes", emails_index_path %></li>
-                                          <% end %>
-                                          <% if current_user.superadmin %>
-                                              <li><%= link_to "Bandeja Mensajes", emails_index_path %></li>
-                                          <% end %>
-                                          <% if !current_user.superadmin %>
-                                              <li><%= link_to "Ver Restaurantes", restaurant_users_path %></li>
-                                          <% end %>
-                                          <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
+                                      <li><%= link_to "Restaurantes Registrados", total_restaurants_index_path %></li>
+                                      <li><%= link_to "Clientes Registrados", total_clients_index_path %></li>
+                                      <li><%= link_to "Productos Registrados", total_products_index_path %></li>
                                     </ul>
-                              <% else %>
-                                    <ul>
+                                </li>
+                            <% end %>
+                        </ul>
+                    <% end %>
+                </li>
+                <li><%= link_to "Panel de Control" %>
+                    <% if current_user %>
+                        <ul>
+                            <li><%= link_to "Mi Perfil", profile_index_path%></li>
+                            <% if (@current_role  == 3 || @current_role == 1) %>
+                                <li><%= link_to "Incidencias", incidences_index_path%></li>
+                                <li><%= link_to "Reservas", reservations_index_path%></li>
+                            <% end %>
+                            <% if (@current_role  == 0) %>
+                                <li><%= link_to "Chat", conversations_path %></li>
+                            <% end %>
+                            <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3 ) %>
+                                <li><%= link_to "Bandeja Mensajes", emails_index_path %></li>
+                            <% end %>
+                            <% if current_user.superadmin %>
+                                <li><%= link_to "Bandeja Mensajes", emails_index_path %></li>
+                            <% end %>
+                            <% if !current_user.superadmin %>
+                                <li><%= link_to "Restaurantes", restaurant_users_path %></li>
+                            <% end %>
+                            <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
+                        </ul>
+                    <% else %>
+                        <ul>
 
-                                          <li><%= link_to "Iniciar Sesion", new_user_session_path %></li>
-                                          <li><%= link_to "Registrate", new_registration_path(:user) %></li>
-                                    </ul>
-                              <% end %>
-                        </li>
-                        
-                  </ul>
-            </nav>
-            <section>
-                  <%= yield %>
-            </section>
-            </br>
-            <footer>
+                            <li><%= link_to "Iniciar Sesion", new_user_session_path %></li>
+                            <li><%= link_to "Registrate", new_registration_path(:user) %></li>
+                        </ul>
+                    <% end %>
+                </li>        
+            </ul>
+        </nav>
+        <section>
+              <%= yield %>
+        </section>
+        </br>
+        <footer>
             <div class="eps">
-              <%= image_tag('logoEPS.png', :alt => 'logoEPS')%>
+                <%= image_tag('logoEPS.png', :alt => 'logoEPS')%>
             </div>
             <div class="uam">
-              <%= image_tag('logoUAMblanco.png', :alt => 'logoUAM')%>
+                <%= image_tag('logoUAMblanco.png', :alt => 'logoUAM')%>
             </div>
             <p>- UAM - EPS - Ingeniería Informática - TFG - Daniel Ramos Trejo -</p> 
             <p>Contacto: daniel.ramost@estudiante.uam.es</p>
-            </footer>
-      </body>
+        </footer>
+    </body>
 </html>

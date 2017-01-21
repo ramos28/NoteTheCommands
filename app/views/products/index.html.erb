@@ -26,7 +26,7 @@
 				    </th>
 				    <th class="tabla1" >
 						<div class="cssToolTip">
-						    <%= "Coste Venta Unidad" %>
+						    <%= "Coste Venta" %>
 							<span>Coste de venta del Producto por Unidad</span> 
 						</div>
 				    </th>
@@ -50,8 +50,8 @@
 			    <tr class="tabla1">
 					<td class="tabla1"><%= product.name %></td>
 					<td class="tabla1"><%= Product::PRODUCT_CATEGORY[product.type_product] %></td>
-					<td class="tabla1" title="<%= product.ingredients %>"><%= product.ingredients %></td>
-					<td class="tabla1" class="price"><%= number_to_currency(product.price, :unit => "€") %></td>
+					<td class="tabla1" title="<%= product.ingredients %>"><div id="container"><%= product.ingredients %></div></td>
+					<td class="tabla1" class="price"><%= product.price %> €/Unidad</td>
 					<td class="tabla1"><%= product.restaurant.name %></td>
 					<% if product.younger %>
 						<td class="b5"><%= product.younger %></td>

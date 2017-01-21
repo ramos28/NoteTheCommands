@@ -1,26 +1,66 @@
 <div class="title">Restaurantes</div>
 <div class ="muestra-tabla">
-	<table class="pretty">
-	    <tr>
-	    	<%= form_tag restaurants_path, method: :get do %>
-		    	<th>Nombre<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Restaurante" %></p></th>
-		    	<th>Pais</th>
-		    	<th>Ciudad</th>
-		        <th>Telefono</th>
-		        <th>Correo Electronico</th>
-	        <% end %>
-	    </tr>
-	    <% @restaurants.each do |restaurant| %>
-	        <tr>
-	        	<td><%= restaurant.name %></td>
-	        	<td><%= restaurant.country %></td>
-	        	<td><%= restaurant.city %></td>
-	            <td><%= restaurant.phone %></td>
-	            <td><%= restaurant.email %></td>
-	        </tr>
-	    <% end %>
+	<table class="tabla2">
+		<thead>
+		    <tr class="tabla2">
+		    	<%= form_tag restaurants_path, method: :get do %>
+			    	<th class="tabla2">
+						<div class="cssToolTip">
+						    <%= "Nombre" %>
+							<span>Nombre del Restaurante</span> 
+						</div>
+			    		<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Restaurante" %></p>
+			    	</th>
+			    	<th class="tabla2">
+				    	<div class="cssToolTip">
+						    <%= "País" %>
+							<span>País donde se encuentra el Restaurante</span> 
+						</div>
+			    	</th>
+			    	<th class="tabla2">
+			    		<div class="cssToolTip">
+						    <%= "Ciudad" %>
+							<span>Ciudad donde se encuentra el Restaurante</span> 
+						</div>
+			    	</th>
+			        <th class="tabla2">
+			        	<div class="cssToolTip">
+						    <%= "Teléfono" %>
+							<span>Teléfono del Restaurante</span> 
+						</div>
+			        </th>
+			        <th class="tabla2">
+			        	<div class="cssToolTip">
+						    <%= "Correo electrónico" %>
+							<span>Correo electrónico del Restaurante</span> 
+						</div>
+			        </th>
+		        <% end %>
+		    </tr>
+		</thead>
+		<tbody>
+		    <% @restaurants.each do |restaurant| %>
+		        <tr class="tabla2">
+		        	<td class="tabla2"><%= restaurant.name %></td>
+		        	<td class="tabla2"><%= restaurant.country %></td>
+		        	<td class="tabla2"><%= restaurant.city %></td>
+		            <td class="tabla2"><%= restaurant.phone %></td>
+		            <td class="tabla2"><%= restaurant.email %></td>
+		        </tr>
+		    <% end %>
+	    </tbody>
+	    <tfoot>
+			<tr class="tabla2">
+				<th class="tabla2" colspan="5">
+					<div class="pagination">
+                        <div class="digg_pagination">
+                            <%= will_paginate @restaurants, :container => false %>
+                        </div>
+                    </div>
+				</th>
+			</tr>
+		</tfoot>
 	</table>
-	<%= will_paginate @restaurants %>
 </div>
 
 
