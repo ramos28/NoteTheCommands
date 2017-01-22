@@ -1,14 +1,14 @@
 <div class="title">Bienvenido</div>
 <div class ="muestra-tabla-anonimous">
-    </br></br><div class="accion">¿Aún no está regristrado? A que esperas para hacerlo..</div>
+    </br></br><div class="accionTitle">¿Aún no está regristrado? A que esperas para hacerlo..</div>
     </br><%= button_to 'Registrarse', new_registration_path(:user), :method => "get", :class => 'boton grey'  %>
 
-    </br></br></br><div class="accion">Acceda sin Registro</div> 
+    </br></br></br><div class="accionTitle">Acceda sin Registro</div> 
     </br><%= button_to 'Usuario Invitado', guests_index_path, :method => "get", :class => 'boton grey'  %>
 </div>
 
 <div class="muestra-tabla-login">
-    </br></br><div class="accion">Acceso Usuario Registrado</div>
+    </br></br><div class="accionTitle">Acceso Usuario Registrado</div>
     <div id="padre">  
         <div id="hijo8">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

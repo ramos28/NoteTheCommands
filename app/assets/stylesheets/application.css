@@ -102,6 +102,24 @@ div.accion {
     color: white;
 }
 
+@font-face {
+    font-family: acciones;
+    src: url(coolvetica.ttf);
+}
+
+@font-face {
+    font-family: acciones;
+    src: url(titulosAcciones.ttf);
+    font-weight: bold;
+}
+
+div.accionTitle {
+    font-family: acciones;
+    text-align: center;		
+    font-size: 28px;
+    color: white;
+}
+
 .muestra-tabla-anonimous {
 	float: left;
 	text-align: center;

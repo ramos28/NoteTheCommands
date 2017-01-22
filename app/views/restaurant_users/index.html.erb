@@ -73,7 +73,7 @@
 <div class="muestra-opciones">
 	</br></br></br>
 	<% if current_user.superadmin %>
-		<div class="accion">Registra Personal</div>
+		<div class="accionTitle">Registra Personal</div>
 		<div id="padre">  
 			<div id="hijo4">                           
 				<%= form_for @restaurants_users do |f| %>
@@ -100,7 +100,7 @@
 		</div>  
 	<% else %>
 		<%= form_for @restaurants_users do |f| %>
-			<div class="accion">Apuntarse a un Restaurante</div>
+			<div class="accionTitle">Apuntarse a un Restaurante</div>
 			<div id="padre">  
     			<div id="hijo4">
 					<div class="field">
@@ -116,5 +116,5 @@
 			</div>
 		<% end %>
     <% end %>
-    </br></br></br></br></br></br></br></br></br>
+    </br></br></br></br>
 </div>
