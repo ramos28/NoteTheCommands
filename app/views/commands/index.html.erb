@@ -160,20 +160,22 @@
 
 					<td>
 					    <%= form_for command do |f| %>
-					        <%= f.error_messages %>
+					    	<% if !command.is_served %>
+						        <%= f.error_messages %>
 
-					        <%= f.hidden_field :is_served, :value => true %>
-					        <div class="field">
-					            <%= f.submit 'Servir', :class => 'boton grey'%>
-					        </div>
-					    <% end %>
+						        <%= f.hidden_field :is_served, :value => true %>
+						        <div class="field">
+						            <%= f.submit 'Servir', :class => 'boton grey'%>
+						        </div>
+					    	<% end %>
+						<% end %>
 					</td>
 	            </tr>
 	        <% end %>
 	    <% end %>
 	    <tfoot>
 			<tr class="tabla1">
-				<th class="tabla1" colspan="7">
+				<th class="tabla1" colspan="6">
 					<div class="pagination">
 						<div class="digg_pagination">
 						    <%= will_paginate @commands, :container => false %>

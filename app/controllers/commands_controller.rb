@@ -5,7 +5,6 @@ class CommandsController < ApplicationController
 		#@commands += @commands.select{|command| command.created_at >= Time.now.beginning_of_day}
 
 		@commands_ends = Command.where("restaurant_id = ? AND is_end = true", "#{@current_restaurant.id}")
-
 		@command = Command.new
 	end
 

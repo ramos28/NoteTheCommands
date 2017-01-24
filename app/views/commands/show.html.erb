@@ -1,182 +1,266 @@
-<div class="title">Agregar Productos a la Comanda</div>
-</br><div class="muestra-comandas">
-    </br></br><div class="accion">Comanda</div>
-    <div id="padre">  
-        <div id="hijo7">
-            <p>
-                <strong>Nombre:</strong>
-                <%= @command.title %>
-            </p>
-            <p>
-                <strong>Mesa:</strong>
-                <%= @command.place %>
-            </p>
-            <p>
-                <strong>¿Está Finalizada?:</strong>
-                <%= @command.is_end %>
-            </p>
-
-            <p>
-                <% if @current_role == 0 %>
-                    <%= link_to "Modificar", edit_command_path(@command), style: "color: black"  %> |
-                    <%= link_to "Eliminar", @command, :method => :delete, data: { confirm: "¿Está seguro que desea modificar la Comanda?"}, style: "color: black"  %> |
-                    <%= link_to "Ver Todas", commands_path, style: "color: black" %>
-                <% end %>
-            </p>
-        </div>
-    </div>
-</div>
-
-</br>
 <% if @current_role == 0 %>
-    <div class="muestra-tabla-comandas">
-        <% total_price_command = 0 %>
-        <table class="tabla3">
-            <thead>
-                <tr class="tabla3">
-                    <th class="tabla3" title="Nombre del Menú o Producto seleccionado para la comanda">Nombre Menú/Producto</th>
-                    <th class="tabla3" title="Cantidad seleccionada de un mismo Producto">Cantidad</th>
-                    <th class="tabla3" title="Precio por unidad del Producto">Precio</th>
-                    <th class="tabla3" title="Coste del Producto total (Cantidad x Precio Unidad)">Coste</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @command.command_products.each do |cp| %>
-                    <% price_command = cp.product.price * cp.quantity %>
-                    <% total_price_command += price_command %>
-                    <tr class="tabla3">
-                        <td class="tabla3"><%= cp.product.name %></td>
-                        <td class="tabla3"><%= cp.quantity %> Unds</td>
-                        <td class="tabla3"><%= cp.product.price %> €/Unds</td>
-                        <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td>
-                    </tr>
-                <% end %>
-                <% @command.command_menus.each do |cp| %>
-                    <% price_command = cp.menu.price * cp.quantity %>
-                    <% total_price_command += price_command %>
-                    <tr class="tabla3">
-                        <td class="tabla3"><%= cp.menu.name %></td>
-                        <td class="tabla3"><%= cp.quantity %> Unds</td>
-                        <td class="tabla3"><%= cp.menu.price %> €/Unds</td>
-                        <td class="tabla3"><%= cp.menu.price * cp.quantity %> €</td>
-                    </tr>
-                <% end %>
-            </tbody>
-            <tfoot>
-                <tr class="tabla3">
-                    <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                    <td class="tabla3" colspan="3"><%= total_price_command %> €</td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+    <div class="title">Agregar Productos a la Comanda</div>
+<% else %>
+    <div class="title">Número Comanda: <%= @command.id %></div>
+<% end %>
+<div class="command">
+    </br><div class="muestra-comandas">
+        </br></br><div class="command_accion">Comanda</div>
+        <div id="padre">  
+            <div id="hijo7">
+                <p>
+                    <strong>Nombre:</strong>
+                    <%= @command.title %>
+                </p>
+                <p>
+                    <strong>Mesa:</strong>
+                    <%= @command.place %>
+                </p>
+                <p>
+                    <strong>¿Está Finalizada?:</strong>
+                    <%= @command.is_end %>
+                </p>
 
-    <% if !@command.is_end %>    
-        <div class="muestra-eleccion-comandas">
-        <ul class="tabs">
-            <li><a href="#tab1">Productos</a></li>
-            <li><a href="#tab2">Menús</a></li>
-        </ul>
-            <div class="contenedor_tab">
-                <div id="tab1" class="contenido_tab">
-                    </br><div class="accion-command">Agregar Productos</div>
-                    <%= form_for :command_product, url: command_products_path do |f| %>
-                        <div class="field">
-                            </br><%= f.label :producto %><br/>
-
-                            <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_products, :id, :name)%>
-                        </div>
-                        <div class="field">
-                            </br><%= f.label :cantidad %><br/>
-                            <%= f.number_field :quantity %>
-                        </div>
-                        <%= f.hidden_field :command_id, value: @command.id %>
-                        </br><%= f.submit 'Agregar Producto', :class => 'boton grey'  %>
-                        <% if @command.is_served %>
-                            <%= form_for @command do |f| %>
-                                <%= f.error_messages %>
-                                <%= f.hidden_field :is_end, :value => 1 %>
-                                </br></br><div class="accion-command">Cerrar la Comanda</div>
-                                <div class="field">
-                                    </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
-                                    </br></br>
-                                </div>
-                            <% end %>
-                        <% end %>
+                <p>
+                    <% if @current_role == 0 %>
+                        <%= link_to "Modificar", edit_command_path(@command), style: "color: black"  %> |
+                        <%= link_to "Eliminar", @command, :method => :delete, data: { confirm: "¿Está seguro que desea modificar la Comanda?"}, style: "color: black"  %> |
+                        <%= link_to "Ver Todas", commands_path, style: "color: black" %>
                     <% end %>
-                </div>
-                <div id="tab2" class="contenido_tab">
-                    </br><div class="accion-command">Agregar Menú</div>
-                    <%= form_for :command_menu, url: command_menus_path do |f| %>
-                        <div class="field">
-                            </br><%= f.label :menú %><br />
-                            <%= f.select :menu_id, options_from_collection_for_select( Menu.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_menus, :id, :name)%>
-                        </div>
-                        <div class="field">
-                            </br><%= f.label :cantidad %><br />
-                            <%= f.number_field :quantity %>
-                        </div>
-                        <%= f.hidden_field :command_id, value: @command.id %>
-                        </br><%= f.submit 'Agregar Menú', :class => 'boton grey'  %>
-                        <% if @command.is_served %>
-                            <%= form_for @command do |f| %>
-                                <%= f.error_messages %>
-                                <%= f.hidden_field :is_end, :value => 1 %>
-                                </br></br><div class="accion-command">Cerrar la Comanda</div>
-                                <div class="field">
-                                    </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
-                                    </br></br>
-                                </div>
-                            <% end %>
-                        <% end %>
-                    <% end %>
-                </div>
+                </p>
             </div>
         </div>
-        <div style="clear:both;"></div>
-    <% else %>
-        <%= link_to 'Pedir cuenta', command_finish_path(@command), style: "color: white"  %>
-    <% end %>
-<% else %>
-    <div class="muestra-tabla-comandas-entera">
-        <% total_price_command = 0 %>
-        <table class="tabla3">
-            <thead>
-                <tr class="tabla3">
-                    <th class="tabla3" title="Nombre del Menú o Producto seleccionado para la comanda">Nombre Menú/Producto</th>
-                    <th class="tabla3" title="Cantidad seleccionada de un mismo Producto">Cantidad</th>
-                    <th class="tabla3" title="Precio por unidad del Producto">Precio</th>
-                    <th class="tabla3" title="Coste del Producto total (Cantidad x Precio Unidad)">Coste</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @command.command_products.each do |cp| %>
-                    <% price_command = cp.product.price * cp.quantity %>
-                    <% total_price_command += price_command %>
-                    <tr class="tabla3">
-                        <td class="tabla3"><%= cp.product.name %></td>
-                        <td class="tabla3"><%= cp.quantity %> Unds</td>
-                        <td class="tabla3"><%= cp.product.price %> €/Unds</td>
-                        <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td> 
-                    </tr>
-                <% end %>
-                <% @command.command_menus.each do |cp| %>
-                    <% price_command = cp.menu.price * cp.quantity %>
-                    <% total_price_command += price_command %>
-                    <tr class="tabla3">
-                        <td class="tabla3"><%= cp.menu.name %></td>
-                        <td class="tabla3"><%= cp.quantity %> Unds</td>
-                        <td class="tabla3"><%= cp.menu.price %> €/Unds</td>
-                        <td class="tabla3"><%= cp.menu.price * cp.quantity %> €</td>
-                    </tr>
-                <% end %>
-            </tbody>
-            <tfoot>
-                <tr class="tabla3">
-                    <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                    <td class="tabla3" colspan="3"><%= total_price_command %> €</td>
-                </tr>
-            </tfoot>
-        </table>
     </div>
-<% end %>
+
+    </br>
+    <% if @current_role == 0 %>
+        <div class="muestra-tabla-comandas">
+            <% total_price_command = 0 %>
+            <table class="tabla3">
+                <thead>
+                    <tr class="tabla3">
+                        <th class="tabla3" title="Nombre del Menú o Producto seleccionado para la comanda">Nombre Menú/Producto</th>
+                        <th class="tabla3" title="Cantidad seleccionada de un mismo Producto">Cantidad</th>
+                        <th class="tabla3" title="Precio por unidad del Producto">Precio</th>
+                        <th class="tabla3" title="Coste del Producto total (Cantidad x Precio Unidad)">Coste</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @command.command_products.each do |cp| %>
+                        <% price_command = cp.product.price * cp.quantity %>
+                        <% total_price_command += price_command %>
+                        <tr class="tabla3">
+                            <td class="tabla3"><%= cp.product.name %></td>
+                            <td class="tabla3"><%= cp.quantity %> Unds</td>
+                            <td class="tabla3"><%= cp.product.price %> €/Unds</td>
+                            <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td>
+                        </tr>
+                    <% end %>
+                    <% @command.command_menus.each do |cp| %>
+                        <% price_command = cp.menu.price * cp.quantity %>
+                        <% total_price_command += price_command %>
+                        <tr class="tabla3">
+                            <td class="tabla3"><%= cp.menu.name %></td>
+                            <td class="tabla3"><%= cp.quantity %> Unds</td>
+                            <td class="tabla3"><%= cp.menu.price %> €/Unds</td>
+                            <td class="tabla3"><%= cp.menu.price * cp.quantity %> €</td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                <tfoot>
+                    <tr class="tabla3">
+                        <th class="tabla3" title="Precio total de la comanda">Total: </th>
+                        <td class="tabla3" colspan="3"><%= total_price_command %> €</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <% if !@command.is_end %>    
+            <div class="muestra-eleccion-comandas">
+            <ul class="tabs">
+                <li><a href="#tab1">Productos</a></li>
+                <li><a href="#tab2">Menús</a></li>
+            </ul>
+                <div class="contenedor_tab">
+                    <div id="tab1" class="contenido_tab">
+                        </br><div class="accion-command">Agregar Productos</div>
+                        <%= form_for :command_product, url: command_products_path do |f| %>
+                            <div class="field">
+                                </br><%= f.label :producto %><br/>
+
+                                <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_products, :id, :name)%>
+                            </div>
+                            <div class="field">
+                                </br><%= f.label :cantidad %><br/>
+                                <%= f.number_field :quantity %>
+                            </div>
+                            <%= f.hidden_field :command_id, value: @command.id %>
+                            </br><%= f.submit 'Agregar Producto', :class => 'boton grey'  %>
+                            <% if @command.is_served %>
+                                <%= form_for @command do |f| %>
+                                    <%= f.error_messages %>
+                                    <%= f.hidden_field :is_end, :value => 1 %>
+                                    </br></br><div class="accion-command">Cerrar la Comanda</div>
+                                    <div class="field">
+                                        </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
+                                        </br></br>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    <div id="tab2" class="contenido_tab">
+                        </br><div class="accion-command">Agregar Menú</div>
+                        <%= form_for :command_menu, url: command_menus_path do |f| %>
+                            <div class="field">
+                                </br><%= f.label :menú %><br />
+                                <%= f.select :menu_id, options_from_collection_for_select( Menu.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_menus, :id, :name)%>
+                            </div>
+                            <div class="field">
+                                </br><%= f.label :cantidad %><br />
+                                <%= f.number_field :quantity %>
+                            </div>
+                            <%= f.hidden_field :command_id, value: @command.id %>
+                            </br><%= f.submit 'Agregar Menú', :class => 'boton grey'  %>
+                            <% if @command.is_served %>
+                                <%= form_for @command do |f| %>
+                                    <%= f.error_messages %>
+                                    <%= f.hidden_field :is_end, :value => 1 %>
+                                    </br></br><div class="accion-command">Cerrar la Comanda</div>
+                                    <div class="field">
+                                        </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
+                                        </br></br>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        <% else %>
+            <%= link_to 'Pedir cuenta', command_finish_path(@command), style: "color: white"  %>
+        <% end %>
+    <% else %>
+        <div class="muestra-tabla-comandas-entera">
+            <% total_price_command = 0 %>
+            <table class="tabla3">
+                <thead>
+                    <tr class="tabla3">
+                        <th class="tabla3" title="Nombre del Menú o Producto seleccionado para la comanda">Nombre Menú/Producto</th>
+                        <th class="tabla3" title="Cantidad seleccionada de un mismo Producto">Cantidad</th>
+                        <th class="tabla3" title="Precio por unidad del Producto">Precio</th>
+                        <th class="tabla3" title="Coste del Producto total (Cantidad x Precio Unidad)">Coste</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @command.command_products.each do |cp| %>
+                        <% price_command = cp.product.price * cp.quantity %>
+                        <% total_price_command += price_command %>
+                        <tr class="tabla3">
+                            <td class="tabla3"><%= cp.product.name %></td>
+                            <td class="tabla3"><%= cp.quantity %> Unds</td>
+                            <td class="tabla3"><%= cp.product.price %> €/Unds</td>
+                            <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td> 
+                        </tr>
+                    <% end %>
+                    <% @command.command_menus.each do |cp| %>
+                        <% price_command = cp.menu.price * cp.quantity %>
+                        <% total_price_command += price_command %>
+                        <tr class="tabla3">
+                            <td class="tabla3"><%= cp.menu.name %></td>
+                            <td class="tabla3"><%= cp.quantity %> Unds</td>
+                            <td class="tabla3"><%= cp.menu.price %> €/Unds</td>
+                            <td class="tabla3"><%= cp.menu.price * cp.quantity %> €</td>
+                        </tr>
+                    <% end %>
+                </tbody>
+                <tfoot>
+                    <tr class="tabla3">
+                        <th class="tabla3" title="Precio total de la comanda">Total: </th>
+                        <td class="tabla3" colspan="3"><%= total_price_command %> €</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="muestra-printer">
+            <%if @command.is_end %>
+                </br><div class="accion">Imprimir Factura</div>
+                <p><a href="javascript:imprSelec('Imprime')" ><%= image_tag('printer.png', :alt => 'printer')%></a></p>
+            <% end %>
+        </div>
+    <% end %>
+</div>
+
+
+
+
+<div id="Imprime">
+    -------------------------------------------------<br/ >
+    Restaurante <%= @current_restaurant.name %><br/ >
+    -------------------------------------------------<br/ >
+    Dirección: <%= @current_restaurant.address %><br> 
+    <%= @current_restaurant.city %><br>
+    <%= @current_restaurant.postal_code %><br>
+    Tel: <%= @current_restaurant.phone %><br> 
+    Fecha: <%= Time.now.in_time_zone.to_s %><br>
+    Camarero: <%= current_user.user_name %><br>
+    Factura: <%= @command.id %><br>
+    Nombre: <%= @command.title %><br>
+    Mesa: <%= @command.place %><br>
+    -------------------------------------------------
+    <table width="250">
+        <tr>
+            <td>Descripción</td>
+            <td>Cantidad</td>
+            <td>P.Unidad</td>
+            <td>Importe</td>
+        </tr>
+        <tr>
+            <td>--------------</td>
+            <td>----------</td>
+            <td>----------</td>
+            <td>---------</td>
+        </tr>
+        <% @command.command_products.each do |cp| %>
+            <tr>
+                <td><%= cp.product.name %></td>
+                <td style="text-align: right;"><%= cp.quantity %></td>
+                <td style="text-align: right;"><%= cp.product.price %>€</td>
+                <td style="text-align: right;"><%= cp.product.price * cp.quantity %>€</td>
+            </tr>
+        <% end %>
+        <tr>
+            <td style="font-weight:bold; text-align: right;">Total:</td>
+            <td style="text-align: right;"><%= total_price_command %>€</td>
+            <td style="text-align: right;" colspan="2"><%= total_price_command * 1.21 %>€</td>
+
+        </tr>
+        <br>
+        <tr>
+            <td></td>
+            <td></td>
+            <td style="text-align: right;" colspan="2">*21% Iva incluido</td>
+
+        </tr>
+    </table>
+                     
+    <br>
+    ***** GRACIAS POR SU VISITA *****
+</div>
+
+
+
+<script language="javascript">
+function imprSelec(nombre){
+    ////////
+    var ficha = document.getElementById(nombre);
+    var ventimp = window.open(' ', 'popimpr');
+
+    ventimp.document.write( ficha.innerHTML );
+    ventimp.document.close();
+    ventimp.print( );
+    ventimp.close();
+} 
+</script> 

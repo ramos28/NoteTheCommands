@@ -76,7 +76,7 @@ td.b6 {
 .muestra-tabla-comandas-entera {
 	background-image: url("pizarra.jpg");
     background-position: center;
-	width: 65%;
+	width: 55%;
     overflow:hidden;
 	float: left;
 	text-align: center;
@@ -86,7 +86,14 @@ td.b6 {
 	float: left;
 	padding-left: 5%;
 	text-align: center;
-	top: 35%;
+	top: 30%;
+	width: 20%;
+}
+
+.muestra-printer {
+	float: left;
+	text-align: center;
+	top: 30%;
 	width: 20%;
 }
 
@@ -178,4 +185,18 @@ td.tabla3 {
 	box-shadow: 2px 2px 10px #B1B1B1;
 	margin-top: 25px;
 	border-width: 7px;
+}
+
+.command {
+    width: 100%;
+    overflow:hidden;
+    background-image: url("fondoBlancoStart.jpg");
+    border: 1px solid black;
+}
+
+div.command_accion {
+    font-family: accionesFont;
+    text-align: center;		
+    font-size: 40px;
+    color: black;
 }

@@ -1,30 +1,34 @@
 <div class="menu">
     <div class="muestra-menus">
         </br></br></br></br><div class="menu_accion">Menú</div>
-        <p>
-            <strong>Nombre:</strong>
-            <%= @menu.name %>
-        </p>
-        <p>
-            <strong>Tipo Menú:</strong>
-            <%= Menu::MENU_CATEGORY[@menu.type_menu] %>
-        </p>
-        <p>
-            <strong>Precio:</strong>
-            <%= @menu.price %> €
-        </p>
-        <p>
-            <strong>Descripción:</strong>
-            <%= @menu.description %>
-        </p>
-        <p>
-            <% if @current_role == 3 %>
-                <%= link_to "Modificar", edit_menu_path(@menu) %> |
-                <%= link_to "Eliminar", @menu, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el Menú?"} %>
-            <% end %>
-        </p>
+        <div id="padre">  
+            <div id="hijo7">
+                <p>
+                    <strong>Nombre:</strong>
+                    <%= @menu.name %>
+                </p>
+                <p>
+                    <strong>Tipo Menú:</strong>
+                    <%= Menu::MENU_CATEGORY[@menu.type_menu] %>
+                </p>
+                <p>
+                    <strong>Precio:</strong>
+                    <%= @menu.price %> €
+                </p>
+                <p>
+                    <strong>Descripción:</strong>
+                    <%= @menu.description %>
+                </p>
+                <p>
+                    <% if @current_role == 3 %>
+                        <%= link_to "Modificar", edit_menu_path(@menu) %> |
+                        <%= link_to "Eliminar", @menu, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el Menú?"} %>
+                    <% end %>
+                </p>
+            </div>
+        </div>
     </div>
-
+    </br></br>
     <div class="muestra-tabla-menus">
         <div class="letra_menu">Menú <%= Menu::MENU_CATEGORY[@menu.type_menu] %></div>
             <div class="menu_tipo">Entrante</div>

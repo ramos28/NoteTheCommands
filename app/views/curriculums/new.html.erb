@@ -13,7 +13,7 @@
 		</br><%= form_for :curriculum, url: curriculums_path do |f| %>
 			<%= f.file_field :file, style: "color: black"  %>
 			<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-			<%= f.submit 'Enviar Curriculum', :class => 'boton grey' %>
+			<%= f.submit 'Enviar Curriculum', data: { confirm: "¿Está seguro que desea enviar el curriculum?" }, :class => 'boton grey' %>
 		<% end %>
 
 		<% if @current_role  == 3 %>

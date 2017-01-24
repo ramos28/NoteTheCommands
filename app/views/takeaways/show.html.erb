@@ -1,4 +1,9 @@
-<div class="title">Pedido Online '<%= current_user.user_name %>'</div>
+<% if @current_role == 0 %>
+    <div class="title">Pedido Online '<%= current_user.user_name %>'</div>
+<% else %>
+    <div class="title">Pedido Online número: <%= @takeaway.id %></div>
+<% end %>
+
 <div class="takeaway">
     <div class="muestra-takeaways">
         </br></br></br></br></br><div class="takeaway_accion">Pedido Online</div>
@@ -32,7 +37,6 @@
     </div>
 
     <% if !@takeaway.is_end %>
-
         </br></br><div class="muestra-tabla-takeaways"> 
             <div class="letra_takeaway">Lista Productos</div>
             <% total_price = 0 %>
@@ -97,7 +101,7 @@
             <% end %>
         </div>
     <% else %>
-        </br></br><div class="muestra-tabla-takeaways2"> 
+        </br></br><div class="muestra-tabla-takeaways"> 
             <div class="letra_takeaway">Lista Productos '<%= @takeaway.name %>'</div>
             <% total_price = 0 %>
             <table class="tabla3">
@@ -130,5 +134,80 @@
                 </tfoot>
             </table> 
         </div>
+        <div class="muestra-tabla-takeaways2">
+            <%if @takeaway.is_end && !@takeaway.is_delivered %>
+                </br><div class="takeaway_accion">Imprimir Factura</div>
+                <p><a href="javascript:imprSelec('Imprime')" ><%= image_tag('printer.png', :alt => 'printer')%></a></p>
+            <% end %>
+        </div>
     <% end %>
 </div>
+
+<div id="Imprime">
+    -------------------------------------------------<br/ >
+    Restaurante <%= @current_restaurant.name %><br/ >
+    -------------------------------------------------<br/ >
+    Dirección: <%= @current_restaurant.address %><br> 
+    <%= @current_restaurant.city %><br>
+    <%= @current_restaurant.postal_code %><br>
+    Tel: <%= @current_restaurant.phone %><br> 
+    Fecha: <%= Time.now.in_time_zone.to_s %><br>
+    Camarero: <%= current_user.user_name %><br>
+    Factura: <%= @takeaway.id %><br>
+    Nombre: <%= @takeaway.name %><br>
+    -------------------------------------------------
+    <table width="250">
+        <tr>
+            <td>Descripción</td>
+            <td>Cantidad</td>
+            <td>P.Unidad</td>
+            <td>Importe</td>
+        </tr>
+        <tr>
+            <td>--------------</td>
+            <td>----------</td>
+            <td>----------</td>
+            <td>---------</td>
+        </tr>
+        <% @takeaway.products.each do |product| %>
+            <% takeaway_product = product.takeaway_products.find_by_takeaway_id(@takeaway.id) %>
+            <tr>
+                <td><%= product.name %></td>
+                <td style="text-align: right;"><%= takeaway_product.quantity %></td>
+                <td style="text-align: right;"><%= product.price %>€</td>
+                <td style="text-align: right;"><%= product.price * takeaway_product.quantity %>€</td>
+            </tr>
+        <% end %>
+        <tr>
+            <td style="font-weight:bold; text-align: right;">Total:</td>
+            <td style="text-align: right;"><%= @takeaway.total_price_selection %>€</td>
+            <td style="text-align: right;" colspan="2"><%= @takeaway.total_price_selection * 1.21 %>€</td>
+
+        </tr>
+        <br>
+        <tr>
+            <td></td>
+            <td></td>
+            <td style="text-align: right;" colspan="2">*21% Iva incluido</td>
+
+        </tr>
+    </table>
+                     
+    <br>
+    ***** GRACIAS POR SU VISITA *****
+</div>
+
+
+
+<script language="javascript">
+function imprSelec(nombre){
+    ////////
+    var ficha = document.getElementById(nombre);
+    var ventimp = window.open(' ', 'popimpr');
+
+    ventimp.document.write( ficha.innerHTML );
+    ventimp.document.close();
+    ventimp.print( );
+    ventimp.close();
+} 
+</script> 
