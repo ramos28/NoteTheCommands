@@ -52,12 +52,12 @@
 					</div>
 		        </th>
 		    </tr>
-		    <% @commands_clients.each do |command| %>
+		    <% @commands.each do |command| %>
 		        <% if command.restaurant_id == @current_restaurant.id %>
 		            <tr class="tabla1">
 		                <td class="tabla1"><%= command.title %></td>
 		                <td class="tabla1"><%= command.restaurant.name %></td>
-		                <td class="tabla1"><%= command.user.user_name %></td>
+		                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
 		                <td class="tabla1"><%= command.place %></td>
 		                <td class="tabla1"><%= command.total_price_command %> €</td>
 		                <td class="tabla1"><%= command.created_at.strftime("%d %B %Y -- %X") %></td>
@@ -90,7 +90,7 @@
 			</tfoot>
 		</table>
 	</div>
-	<% if @commands_ends.blank? %>
+	<% if @ended %>
 		<div class="muestra-opciones1">
 			</br><div class="accion">Crear una Nueva Comanda</div>
 			</br></br><%= button_to 'Crear Comanda', new_command_path, :method => "get", :class => 'boton grey' %>
@@ -139,12 +139,12 @@
 				</div>
 	        </th>
 	    </tr>
-	    <% @commands.each do |command| %>
+	    <% @command_waiter.each do |command| %>
 	        <% if command.restaurant_id == @current_restaurant.id %>
 	            <tr class="tabla1">
 	                <td class="tabla1"><%= command.title %></td>
 	                <td class="tabla1"><%= command.restaurant.name %></td>
-	                <td class="tabla1"><%= command.user.user_name %></td>
+	                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
 	                <td class="tabla1"><%= command.place %></td>
 	                <% if command.is_served %>
 	                	<td class="b5"><%= command.is_served %></td>
@@ -160,7 +160,9 @@
 
 					<td>
 					    <%= form_for command do |f| %>
-					    	<% if !command.is_served %>
+					    	<% serve = true %>
+					    	<% command.command_products.pluck(:is_served).map {|c| serve = serve && c} %>
+					    	<% if !serve %>
 						        <%= f.error_messages %>
 
 						        <%= f.hidden_field :is_served, :value => true %>

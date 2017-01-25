@@ -28,7 +28,7 @@
 	</div>
     <%= f.hidden_field :place %>
 	<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.hidden_field :restaurant_user_id, :value => @current_restaurant_user.id %>
 	<ul class="tabs">
 	    <li><a href="#tab1">Salón</a></li>
 	    <li><a href="#tab2">Salón Principal</a></li>

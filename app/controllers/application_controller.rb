@@ -12,14 +12,19 @@ class ApplicationController < ActionController::Base
 		@current_restaurant = nil
 		@current_role = nil
 		@current_discount = nil
+		@close_session = true
 		
 		if current_user
-			current_restaurant_user = RestaurantUser.where(:id => current_user.current_user_restaurant).first
+			@current_restaurant_user = RestaurantUser.where(:id => current_user.current_user_restaurant).first
 
-			if current_restaurant_user
-				@current_restaurant = current_restaurant_user.restaurant
-				@current_role = current_restaurant_user.rol
-				@current_discount = current_restaurant_user.discount
+			if @current_restaurant_user
+				@current_restaurant = @current_restaurant_user.restaurant
+				@current_role = @current_restaurant_user.rol
+				@current_discount = @current_restaurant_user.discount
+			
+				if @current_role == 0 && @current_restaurant_user.commands.where(:is_end => false).count > 0
+					@close_session = false
+				end
 			end
 		end
 	end

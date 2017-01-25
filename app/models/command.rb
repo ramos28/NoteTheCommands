@@ -1,5 +1,5 @@
 class Command < ApplicationRecord
-	belongs_to :user
+	belongs_to :restaurant_user
 	belongs_to :restaurant
 	has_many :command_menus
 	has_many :command_products

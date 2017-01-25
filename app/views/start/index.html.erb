@@ -290,7 +290,7 @@
 			</div>
 		<% end %>
 	<% end %>
-	<%= link_to destroy_user_session_path, method: :delete do %>
+	<%= link_to destroy_user_session_path , :class => "close_session", method: :delete do %>
 			<div class="starts">
 				<div class="imagen">
 					<%= image_tag('cerrar_sesion.png', :alt => 'cerrar_sesion')%>
@@ -300,4 +300,15 @@
 			</div>
 		<% end %>
 </div>
+
+<% if !@close_session %>
+    <script type="text/javascript">
+        $(".close_session").click(function(event){
+            alert("tienes comandas abiertas");
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        });
+    </script>
+<% end %>
 

@@ -4,7 +4,7 @@ class CreateCommands < ActiveRecord::Migration[5.0]
 			t.string :title, null: false
 
 			t.integer :place, null: false
-			t.references :user, null: false
+			t.references :restaurant_user, null: false
 			t.references :restaurant, null: false
 
 			t.text :description

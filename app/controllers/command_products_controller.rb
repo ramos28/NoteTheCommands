@@ -6,11 +6,25 @@ class CommandProductsController < ApplicationController
 
     def create
         @product_command = CommandProduct.new(product_command_params)
-        if @product_command.save
-            flash[:notice] = "Successfully created product command."
+        
+        if current_user.age < 18 && !@product_command.product.younger
+            flash[:notice] = "Eres menor de edad"
             redirect_to :back
         else
-            render :action =>'new'
+            if @product_command.save
+                flash[:notice] = "Successfully created product command."
+                redirect_to :back
+            else
+                render :action =>'new'
+            end
+        end
+    end
+
+    def destroy
+        @product_command = CommandProduct.find(params[:id])
+
+        if @product_command.destroy
+            redirect_to :back
         end
     end
 

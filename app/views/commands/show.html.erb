@@ -54,6 +54,9 @@
                             <td class="tabla3"><%= cp.quantity %> Unds</td>
                             <td class="tabla3"><%= cp.product.price %> €/Unds</td>
                             <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td>
+                            <td class="tabla3"><%= cp.is_served %></td>
+
+                            <td class="tabla3"><%= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, style: "color: black"  %></td>
                         </tr>
                     <% end %>
                     <% @command.command_menus.each do |cp| %>
@@ -64,6 +67,7 @@
                             <td class="tabla3"><%= cp.quantity %> Unds</td>
                             <td class="tabla3"><%= cp.menu.price %> €/Unds</td>
                             <td class="tabla3"><%= cp.menu.price * cp.quantity %> €</td>
+                            <td class="tabla3"><%= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, style: "color: black"  %></td>
                         </tr>
                     <% end %>
                 </tbody>
@@ -97,16 +101,16 @@
                             </div>
                             <%= f.hidden_field :command_id, value: @command.id %>
                             </br><%= f.submit 'Agregar Producto', :class => 'boton grey'  %>
-                            <% if @command.is_served %>
-                                <%= form_for @command do |f| %>
-                                    <%= f.error_messages %>
-                                    <%= f.hidden_field :is_end, :value => 1 %>
-                                    </br></br><div class="accion-command">Cerrar la Comanda</div>
-                                    <div class="field">
-                                        </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
-                                        </br></br>
-                                    </div>
-                                <% end %>
+                        <% end %>
+                        <% if @command.is_served %>
+                            <%= form_for @command, url: command_path do |f| %>
+                                <%= f.error_messages %>
+                                <%= f.hidden_field :is_end, :value => 1 %>
+                                </br></br><div class="accion-command">Cerrar la Comanda</div>
+                                <div class="field">
+                                    </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
+                                    </br></br>
+                                </div>
                             <% end %>
                         <% end %>
                     </div>
@@ -123,16 +127,16 @@
                             </div>
                             <%= f.hidden_field :command_id, value: @command.id %>
                             </br><%= f.submit 'Agregar Menú', :class => 'boton grey'  %>
-                            <% if @command.is_served %>
-                                <%= form_for @command do |f| %>
-                                    <%= f.error_messages %>
-                                    <%= f.hidden_field :is_end, :value => 1 %>
-                                    </br></br><div class="accion-command">Cerrar la Comanda</div>
-                                    <div class="field">
-                                        </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
-                                        </br></br>
-                                    </div>
-                                <% end %>
+                        <% end %>
+                        <% if @command.is_served %>
+                            <%= form_for @command, url: command_path do |f| %>
+                                <%= f.error_messages %>
+                                <%= f.hidden_field :is_end, :value => 1 %>
+                                </br></br><div class="accion-command">Cerrar la Comanda</div>
+                                <div class="field">
+                                    </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
+                                    </br></br>
+                                </div>
                             <% end %>
                         <% end %>
                     </div>

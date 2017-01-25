@@ -117,7 +117,7 @@
                             <% if !current_user.superadmin %>
                                 <li><%= link_to "Restaurantes", restaurant_users_path %></li>
                             <% end %>
-                            <li><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></li>
+                            <li><%= link_to "Cerrar Sesion", destroy_user_session_path, :class => "close_session",method: :delete %></li>
                         </ul>
                     <% else %>
                         <ul>
@@ -145,3 +145,15 @@
         </footer>
     </body>
 </html>
+
+<% if !@close_session %>
+    <script type="text/javascript">
+        $(".close_session").click(function(event){
+            alert("tienes comandas abiertas");
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        });
+    </script>
+<% end %>
+

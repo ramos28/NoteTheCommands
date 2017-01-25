@@ -1,10 +1,13 @@
 class CommandsController < ApplicationController
 	def index
-		@commands = Command.where("restaurant_id = ? AND created_at >= ?", "#{@current_restaurant.id}", "#{Time.now.beginning_of_day}").paginate(:per_page => 8, :page => params[:page])
-		@commands_clients = Command.where("restaurant_id = ?", "#{@current_restaurant.id}").order('created_at DESC').paginate(:per_page => 8, :page => params[:page])
-		#@commands += @commands.select{|command| command.created_at >= Time.now.beginning_of_day}
 
-		@commands_ends = Command.where("restaurant_id = ? AND is_end = true", "#{@current_restaurant.id}")
+		@commands = @current_restaurant_user.commands.where("created_at >= ?", Time.now.beginning_of_day).paginate(:per_page => 8, :page => params[:page])
+		@command_waiter = Command.where("restaurant_id = ? AND created_at >= ?", "#{@current_restaurant.id}", "#{Time.now.beginning_of_day}").paginate(:per_page => 8, :page => params[:page])
+		#@commands_clients = Command.where("restaurant_id = ?", "#{@current_restaurant.id}").order('created_at DESC').paginate(:per_page => 8, :page => params[:page])
+		#@commands += @commands.select{|command| command.created_at >= Time.now.beginning_of_day}
+		@ended = true
+		@commands.pluck(:is_end).map {|e| @ended = @ended && e}
+		#@commands_ends = Command.where("restaurant_id = ? AND is_end = true", "#{@current_restaurant.id}")
 		@command = Command.new
 	end
 
@@ -35,6 +38,9 @@ class CommandsController < ApplicationController
 	def update
 	    @command = Command.find(params[:id])
 	    if @command.update_attributes(command_params)
+	      	if @command.is_served
+	      		@command.command_products.update_all(is_served: true)
+	      	end
 	      	flash[:notice] = "Successfully updated command."
 	      	redirect_to :back
 	    else
@@ -74,7 +80,7 @@ class CommandsController < ApplicationController
   	private
   	
   	def command_params
-  		params.require(:command).permit(:title, :place, :user_id, :restaurant_id, :description, :is_end, :is_served)
+  		params.require(:command).permit(:title, :place, :restaurant_user_id, :restaurant_id, :description, :is_end, :is_served)
   	end
 
 end
