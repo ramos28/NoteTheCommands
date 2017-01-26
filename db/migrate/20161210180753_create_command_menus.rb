@@ -6,6 +6,8 @@ class CreateCommandMenus < ActiveRecord::Migration[5.0]
 			t.index :command_id
 
 			t.integer :quantity, null: false
+			t.boolean :is_served, default: false
+			t.boolean :is_cooked, default: false
 
 			t.timestamps
 		end

@@ -44,7 +44,7 @@
                     <% if current_user %>
                         <ul>
                             <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
-                                <li><%= link_to "Contactar", contacts_path%></li>
+                                <li><%= link_to "Donde estamos", contacts_path%></li>
                                 <li><%= link_to "¿Quieres trabajar con nosotros?", new_curriculum_path%></li>
                             <% else %>
                                 <li><%= link_to "Empresa desarrolladora", new_user_registration_path%></li>

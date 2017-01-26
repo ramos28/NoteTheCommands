@@ -7,33 +7,37 @@
 <div class="takeaway">
     <div class="muestra-takeaways">
         </br></br></br></br></br><div class="takeaway_accion">Pedido Online</div>
-        <p>
-            <strong>Nombre Pedido:</strong>
-            <%= @takeaway.name %>
-        </p>
-        <p>
-            <strong>Dia de recogida:</strong>
-            <%= @takeaway.date.strftime("%x") %>
-        </p>
-        <p>
-            <strong>Hora de recogida:</strong>
-            <%= @takeaway.hour.strftime("%X") %>
-        </p>
-        <p>
-            <strong>Resaturante:</strong>
-            <%= @takeaway.restaurant.name %>
-        </p>
-        <p>
-            <strong>Descuento adicional:</strong>
-            <%= @takeaway.discount %>%
-        </p>
+        <div id="padre">  
+            <div id="hijo7">
+                <p>
+                    <strong>Nombre Pedido:</strong>
+                    <%= @takeaway.name %>
+                </p>
+                <p>
+                    <strong>Dia de recogida:</strong>
+                    <%= @takeaway.date.strftime("%x") %>
+                </p>
+                <p>
+                    <strong>Hora de recogida:</strong>
+                    <%= @takeaway.hour.strftime("%X") %>
+                </p>
+                <p>
+                    <strong>Resaturante:</strong>
+                    <%= @takeaway.restaurant.name %>
+                </p>
+                <p>
+                    <strong>Descuento adicional:</strong>
+                    <%= @takeaway.discount %>%
+                </p>
 
-        <p>
-            <% if @current_role == 0 %>
-                <%= link_to "Modificar", edit_takeaway_path(@takeaway) %> |
-                <%= link_to "Eliminar", @takeaway, :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar la comanda?"} %>
-            <% end %>
-        </p>
+                <p>
+                    <% if @current_role == 0 %>
+                        <%= link_to "Modificar", edit_takeaway_path(@takeaway) %> |
+                        <%= link_to "Eliminar", @takeaway, :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar la comanda?"} %>
+                    <% end %>
+                </p>
+            </div>
+        </div>
     </div>
 
     <% if !@takeaway.is_end %>
@@ -73,23 +77,25 @@
                 </tfoot>
             </table> 
         </div>
-
         <div class="muestra-eleccion">
             <% if @current_role == 0 %>
                 </br></br></br></br><div class="takeaway_accion">Insertar Producto</div>
-                <%= form_for :takeaway_product, url: takeaway_products_path do |f| %>
-                    <div class="field">
-                        </br><%= f.label :producto %>
-                        <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @takeaway.products, :id, :name)%>
+                 <div id="padre">  
+                    <div id="hijo7">
+                        <%= form_for :takeaway_product, url: takeaway_products_path do |f| %>
+                            <div class="field">
+                                </br><%= f.label :producto %>
+                                <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @takeaway.products, :id, :name)%>
+                            </div>
+                            <div class="field">
+                                </br><%= f.label :cantidad %>
+                                <%= f.number_field :quantity %>
+                            </div>
+                            </br><%= f.hidden_field :takeaway_id, value: @takeaway.id %>
+                            <%= f.submit 'Añadir Producto', :class => 'boton grey' %>
+                        <% end %><br/>
                     </div>
-                    <div class="field">
-                        </br><%= f.label :cantidad %>
-                        <%= f.number_field :quantity %>
-                    </div>
-                    </br><%= f.hidden_field :takeaway_id, value: @takeaway.id %>
-                    <%= f.submit 'Añadir Producto'%>
-                <% end %>
-               
+                </div>
                 <% if !@takeaway.products.blank? %>
                      </br></br><div class="menu_accion">Finalizar Pedido</div>
                     </br>
@@ -135,9 +141,12 @@
             </table> 
         </div>
         <div class="muestra-tabla-takeaways2">
-            <%if @takeaway.is_end && !@takeaway.is_delivered %>
+            <%if @takeaway.is_delivered %>
                 </br><div class="takeaway_accion">Imprimir Factura</div>
                 <p><a href="javascript:imprSelec('Imprime')" ><%= image_tag('printer.png', :alt => 'printer')%></a></p>
+            <% else %>
+                </br><div class="takeaway_accion">Entregar Pedido</div></br>
+                <%= link_to 'Entregar', takeaway_deliver_path(@takeaway), :class => 'boton grey', data: { confirm: "¿Está seguro que desea entregar el pedido?" } %>
             <% end %>
         </div>
     <% end %>
@@ -181,7 +190,9 @@
         <tr>
             <td style="font-weight:bold; text-align: right;">Total:</td>
             <td style="text-align: right;"><%= @takeaway.total_price_selection %>€</td>
-            <td style="text-align: right;" colspan="2"><%= @takeaway.total_price_selection * 1.21 %>€</td>
+            <% if !@takeaway.total_price_selection != nil %>
+                <td style="text-align: right;" colspan="2"><%= @takeaway.total_price_selection * 1.21 %>€</td>
+            <% end %>
 
         </tr>
         <br>

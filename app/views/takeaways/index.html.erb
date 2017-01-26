@@ -171,10 +171,6 @@
 			                <td class="b2"><%=takeaway.is_delivered%></td>
 			            <% end %>
 			            <td><%= link_to "Ver Pedido", takeaway_path(takeaway), :class => 'boton grey'  %></td>
-			            <td>
-						<% if !takeaway.is_delivered %>
-			            	<%= link_to 'Entregar', takeaway_deliver_path(takeaway), :class => 'boton grey', data: { confirm: "¿Está seguro que desea entregar el pedido?" } %>
-						<% end %>
 					</td>            
 			        </tr>
 			    <% end %>

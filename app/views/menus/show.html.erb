@@ -74,7 +74,7 @@
                 <% end %>
             <% end %>
         <div class="menu_tipo">Precio:   <%= @menu.price %> €</div>
-    </div>
+    </div></br>
 
     <div class="muestra-eleccion">
         <% if @current_role == 3 %>
@@ -92,7 +92,7 @@
                 <%= f.submit 'Añadir', :class => 'boton grey'%>
             <% end %>
             </br></br><div class="menu_accion">Finalizar Menú</div>
-            </br><%= button_to 'Terminar', menus_path, :method => "get", data: { confirm: "¿Está seguro que Terminar el Menú?"}, :class => 'boton grey' %>
+            </br><%= button_to 'Terminar', menus_path, :method => "get", data: { confirm: "¿Está seguro que Terminar el Menú?"}, :class => 'boton grey' %></br>
         <% else %>
             <div class="contacto-menu"> 
             </br>¿Te gustan los Menús?<br/>

@@ -4,7 +4,14 @@ class RestaurantUsersController < ApplicationController
         if current_user.superadmin
             @restaurant_users = RestaurantUser.where("rol = 1").or(RestaurantUser.where("rol = 2")).or(RestaurantUser.where("rol =3")).paginate(:per_page => 8, :page => params[:page])
         else
-            @restaurant_users = RestaurantUser.where("user_id = ?", "#{current_user.id}").paginate(:per_page => 8, :page => params[:page])
+            @restaurant_users = RestaurantUser.where("user_id = ?", "#{current_user.id}").order('rol DESC').paginate(:per_page => 8, :page => params[:page])
+        end
+        if params[:name].present?
+            @restaurant = Restaurant.where("name LIKE ?", params[:name])
+            debugger
+            @restaurant.each do |elemento|
+                @restaurant_users = RestaurantUser.where("restaurant_id = ? AND user_id = ?", elemento.id, current_user.id)
+            end
         end
         @restaurants_users = RestaurantUser.new
     end

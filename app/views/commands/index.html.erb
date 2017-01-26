@@ -5,49 +5,49 @@
 		    <tr class="tabla1">
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    Comanda
+					    <%= "Comanda" %>
 						<span>Nombre de la Comanda</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    Restaurante
+					    <%= "Restaurante" %>
 						<span>Nombre del Restaurante</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    Usuario
+					    <%= "Usuario" %>
 						<span>Nombre del Usuario</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    Mesa
+					    <%= "Mesa" %>
 						<span>Número de la Mesa desde donde se realiza la Comanda</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    Precio Comanda
+					    <%= "Precio Comanda" %>
 						<span>Precio total que costó la Comanda al Usuario</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    Fecha Creación
+					    <%= "Fecha Creación" %>
 						<span>Fecha de cuando se creó la Comanda</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    ¿Servido?
+					    <%= "¿Servido?" %>
 						<span>Rojo claro si no esta servida y verde claro si lo está</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    ¿Está Finalizada?
+					    <%= "¿Está Finalizada?" %>
 						<span>Rojo si no esta finalizada y verde si lo está</span> 
 					</div>
 		        </th>
@@ -229,31 +229,33 @@
 	        </th>
 	        <th class="tabla1" >
 				<div class="cssToolTip">
-				    ¿Está Finalizada?
-					<span>Rojo si no esta finalizada y verde si lo está</span> 
+				    ¿Está Cocinado?
+					<span>Rojo si no esta cocinado y verde si lo está</span> 
 				</div>
 	        </th>
 	    </tr>
-	    <% @commands.each do |command| %>
+	    <% @commands_cooker.command_products.each do |command| %>
 	        <% if command.restaurant_id == @current_restaurant.id %>
-	            <tr class="tabla1">
-	                <td class="tabla1"><%= command.title %></td>
-	                <td class="tabla1"><%= command.restaurant.name %></td>
-	                <td class="tabla1"><%= command.user.user_name %></td>
-	                <td class="tabla1"><%= command.place %></td>
-	                <td class="tabla1"><%= command.description %></td>
-	                <% if command.is_served %>
-	                	<td class="b5"><%= command.is_served %></td>
-	                <% else %>
-						<td class="b6"><%= command.is_served %></td>
-	                <% end %>
-	                <% if !command.is_end %>
-	                	<td class="b1"><%= command.is_end %></td>
-	                <% else %>
-						<td class="b2"><%= command.is_end %></td>
-	                <% end %>
-	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %><%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>                
-	            </tr>
+	        	<% if command.product.type_product != 6 || command.product.type_product != 7 || command.product.type_product != 8 || command.product.type_product != 9 %>
+		            <tr class="tabla1">
+		                <td class="tabla1"><%= command.product.name %></td>
+		                <td class="tabla1"><%= command.quantity %></td>
+		                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
+		                <td class="tabla1"><%= command.place %></td>
+		                <td class="tabla1"><%= command.description %></td>
+		                <% if command.is_served %>
+		                	<td class="b5"><%= command.is_served %></td>
+		                <% else %>
+							<td class="b6"><%= command.is_served %></td>
+		                <% end %>
+		                <% if command.is_cooked %>
+		                	<td class="b5"><%= command.is_cooked %></td>
+		                <% else %>
+							<td class="b6"><%= command.is_cooked %></td>
+		                <% end %>
+		                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %><%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>                
+		            </tr>
+		        <% end %>
 	        <% end %>
 	    <% end %>
 	    <tfoot>
@@ -321,12 +323,12 @@
 				</div>
 	        </th>
 	    </tr>
-	    <% @commands.each do |command| %>
+	    <% @commands_gerente.each do |command| %>
 	        <% if command.restaurant_id == @current_restaurant.id %>
 	            <tr class="tabla1">
 	                <td class="tabla1"><%= command.title %></td>
 	                <td class="tabla1"><%= command.restaurant.name %></td>
-	                <td class="tabla1"><%= command.user.user_name %></td>
+	                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
 	                <td class="tabla1"><%= command.place %></td>
 	                <td class="tabla1"><%= command.created_at.strftime("%d %B %Y -- %X") %></td>
 	                <td class="tabla1"><%= command.total_price_command %> €</td>

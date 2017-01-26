@@ -4,43 +4,46 @@
 	<table class="tabla2">
 		<thead>
 			<tr class="tabla2">
-				<th class="tabla2" >
-					<div class="cssToolTip">
-					    <%= "Restaurante" %>
-						<span>Nombre del Restaurante al que esta registrado Usuario</span> 
-					</div>
-				</th>
-				<th class="tabla2" >
-					<div class="cssToolTip">
-					    <%= "Usuario" %>
-						<span>Nombre del Usuario</span> 
-					</div>
-				</th>
-				<th class="tabla2" >
-					<div class="cssToolTip">
-					    <%= "Gastado" %>
-						<span>Total gastado por el Usuario en el Restaurante</span> 
-					</div>
-				</th>
-				<th class="tabla2" >
-					<div class="cssToolTip">
-					    <%= "Rol Usuario" %>
-						<span>Categoría de Usuario en el Restaurante</span> 
-					</div>
-				</th>
-				<th class="tabla2" >
-					<div class="cssToolTip">
-					    <%= "Descuento Adicional" %>
-						<span>Descuento que se le aplicará al Usuario en la Comanda</span> 
-					</div>
-				</th>
+				<%= form_tag restaurant_users_path, method: :get do %>
+					<th class="tabla2" >
+						<div class="cssToolTip">
+						    <%= "Restaurante" %>
+							<span>Nombre del Restaurante al que esta registrado Usuario</span> 
+						</div>
+						<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Restaurante" %></p>
+					</th>
+					<th class="tabla2" >
+						<div class="cssToolTip">
+						    <%= "Usuario" %>
+							<span>Nombre del usuario registrado en el Restaurante</span> 
+						</div>
+					</th>
+					<th class="tabla2" >
+						<div class="cssToolTip">
+						    <%= "Gastado" %>
+							<span>Total gastado por el Usuario en el Restaurante</span> 
+						</div>
+					</th>
+					<th class="tabla2" >
+						<div class="cssToolTip">
+						    <%= "Rol Usuario" %>
+							<span>Categoría de Usuario en el Restaurante</span> 
+						</div>
+					</th>
+					<th class="tabla2" >
+						<div class="cssToolTip">
+						    <%= "Descuento" %>
+							<span>Descuento que se le aplicará al Usuario en la Comanda</span> 
+						</div>
+					</th>
+				<% end %>
 			</tr>
 		</thead>
 		<tbody>
 			<% @restaurant_users.each do |restaurant_user| %>
-				<tr class="tabla2">
+				<tr class="tabla2" title="<%= restaurant_user.restaurant.name %> - <%= restaurant_user.restaurant.address %> - <%= restaurant_user.restaurant.city %>">
 					<td class="tabla2"><%= restaurant_user.restaurant.name %></td>
-					<td class="tabla2"><%= restaurant_user.user.user_name %></td>
+					<td class="tabla2"><%= current_user.user_name %></td>
 					<td class="tabla2">X</td>
 					<td class="tabla2"><%= RestaurantUser::ROLES[restaurant_user.rol] %></td>
 					<td class="tabla2" class="price" title="<%= restaurant_user.restaurant.name%>"><%= number_to_currency(restaurant_user.discount, :unit => "%") %></td>

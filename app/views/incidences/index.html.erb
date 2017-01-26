@@ -26,26 +26,26 @@
                         <tr class="tabla4">
                             <td class="tabla4"><%= incidence.title %></td>
                             <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-                            <% if incidence.priority ==0 %>
+                            <% if incidence.priority == 4 %>
                                 <td class="inc1"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 1 %>
+                            <% elsif incidence.priority == 3 %>
                                 <td class="inc2"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% elsif incidence.priority == 2 %>
                                 <td class="inc3"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 3 %>
+                            <% elsif incidence.priority == 1 %>
                                 <td class="inc4"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% else %>
                                 <td class="inc5"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% end %>
-                            <td class="tabla4"><%= incidence.description %></td>
-                            <td class="tabla4"><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                            <td class="tabla4" title="<%= incidence.description %>"><div id="container2"><%= incidence.description %></div></td>
+                            <td class="tabla4"><%= incidence.created_at.strftime("%d %B %Y -- %X") %></td>
                             <td class="tabla4"><%= incidence.user.user_name %></td>
                             <% if !incidence.is_solved %>
                                 <td class="b1"><%= incidence.is_solved %></td>
                             <% else %>
                                 <td class="b2"><%= incidence.is_solved %></td>
                             <% end %>
-                            <td><%= link_to "Edit Incidencia", edit_incidence_path(incidence), :class => 'boton grey' %></td>
+                            <td class="tabla4"><%= link_to "Edit Incidencia", edit_incidence_path(incidence), :class => 'boton grey' %></td>
                         </tr>
                     <% end %>
                 <% else %>
@@ -53,26 +53,26 @@
                         <tr class="tabla4">
                             <td class="tabla4"><%= incidence.title %></td>
                             <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-                            <% if incidence.priority ==0 %>
+                            <% if incidence.priority == 4 %>
                                 <td class="inc1"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 1 %>
+                            <% elsif incidence.priority == 3 %>
                                 <td class="inc2"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% elsif incidence.priority == 2 %>
                                 <td class="inc3"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 3 %>
+                            <% elsif incidence.priority == 1 %>
                                 <td class="inc4"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% else %>
                                 <td class="inc5"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% end %>
-                            <td class="tabla4"><%= incidence.description %></td>
-                            <td class="tabla4"><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                            <td class="tabla4" title="<%= incidence.description %>"><div id="container2"><%= incidence.description %></div></td>
+                            <td class="tabla4"><%= incidence.created_at.strftime("%d %B %Y -- %X") %></td>
                             <td class="tabla4"><%= incidence.user.user_name %></td>
                             <% if !incidence.is_solved %>
                                 <td class="b1"><%= incidence.is_solved %></td>
                             <% else %>
                                 <td class="b2"><%= incidence.is_solved %></td>
                             <% end %>
-                            <td><%= link_to "Edit Incidencia", edit_incidence_path(incidence), :class => 'boton grey' %></td>
+                            <td class="tabla4"><%= link_to "Edit Incidencia", edit_incidence_path(incidence), :class => 'boton grey' %></td>
                         </tr>
                     <% end %>
                 <% end %>
@@ -82,7 +82,7 @@
                     <th class="tabla4" colspan="7">
                         <div class="pagination">
                             <div class="digg_pagination">
-                                <%#= will_paginate @incidences, :container => false %>
+                                <%= will_paginate @incidences, :container => false %>
                             </div>
                         </div>
                     </th>
@@ -109,18 +109,18 @@
                         <tr class="tabla4">
                             <td class="tabla4"><%= incidence.title %></td>
                             <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-                            <% if incidence.priority ==0 %>
+                            <% if incidence.priority == 4 %>
                                 <td class="inc1"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 1 %>
+                            <% elsif incidence.priority == 3 %>
                                 <td class="inc2"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% elsif incidence.priority == 2 %>
                                 <td class="inc3"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 3 %>
+                            <% elsif incidence.priority == 1 %>
                                 <td class="inc4"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% else %>
                                 <td class="inc5"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% end %>
-                            <td class="tabla4"><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                            <td class="tabla4"><%= incidence.created_at.strftime("%d %B %Y -- %X") %></td>
                             <% if incidence.date_solution != nil %>
                                 <td class="tabla4"><%= incidence.date_solution.strftime("%d %B %Y -- %X") %></td>
                             <% else %>
@@ -139,18 +139,18 @@
                         <tr class="tabla4">
                             <td class="tabla4"><%= incidence.title %></td>
                             <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-                            <% if incidence.priority ==0 %>
+                            <% if incidence.priority == 4 %>
                                 <td class="inc1"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 1 %>
+                            <% elsif incidence.priority == 3 %>
                                 <td class="inc2"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% elsif incidence.priority == 2 %>
                                 <td class="inc3"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 3 %>
+                            <% elsif incidence.priority == 1 %>
                                 <td class="inc4"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% else %>
                                 <td class="inc5"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% end %>
-                            <td class="tabla4"><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                            <td class="tabla4"><%= incidence.created_at.strftime("%d %B %Y -- %X") %></td>
                             <% if incidence.date_solution != nil %>
                                 <td class="tabla4"><%= incidence.date_solution.strftime("%d %B %Y -- %X") %></td>
                             <% else %>
@@ -199,19 +199,19 @@
                         <tr>
                             <td class="tabla4"><%= incidence.title %></td>
                             <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-                            <% if incidence.priority ==0 %>
+                            <% if incidence.priority == 4 %>
                                 <td class="inc1"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 1 %>
+                            <% elsif incidence.priority == 3 %>
                                 <td class="inc2"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% elsif incidence.priority == 2 %>
                                 <td class="inc3"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 3 %>
+                            <% elsif incidence.priority == 1 %>
                                 <td class="inc4"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% else %>
                                 <td class="inc5"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% end %>
-                            <td class="tabla4"><%= incidence.description %></td>
-                            <td class="tabla4"><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                            <td class="tabla4" title="<%= incidence.description %>"><div id="container2"><%= incidence.description %></div></td>
+                            <td class="tabla4"><%= incidence.created_at.strftime("%d %B %Y -- %X") %></td>
                             <td class="tabla4"><%= incidence.restaurant.name %></td>
                             <td class="tabla4"><%= incidence.user.user_name %></td>
                             <% if !incidence.is_solved %>
@@ -226,19 +226,19 @@
                         <tr>
                             <td class="tabla4"><%= incidence.title %></td>
                             <td class="tabla4"><%= Incidence::INCIDENCE_CATEGORY[incidence.category] %></td>
-                            <% if incidence.priority ==0 %>
+                            <% if incidence.priority == 4 %>
                                 <td class="inc1"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 1 %>
+                            <% elsif incidence.priority == 3 %>
                                 <td class="inc2"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% elsif incidence.priority == 2 %>
                                 <td class="inc3"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
-                            <% elsif incidence.priority == 3 %>
+                            <% elsif incidence.priority == 1 %>
                                 <td class="inc4"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% else %>
                                 <td class="inc5"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% end %>
-                            <td class="tabla4"><%= incidence.description %></td>
-                            <td class="tabla4"><%= incidence.date_start.strftime("%d %B %Y -- %X") %></td>
+                            <td class="tabla4" title="<%= incidence.description %>"><div id="container2"><%= incidence.description %></div></td>
+                            <td class="tabla4"><%= incidence.created_at.strftime("%d %B %Y -- %X") %></td>
                             <td class="tabla4"><%= incidence.restaurant.name %></td>
                             <td class="tabla4"><%= incidence.user.user_name %></td>
                             <% if !incidence.is_solved %>

@@ -1,121 +1,148 @@
-<%= form_for :command, url: commands_path do |f| %>
-	<div class="vista2">
-		<div class="field">
-	        <%= f.label :nombre_comanda, style: "color: white" %>
-	        <%= f.text_field :title %>
-	    </div>
+<% if !@current_restaurant.fastfood %>
+	<%= form_for :command, url: commands_path do |f| %>
+		<div class="vista2">
+			<div class="field">
+		        <%= f.label :nombre_comanda, style: "color: white" %>
+		        <%= f.text_field :title %>
+		    </div>
+		</div>
+		<div class="vista2">
+		    <div class="field">
+		        <%= f.label :descripción, style: "color: white" %>
+		        <%= f.text_area :description, :cols => 30, rows: 2, placeholder: "(Opcional)" %>
+		    </div>
+		</div>
+		<div class="vista2">
+		    <div class="field">
+				</br><%= f.submit 'Seleccionar Mesa', :class => 'boton grey' %>
+			</div>
+		</div>
+		<div class="vista">
+	        <div class="cssToolTip">
+	        	<%= image_tag('information.png', :alt => 'info')%>Información
+				<span>
+					<%= image_tag('mesaSelected.png', :alt => 'mesaSelected')%>Seleccionada
+			        <%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%>Disponible
+			        <%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%>Ocupada
+				</span> 
+			</div>
+		</div>
+	    <%= f.hidden_field :place %>
+		<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+		<%= f.hidden_field :restaurant_user_id, :value => @current_restaurant_user.id %>
+		<ul class="tabs">
+		    <li><a href="#tab1">Salón</a></li>
+		    <li><a href="#tab2">Salón Principal</a></li>
+		    <li><a href="#tab3">Terraza</a></li>
+		</ul>
+		<div class="contenedor_table">
+			<% locations_ocuped = @current_restaurant.commands.where(:is_end => false).pluck(:place) %>
+		    <div id="tab1" class="contenido_tab">
+		        <table>
+		            <tbody>
+		            	<tr>
+		            		<td class="location" data-place="1"><%= ocuped(1, locations_ocuped) %></td>
+		            		<td class="location" data-place="2"><%= image_tag('puertaBaños.png', :alt => 'mesaNotSelected')%></td>
+		            		<td class="location" data-place="3"><%= ocuped(3, locations_ocuped) %></td>
+		            		<td class="location" data-place="4"><%= ocuped(4, locations_ocuped) %></td>
+		            		<td class="location" data-place="5"><%= ocuped(5, locations_ocuped) %></td>
+		            		<td class="location" data-place="6"><%= ocuped(6, locations_ocuped) %></td>
+		            	</tr>
+		            	<tr>
+		            		<td class="location" data-place="7"><%= ocuped(7, locations_ocuped) %></td>
+		            		<td class="location" data-place="8"><%= image_tag('puertaSalon.png', :alt => 'mesaNotSelected')%></td>
+		            		<td class="location" data-place="9"><%= ocuped(9, locations_ocuped) %></td>
+		            		<td class="location" data-place="10"><%= ocuped(10, locations_ocuped) %></td>
+		            		<td class="location" data-place="11"><%= ocuped(11, locations_ocuped) %></td>
+		            		<td class="location" data-place="12"><%= ocuped(12, locations_ocuped) %></td>
+		            	</tr>
+		            </tbody>
+		        </table>
+		    </div>
+		    <div id="tab2" class="contenido_tab">
+		         <table>
+		            <tbody>
+		            	<tr>
+		            		<td class="location" data-place="13"><%= ocuped(13, locations_ocuped) %></td>
+		            		<td class="location" data-place="14"><%= ocuped(14, locations_ocuped) %></td>
+		            		<td class="location" data-place="15"><%= ocuped(15, locations_ocuped) %></td>
+		            		<td class="location" data-place="16"><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+		            		<td class="location" data-place="17"><%= ocuped(17, locations_ocuped) %></td>
+		            		<td class="location" data-place="18"><%= ocuped(18, locations_ocuped) %></td>
+		            	</tr>
+		                <tr>
+		            		<td class="location" data-place="19"><%= ocuped(19, locations_ocuped) %></td>
+		            		<td class="location" data-place="20"><%= ocuped(20, locations_ocuped) %></td>
+		            		<td class="location" data-place="21"><%= ocuped(21, locations_ocuped) %></td>
+		            		<td class="location" data-place="22"><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+		            		<td class="location" data-place="23"><%= ocuped(23, locations_ocuped) %></td>
+		            		<td class="location" data-place="24"><%= ocuped(24, locations_ocuped) %></td>
+		            	</tr>
+		            	<tr>
+		            		<td class="location" data-place="25"><%= ocuped(25, locations_ocuped) %></td>
+		            		<td class="location" data-place="26"><%= image_tag('puertaSalon.png', :alt => 'mesaNotSelected')%><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
+		            		<td class="location" data-place="27"><%= ocuped(27, locations_ocuped) %></td>            	
+		            		<td class="location" data-place="28"></td>
+		            		<td class="location" data-place="29"><%= image_tag('puertaRestaurante.png', :alt => 'mesaNotSelected')%></td>
+		            		<td class="location" data-place="30"><%= ocuped(30, locations_ocuped) %></td>
+		            	</tr>
+		            </tbody>
+		        </table>
+		    </div>
+		    <div id="tab3" class="contenido_tab">
+		         <table>
+		            <tbody>
+		                <tr>
+		            		<td class="location" data-place="31"><%= ocuped(31, locations_ocuped) %></td>
+		            		<td class="location" data-place="32"><%= image_tag('puertaRestaurante.png', :alt => 'mesaNotSelected')%></td>
+		            		<td class="location" data-place="33"><%= ocuped(33, locations_ocuped) %></td>
+		            		<td class="location" data-place="34"><%= ocuped(34, locations_ocuped, true) %></td>
+		            		<td class="location" data-place="35"><%= ocuped(35, locations_ocuped, true) %></td>
+		            		<td class="location" data-place="36"><%= ocuped(36, locations_ocuped, true) %></td>
+		            		<td class="location" data-place="37"><%= ocuped(37, locations_ocuped, true) %></td>
+		            	</tr>
+		            	<tr>
+		            		<td class="location" data-place="38"><%= ocuped(38, locations_ocuped) %></td>
+		            		<td class="location" data-place="39"><%= ocuped(39, locations_ocuped) %></td>
+		            		<td class="location" data-place="40"><%= ocuped(40, locations_ocuped) %></td>
+		            		<td class="location" data-place="41"><%= ocuped(41, locations_ocuped) %></td>
+		            		<td class="location" data-place="42"><%= ocuped(42, locations_ocuped) %></td>
+		            		<td class="location" data-place="43"><%= ocuped(43, locations_ocuped, true) %></td>
+		            		<td class="location" data-place="44"><%= ocuped(44, locations_ocuped, true) %></td>
+		            	</tr>
+		            </tbody>
+		        </table>
+		    </div>
+		</div>
+	<% end %>
+	<div style="clear:both;">
 	</div>
-	<div class="vista2">
-	    <div class="field">
-	        <%= f.label :descripción, style: "color: white" %>
-	        <%= f.text_area :description, :cols => 30, rows: 2, placeholder: "(Opcional)" %>
-	    </div>
-	</div>
-	<div class="vista2">
-	    <div class="field">
-			</br><%= f.submit 'Seleccionar Mesa', :class => 'boton grey' %>
+<% else %>
+	<div id="padre">  
+        <div id="hijo8">
+			<%= form_for :command, url: commands_path do |f| %>
+				<%= f.error_messages %>
+				<div class="field">
+			        <%= f.label :nombre_comanda %>
+			        <%= f.text_field :title %>
+				</div>
+			    <div class="field">
+			        <%= f.label :descripción %>
+			        <%= f.text_area :description, :cols => 30, rows: 2, placeholder: "(Opcional)" %>
+			    </div>
+	    		<div class="field">
+					<%= f.label :número_dispositivo_bluetooth %><br />
+					<%= f.text_field :place %>
+				</div>
+				<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
+				<%= f.hidden_field :restaurant_user_id, :value => @current_restaurant_user.id %>
+			    <div class="field">
+					</br><%= f.submit 'Seleccionar Mesa', :class => 'boton grey' %>
+				</div></br>
+			<% end %>
 		</div>
 	</div>
-	<div class="vista">
-        <div class="cssToolTip">
-        	<%= image_tag('information.png', :alt => 'info')%>Información
-			<span>
-				<%= image_tag('mesaSelected.png', :alt => 'mesaSelected')%>Seleccionada
-		        <%= image_tag('mesaNotSelected.png', :alt => 'mesaNotSelected')%>Disponible
-		        <%= image_tag('mesaOccuped.png', :alt => 'mesaOccuped')%>Ocupada
-			</span> 
-		</div>
-	</div>
-    <%= f.hidden_field :place %>
-	<%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-	<%= f.hidden_field :restaurant_user_id, :value => @current_restaurant_user.id %>
-	<ul class="tabs">
-	    <li><a href="#tab1">Salón</a></li>
-	    <li><a href="#tab2">Salón Principal</a></li>
-	    <li><a href="#tab3">Terraza</a></li>
-	</ul>
-	<div class="contenedor_table">
-		<% locations_ocuped = @current_restaurant.commands.where(:is_end => false).pluck(:place) %>
-	    <div id="tab1" class="contenido_tab">
-	        <table>
-	            <tbody>
-	            	<tr>
-	            		<td class="location" data-place="1"><%= ocuped(1, locations_ocuped) %></td>
-	            		<td class="location" data-place="2"><%= image_tag('puertaBaños.png', :alt => 'mesaNotSelected')%></td>
-	            		<td class="location" data-place="3"><%= ocuped(3, locations_ocuped) %></td>
-	            		<td class="location" data-place="4"><%= ocuped(4, locations_ocuped) %></td>
-	            		<td class="location" data-place="5"><%= ocuped(5, locations_ocuped) %></td>
-	            		<td class="location" data-place="6"><%= ocuped(6, locations_ocuped) %></td>
-	            	</tr>
-	            	<tr>
-	            		<td class="location" data-place="7"><%= ocuped(7, locations_ocuped) %></td>
-	            		<td class="location" data-place="8"><%= image_tag('puertaSalon.png', :alt => 'mesaNotSelected')%></td>
-	            		<td class="location" data-place="9"><%= ocuped(9, locations_ocuped) %></td>
-	            		<td class="location" data-place="10"><%= ocuped(10, locations_ocuped) %></td>
-	            		<td class="location" data-place="11"><%= ocuped(11, locations_ocuped) %></td>
-	            		<td class="location" data-place="12"><%= ocuped(12, locations_ocuped) %></td>
-	            	</tr>
-	            </tbody>
-	        </table>
-	    </div>
-	    <div id="tab2" class="contenido_tab">
-	         <table>
-	            <tbody>
-	            	<tr>
-	            		<td class="location" data-place="13"><%= ocuped(13, locations_ocuped) %></td>
-	            		<td class="location" data-place="14"><%= ocuped(14, locations_ocuped) %></td>
-	            		<td class="location" data-place="15"><%= ocuped(15, locations_ocuped) %></td>
-	            		<td class="location" data-place="16"><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
-	            		<td class="location" data-place="17"><%= ocuped(17, locations_ocuped) %></td>
-	            		<td class="location" data-place="18"><%= ocuped(18, locations_ocuped) %></td>
-	            	</tr>
-	                <tr>
-	            		<td class="location" data-place="19"><%= ocuped(19, locations_ocuped) %></td>
-	            		<td class="location" data-place="20"><%= ocuped(20, locations_ocuped) %></td>
-	            		<td class="location" data-place="21"><%= ocuped(21, locations_ocuped) %></td>
-	            		<td class="location" data-place="22"><%= image_tag('vacio.png', :alt => 'mesaNotSelected')%></td>
-	            		<td class="location" data-place="23"><%= ocuped(23, locations_ocuped) %></td>
-	            		<td class="location" data-place="24"><%= ocuped(24, locations_ocuped) %></td>
-	            	</tr>
-	            	<tr>
-	            		<td class="location" data-place="25"><%= ocuped(25, locations_ocuped) %></td>
-	            		<td class="location" data-place="26"><%= image_tag('puertaSalon.png', :alt => 'mesaNotSelected')%></td>
-	            		<td class="location" data-place="27"><%= ocuped(27, locations_ocuped) %></td>            	
-	            		<td class="location" data-place="28"></td>
-	            		<td class="location" data-place="29"><%= image_tag('puertaRestaurante.png', :alt => 'mesaNotSelected')%></td>
-	            		<td class="location" data-place="30"><%= ocuped(30, locations_ocuped) %></td>
-	            	</tr>
-	            </tbody>
-	        </table>
-	    </div>
-	    <div id="tab3" class="contenido_tab">
-	         <table>
-	            <tbody>
-	                <tr>
-	            		<td class="location" data-place="31"><%= ocuped(31, locations_ocuped) %></td>
-	            		<td class="location" data-place="32"><%= image_tag('puertaRestaurante.png', :alt => 'mesaNotSelected')%></td>
-	            		<td class="location" data-place="33"><%= ocuped(33, locations_ocuped) %></td>
-	            		<td class="location" data-place="34"><%= ocuped(34, locations_ocuped, true) %></td>
-	            		<td class="location" data-place="35"><%= ocuped(35, locations_ocuped, true) %></td>
-	            		<td class="location" data-place="36"><%= ocuped(36, locations_ocuped, true) %></td>
-	            		<td class="location" data-place="37"><%= ocuped(37, locations_ocuped, true) %></td>
-	            	</tr>
-	            	<tr>
-	            		<td class="location" data-place="38"><%= ocuped(38, locations_ocuped) %></td>
-	            		<td class="location" data-place="39"><%= ocuped(39, locations_ocuped) %></td>
-	            		<td class="location" data-place="40"><%= ocuped(40, locations_ocuped) %></td>
-	            		<td class="location" data-place="41"><%= ocuped(41, locations_ocuped) %></td>
-	            		<td class="location" data-place="42"><%= ocuped(42, locations_ocuped) %></td>
-	            		<td class="location" data-place="43"><%= ocuped(43, locations_ocuped, true) %></td>
-	            		<td class="location" data-place="44"><%= ocuped(44, locations_ocuped, true) %></td>
-	            	</tr>
-	            </tbody>
-	        </table>
-	    </div>
-	</div>
-<% end %>
-<div style="clear:both;">
-</div>
+<%end %>
 
 
 

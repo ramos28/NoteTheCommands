@@ -11,8 +11,8 @@ class CreateRestaurants < ActiveRecord::Migration[5.0]
             t.string :opening_hours
             t.float :latitude
             t.float :longitude
-            t.integer :tables
-            t.boolean :fastfood
+            t.integer :tables, null: false
+            t.boolean :fastfood, null: false
 
             t.timestamps null: false
         end

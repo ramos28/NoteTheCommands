@@ -35,11 +35,13 @@ ActiveRecord::Schema.define(version: 20170108133629) do
   end
 
   create_table "command_menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "command_id", null: false
-    t.integer  "menu_id",    null: false
-    t.integer  "quantity",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "command_id",                 null: false
+    t.integer  "menu_id",                    null: false
+    t.integer  "quantity",                   null: false
+    t.boolean  "is_served",  default: false
+    t.boolean  "is_cooked",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["command_id"], name: "index_command_menus_on_command_id", using: :btree
     t.index ["menu_id"], name: "index_command_menus_on_menu_id", using: :btree
   end
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170108133629) do
     t.integer  "product_id",                 null: false
     t.integer  "quantity",                   null: false
     t.boolean  "is_served",  default: false
+    t.boolean  "is_cooked",  default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["command_id"], name: "index_command_products_on_command_id", using: :btree
@@ -221,8 +224,8 @@ ActiveRecord::Schema.define(version: 20170108133629) do
     t.string   "opening_hours"
     t.float    "latitude",      limit: 24
     t.float    "longitude",     limit: 24
-    t.integer  "tables"
-    t.boolean  "fastfood"
+    t.integer  "tables",                   null: false
+    t.boolean  "fastfood",                 null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["email"], name: "index_restaurants_on_email", unique: true, using: :btree

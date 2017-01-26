@@ -43,6 +43,7 @@
                         <th class="tabla3" title="Cantidad seleccionada de un mismo Producto">Cantidad</th>
                         <th class="tabla3" title="Precio por unidad del Producto">Precio</th>
                         <th class="tabla3" title="Coste del Producto total (Cantidad x Precio Unidad)">Coste</th>
+                        <th class="tabla3" title="Estado del producto si esta servido (en amarillo clarito) y si no (en rojo clarito)">¿Servido?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,9 +55,14 @@
                             <td class="tabla3"><%= cp.quantity %> Unds</td>
                             <td class="tabla3"><%= cp.product.price %> €/Unds</td>
                             <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td>
-                            <td class="tabla3"><%= cp.is_served %></td>
-
-                            <td class="tabla3"><%= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, style: "color: black"  %></td>
+                            <% if cp.is_served %>
+                                <td class="b5"><%= cp.is_served %></td>
+                            <% else %>
+                                <td class="b6"><%= cp.is_served %></td>
+                            <% end %>
+                            <% if !cp.is_served%>
+                                <td><%= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, :class => 'boton grey' %></td>
+                            <% end %>
                         </tr>
                     <% end %>
                     <% @command.command_menus.each do |cp| %>
@@ -67,19 +73,26 @@
                             <td class="tabla3"><%= cp.quantity %> Unds</td>
                             <td class="tabla3"><%= cp.menu.price %> €/Unds</td>
                             <td class="tabla3"><%= cp.menu.price * cp.quantity %> €</td>
-                            <td class="tabla3"><%= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, style: "color: black"  %></td>
+                            <% if cp.is_served %>
+                                <td class="b5"><%= cp.is_served %></td>
+                            <% else %>
+                                <td class="b6"><%= cp.is_served %></td>
+                            <% end %>
+                            <% if !cp.is_served%>
+                                <td><%= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, :class => 'boton grey' %></td>
+                            <% end %>
                         </tr>
                     <% end %>
                 </tbody>
                 <tfoot>
                     <tr class="tabla3">
                         <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                        <td class="tabla3" colspan="3"><%= total_price_command %> €</td>
+                        <td class="tabla3" colspan="4"><%= total_price_command %> €</td>
                     </tr>
                 </tfoot>
             </table>
         </div>
-
+        </br></br>
         <% if !@command.is_end %>    
             <div class="muestra-eleccion-comandas">
             <ul class="tabs">
@@ -93,7 +106,7 @@
                             <div class="field">
                                 </br><%= f.label :producto %><br/>
 
-                                <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_products, :id, :name)%>
+                                <%= f.select :product_id, options_from_collection_for_select(Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_products, :id, :name)%>
                             </div>
                             <div class="field">
                                 </br><%= f.label :cantidad %><br/>
@@ -101,17 +114,6 @@
                             </div>
                             <%= f.hidden_field :command_id, value: @command.id %>
                             </br><%= f.submit 'Agregar Producto', :class => 'boton grey'  %>
-                        <% end %>
-                        <% if @command.is_served %>
-                            <%= form_for @command, url: command_path do |f| %>
-                                <%= f.error_messages %>
-                                <%= f.hidden_field :is_end, :value => 1 %>
-                                </br></br><div class="accion-command">Cerrar la Comanda</div>
-                                <div class="field">
-                                    </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
-                                    </br></br>
-                                </div>
-                            <% end %>
                         <% end %>
                     </div>
                     <div id="tab2" class="contenido_tab">
@@ -128,23 +130,23 @@
                             <%= f.hidden_field :command_id, value: @command.id %>
                             </br><%= f.submit 'Agregar Menú', :class => 'boton grey'  %>
                         <% end %>
-                        <% if @command.is_served %>
-                            <%= form_for @command, url: command_path do |f| %>
-                                <%= f.error_messages %>
-                                <%= f.hidden_field :is_end, :value => 1 %>
-                                </br></br><div class="accion-command">Cerrar la Comanda</div>
-                                <div class="field">
-                                    </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
-                                    </br></br>
-                                </div>
-                            <% end %>
-                        <% end %>
                     </div>
                 </div>
+                <% if @command.is_served %>
+                    <%= form_for @command, url: command_path do |f| %>
+                        <%= f.error_messages %>
+                        <%= f.hidden_field :is_end, :value => 1 %>
+                        </br></br><div class="accion-command">Cerrar la Comanda</div>
+                        <div class="field">
+                            </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
+                            </br></br>
+                        </div>
+                    <% end %>
+                <% end %>
             </div>
             <div style="clear:both;"></div>
         <% else %>
-            <%= link_to 'Pedir cuenta', command_finish_path(@command), style: "color: white"  %>
+            <%= link_to 'Pedir cuenta', command_finish_path(@command), :class => 'boton grey'  %>
         <% end %>
     <% else %>
         <div class="muestra-tabla-comandas-entera">
@@ -156,6 +158,8 @@
                         <th class="tabla3" title="Cantidad seleccionada de un mismo Producto">Cantidad</th>
                         <th class="tabla3" title="Precio por unidad del Producto">Precio</th>
                         <th class="tabla3" title="Coste del Producto total (Cantidad x Precio Unidad)">Coste</th>
+                        <th class="tabla3" title="Estado del producto si esta servido (en amarillo clarito) y si no (en rojo clarito)">¿Servido?</th>
+                        <th class="tabla3" title="Estado del producto si esta servido (en amarillo clarito) y si no (en rojo clarito)">¿Cocinado?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -166,7 +170,20 @@
                             <td class="tabla3"><%= cp.product.name %></td>
                             <td class="tabla3"><%= cp.quantity %> Unds</td>
                             <td class="tabla3"><%= cp.product.price %> €/Unds</td>
-                            <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td> 
+                            <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td>
+                            <% if cp.is_served %>
+                                <td class="b5"><%= cp.is_served %></td>
+                            <% else %>
+                                <td class="b6"><%= cp.is_served %></td>
+                            <% end %>
+                            <% if cp.is_cooked %>
+                                <td class="b5"><%= cp.is_cooked %></td>
+                            <% else %>
+                                <td class="b6"><%= cp.is_cooked %></td>
+                            <% end %>
+                            <% if !cp.is_served%>
+                                <td><%= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, :class => 'boton grey' %></td>
+                            <% end %>
                         </tr>
                     <% end %>
                     <% @command.command_menus.each do |cp| %>
@@ -177,13 +194,21 @@
                             <td class="tabla3"><%= cp.quantity %> Unds</td>
                             <td class="tabla3"><%= cp.menu.price %> €/Unds</td>
                             <td class="tabla3"><%= cp.menu.price * cp.quantity %> €</td>
+                            <% if cp.is_served %>
+                                <td class="b5"><%= cp.is_served %></td>
+                            <% else %>
+                                <td class="b6"><%= cp.is_served %></td>
+                            <% end %>
+                            <% if !cp.is_served%>
+                                <td><%= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, :class => 'boton grey' %></td>
+                            <% end %>
                         </tr>
                     <% end %>
                 </tbody>
                 <tfoot>
                     <tr class="tabla3">
                         <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                        <td class="tabla3" colspan="3"><%= total_price_command %> €</td>
+                        <td class="tabla3" colspan="4"><%= total_price_command %> €</td>
                     </tr>
                 </tfoot>
             </table>
