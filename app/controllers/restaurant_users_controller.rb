@@ -7,11 +7,9 @@ class RestaurantUsersController < ApplicationController
             @restaurant_users = RestaurantUser.where("user_id = ?", "#{current_user.id}").order('rol DESC').paginate(:per_page => 8, :page => params[:page])
         end
         if params[:name].present?
-            @restaurant = Restaurant.where("name LIKE ?", params[:name])
-            debugger
-            @restaurant.each do |elemento|
-                @restaurant_users = RestaurantUser.where("restaurant_id = ? AND user_id = ?", elemento.id, current_user.id)
-            end
+            restaurant_ids = Restaurant.where("name like '%#{params[:name]}%'").pluck(:id)
+
+            @restaurant_users = current_user.restaurant_users.where(:restaurant_id => restaurant_ids).paginate(:per_page => 8, :page => params[:page])
         end
         @restaurants_users = RestaurantUser.new
     end

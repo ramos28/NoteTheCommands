@@ -6,7 +6,15 @@ class CommandsController < ApplicationController
 		@commands_gerente = Command.where("restaurant_id = ?", "#{@current_restaurant.id}").order('created_at DESC').paginate(:per_page => 8, :page => params[:page])
 		#@commands += @commands.select{|command| command.created_at >= Time.now.beginning_of_day}
 		#@commands_cooker = Command.where("restaurant_id = ? AND created_at >= ? ", "#{@current_restaurant.id}", "#{Time.now.beginning_of_day}").paginate(:per_page => 8, :page => params[:page])
-		@ended = true
+    @commands_cooker = []
+
+    @current_restaurant.commands.each do |command|
+      @commands_cooker += @current_restaurant.commands.first.command_products.where(:is_served => false)
+    end
+
+    #@commands_cooker = @commands_cooker.order("is_cooked")
+
+    @ended = true
 		@commands.pluck(:is_end).map {|e| @ended = @ended && e}
 		#@commands_ends = Command.where("restaurant_id = ? AND is_end = true", "#{@current_restaurant.id}")
 		@command = Command.new
@@ -40,10 +48,12 @@ class CommandsController < ApplicationController
 	    @command = Command.find(params[:id])
 	    if @command.update_attributes(command_params)
 	      	if @command.is_served
-	      		@command.command_products.update_all(is_served: true)
+	      		@command.command_products.each do |command_product|
+              command_product.update(:is_served => true) if command_product.is_cooked
+            end
 	      	end
 	      	flash[:notice] = "Successfully updated command."
-	      	redirect_to :back
+	      	redirect_to @command
 	    else
 	      	render :action => 'edit'
 	    end

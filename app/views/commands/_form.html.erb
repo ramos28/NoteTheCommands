@@ -1,5 +1,5 @@
 <% if !@current_restaurant.fastfood %>
-	<%= form_for :command, url: commands_path do |f| %>
+	<%= form_for @command do |f| %>
 		<div class="vista2">
 			<div class="field">
 		        <%= f.label :nombre_comanda, style: "color: white" %>

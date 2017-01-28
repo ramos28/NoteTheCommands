@@ -17,7 +17,7 @@
                     <% if @current_restaurant %>
                         </br>Rol: <%= RestaurantUser::ROLES[@current_role] %>
                         </br>Rest: <%= @current_restaurant.name %>
-                        </br>Desc: <%= @current_discount %>%
+                        </br>Desc: <%= @current_restaurant_user.discount %>%
                     <% end %>
                 </div>
             <%end%>

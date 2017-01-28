@@ -20,6 +20,14 @@ class CommandProductsController < ApplicationController
         end
     end
 
+
+    def update
+        @product_command = CommandProduct.find(params[:id])
+        @product_command.update(product_command_params)
+    
+        redirect_to :back
+    end
+
     def destroy
         @product_command = CommandProduct.find(params[:id])
 
@@ -31,7 +39,7 @@ class CommandProductsController < ApplicationController
     private
 
     def product_command_params
-        params.require(:command_product).permit(:command_id, :product_id, :quantity)
+        params.require(:command_product).permit(:command_id, :product_id, :quantity, :is_cooked)
 
     end 
 end

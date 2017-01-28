@@ -141,15 +141,17 @@
 	    </tr>
 	    <% @command_waiter.each do |command| %>
 	        <% if command.restaurant_id == @current_restaurant.id %>
+					    	<% serve = true %>
+					    	<% command.command_products.pluck(:is_served).map {|c| serve = serve && c} %>
 	            <tr class="tabla1">
 	                <td class="tabla1"><%= command.title %></td>
 	                <td class="tabla1"><%= command.restaurant.name %></td>
 	                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
 	                <td class="tabla1"><%= command.place %></td>
-	                <% if command.is_served %>
-	                	<td class="b5"><%= command.is_served %></td>
+	                <% if serve %>
+	                	<td class="b5"><%= serve %></td>
 	                <% else %>
-						<td class="b6"><%= command.is_served %></td>
+						<td class="b6"><%= serve %></td>
 	                <% end %>
 	                <% if !command.is_end %>
 	                	<td class="b1"><%= command.is_end %></td>
@@ -160,8 +162,6 @@
 
 					<td>
 					    <%= form_for command do |f| %>
-					    	<% serve = true %>
-					    	<% command.command_products.pluck(:is_served).map {|c| serve = serve && c} %>
 					    	<% if !serve %>
 						        <%= f.error_messages %>
 
@@ -234,29 +234,34 @@
 				</div>
 	        </th>
 	    </tr>
-	    <% @commands_cooker.command_products.each do |command| %>
-	        <% if command.restaurant_id == @current_restaurant.id %>
-	        	<% if command.product.type_product != 6 || command.product.type_product != 7 || command.product.type_product != 8 || command.product.type_product != 9 %>
-		            <tr class="tabla1">
-		                <td class="tabla1"><%= command.product.name %></td>
-		                <td class="tabla1"><%= command.quantity %></td>
-		                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
-		                <td class="tabla1"><%= command.place %></td>
-		                <td class="tabla1"><%= command.description %></td>
-		                <% if command.is_served %>
-		                	<td class="b5"><%= command.is_served %></td>
-		                <% else %>
-							<td class="b6"><%= command.is_served %></td>
-		                <% end %>
-		                <% if command.is_cooked %>
-		                	<td class="b5"><%= command.is_cooked %></td>
-		                <% else %>
-							<td class="b6"><%= command.is_cooked %></td>
-		                <% end %>
-		                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %><%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>                
-		            </tr>
-		        <% end %>
-	        <% end %>
+	    <% @commands_cooker.each do |command_product| %>
+      	<% if command_product.product.type_product != 6 || command_product.product.type_product != 7 || command_product.product.type_product != 8 || command_product.product.type_product != 9 %>
+            <tr class="tabla1">
+                <td class="tabla1"><%= command_product.product.name %></td>
+                <td class="tabla1"><%= command_product.quantity %></td>
+                <td class="tabla1"><%= command_product.command.restaurant_user.user.user_name %></td>
+                <td class="tabla1"><%= command_product.command.place %></td>
+                <td class="tabla1"><%= command_product.command.description %></td>
+                <% if command_product.is_served %>
+                	<td class="b5"><%= command_product.is_served %></td>
+                <% else %>
+					<td class="b6"><%= command_product.is_served %></td>
+                <% end %>
+                <% if command_product.is_cooked %>
+                	<td class="b5"><%= command_product.is_cooked %></td>
+                <% else %>
+					<td class="b6"><%= command_product.is_cooked %></td>
+                <% end %>
+                <td><%= link_to "Editar", edit_command_path(command_product.command), :class => 'boton grey' %><%= link_to "Ver Comanda", command_path(command_product.command), :class => 'boton grey' %></td>
+                <td>
+	              	<%= form_for command_product, :url => command_product_path(command_product) do |f| %>
+	                	<%= f.hidden_field :is_cooked, value: true %>
+	                	<%= f.submit "cocinar", class: "boton grey" %>
+	              	<% end %>
+              	</td>
+
+            </tr>
+        <% end %>
 	    <% end %>
 	    <tfoot>
 			<tr class="tabla1">
