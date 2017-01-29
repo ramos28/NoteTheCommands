@@ -38,8 +38,8 @@
 				    </th>
 				    <th class="tabla1" >
 						<div class="cssToolTip">
-						    <%= "¿Consumo menores?" %>
-							<span>Nos dice si está permitida la venta del producto a menores de edad</span> 
+						    <%= "¿Menores?" %>
+							<span>Nos dice si está permitida la venta del producto a menores de edad (<18)</span> 
 						</div>
 				    </th>
 				<% end %>
@@ -58,7 +58,7 @@
 					<% else %>
 						<td class="b6"><%= product.younger %></td>
 					<% end %>
-					<td><%= link_to "Edit Stock", edit_product_path(product), :class => 'boton grey' %></td>
+					<td><%= link_to "Editar Stock", edit_product_path(product), :class => 'boton grey' %></td>
 			    </tr>
 			<% end %>
 		</tbody>
@@ -77,6 +77,6 @@
 </div>
 
 <div class="muestra-opciones">
-	</br><div class="accionTitle">Registrar Producto en Restaurante</div>
+	</br><div class="accionTitle">Registrar Producto</div>
 	<%= render 'form' %>
 </div>

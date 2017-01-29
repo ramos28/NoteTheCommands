@@ -7,7 +7,8 @@
 </ul>
 <div class="contenedor_tab">
     <div id="tab1" class="contenido_tab">
-        <%= button_to "Nuvea Incidencia", new_incidence_path, :method => "get", :class => 'boton grey' %>
+        <%= button_to "Nuvea Incidencia", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %>
+
         <table class="tabla4">
             <thead>
                 <tr class="tabla4">
@@ -266,3 +267,18 @@
 </div>
 <div style="clear:both;">
 </div>
+
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"} %></div>
+    <div class="title">Nueva Incidencia</div>
+    <%= render 'form' %>
+</div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>

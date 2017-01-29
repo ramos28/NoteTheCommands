@@ -84,5 +84,19 @@
     </tfoot>
 </table>
 
-<p><%= button_to "Añadir Producto al Stock", new_stock_path, :method => "get", :class => 'boton grey' %></p>
+<p><%= button_to "Añadir Producto al Stock", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
 
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"} %></div>
+    <div class="title">Nuevo Stock</div>
+    <%= render 'form' %>
+</div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>

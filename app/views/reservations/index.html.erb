@@ -1,5 +1,16 @@
 <% if @current_role == 1 || @current_role == 2 || @current_role == 3 %>
     <div class="title">Reservas del Restaurante</div>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.0/fullcalendar.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.0/fullcalendar.print.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js">
+    </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.0/fullcalendar.min.js">
+    </script>
+
+    <div id="calendar"></div>
+    <script>
+        $('#calendar').fullCalendar({})
+    </script>
     <div class ="muestra-tabla">
             <table class="tabla2">
                 <thead>
@@ -98,7 +109,7 @@
     </div>
     <div class="muestra-opciones">
             </br><div class="accionTitle">Realizar Reserva</div>
-            <%= render 'form' %>
+            <%= render 'form2' %>
     </div>
 <%else%>
         </br><div class="title">Realizar Reserva</div>

@@ -22,15 +22,11 @@ class EmailsController < ApplicationController
         else 
             @emails_out = Email.where("user_from = ?", "#{current_user.email}").paginate(:per_page => 5, :page => params[:page])
         end
-
+        @email = Email.new
     end
 
     def show
         @email = Email.find(params[:id])
-    end
-
-    def new
-        @email = Email.new
     end
 
     def create

@@ -6,7 +6,7 @@
 
 <div class="takeaway">
     <div class="muestra-takeaways">
-        </br></br></br></br></br><div class="takeaway_accion">Pedido Online</div>
+        </br></br></br></br></br><div class="takeaway_accion">Pedido</div>
         <div id="padre">  
             <div id="hijo7">
                 <p>
@@ -27,7 +27,7 @@
                 </p>
                 <p>
                     <strong>Descuento adicional:</strong>
-                    <%= @takeaway.discount %>%
+                    <%= @current_restaurant_user.discount %>%
                 </p>
 
                 <p>
@@ -191,7 +191,7 @@
             <td style="font-weight:bold; text-align: right;">Total:</td>
             <td style="text-align: right;"><%= @takeaway.total_price_selection %>€</td>
             <% if !@takeaway.total_price_selection != nil %>
-                <td style="text-align: right;" colspan="2"><%= @takeaway.total_price_selection * 1.21 %>€</td>
+                <td style="text-align: right;" colspan="2"><%= @takeaway.total_price_selection * 1.21 if @takeaway.total_price_selection != nil %>€</td>
             <% end %>
 
         </tr>

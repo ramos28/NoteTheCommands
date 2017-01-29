@@ -7,7 +7,7 @@
 <div class="contenedor_tab">
     <div id="tab1" class="contenido_tab">
         <table class="tabla4">
-            <%= button_to "Redactar", new_email_path, :method => "get", :class => 'boton grey' %>
+            <%= button_to "Redactar", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %>
             <%= button_to "Eliminar", @email, :confirm => '¿Esta seguro que dese eliminar el mensaje?', :method => :delete, :class => 'boton grey' %><br/>
             <thead>
                 <tr class="tabla4">
@@ -157,3 +157,19 @@
 </div>
 <div style="clear: both;">
 </div>
+
+
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"} %></div>
+    <div class="title">Nuevo email</div>
+    <%= render 'form' %>
+</div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>

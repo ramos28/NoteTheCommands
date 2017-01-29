@@ -9,10 +9,6 @@ class ProductsController < ApplicationController
 	    end
 	end
 
-	def show
-		@product = Product.find(params[:id])
-	end
-
 	def new
 		@product = Product.new
 	end
@@ -21,7 +17,7 @@ class ProductsController < ApplicationController
 		@product = Product.new(product_params)
 		if @product.save
 			flash[:notice] = "Successfully created product."
-			redirect_to @product
+			redirect_to :back
 		else
 			render :action =>'new'
 		end

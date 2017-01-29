@@ -4,14 +4,7 @@ class StocksController < ApplicationController
 	    if params[:description_stock].present?
 	      	@stocks = @stocks.where("description_stock LIKE ?", "%#{params[:description_stock]}%")
 	    end
-	end
-
-	def show
-		@stock = Stock.find(params[:id])
-	end
-
-	def new
-		@stock = Stock.new
+	    @stock = Stock.new
 	end
 	
 	def edit
@@ -22,7 +15,7 @@ class StocksController < ApplicationController
 		@stock = Stock.new(stock_params)
 		if @stock.save
 			flash[:notice] = "Successfully created stock."
-			redirect_to @stock
+			redirect_to :back
 		else
 			render :action =>'new'
 		end

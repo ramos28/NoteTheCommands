@@ -105,9 +105,9 @@
                         <%= form_for :command_product, url: command_products_path do |f| %>
                             <div class="field">
                                 </br><%= f.label :producto %><br/>
-
                                 <%= f.select :product_id, options_from_collection_for_select(Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_products, :id, :name)%>
                             </div>
+                            <% debugger %>
                             <div class="field">
                                 </br><%= f.label :cantidad %><br/>
                                 <%= f.number_field :quantity %>

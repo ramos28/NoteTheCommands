@@ -1,14 +1,14 @@
 <div class="title">Bienvenido</div>
 <div class ="muestra-tabla-anonimous">
     </br></br><div class="accionTitle">¿Aún no está regristrado? A que esperas para hacerlo..</div>
-    </br><%= button_to 'Registrarse', new_registration_path(:user), :method => "get", :class => 'boton grey'  %>
+    </br><%= button_to 'Registrarse', 'javascript:openWindow();', :method => "get", :class => 'boton grey'  %>
 
     </br></br></br><div class="accionTitle">Acceda sin Registro</div> 
     </br><%= button_to 'Usuario Invitado', guests_index_path, :method => "get", :class => 'boton grey'  %>
 </div>
 
 <div class="muestra-tabla-login">
-    </br></br><div class="accionTitle">Acceso Usuario Registrado</div>
+    </br></br><div class="accionTitle">Acceso Usuario</div>
     <div id="padre">  
         <div id="hijo8">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -37,3 +37,62 @@
         </div>
     </div>
 </div>
+
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea Salir del Registro?"} %></div>
+        <div class="title">Nuevo Usuario</div>
+        <div id="padre">  
+            <div id="hijo9">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                    <%= devise_error_messages! %>
+                    <div class="field">
+                        </br><%= f.label :correo %>
+                        <%= f.email_field :email, autofocus: true %>
+                    </div>
+
+                    <div class="field">
+                        <%= f.label :contraseña %>
+                        <% if @minimum_password_length %>
+                            <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
+                        <% end %><br />
+                        <%= f.password_field :password, autocomplete: "off" %>
+                    </div>
+
+                    <div class="field">
+                        <%= f.label :confirmar_contraseña %>
+                        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                    </div>
+
+                    <div class="field">
+                        <%= f.label :teléfono %>
+                        <%= f.text_field :phone %>
+                    </div> 
+
+                    <div class="field">
+                        <%= f.label :nombre %>
+                        <%= f.text_field :user_name %>
+                    </div>
+
+                    <div class="field">
+                        </br><%= f.label :fecha_nacimiento %>
+                        <%= f.date_select :birth_date, start_year: 1920, end_year: Date.today.year, :order => [:day, :month, :year] %>
+                    </div>
+
+                    <div class="actions"><br />
+                        <%= f.submit "Registrar", :class => 'boton grey' %>
+                    </div>
+                    </br></br>
+                <% end %>
+            </div>
+        </div>
+        <%= render "devise/shared/links" %>
+</div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>

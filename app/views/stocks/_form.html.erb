@@ -19,7 +19,7 @@
                 <%= f.number_field :price_buy_unity, :step => "0.01" %>
             </div>
             <div class="field">
-                </br><%= f.submit 'Añadir Stock', :class => 'boton grey' %>
+                </br><%= f.submit 'Añadir Stock', :class => 'boton grey', data: { confirm: "¿Está seguro que desea añadir al stock?"} %>
             </div>
             </br></br></br>
         <% end %>

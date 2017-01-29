@@ -49,7 +49,7 @@
                 <%= form_for :blog_user, url: blog_users_path do |blog_comment| %>
                     <%= blog_comment.error_messages %>
                     <div class="field">
-                        </br><%= blog_comment.text_area :description, style: "resize: none;", :cols => 40, rows: 4, placeholder: "Comentario..." %>
+                        </br><%= blog_comment.text_area :description, style: "resize: none;", :cols => 40, rows: 8, placeholder: "Comentario..." %>
                     </div>
                     <%= blog_comment.hidden_field :blog_id, :value => noticia.id %>
                     <%= blog_comment.hidden_field :user_id, :value => current_user.id %>
@@ -63,7 +63,7 @@
                         </br></br><div class="accion-blog">Crear Nueva Noticia</div>
                     </head>
                     </br>
-                    <%= link_to "Crear Nueva Noticia", new_blog_path, :class => 'boton grey' %>
+                    <%= link_to "Crear Nueva Noticia", 'javascript:openWindow();', :class => 'boton grey' %>
                     </br></br></br>
                 <% end %>
             </div>
@@ -71,4 +71,19 @@
     </article>
 </div>
 
+
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"} %></div>
+    <div class="title">Nueva Noticia</div>
+    <%= render 'form' %>
+</div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>
 
