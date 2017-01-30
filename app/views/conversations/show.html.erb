@@ -1,6 +1,15 @@
 <div class="title">Chateando con '<%= @conversation.with(current_user).user_name %>'</div>
 
 <div id="conversation-main" >
+	<div class="inf">
+		<div class="cssToolTip">
+	    	<%= image_tag('information.png', :alt => 'info')%>
+			<span>
+				Manual de ayuda de Conversaciones:<br>
+				En esta página el Usuario del Restaurante podrá conversar de forma privada con otro Usuario. Podrá enviar comentarios y leer lo que el otro Usuario le escriba.
+			</span> 
+		</div>
+	</div>
     <div id="conversation-body">
         <%= render @conversation.personal_messages %>
     </div>

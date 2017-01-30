@@ -7,9 +7,26 @@
 	text-align: center;
 	background: grey; 
 	top: 35%;
-	width: 70%;
+	width: 65%;
 	max-height: 400px;
 	overflow:scroll;
+	margin-bottom: 2em;
+	border-radius: 16px 16px;
+	border-color: #444444;
+	border-style: solid;
+	box-shadow: 2px 2px 10px #B1B1B1;
+	margin-top: 25px;
+	border-width: 4px;
+}
+
+#conversation-main {
+	margin: 0 auto;    
+    background-image: url("fondoAmarilloClaro.jpg");
+	text-align: center;
+	top: 35%;
+	width: 100%;
+	max-height: 600px;
+	overflow:auto;
 	margin-bottom: 2em;
 	border-radius: 16px 16px;
 	border-color: #444444;

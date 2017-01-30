@@ -16,15 +16,10 @@
 			</div>
 			<% if @ended %>
 				<div class="new">
-					<p class="header"><%= button_to 'Crear Comanda', new_command_path, :method => "get", :class => 'boton grey' %></p>
+					<p class="header"><%= button_to 'Crear Comanda', 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
 				</div>
 			<% end %>
 		</div>
-		<% if @ended %>
-			<div class="new">
-				<p><%= button_to 'Crear Comanda', new_command_path, :method => "get", :class => 'boton grey' %></p>
-			</div>
-		<% end %>
 		<table class="tabla1">
 		    <tr class="tabla1">
 		        <th class="tabla1" >
@@ -423,3 +418,18 @@
 		</table>
 	</div>
 <% end %>
+
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, style: "color: white" %></div>
+    </br><div class="title">Crear Comanda</div>
+    <%= render 'form' %>
+</div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>
