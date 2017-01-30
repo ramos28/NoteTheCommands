@@ -1,6 +1,23 @@
 <div class="title">Restaurantes Asociados</div>
 </br>	
 <div class ="muestra-tabla">
+	<div class="new">
+			<div class="inf">
+				<div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>
+					<span>
+						Manual de ayuda de Restaurantes:<br>
+						En esta página el Usuario podrá seleccionar un Restaurante en el que ya esté registrado y tambén podrá apuntarse a otro Las funcionalidades que tiene son:
+						-Seleccionar: El Cliente selecciona el Restaurante en el que realizar las funcionalidades.
+						-Dar de Baja: El Usuario podrá darse de baja de un Restaurante determinado.
+						-Administrar: Es aqui donde el Usuario podrá darse de alta en un nuevo REstaurante de la lista de REstaurantes que estan asociados.
+					</span> 
+				</div>
+			</div>
+			<div class="new">
+				<p class="header"><%= button_to 'Administrar', 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+			</div>
+		</div>
 	<table class="tabla2">
 		<thead>
 			<tr class="tabla2">
@@ -67,9 +84,12 @@
 		</tfoot>
 	</table>
 </div>
-<div class="muestra-opciones">
-	</br></br></br>
-	<% if current_user.superadmin %>
+
+
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, style: "color: white" %></div>
+    </br>
+    <% if current_user.superadmin %>
 		<div class="accionTitle">Registra Personal</div>
 		<div id="padre">  
 			<div id="hijo4">                           
@@ -97,9 +117,9 @@
 		</div>  
 	<% else %>
 		<%= form_for @restaurants_users do |f| %>
-			<div class="accionTitle">Apuntarse a un Restaurante</div>
+			<div class="title">Apuntarse a un Restaurante</div>
 			<div id="padre">  
-    			<div id="hijo4">
+    			<div id="hijo3">
 					<div class="field">
 						</br><%= f.label :selecione_restaurante %></br>
 						<%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%"), :id, :name)%>
@@ -113,5 +133,13 @@
 			</div>
 		<% end %>
     <% end %>
-    </br></br></br></br>
 </div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>
