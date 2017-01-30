@@ -164,6 +164,7 @@
     Camarero: <%= current_user.user_name %><br>
     Factura: <%= @takeaway.id %><br>
     Nombre: <%= @takeaway.name %><br>
+    Descuento Adicional: <%= @current_restaurant_user.discount %>%<br>
     -------------------------------------------------
     <table width="250">
         <tr>
@@ -191,16 +192,23 @@
             <td style="font-weight:bold; text-align: right;">Total:</td>
             <td style="text-align: right;"><%= @takeaway.total_price_selection %>€</td>
             <% if !@takeaway.total_price_selection != nil %>
-                <td style="text-align: right;" colspan="2"><%= @takeaway.total_price_selection * 1.21 if @takeaway.total_price_selection != nil %>€</td>
+                <td style="text-align: right;" colspan="2"><%= @takeaway.total_price_selection * 1.21 if @takeaway.total_price_selection != nil %>€*</td>
             <% end %>
 
         </tr>
         <br>
         <tr>
             <td></td>
-            <td></td>
-            <td style="text-align: right;" colspan="2">*21% Iva incluido</td>
+            <% discount = @current_restaurant_user.discount/100 %>
+            <% discount = (@takeaway.total_price_selection * 1.21 * discount) if @takeaway.total_price_selection != nil %>
+            <% discount = (@takeaway.total_price_selection * 1.21 - discount) if @takeaway.total_price_selection != nil %>
+            <td style="text-align: right;" colspan="3">Con descuento: <%= discount %> €</td>
 
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td style="text-align: right;" colspan="3">*21% Iva incluido</td>
         </tr>
     </table>
                      

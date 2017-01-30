@@ -2,6 +2,22 @@
 
 <% if @current_role == 0 %>
 	<div class ="muestra-tabla-pedido">
+		<div class="new">
+			<div class="inf">
+				<div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>
+					<span>
+						Manual de ayuda de Pedidos Online:<br>
+						En esta pagina el Usuario del Restaurante podrá realizar un pedido online de los productos que desee. Las funcionalidades que podrá realizar el Cliente son:<br>
+						- Crear nuevo pedido: Pulsar en caso de querer crear un nuevo pedido.<br>
+						Podrá visualizar la tabla con sus pedidos ordenados por fehcas y si están o no finalizados. En dicha tabla podrá realizar la siguientes funcionalidades:<br>
+						- Editar el pedido: Podrá modificar los datos del pedido como el nombre, el telefono...<br>
+						- Agragra productos a la comanda: Podrá agregar productos al pedido siempre y cuando no se haya finalizado. En caso contrario no podrá seguir añadiendo productos.
+					</span> 
+				</div>
+			</div>
+			<p class="header">Crear nuevo pedido  <%= link_to "Crear Pedido", 'javascript:openWindow();', :class => 'boton grey' %></p>
+		</div>
 		<table class="tabla2">
 			<thead>
 			    <tr class="tabla2">
@@ -75,7 +91,9 @@
 			                <td class="b2"><%=takeaway.is_delivered %></td>
 			            <% end %>
 			            <td><%= link_to "Editar", edit_takeaway_path(takeaway), :class => 'boton grey' %></td>
-			            <td><%= link_to "Agregar Productos", takeaway_path(takeaway), :class => 'boton grey'  %></td>              
+			            <% if !takeaway.is_end %>
+			            	<td><%= link_to "Agregar Productos", takeaway_path(takeaway), :class => 'boton grey'  %></td>
+			            <% end %>        
 			        </tr>
 			    <% end %>
 			</tbody>
@@ -92,13 +110,9 @@
 			</tfoot>
 		</table>
 	</div>
-
-	<div class="muestra-opciones-pedido">
-		</br><div class="accion-chat">Crear Pedido</div>
-		<%= render 'form' %>
-	</div>
 <% else %>
-	<table class="tabla2">
+	<div class ="muestra-tabla-pedido">
+		<table class="tabla2">
 			<thead>
 			    <tr class="tabla2">
 			        <th class="tabla2" >
@@ -187,4 +201,21 @@
 				</tr>
 			</tfoot>
 		</table>
+	</div>
 <% end %>
+
+
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, style: "color: white" %></div>
+    </br><div class="title">Crear Pedido</div>
+    <%= render 'form' %>
+</div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>

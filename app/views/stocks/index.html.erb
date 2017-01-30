@@ -1,93 +1,108 @@
 <div class="title">Stock del Restaurante</div>
 </br>
-<table class="tabla2">
-    <thead>
-        <tr class="tabla2">
-            <%= form_tag stocks_path, method: :get do %>
-                <th class="tabla2" >
-                    <div class="cssToolTip">
-                        <%= "Restaurante" %>
-                        <span>Nombre del Restaurante</span> 
-                    </div>
-                </th>
-                <th class="tabla2" >
-                    <div class="cssToolTip">
-                        <%= "Tipo Producto" %>
-                        <span>Tipo de Producto que puede ser: RACION, CALDOS, PESCADOS, CARNES, ENSALADAS, BOCADILLO, POSTRE, BEBIDA, BEBIDAS ALCOHOLICAS, APERITIVO, TACO, BURRITO, WRAP, GENERAL, EXTRAS</span> 
-                    </div>
-                </th>
-                <th class="tabla2" >
-                    <div class="cssToolTip">
-                        <%= "Nombre Producto" %>
-                        <span>Nombre del Producto</span> 
-                    </div>
-                </th>
-                <th class="tabla2" >
-                    <div class="cssToolTip">
-                        <%= "Descipción" %>
-                        <span>Breve descripcion del Stock de dicho Producto</span> 
-                    </div>
-                    <p><%= text_field_tag :description_stock, params[:description_stock], class: "form-control", placeholder: "Descripcion Stock" %></p>
-                </th>
-                <th class="tabla2" >
-                    <div class="cssToolTip">
-                        <%= "Coste de venta" %>
-                        <span>Coste por el que se vende el Producto</span> 
-                    </div>
-                </th>
-                <th class="tabla2" >
-                    <div class="cssToolTip">
-                        <%= "Cantidad en Stock" %>
-                        <span>Cantidad de Productos que hay en el Sctok</span> 
-                    </div>
-                </th>
-                <th class="tabla2" >
-                    <div class="cssToolTip">
-                        <%= "Coste Materia Prima Unidad" %>
-                        <span>Coste de la Materia Prima por Unidad</span> 
-                    </div>
-                </th>
-                <th class="tabla2" >
-                    <div class="cssToolTip">
-                        <%= "Coste Total Materia Prima" %>
-                        <span>Coste de la Materia Prima total de un Producto en Stock (C    antidad del Producto * Coste por Unidad)</span> 
-                    </div>
-                </th>
-            <% end %>
-        </tr>
-    </thead>
-    <tbody>
-        <% @stocks.each do |stock| %>
+<div class ="muestra-tabla">
+    <div class="new">
+        <div class="inf">
+            <div class="cssToolTip">
+                <%= image_tag('information.png', :alt => 'info')%>
+                <span>
+                    Manual de ayuda de Registro de Stock:<br>
+                    En esta página el Gerente del Restaurante registrará los Productos qua vaya a tener en Stock en el Restaurante. Las principales funcionalidades de esta página son:<br>
+                    -Crear Stcok: Donde el Gerente podrañ registrar un nuevo producto en el Restaurante.<br>
+                    -Tabla de Stcok: Se nos mostrará todos los productos registrados ya en el Restaurante por el Gerente y podremos filtrarlos buscando por su nombre.
+                    -Editar Stcok: Se podrá editar tanto el nombre como los distintos atributos del producto.
+                </span> 
+            </div>
+        </div>
+        <p class="header"><%= button_to "Añadir Producto al Stock", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+    </div>
+    <table class="tabla2">
+        <thead>
             <tr class="tabla2">
-                <td class="tabla2"><%= stock.product.restaurant.name %></td>
-                <td class="tabla2"><%= Product::PRODUCT_CATEGORY[stock.product.type_product] %></td>
-                <td class="tabla2"><%= stock.product.name %></td>
-                <td class="tabla2"><%= stock.description_stock %></td>
-                <td class="tabla2" class="price"><%= number_to_currency(stock.product.price, :unit => "€") %></td>
-                <td class="tabla2"><%= stock.quantity %></td>
-                <td class="tabla2" class="price"><%= number_to_currency(stock.price_buy_unity, :unit => "€") %></td>
-                <td class="tabla2" class="price"><%= number_to_currency(stock.quantity * stock.price_buy_unity, :unit => "€") %></td>
-                <td><%= link_to "Editar Stock", edit_stock_path(stock), :class => 'boton grey' %></td>
+                <%= form_tag stocks_path, method: :get do %>
+                    <th class="tabla2" >
+                        <div class="cssToolTip">
+                            <%= "Restaurante" %>
+                            <span>Nombre del Restaurante</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2" >
+                        <div class="cssToolTip">
+                            <%= "Tipo Producto" %>
+                            <span>Tipo de Producto que puede ser: RACION, CALDOS, PESCADOS, CARNES, ENSALADAS, BOCADILLO, POSTRE, BEBIDA, BEBIDAS ALCOHOLICAS, APERITIVO, TACO, BURRITO, WRAP, GENERAL, EXTRAS</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2" >
+                        <div class="cssToolTip">
+                            <%= "Nombre Producto" %>
+                            <span>Nombre del Producto</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2" >
+                        <div class="cssToolTip">
+                            <%= "Descipción" %>
+                            <span>Breve descripcion del Stock de dicho Producto</span> 
+                        </div>
+                        <p><%= text_field_tag :description_stock, params[:description_stock], class: "form-control", placeholder: "Descripcion Stock" %></p>
+                    </th>
+                    <th class="tabla2" >
+                        <div class="cssToolTip">
+                            <%= "Coste de venta" %>
+                            <span>Coste por el que se vende el Producto</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2" >
+                        <div class="cssToolTip">
+                            <%= "Cantidad en Stock" %>
+                            <span>Cantidad de Productos que hay en el Sctok</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2" >
+                        <div class="cssToolTip">
+                            <%= "Coste Materia Prima Unidad" %>
+                            <span>Coste de la Materia Prima por Unidad</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2" >
+                        <div class="cssToolTip">
+                            <%= "Coste Total Materia Prima" %>
+                            <span>Coste de la Materia Prima total de un Producto en Stock (C    antidad del Producto * Coste por Unidad)</span> 
+                        </div>
+                    </th>
+                <% end %>
             </tr>
-        <% end %>
-    </tbody>
-    <tfoot>
-        <tr class="tabla2">
-            <th class="tabla2" colspan="8">
-                <div class="pagination">
-                    <div class="digg_pagination">
-                        <%= will_paginate @stocks, :container => false %>
+        </thead>
+        <tbody>
+            <% @stocks.each do |stock| %>
+                <tr class="tabla2">
+                    <td class="tabla2"><%= stock.product.restaurant.name %></td>
+                    <td class="tabla2"><%= Product::PRODUCT_CATEGORY[stock.product.type_product] %></td>
+                    <td class="tabla2"><%= stock.product.name %></td>
+                    <td class="tabla2"><%= stock.description_stock %></td>
+                    <td class="tabla2" class="price"><%= number_to_currency(stock.product.price, :unit => "€") %></td>
+                    <td class="tabla2"><%= stock.quantity %></td>
+                    <td class="tabla2" class="price"><%= number_to_currency(stock.price_buy_unity, :unit => "€") %></td>
+                    <td class="tabla2" class="price"><%= number_to_currency(stock.quantity * stock.price_buy_unity, :unit => "€") %></td>
+                    <td><%= link_to "Editar Stock", edit_stock_path(stock), :class => 'boton grey' %></td>
+                </tr>
+            <% end %>
+        </tbody>
+        <tfoot>
+            <tr class="tabla2">
+                <th class="tabla2" colspan="8">
+                    <div class="pagination">
+                        <div class="digg_pagination">
+                            <%= will_paginate @stocks, :container => false %>
+                        </div>
                     </div>
-                </div>
-            </th>
-        </tr>
-    </tfoot>
-</table>
-
-<p><%= button_to "Añadir Producto al Stock", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
 
 <div class="window">
-    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"} %></div>
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, style: "color: white" %></div>
     <div class="title">Nuevo Stock</div>
     <%= render 'form' %>
 </div>

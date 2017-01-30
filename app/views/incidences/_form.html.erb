@@ -1,5 +1,18 @@
 <div id="padre">  
     <div id="hijo5"> 
+        <div class="inf">
+            <div class="cssToolTip">
+                <%= image_tag('information.png', :alt => 'info')%>
+                <span>
+                    Manual de ayuda de Reportar Incidencia:<br>
+                    En esta página el Usuario del Restaurante podrá reportar una incidencia al Gerente del Restaurante o incluso al Camarero si se trata de una incidencia relacionada con la comida. Las incidencias se clasifican en varias categorías:<br>
+                    - COMIDA: En caso de que el Cliente encuentre alguna anomalía en el estado de la comida (este Mensaje lo recibirá el camarero instantaneamente para ser solucionado)<br>
+                    - Resto de catgorías: MOBILIARIO, BAÑOS, COCINA, TERRAZA, BARRA, SALÓN, ATENCION PERSONAL, ELECTRICIDAD  y GENERAL<br>
+                    Las incidencias también estan dotadas de una prioridad que el Cliente de forma justa dará a la incidencia para que el Gerente las atienda. Las prioridades son: 
+                    - MUY BAJA, BAJA, MEDIA, ALTA y MUY ALTA (esta última se le dará siempre a una incidencia de COMIDA)
+                </span> 
+            </div>
+        </div>
         <%= form_for @incidence do |f| %>
             <%= f.error_messages %>
             <div class="field">

@@ -1,6 +1,22 @@
 <div class="title">Cuestionarios del Restaurante</div>
 </br>
 <div class ="muestra-tabla">
+	<div class="new">
+			<div class="inf">
+				<div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>
+					<span>
+						Manual de ayuda de Creación de Cuestionarios:<br>
+						En esta página el Usuario del Restaurante podrá realizar un pedido online de los productos que desee. Las funcionalidades que podrá realizar el Cliente son:<br>
+						- Crear nuevo pedido: Pulsar en caso de querer crear un nuevo pedido.<br>
+						Podrá visualizar la tabla con sus pedidos ordenados por fehcas y si están o no finalizados. En dicha tabla podrá realizar la siguientes funcionalidades:<br>
+						- Editar el pedido: Podrá modificar los datos del pedido como el nombre, el telefono...<br>
+						- Agragra productos a la comanda: Podrá agregar productos al pedido siempre y cuando no se haya finalizado. En caso contrario no podrá seguir añadiendo productos.
+					</span> 
+				</div>
+			</div>
+			<p class="header"><%= button_to "Crear Cuestionario", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+		</div>
 	<table class="tabla2">
 		<thead>
 			<tr class="tabla2">
@@ -32,7 +48,17 @@
 	</table>
 </div>
 
-<div class="muestra-opciones">
-	</br><div class="accionTitle">Nuevo Cuestionario</div>
-	<%= render 'form' %>
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, style: "color: white" %></div>
+    <div class="title">Nuevo Cuestionario</div>
+    <%= render 'form' %>
 </div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>

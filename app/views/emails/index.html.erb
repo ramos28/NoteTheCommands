@@ -7,6 +7,18 @@
 <div class="contenedor_tab">
     <div id="tab1" class="contenido_tab">
         <table class="tabla4">
+            <div class="inf">
+                <div class="cssToolTip">
+                    <%= image_tag('information.png', :alt => 'info')%>
+                    <span>
+                        Manual de ayuda de Mensajes Recibidos:<br>
+                        En esta página cada Usuario de la aplicación tendrá acceso a su propia Bandeja de Entrada de correo electrónico donde se mostrarán los emails intercambiados entre los Restaurantes/Gerentes y los empleados del Restaurante. Presenta la siguiente funcionalidad:<br>
+                        - Redactar: Aquí es donde se redactaran los mensajes y se seleccioanrá el destinatario del mismo.<br>
+                        - Eliminar: Se podrán eliminar los mensajes no deseados.<br>
+                        - Leer Mensaje: Se leerán cada uno de los mensajes que tengamos en la bandeja de entrada.   
+                    </span> 
+                </div>
+            </div>
             <%= button_to "Redactar", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %>
             <%= button_to "Eliminar", @email, :confirm => '¿Esta seguro que dese eliminar el mensaje?', :method => :delete, :class => 'boton grey' %><br/>
             <thead>
@@ -91,7 +103,16 @@
         </table>
     </div>
     <div id="tab2" class="contenido_tab">
-         <table class="tabla4">
+        <div class="inf">
+            <div class="cssToolTip">
+                <%= image_tag('information.png', :alt => 'info')%>
+                <span>
+                    Manual de ayuda de Mensajes Enviados:<br>
+                    En esta página cada Usuario de la aplicación tendrá acceso a su propia Bandeja de correo electrónicos enviados donde se mostrarán los emails enviados a otroas Usuarios de la aplicación:<br>   
+                </span> 
+            </div>
+        </div>
+        <table class="tabla4">
             <thead>
                 <tr class="tabla4">
                     <th class="tabla4">

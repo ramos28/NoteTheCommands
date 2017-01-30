@@ -55,9 +55,6 @@
                 <li><%= link_to "Noticias" %>
                     <% if current_user %>
                         <ul>
-                            <% if (@current_role  == 3) %>
-                                <li><%= link_to "Publicar Noticia", new_blog_path %></li>
-                            <% end %>
                             <% if (@current_role  == 0 || @current_role  == 1 || @current_role  == 2 || @current_role  == 3)%>
                                 <li><%= link_to "Blog", blogs_index_path %></li>
                             <% end %>

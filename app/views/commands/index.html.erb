@@ -1,6 +1,30 @@
 <% if @current_role == 0 %>
 	<div class="title">Comandas del Usuario '<%= current_user.user_name %>'</div>
 	<div class ="muestra-tabla2">
+		<div class="new">
+			<div class="inf">
+				<div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>
+					<span>
+						Manual de ayuda de Comandas del Cliente:<br>
+						En esta página el Usuario del Restaurante podrá realizar una comanda en el Restaurante en el que se encuentra. Las funcionalidades que pordrá realizar el Cliente son:<br>
+						-Crear Comanda: Es aquí donde el usuario podrá registra una nueva comanda siempre y cuando no tenga ninguna otra comanda abierta o sin finalizar.<br>
+						-Editar: El Cliente podrá editar los datos de la comanda que ha introducido previemnete.<br>
+						-Ver Comanda: El cliente podrá entrar a ver la comanda que esta finalizada o se encuentra en ella para poder seguir añadiendo productos a ella (en caso de que no este finalizada).
+					</span> 
+				</div>
+			</div>
+			<% if @ended %>
+				<div class="new">
+					<p class="header"><%= button_to 'Crear Comanda', new_command_path, :method => "get", :class => 'boton grey' %></p>
+				</div>
+			<% end %>
+		</div>
+		<% if @ended %>
+			<div class="new">
+				<p><%= button_to 'Crear Comanda', new_command_path, :method => "get", :class => 'boton grey' %></p>
+			</div>
+		<% end %>
 		<table class="tabla1">
 		    <tr class="tabla1">
 		        <th class="tabla1" >
@@ -91,275 +115,311 @@
 			</tfoot>
 		</table>
 	</div>
-	<% if @ended %>
-		<div class="muestra-opciones1">
-			</br><div class="accion">Crear una Nueva Comanda</div>
-			</br></br><%= button_to 'Crear Comanda', new_command_path, :method => "get", :class => 'boton grey' %>
-			</br></br></br></br></br></br>
-		</div>
-	<% end %>
-
 <% elsif @current_role == 1 %>
 	<div class="title">Comandas del Camarero</div>
-	<table class="tabla1">
-	    <tr class="tabla1">
-	    	<th class="tabla1" >
+	<div class ="muestra-tabla2">
+		<div class="new">
+			<div class="inf">
 				<div class="cssToolTip">
-				    Comanda
-					<span>Nombre de la Comanda</span> 
+		        	<%= image_tag('information.png', :alt => 'info')%>
+					<span>
+						Manual de ayuda de Comandas del Camarero:<br>
+						En esta página el Camarero del Restaurante podrá ver las comandas en el Restaurante en el que se encuentra. Las funcionalidades que pordrá realizar el Camarero son:<br>
+						-Ver Comanda: El Camarero podrá entrar a ver la comanda que esta finalizada o se encuentra en ella para poder seguir añadiendo productos a ella (en caso de que no este finalizada).<br>
+						-Servir: El camarero podrá servir los productos que esten listos de la comanda, poniendolos como servidos para distinguirlos de nuevos productos que vaya añadiendo el Cliente en el futuro.
+					</span> 
 				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Restaurante
-					<span>Nombre del Restaurante</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Usuario
-					<span>Nombre del Usuario</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Mesa
-					<span>Número de la Mesa desde donde se realiza la Comanda</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    ¿Servido?
-					<span>Rojo claro si no esta servida y verde claro si lo está</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    ¿Está Finalizada?
-					<span>Rojo si no esta finalizada y verde si lo está</span> 
-				</div>
-	        </th>
-	    </tr>
-	    <% @command_waiter.each do |command| %>
-	        <% if command.restaurant_id == @current_restaurant.id %>
-		    	<% serve = true %>
-		    	<% command.command_products.pluck(:is_served).map {|c| serve = serve && c} %>
-	            <tr class="tabla1">
-	                <td class="tabla1"><%= command.title %></td>
-	                <td class="tabla1"><%= command.restaurant.name %></td>
-	                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
-	                <td class="tabla1"><%= command.place %></td>
-	                <% if serve %>
-	                	<td class="b5"><%= serve %></td>
-	                <% else %>
-						<td class="b6"><%= serve %></td>
-	                <% end %>
-	                <% if !command.is_end %>
-	                	<td class="b1"><%= command.is_end %></td>
-	                <% else %>
-						<td class="b2"><%= command.is_end %></td>
-	                <% end %>
-	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %><%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>
-					<td>
-					    <%= form_for command do |f| %>
-					    	<% if !serve %>
-						        <%= f.error_messages %>
-
-						        <%= f.hidden_field :is_served, :value => true %>
-						        <div class="field">
-						            <%= f.submit 'Servir', :class => 'boton grey'%>
-						        </div>
-					    	<% end %>
-						<% end %>
-					</td>
-	            </tr>
-	        <% end %>
-	    <% end %>
-	    <tfoot>
-			<tr class="tabla1">
-				<th class="tabla1" colspan="6">
-					<div class="pagination">
-						<div class="digg_pagination">
-						    <%= will_paginate @commands, :container => false %>
-						</div>
-					</div>
-				</th>
-			</tr>
-		</tfoot>
-	</table>
-<% elsif @current_role == 2 %>
-	<div class="title">Comandas del Cocinero</div>
-	<table  class="tabla1">
-	    <tr class="tabla1">
-	    	<th class="tabla1" >
-				<div class="cssToolTip">
-				    Comanda
-					<span>Nombre de la Comanda</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Cantidad
-					<span>Cantidad pedida de un producto</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Usuario
-					<span>Nombre del Usuario</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Mesa
-					<span>Número de la Mesa desde donde se realiza la Comanda</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Descripción
-					<span>Breve descripción de la Comanda</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    ¿Servido?
-					<span>Rojo claro si no esta servida y verde claro si lo está</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    ¿Está Cocinado?
-					<span>Rojo si no esta cocinado y verde si lo está</span> 
-				</div>
-	        </th>
-	    </tr>
-	    <% @commands_cooker.each do |command_product| %>
-	      	<% if command_product.product.type_product != 6 || command_product.product.type_product != 7 || command_product.product.type_product != 8 || command_product.product.type_product != 9 %>
-	            <tr class="tabla1">
-	                <td class="tabla1"><%= command_product.product.name %></td>
-	                <td class="tabla1"><%= command_product.quantity %></td>
-	                <td class="tabla1"><%= command_product.command.restaurant_user.user.user_name %></td>
-	                <td class="tabla1"><%= command_product.command.place %></td>
-	                <td class="tabla1"><%= command_product.command.description %></td>
-	                <% if command_product.is_served %>
-	                	<td class="b5"><%= command_product.is_served %></td>
-	                <% else %>
-						<td class="b6"><%= command_product.is_served %></td>
-	                <% end %>
-	                <% if command_product.is_cooked %>
-	                	<td class="b5"><%= command_product.is_cooked %></td>
-	                <% else %>
-						<td class="b6"><%= command_product.is_cooked %></td>
-	                <% end %>
-	                <td><%= link_to "Editar", edit_command_path(command_product.command), :class => 'boton grey' %><%= link_to "Ver Comanda", command_path(command_product.command), :class => 'boton grey' %></td>
-	                <td>
-		              	<%= form_for command_product, :url => command_product_path(command_product) do |f| %>
-		                	<%= f.hidden_field :is_cooked, value: true %>
-		                	<%= f.submit "Cocinado", class: "boton grey" %>
-		              	<% end %>
-	              	</td>
-	            </tr>
-	        <% end %>
-	    <% end %>
-	    <tfoot>
-			<tr class="tabla1">
-				<th class="tabla1" colspan="7">
-					<div class="pagination">
-						<div class="digg_pagination">
-						    <%= will_paginate @commands, :container => false %>
-						</div>
-					</div>
-				</th>
-			</tr>
-		</tfoot>
-	</table>
-<% elsif @current_role == 3 %>
-	<div class="title">Comandas del Restaurante</div>
-	<table  class="tabla1">
-	    <tr class="tabla1">
-			<th class="tabla1" >
-				<div class="cssToolTip">
-				    Comanda
-					<span>Nombre de la Comanda</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Restaurante
-					<span>Nombre del Restaurante</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Usuario
-					<span>Nombre del Usuario</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Mesa
-					<span>Número de la Mesa desde donde se realiza la Comanda</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
+			</div>
+		</div>
+		<table class="tabla1">
+		    <tr class="tabla1">
+		    	<th class="tabla1" >
 					<div class="cssToolTip">
-					    Fecha Creación
-						<span>Fecha de cuando se creó la comanda</span> 
+					    Comanda
+						<span>Nombre de la Comanda</span> 
 					</div>
 		        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    Ganancia por Comanda
-					<span>Dinero que se gastó el Usuario en la Comanda</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    ¿Servido?
-					<span>Rojo claro si no esta servida y verde claro si lo está</span> 
-				</div>
-	        </th>
-	        <th class="tabla1" >
-				<div class="cssToolTip">
-				    ¿Está Finalizada?
-					<span>Rojo si no esta finalizada y verde si lo está</span> 
-				</div>
-	        </th>
-	    </tr>
-	    <% @commands_gerente.each do |command| %>
-	        <% if command.restaurant_id == @current_restaurant.id %>
-	            <tr class="tabla1">
-	                <td class="tabla1"><%= command.title %></td>
-	                <td class="tabla1"><%= command.restaurant.name %></td>
-	                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
-	                <td class="tabla1"><%= command.place %></td>
-	                <td class="tabla1"><%= command.created_at.strftime("%d %B %Y -- %X") %></td>
-	                <td class="tabla1"><%= command.total_price_command %> €</td>
-	                <% if command.is_served %>
-	                	<td class="b5"><%= command.is_served %></td>
-	                <% else %>
-						<td class="b6"><%= command.is_served %></td>
-	                <% end %>
-	                <% if !command.is_end %>
-	                	<td class="b1"><%= command.is_end %></td>
-	                <% else %>
-						<td class="b2"><%= command.is_end %></td>
-	                <% end %>
-	                <td><%= link_to "Editar", edit_command_path(command), :class => 'boton grey' %><%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>                
-	            </tr>
-	        <% end %>
-	    <% end %>
-	    <tfoot>
-			<tr class="tabla1">
-				<th class="tabla1" colspan="9">
-					<div class="pagination">
-						<div class="digg_pagination">
-						    <%= will_paginate @commands, :container => false %>
-						</div>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Restaurante
+						<span>Nombre del Restaurante</span> 
 					</div>
-				</th>
-			</tr>
-		</tfoot>
-	</table>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Usuario
+						<span>Nombre del Usuario</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Mesa
+						<span>Número de la Mesa desde donde se realiza la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    ¿Servido?
+						<span>Rojo claro si no esta servida y verde claro si lo está</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    ¿Está Finalizada?
+						<span>Rojo si no esta finalizada y verde si lo está</span> 
+					</div>
+		        </th>
+		    </tr>
+		    <% @command_waiter.each do |command| %>
+		        <% if command.restaurant_id == @current_restaurant.id %>
+			    	<% serve = true %>
+			    	<% command.command_products.pluck(:is_served).map {|c| serve = serve && c} %>
+		            <tr class="tabla1">
+		                <td class="tabla1"><%= command.title %></td>
+		                <td class="tabla1"><%= command.restaurant.name %></td>
+		                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
+		                <td class="tabla1"><%= command.place %></td>
+		                <% if serve %>
+		                	<td class="b5"><%= serve %></td>
+		                <% else %>
+							<td class="b6"><%= serve %></td>
+		                <% end %>
+		                <% if !command.is_end %>
+		                	<td class="b1"><%= command.is_end %></td>
+		                <% else %>
+							<td class="b2"><%= command.is_end %></td>
+		                <% end %>
+		                <td><%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>
+						<td>
+						    <%= form_for command do |f| %>
+						    	<% if !serve %>
+							        <%= f.error_messages %>
+
+							        <%= f.hidden_field :is_served, :value => true %>
+							        <div class="field">
+							            <%= f.submit 'Servir', :class => 'boton grey'%>
+							        </div>
+						    	<% end %>
+							<% end %>
+						</td>
+		            </tr>
+		        <% end %>
+		    <% end %>
+		    <tfoot>
+				<tr class="tabla1">
+					<th class="tabla1" colspan="6">
+						<div class="pagination">
+							<div class="digg_pagination">
+							    <%= will_paginate @commands, :container => false %>
+							</div>
+						</div>
+					</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+<% elsif @current_role == 2 %>
+	<div class="title">Comandas del Cocinero</div>
+	<div class ="muestra-tabla2">
+		<div class="new">
+			<div class="inf">
+				<div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>
+					<span>
+						Manual de ayuda de Comandas del Cocinero:<br>
+						En esta página el Cocinero del Restaurante podrá ver los productos de las comandas en el Restaurante en el que se encuentra. Las funcionalidades que pordrá realizar el Cocinero son:<br>
+						-Ver Comanda: El Cocinero podrá entrar a ver los productos de las comanda que hay en el Restaurante.<br>
+						-Cocinar: El Cocinero podrá cocinar los productos que tenga en la cola, poniendolos como cocinados para que el camarero pueda servirlos a la mesa.
+					</span> 
+				</div>
+			</div>
+		</div>
+		<table  class="tabla1">
+		    <tr class="tabla1">
+		    	<th class="tabla1" >
+					<div class="cssToolTip">
+					    Comanda
+						<span>Nombre de la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Cantidad
+						<span>Cantidad pedida de un producto</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Usuario
+						<span>Nombre del Usuario</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Mesa
+						<span>Número de la Mesa desde donde se realiza la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Descripción
+						<span>Breve descripción de la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    ¿Servido?
+						<span>Rojo claro si no esta servida y verde claro si lo está</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    ¿Está Cocinado?
+						<span>Rojo si no esta cocinado y verde si lo está</span> 
+					</div>
+		        </th>
+		    </tr>
+		    <% @commands_cooker.each do |command_product| %>
+		      	<% if command_product.product.type_product != 6 || command_product.product.type_product != 7 || command_product.product.type_product != 8 || command_product.product.type_product != 9 %>
+		            <tr class="tabla1">
+		                <td class="tabla1"><%= command_product.product.name %></td>
+		                <td class="tabla1"><%= command_product.quantity %></td>
+		                <td class="tabla1"><%= command_product.command.restaurant_user.user.user_name %></td>
+		                <td class="tabla1"><%= command_product.command.place %></td>
+		                <td class="tabla1"><%= command_product.command.description %></td>
+		                <% if command_product.is_served %>
+		                	<td class="b5"><%= command_product.is_served %></td>
+		                <% else %>
+							<td class="b6"><%= command_product.is_served %></td>
+		                <% end %>
+		                <% if command_product.is_cooked %>
+		                	<td class="b5"><%= command_product.is_cooked %></td>
+		                <% else %>
+							<td class="b6"><%= command_product.is_cooked %></td>
+		                <% end %>
+		                <td>><%= link_to "Ver Comanda", command_path(command_product.command), :class => 'boton grey' %></td>
+		                <td>
+			              	<%= form_for command_product, :url => command_product_path(command_product) do |f| %>
+			                	<%= f.hidden_field :is_cooked, value: true %>
+			                	<%= f.submit "Cocinado", class: "boton grey" %>
+			              	<% end %>
+		              	</td>
+		            </tr>
+		        <% end %>
+		    <% end %>
+		    <tfoot>
+				<tr class="tabla1">
+					<th class="tabla1" colspan="7">
+						<div class="pagination">
+							<div class="digg_pagination">
+							    <%= will_paginate @commands, :container => false %>
+							</div>
+						</div>
+					</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+<% elsif @current_role == 3 %>
+	<div class="title">Comandas del Restaurante</div>
+	<div class ="muestra-tabla2">
+		<div class="new">
+			<div class="inf">
+				<div class="cssToolTip">
+		        	<%= image_tag('information.png', :alt => 'info')%>
+					<span>
+						Manual de ayuda de Comandas del Gerente:<br>
+						En esta página el Gerente del Restaurante podrá ver las comandas en el Restaurante en el que se encuentra. Las funcionalidades que pordrá realizar el Gerente son:<br>
+						-Ver Comanda: El Gerente podrá entrar a ver las comandas que están finalizadas o que aun esten abiertas
+					</span> 
+				</div>
+			</div>
+		</div>
+		<table  class="tabla1">
+		    <tr class="tabla1">
+				<th class="tabla1" >
+					<div class="cssToolTip">
+					    Comanda
+						<span>Nombre de la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Restaurante
+						<span>Nombre del Restaurante</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Usuario
+						<span>Nombre del Usuario</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Mesa
+						<span>Número de la Mesa desde donde se realiza la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+						<div class="cssToolTip">
+						    Fecha Creación
+							<span>Fecha de cuando se creó la comanda</span> 
+						</div>
+			        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    Ganancia por Comanda
+						<span>Dinero que se gastó el Usuario en la Comanda</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    ¿Servido?
+						<span>Rojo claro si no esta servida y verde claro si lo está</span> 
+					</div>
+		        </th>
+		        <th class="tabla1" >
+					<div class="cssToolTip">
+					    ¿Está Finalizada?
+						<span>Rojo si no esta finalizada y verde si lo está</span> 
+					</div>
+		        </th>
+		    </tr>
+		    <% @commands_gerente.each do |command| %>
+		        <% if command.restaurant_id == @current_restaurant.id %>
+		            <tr class="tabla1">
+		                <td class="tabla1"><%= command.title %></td>
+		                <td class="tabla1"><%= command.restaurant.name %></td>
+		                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
+		                <td class="tabla1"><%= command.place %></td>
+		                <td class="tabla1"><%= command.created_at.strftime("%d %B %Y -- %X") %></td>
+		                <td class="tabla1"><%= command.total_price_command %> €</td>
+		                <% if command.is_served %>
+		                	<td class="b5"><%= command.is_served %></td>
+		                <% else %>
+							<td class="b6"><%= command.is_served %></td>
+		                <% end %>
+		                <% if !command.is_end %>
+		                	<td class="b1"><%= command.is_end %></td>
+		                <% else %>
+							<td class="b2"><%= command.is_end %></td>
+		                <% end %>
+		                <td><%= link_to "Ver Comanda", command_path(command), :class => 'boton grey' %></td>                
+		            </tr>
+		        <% end %>
+		    <% end %>
+		    <tfoot>
+				<tr class="tabla1">
+					<th class="tabla1" colspan="8">
+						<div class="pagination">
+							<div class="digg_pagination">
+							    <%= will_paginate @commands, :container => false %>
+							</div>
+						</div>
+					</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
 <% end %>

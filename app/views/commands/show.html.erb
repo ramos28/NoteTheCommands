@@ -4,6 +4,19 @@
     <div class="title">Número Comanda: <%= @command.id %></div>
 <% end %>
 <div class="command">
+    <div class="new">
+        <div class="inf">
+            <div class="cssToolTip">
+                <%= image_tag('information.png', :alt => 'info')%>
+                <span>
+                    Manual de ayuda de la Comanda:<br>
+                    En esta página se mostrará la lista de productos de la comanda, los datos de informacion de la comanda y un formulario donde el Cliente podrá añadir productos a la comanda siempre y cuando no este cerrada:<br>
+                    -Agregar Productos: El Cliente añadirá productos a la comanda.<br>
+                    -Imprimir Factura: El camamrero podrá ver la comanda e imprimir el ticket como recibo.
+                </span> 
+            </div>
+        </div>
+    </div>
     </br><div class="muestra-comandas">
         </br></br><div class="command_accion">Comanda</div>
         <div id="padre">  
@@ -181,9 +194,9 @@
                             <% else %>
                                 <td class="b6"><%= cp.is_cooked %></td>
                             <% end %>
-                            <% if !cp.is_served%>
-                                <td><%= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, :class => 'boton grey' %></td>
-                            <% end %>
+                            <%# if !cp.is_served%>
+                                <%#= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, :class => 'boton grey' %>
+                            <%# end %>
                         </tr>
                     <% end %>
                     <% @command.command_menus.each do |cp| %>
@@ -199,16 +212,16 @@
                             <% else %>
                                 <td class="b6"><%= cp.is_served %></td>
                             <% end %>
-                            <% if !cp.is_served%>
-                                <td><%= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, :class => 'boton grey' %></td>
-                            <% end %>
+                            <%# if !cp.is_served%>
+                                <%#= link_to "Eliminar", cp, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el producto?"}, :class => 'boton grey' %>
+                            <%# end %>
                         </tr>
                     <% end %>
                 </tbody>
                 <tfoot>
                     <tr class="tabla3">
                         <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                        <td class="tabla3" colspan="4"><%= total_price_command %> €</td>
+                        <td class="tabla3" colspan="5"><%= total_price_command %> €</td>
                     </tr>
                 </tfoot>
             </table>
@@ -221,8 +234,6 @@
         </div>
     <% end %>
 </div>
-
-
 
 
 <div id="Imprime">
@@ -238,6 +249,7 @@
     Factura: <%= @command.id %><br>
     Nombre: <%= @command.title %><br>
     Mesa: <%= @command.place %><br>
+    Descuento Adicional: <%= @current_restaurant_user.discount %>%<br>
     -------------------------------------------------
     <table width="250">
         <tr>
@@ -267,6 +279,14 @@
 
         </tr>
         <br>
+        <tr>
+            <td></td>
+            <% discount = @current_restaurant_user.discount/100 %>
+            <% discount = (total_price_command * 1.21 * discount) if total_price_command != nil %>
+            <% discount = (total_price_command * 1.21 - discount) if total_price_command != nil %>
+            <td style="text-align: right;" colspan="3">Con descuento: <%= discount %> €</td>
+
+        </tr>
         <tr>
             <td></td>
             <td></td>

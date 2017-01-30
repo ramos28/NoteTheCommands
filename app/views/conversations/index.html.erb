@@ -1,22 +1,29 @@
 <div class="title">Chat</div>
-<div class="muestra-tabla-conversacion">
-	<div class="conversation">
-		</br><div class="accion-chat">Personas con quien Chatear</div>
-		<div id="chat-body">
-			<%= render @users %>
+<div class="totalChats">
+	<div class="inf">
+        <div class="cssToolTip">
+            <%= image_tag('information.png', :alt => 'info')%>
+            <span>
+                Manual de ayuda de Chat:<br>
+                Chat privado para los Usuarios de la aplicación que podrán contactar con cualquier persona que este dado de alta en la aplicación y así poder compartir información entre ellos.<br>
+                Por un lado tenemos una lista con todos los usuarios Registrados y por otro tenemos todas las conversaciones abiertas con los usuarios.
+            </span> 
+        </div>
+    </div>
+	<div class="muestra-tabla-conversacion">
+		<div class="conversation">
+			</br><div class="accion-chat">Personas con quien Chatear</div>
+			<div id="chat-body">
+				<%= render @users %>
+			</div>
 		</div>
 	</div>
-</div>
-<div class="muestra-tabla-conversacion">
-	<div class="conversation">
-		<div class="title-chat">
+	<div class="muestra-tabla-conversacion">
+		<div class="conversation">
 			</br><div class="accion-chat">Conversaciones Abiertas</div>
+			<div id="chat-body">
+				<%= render @conversations %>
+			</div>
 		</div>
-		<div id="chat-body">
-			<%= render @conversations %>
-		</div>
-	</div>
-</div>
-<div class="explain">
-	
+	</div><br>
 </div>

@@ -3,17 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .muestra-tabla-pedido {
-    float: left;
     text-align: center;
     top: 35%;
-    width: 70%;
-}
-
-.muestra-opciones-pedido {
-    float: left;
-    text-align: center;
-    top: 35%;
-    width: 30%;
+    width: 100%;
+    margin: 0 auto;    
+    background-image: url("fondoAmarilloClaro.jpg");
+    margin-bottom: 2em;
+    border-radius: 16px 16px;
+    border-color: #444444;
+    border-style: solid;
+    box-shadow: 2px 2px 10px #B1B1B1;
+    margin-top: 25px;
+    border-width: 2px;
 }
 
 .takeaway {
@@ -107,6 +108,23 @@ div.takeaway_tipo_seleccion {
     text-align: center;
     top: 35%;
     width: 65%;
+    max-height: 600px;
+    overflow:auto;
+    margin-bottom: 2em;
+    border-radius: 16px 16px;
+    border-color: #444444;
+    border-style: solid;
+    box-shadow: 2px 2px 10px #B1B1B1;
+    margin-top: 25px;
+    border-width: 7px;
+}
+
+#hijo1 {
+    margin: 0 auto;    
+    background-image: url("fondoBlancoStart.jpg");
+    text-align: center;
+    top: 35%;
+    width: 25%;
     max-height: 600px;
     overflow:auto;
     margin-bottom: 2em;

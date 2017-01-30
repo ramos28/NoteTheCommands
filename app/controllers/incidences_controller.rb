@@ -14,6 +14,10 @@ class IncidencesController < ApplicationController
 		@incidence = Incidence.find(params[:id])
 	end
 
+	def new
+		@incidence = Incidence.new
+	end
+
 	def create
 		@incidence = Incidence.new(incidence_params)
 		if @incidence.save

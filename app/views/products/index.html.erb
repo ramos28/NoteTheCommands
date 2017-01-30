@@ -1,6 +1,21 @@
 <div class="title">Productos del Restaurante</div>
 </br>
 <div class ="muestra-tabla">
+	<div class="new">
+		<div class="inf">
+			<div class="cssToolTip">
+	        	<%= image_tag('information.png', :alt => 'info')%>
+				<span>
+					Manual de ayuda de Registro de Productos:<br>
+					En esta página el Gerente del Restaurante registrará los productos qua vaya a tener a la venta. La funcioanlidad que tendrá el Gerente es la siguiente:<br>
+					-Crear Productos: Donde el Gerente podrañ registrar un nuevo producto en el Restaurante.<br>
+					-Tabla de Productos: Se nos mostrará todos los productos registrados ya en el Restaurante por el Gerente y podremos filtrarlos buscando por su nombre.
+					-Editar Producto: Se podrá editar tanto el nombre como los distintos atributos del producto.
+				</span> 
+			</div>
+		</div>
+		<p class="header"><%= button_to "Crear Producto", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+	</div>
 	<table class="tabla1">
 		<thead>
 			<tr class="tabla1">
@@ -58,7 +73,7 @@
 					<% else %>
 						<td class="b6"><%= product.younger %></td>
 					<% end %>
-					<td><%= link_to "Editar Stock", edit_product_path(product), :class => 'boton grey' %></td>
+					<td><%= link_to "Editar Producto", edit_product_path(product), :class => 'boton grey' %></td>
 			    </tr>
 			<% end %>
 		</tbody>
@@ -76,7 +91,17 @@
 	</table>
 </div>
 
-<div class="muestra-opciones">
-	</br><div class="accionTitle">Registrar Producto</div>
-	<%= render 'form' %>
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, style: "color: white" %></div>
+    <div class="title">Registrar Producto</div>
+    <%= render 'form' %>
 </div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>
