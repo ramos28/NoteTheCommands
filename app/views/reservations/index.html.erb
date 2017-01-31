@@ -81,6 +81,12 @@
                                     <span>Rol del Usuario que realizó la Reserva</span>
                                 </div>
                             </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "¿Despachado?" %>
+                                    <span>Si la Reserva se ha realizado o no, es decir, si se le ha asignado la Reserva al Cliente (Rojo si no esta asignado y verde si lo está)</span>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -103,7 +109,13 @@
                                 <td class="tabla2"><%= reservation.phone %></td>
                                 <td class="tabla2"><%= reservation.user.user_name %></td>
                                 <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
-                                    <td><%= form_for reservation do |f| %>
+                                <% if !reservation.is_checkedOut %>
+                                    <td class="b1"><%= reservation.is_checkedOut %></td>
+                                <% else %>
+                                    <td class="b2"><%= reservation.is_checkedOut %></td>
+                                <% end %>
+                                <td>
+                                    <%= form_for reservation do |f| %>
                                         <%= f.error_messages %>
                                         <%= f.hidden_field :is_checkedOut, :value => true %>
                                         <div class="field">
@@ -116,7 +128,7 @@
                     </tbody>
                     <tfoot>
                         <tr class="tabla2">
-                            <th class="tabla2" colspan="9">
+                            <th class="tabla2" colspan="10">
                                 <div class="pagination">
                                     <div class="digg_pagination">
                                         <%= will_paginate @reservations, :container => false %>
@@ -198,6 +210,12 @@
                                     <span>Rol del Usuario que realizó la Reserva</span>
                                 </div>
                             </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "¿Despachado?" %>
+                                    <span>Si la Reserva se ha realizado o no, es decir, si se le ha asignado la Reserva al Cliente (Rojo si no esta asignado y verde si lo está)</span>
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -220,12 +238,17 @@
                                 <td class="tabla2"><%= reservation.phone %></td>
                                 <td class="tabla2"><%= reservation.user.user_name %></td>
                                 <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                                <% if !reservation.is_checkedOut %>
+                                    <td class="b1"><%= reservation.is_checkedOut %></td>
+                                <% else %>
+                                    <td class="b2"><%= reservation.is_checkedOut %></td>
+                                <% end %>
                             </tr>
                         <% end %>
                     </tbody>
                     <tfoot>
                         <tr class="tabla2">
-                            <th class="tabla2" colspan="9">
+                            <th class="tabla2" colspan="10">
                                 <div class="pagination">
                                     <div class="digg_pagination">
                                         <%= will_paginate @reservations, :container => false %>
@@ -308,6 +331,12 @@
                                         <span>Rol del Usuario que realizó la Reserva</span>
                                     </div>
                                 </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "¿Despachado?" %>
+                                        <span>Si la Reserva se ha realizado o no, es decir, si se le ha asignado la Reserva al Cliente (Rojo si no esta asignado y verde si lo está)</span>
+                                    </div>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -330,12 +359,17 @@
                                     <td class="tabla2"><%= reservation.phone %></td>
                                     <td class="tabla2"><%= reservation.user.user_name %></td>
                                     <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                                    <% if !reservation.is_checkedOut %>
+                                        <td class="b1"><%= reservation.is_checkedOut %></td>
+                                    <% else %>
+                                        <td class="b2"><%= reservation.is_checkedOut %></td>
+                                    <% end %>
                                 </tr>
                             <% end %>
                         </tbody>
                         <tfoot>
                             <tr class="tabla2">
-                                <th class="tabla2" colspan="9">
+                                <th class="tabla2" colspan="10">
                                     <div class="pagination">
                                         <div class="digg_pagination">
                                             <%= will_paginate @reservations, :container => false %>
@@ -417,6 +451,12 @@
                                         <span>Rol del Usuario que realizó la Reserva</span>
                                     </div>
                                 </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "¿Despachado?" %>
+                                        <span>Si la Reserva se ha realizado o no, es decir, si se le ha asignado la Reserva al Cliente (Rojo si no esta asignado y verde si lo está)</span>
+                                    </div>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -439,12 +479,17 @@
                                     <td class="tabla2"><%= reservation.phone %></td>
                                     <td class="tabla2"><%= reservation.user.user_name %></td>
                                     <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                                    <% if !reservation.is_checkedOut %>
+                                        <td class="b1"><%= reservation.is_checkedOut %></td>
+                                    <% else %>
+                                        <td class="b2"><%= reservation.is_checkedOut %></td>
+                                    <% end %>
                                 </tr>
                             <% end %>
                         </tbody>
                         <tfoot>
                             <tr class="tabla2">
-                                <th class="tabla2" colspan="9">
+                                <th class="tabla2" colspan="10">
                                     <div class="pagination">
                                         <div class="digg_pagination">
                                             <%= will_paginate @reservations, :container => false %>

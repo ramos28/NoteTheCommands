@@ -90,9 +90,9 @@
     <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, :class => 'boton red' %></div>
     </br>
     <% if current_user.superadmin %>
-		<div class="accionTitle">Registra Personal</div>
+		<div class="title">Registra Personal</div>
 		<div id="padre">  
-			<div id="hijo4">                           
+			<div id="hijo3">                           
 				<%= form_for @restaurants_users do |f| %>
 					<div class="field">
 						</br><%= f.label :selecione_restaurante %></br>

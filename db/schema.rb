@@ -187,28 +187,28 @@ ActiveRecord::Schema.define(version: 20170108133629) do
   end
 
   create_table "reservations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",          null: false
-    t.integer  "num_persons",   null: false
-    t.date     "date",          null: false
-    t.time     "hour",          null: false
+    t.string   "name",                          null: false
+    t.integer  "num_persons",                   null: false
+    t.date     "date",                          null: false
+    t.time     "hour",                          null: false
     t.integer  "phone"
-    t.integer  "restaurant_id", null: false
+    t.boolean  "is_checkedOut", default: false, null: false
+    t.integer  "restaurant_id",                 null: false
     t.integer  "user_id"
     t.integer  "menu_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["menu_id"], name: "index_reservations_on_menu_id", using: :btree
     t.index ["restaurant_id"], name: "index_reservations_on_restaurant_id", using: :btree
     t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
   end
 
   create_table "restaurant_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",                                null: false
-    t.integer  "restaurant_id",                          null: false
+    t.integer  "user_id",       null: false
+    t.integer  "restaurant_id", null: false
     t.integer  "rol"
-    t.float    "discount",      limit: 24, default: 0.0, null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["restaurant_id"], name: "index_restaurant_users_on_restaurant_id", using: :btree
     t.index ["user_id"], name: "index_restaurant_users_on_user_id", using: :btree
   end
