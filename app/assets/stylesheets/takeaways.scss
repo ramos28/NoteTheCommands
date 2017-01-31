@@ -19,9 +19,15 @@
 
 .takeaway {
     width: 100%;
+    float:left;
     overflow:hidden;
     background-image: url("fondoBlancoStart.jpg");
     border: 1px solid black;
+}
+
+.takeawayTotal {
+    width: 100%;
+    float:left;
 }
 
 

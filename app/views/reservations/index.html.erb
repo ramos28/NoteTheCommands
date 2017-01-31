@@ -16,8 +16,8 @@
                         <div class="cssToolTip">
                             <%= image_tag('information.png', :alt => 'info')%>
                             <span>
-                                Manual de ayuda de Reservas:<br>
-                                En esta página los empleados del Restaurante podrán ver las reservas que hay para el dia de hoy en el restaurante. Entre la funcionlidad destaca:<br>
+                                Manual de ayuda de Reservas de Hoy:<br>
+                                En esta página los empleados del Restaurante podrán ver las reservas que hay para el dia de hoy en el restaurante. Se mostrarán solo las reservas de hoy Entre la funcionlidad destaca:<br>
                                 -Crear Reserva: Los empleados podrán realizar una reserva ellos mismos de algún cliente que no este registrado y llame por teléfono para realizarla.
                             </span> 
                         </div>
@@ -103,6 +103,14 @@
                                 <td class="tabla2"><%= reservation.phone %></td>
                                 <td class="tabla2"><%= reservation.user.user_name %></td>
                                 <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                                    <td><%= form_for reservation do |f| %>
+                                        <%= f.error_messages %>
+                                        <%= f.hidden_field :is_checkedOut, :value => true %>
+                                        <div class="field">
+                                            <%= f.submit 'Despachar', :class => 'boton grey'%>
+                                        </div>
+                                    <% end %>
+                                </td>
                             </tr>
                         <% end %>
                     </tbody>
@@ -127,8 +135,8 @@
                         <div class="cssToolTip">
                             <%= image_tag('information.png', :alt => 'info')%>
                             <span>
-                                Manual de ayuda de Reservas:<br>
-                                En esta página los empleados del Restaurante podrán ver las Reservas que hay para futuro en el Restaurante.
+                                Manual de ayuda de Reservas Futuras:<br>
+                                En esta página los empleados del Restaurante podrán ver las Reservas que hay para futuro en el Restaurante. Se mostrarán las reservas a partir de mañana.
                             </span> 
                         </div>
                     </div>
@@ -193,7 +201,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% @reservations.each do |reservation| %>
+                        <% @reservations_futures.each do |reservation| %>
                             <tr class="tabla2">
                                 <% if reservation.date >= Time.now.beginning_of_day %>
                                     <td class="b5"><%= reservation.name %></td>
@@ -237,7 +245,7 @@
                             <div class="cssToolTip">
                                 <%= image_tag('information.png', :alt => 'info')%>
                                 <span>
-                                    Manual de ayuda de Reservas:<br>
+                                    Manual de ayuda de Reservas Finalizadas:<br>
                                     En esta página el Gerente del Restaurante podrá ver las Reservas finalizadas ordenadas por fecha y hora mas reciente.
                                 </span> 
                             </div>
@@ -303,7 +311,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% @reservations.each do |reservation| %>
+                            <% @reservations_ended.each do |reservation| %>
                                 <tr class="tabla2">
                                     <% if reservation.date >= Time.now.beginning_of_day %>
                                         <td class="b5"><%= reservation.name %></td>
@@ -346,7 +354,7 @@
                             <div class="cssToolTip">
                                 <%= image_tag('information.png', :alt => 'info')%>
                                 <span>
-                                    Manual de ayuda de Reservas:<br>
+                                    Manual de ayuda de Reservas Totales:<br>
                                     En esta página el Gerente del Restaurante podrá ver las Reservas totales ordenadas por fecha y hora mas reciente.
                                 </span> 
                             </div>
@@ -412,7 +420,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% @reservations.each do |reservation| %>
+                            <% @reservations_total.each do |reservation| %>
                                 <tr class="tabla2">
                                     <% if reservation.date >= Time.now.beginning_of_day %>
                                         <td class="b5"><%= reservation.name %></td>

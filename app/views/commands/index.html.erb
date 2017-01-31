@@ -292,7 +292,7 @@
 		                <% else %>
 							<td class="b6"><%= command_product.is_cooked %></td>
 		                <% end %>
-		                <td>><%= link_to "Ver Comanda", command_path(command_product.command), :class => 'boton grey' %></td>
+		                <td><%= link_to "Ver Comanda", command_path(command_product.command), :class => 'boton grey' %></td>
 		                <td>
 			              	<%= form_for command_product, :url => command_product_path(command_product) do |f| %>
 			                	<%= f.hidden_field :is_cooked, value: true %>

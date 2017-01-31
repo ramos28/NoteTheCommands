@@ -1,14 +1,26 @@
 <div class="title">Incidencias del Restaurante</div>
 </br>
 <ul class="tabs">
-    <li><a href="#tab1">Incidencias Pendientes</a></li>
-    <li><a href="#tab2">Incidencias Terminadas</a></li>
-    <li><a href="#tab3">Incidencias Totales</a></li>
+    <li><a href="#tab1">Pendientes</a></li>
+    <li><a href="#tab2">Terminadas</a></li>
+    <li><a href="#tab3">Totales</a></li>
 </ul>
 <div class="contenedor_tab">
     <div id="tab1" class="contenido_tab">
-        <%= button_to "Nuvea Incidencia", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %>
-
+        <div class="new">
+            <div class="inf">
+                <div class="cssToolTip">
+                    <%= image_tag('information.png', :alt => 'info')%>
+                    <span>
+                        Manual de ayuda de Incidencias Pendientes:<br>
+                        En esta página el Empleado podrá ver las incidencias pendientes que han sido reportadas al Restaurante. Las funcionalidades que tiene son:
+                        -Crear Incidencia: El Empleado podrá reportar una incidencia nueva.
+                        -Tabla de Incidencias que van dirigidas a el.
+                    </span> 
+                </div>
+            </div>
+            <p class="header"><%= button_to "Nuvea Incidencia", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+        </div>
         <table class="tabla4">
             <thead>
                 <tr class="tabla4">
@@ -92,7 +104,19 @@
         </table>
     </div>
     <div id="tab2" class="contenido_tab">
-         <table class="tabla4">
+        <div class="new">
+            <div class="inf">
+                <div class="cssToolTip">
+                    <%= image_tag('information.png', :alt => 'info')%>
+                    <span>
+                        Manual de ayuda de Incidencias Terminadas:<br>
+                        En esta página el Empleado podrá ver las incidencias terminadas que han sido reportadas al Restaurante. Las funcionalidades que tiene son:
+                        -Tabla de Incidencias terminadas.
+                    </span> 
+                </div>
+            </div>
+        </div>
+        <table class="tabla4">
             <thead>
                 <tr class="tabla4">
                     <th class="tabla4"><%=  "Titulo" %></th>
@@ -181,6 +205,18 @@
         </table>
     </div>
     <div id="tab3" class="contenido_tab">
+        <div class="new">
+            <div class="inf">
+                <div class="cssToolTip">
+                    <%= image_tag('information.png', :alt => 'info')%>
+                    <span>
+                        Manual de ayuda de Incidencias Totales:<br>
+                        En esta página el Empleado podrá ver las incidencias totales que han sido reportadas al Restaurante. Las funcionalidades que tiene son:
+                        -Tabla de Incidencias totales.
+                    </span> 
+                </div>
+            </div>
+        </div>
         <table class="tabla4">
             <thead>
                 <tr class="tabla4">

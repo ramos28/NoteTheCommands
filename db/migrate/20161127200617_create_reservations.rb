@@ -6,6 +6,7 @@ class CreateReservations < ActiveRecord::Migration[5.0]
 			t.date :date, null: false
 			t.time :hour, null: false
 			t.integer :phone
+			t.boolean :is_checkedOut, default: false, null: false 
 
 			t.references :restaurant, null: false
 			t.references :user
