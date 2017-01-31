@@ -61,6 +61,7 @@ gem 'emoji'
 #geolocalizacion
 gem 'geocoder'
 
+#Mostra mapa google earth
 gem 'gmaps4rails'
 
 gem "paperclip", "~> 5.0.0"

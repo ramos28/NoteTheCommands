@@ -5,7 +5,7 @@
 			<div class="avatar"><%= image_tag('avatar1', :size => "30x30", class: "css-style", :alt => 'avatar1') %></div>
 			<div class="msg">
 				<p><%= emojify personal_message.body %></p>
-				<time><%= personal_message.created_at.strftime("%d %B %Y - %X") %><%= personal_message.user.user_name %></time>
+				<time><%= personal_message.created_at.strftime("%d %B %Y - %X") %> - <%= personal_message.user.user_name %></time>
 			</div>
 		</li>
 	<% else %>
@@ -13,7 +13,7 @@
 			<div class="avatar"><%= image_tag('avatar2', :size => "30x30", class: "css-style", :alt => 'avatar2')%></div>
 			<div class="msg">
 				<p><%= emojify personal_message.body %></p>
-				<time><%= personal_message.created_at.strftime("%d %B %Y - %X") %><%= personal_message.user.user_name %></time>
+				<time><%= personal_message.created_at.strftime("%d %B %Y - %X") %> - <%= personal_message.user.user_name %></time>
 			</div>
 		</li>
 	<% end %> 

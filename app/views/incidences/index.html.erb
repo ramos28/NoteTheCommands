@@ -269,7 +269,7 @@
 </div>
 
 <div class="window">
-    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"} %></div>
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, :class => 'boton red' %></div>
     <div class="title">Nueva Incidencia</div>
     <%= render 'form' %>
 </div>

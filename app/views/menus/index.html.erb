@@ -98,98 +98,100 @@
 		</table>
 	</div>
 	<% else %>
-		<div class="inf">
-	        <div class="cssToolTip">
-	            <%= image_tag('information.png', :alt => 'info')%>
-	            <span>
-	                Manual de ayuda de Menús:<br>
-	                Aquí es donde se Mostrarán todos los Menús que hay disponibles en el Restaurante y donde se podrá ver que menú es el que mas le gusta al cliente para añadirlo a la comanda.
-	            </span> 
-	        </div>
-	    </div>
-		<table class="tabla2">
-			<thead>
-				<tr class="tabla2">
-				    <th class="tabla2">
-						<div class="cssToolTip">
-						    Nombre
-							<span>Nombre del Menú</span> 
-						</div>
-				    </th>
-				    <th class="tabla2" >
-						<div class="cssToolTip">
-						    Tipo
-							<span>Tipo de Menú que puede ser: LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO, ESPECIAL, INFANTIL</span> 
-						</div>
-				    </th>
-				    <th class="tabla2" >
-						<div class="cssToolTip">
-						    Precio
-							<span>Precio del Menú</span> 
-						</div>
-				    </th>
-				    <th class="tabla2" >
-						<div class="cssToolTip">
-						    Descripción
-							<span>Breve descripción del Menú</span> 
-						</div>
-				    </th>
-				    <th class="tabla2" >
-						<div class="cssToolTip">
-						    Resturante
-							<span>Nombre del Restaurante al que pertenece</span> 
-						</div>
-				    </th>
-				    <th class="tabla2" >
-						<div class="cssToolTip">
-						    Realizado por:
-							<span>Nombre del Usuario que ha realizado el Menú</span> 
-						</div>
-				    </th>
-				    <th class="tabla2" >
-						<div class="cssToolTip">
-						    ¿Disponible?
-							<span>Verde si está disponible el Menú y rojo en caso contrario</span> 
-						</div>
-				    </th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @menus.each do |menu| %>
-				    <tr class="tabla2">
-						<td class="tabla2"><%= menu.name %></td>
-						<td class="tabla2"><%= Menu::MENU_CATEGORY[menu.type_menu] %></td>
-						<td class="tabla2" class="price"><%= number_to_currency(menu.price, :unit => "€") %></td>
-						<td class="tabla2"><%= menu.description %></td>
-						<td class="tabla2"><%= menu.restaurant.name %></td>
-						<td class="tabla2"><%= menu.user.user_name %></td>
-						<% if menu.is_available %>
-		                	<td class="b5"><%= menu.is_available %></td>
-		                <% else %>
-							<td class="b6"><%= menu.is_available %></td>
-		                <% end %>
-						<td><%= link_to "Ver Menú", menu_path(menu), :class => 'boton grey' %></td>   
-				    </tr>
-				<% end %>
-			</tbody>
-			<tfoot>
-				<tr class="tabla2">
-					<th class="tabla2" colspan="7">
-						<div class="pagination">
-							<div class="digg_pagination">
-							    <%= will_paginate @menus, :container => false %>
+		<div class ="muestra-tabla">
+			<div class="inf">
+		        <div class="cssToolTip">
+		            <%= image_tag('information.png', :alt => 'info')%>
+		            <span>
+		                Manual de ayuda de Menús:<br>
+		                Aquí es donde se Mostrarán todos los Menús que hay disponibles en el Restaurante y donde se podrá ver que menú es el que mas le gusta al cliente para añadirlo a la comanda.
+		            </span> 
+		        </div>
+		    </div>
+			<table class="tabla2">
+				<thead>
+					<tr class="tabla2">
+					    <th class="tabla2">
+							<div class="cssToolTip">
+							    Nombre
+								<span>Nombre del Menú</span> 
 							</div>
-						</div>
-					</th>
-				</tr>
-			</tfoot>
-		</table>
+					    </th>
+					    <th class="tabla2" >
+							<div class="cssToolTip">
+							    Tipo
+								<span>Tipo de Menú que puede ser: LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO, ESPECIAL, INFANTIL</span> 
+							</div>
+					    </th>
+					    <th class="tabla2" >
+							<div class="cssToolTip">
+							    Precio
+								<span>Precio del Menú</span> 
+							</div>
+					    </th>
+					    <th class="tabla2" >
+							<div class="cssToolTip">
+							    Descripción
+								<span>Breve descripción del Menú</span> 
+							</div>
+					    </th>
+					    <th class="tabla2" >
+							<div class="cssToolTip">
+							    Resturante
+								<span>Nombre del Restaurante al que pertenece</span> 
+							</div>
+					    </th>
+					    <th class="tabla2" >
+							<div class="cssToolTip">
+							    Realizado por:
+								<span>Nombre del Usuario que ha realizado el Menú</span> 
+							</div>
+					    </th>
+					    <th class="tabla2" >
+							<div class="cssToolTip">
+							    ¿Disponible?
+								<span>Verde si está disponible el Menú y rojo en caso contrario</span> 
+							</div>
+					    </th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @menus.each do |menu| %>
+					    <tr class="tabla2">
+							<td class="tabla2"><%= menu.name %></td>
+							<td class="tabla2"><%= Menu::MENU_CATEGORY[menu.type_menu] %></td>
+							<td class="tabla2" class="price"><%= number_to_currency(menu.price, :unit => "€") %></td>
+							<td class="tabla2"><%= menu.description %></td>
+							<td class="tabla2"><%= menu.restaurant.name %></td>
+							<td class="tabla2"><%= menu.user.user_name %></td>
+							<% if menu.is_available %>
+			                	<td class="b5"><%= menu.is_available %></td>
+			                <% else %>
+								<td class="b6"><%= menu.is_available %></td>
+			                <% end %>
+							<td><%= link_to "Ver Menú", menu_path(menu), :class => 'boton grey' %></td>   
+					    </tr>
+					<% end %>
+				</tbody>
+				<tfoot>
+					<tr class="tabla2">
+						<th class="tabla2" colspan="7">
+							<div class="pagination">
+								<div class="digg_pagination">
+								    <%= will_paginate @menus, :container => false %>
+								</div>
+							</div>
+						</th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
 	<% end %>
 </div>
     
 
 <div class="window">
-    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, style: "color: white" %></div>
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, :class => 'boton red' %></div>
     <div class="title">Nuevo Menú</div>
     <%= render 'form' %>
 </div>

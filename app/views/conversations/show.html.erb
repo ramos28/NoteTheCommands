@@ -17,10 +17,10 @@
 		</br><div class="accion-blog">Enviar Mensaje</div>
 	    <%= form_for @personal_message do |f| %>
 	        </br><%= hidden_field_tag 'conversation_id', @conversation.id %>
-	        <%= f.text_area :body, style: "resize: none;", :cols => 40, rows: 4, placeholder: "Escribir mensaje..." %>
+	        <%= f.text_area :body, style: "resize: none;", :cols => 50, rows: 4, placeholder: "Escribir mensaje..." %>
 	        <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-	        <%= f.submit 'Enviar', :class => 'boton grey' %><br />
-	    <% end %>
+	        <%= f.submit 'Enviar', :class => 'boton grey' %>
+	    <% end %><br />
 	</div>
 </div>
 <script type="text/javascript">

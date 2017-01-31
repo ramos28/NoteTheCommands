@@ -1,117 +1,471 @@
 <% if @current_role == 1 || @current_role == 2 || @current_role == 3 %>
     <div class="title">Reservas del Restaurante</div>
-    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.0/fullcalendar.min.css" rel="stylesheet">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.0/fullcalendar.print.css" rel="stylesheet">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js">
-    </script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.0/fullcalendar.min.js">
-    </script>
-
-    <div id="calendar"></div>
-    <script>
-        $('#calendar').fullCalendar({})
-    </script>
-    <div class ="muestra-tabla">
-            <table class="tabla2">
-                <thead>
-                    <tr class="tabla2">
-                        <th class="tabla2" >
-                            <div class="cssToolTip">
-                                <%= "Nombre reserva" %>
-                                <span>Nombre al que está hecha la Reserva, el color Amarillo significa que el día de la reserva es hoy y en rojo que es una Reserva ya Realizada y Finalizada</span> 
-                            </div>
-                        </th>
-                        <th class="tabla2" >
-                            <div class="cssToolTip">
-                                <%= "Número de personas" %>
-                                <span>Número de Personas de las que se compone la Reserva</span>
-                            </div>
-                        </th>
-                        <th class="tabla2" title="">
-                            <div class="cssToolTip">
-                                <%= "Menú" %>
-                                <span>Menú del cual se compone la Reserva en caso de tenerlo</span>
-                            </div>
-                        </th>
-                        <th class="tabla2" >
-                            <div class="cssToolTip">
-                                <%= "Día reserva" %>
-                                <span>Día para el que se realiza la Reserva, en amarillo es que el dia de la reserva es hoy y en rojo es que la reserva es pasada y finalizada</span>
-                            </div>
-                        </th>
-                        <th class="tabla2" >
-                            <div class="cssToolTip">
-                                <%= "Hora reserva" %>
-                                <span>Hora para el día de la Reserva</span>
-                            </div>
-                        </th>
-                        <th class="tabla2" >
-                            <div class="cssToolTip">
-                                <%= "Restaurante" %>
-                                <span>Restaurante donde se realiza la Reserva</span>
-                            </div>
-                        </th>
-                        <th class="tabla2" >
-                            <div class="cssToolTip">
-                                <%= "Teléfono contacto" %>
-                                <span>Teléfono de contacto opcional del Usuario que realiza la Reserva</span>
-                            </div>
-                        </th>
-                        <th class="tabla2" >
-                            <div class="cssToolTip">
-                                <%= "Reserva realizada por:" %>
-                                <span>Nombre del Usuario que realizó la Reserva</span>
-                            </div>
-                        </th>
-                        <th class="tabla2" >
-                            <div class="cssToolTip">
-                                <%= "Rol" %>
-                                <span>Rol del Usuario que realizó la Reserva</span>
-                            </div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @reservations.each do |reservation| %>
+    <ul class="tabs">
+        <li><a href="#tab1">Hoy</a></li>
+        <li><a href="#tab2">Futuras</a></li>
+        <% if @current_role == 3 %>
+            <li><a href="#tab3">Finalizadas</a></li>
+            <li><a href="#tab3">Totales</a></li>
+        <% end %>
+    </ul>
+    <div class="contenedor_tab">
+        <div id="tab1" class="contenido_tab">
+            <div class ="muestra-tabla">
+                <div class="new">
+                    <div class="inf">
+                        <div class="cssToolTip">
+                            <%= image_tag('information.png', :alt => 'info')%>
+                            <span>
+                                Manual de ayuda de Reservas:<br>
+                                En esta página los empleados del Restaurante podrán ver las reservas que hay para el dia de hoy en el restaurante. Entre la funcionlidad destaca:<br>
+                                -Crear Reserva: Los empleados podrán realizar una reserva ellos mismos de algún cliente que no este registrado y llame por teléfono para realizarla.
+                            </span> 
+                        </div>
+                    </div>
+                    <p class="header"><%= button_to "Realizar Reserva", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+                </div>
+                <table class="tabla2">
+                    <thead>
                         <tr class="tabla2">
-                            <% if reservation.date >= Time.now.beginning_of_day %>
-                                <td class="b5"><%= reservation.name %></td>
-                            <% else %>
-                                <td class="b6"><%= reservation.name %></td>
-                            <% end %>
-                            <td class="b7"><%= reservation.num_persons %></td>
-                            <td class="tabla2"><%= reservation.menu.name if !reservation.menu.blank? %></td>
-                            <% if reservation.date >= Time.now.beginning_of_day %>
-                                <td class="b5"><%= reservation.date.strftime("%d %B %Y") %></td>
-                            <% else %>
-                                <td class="b6"><%= reservation.date.strftime("%d %B %Y") %></td>
-                            <% end %>
-                            <td class="tabla2"><%= reservation.hour.strftime("%X") %></td>
-                            <td class="tabla2"><%= reservation.restaurant.name %></td>
-                            <td class="tabla2"><%= reservation.phone %></td>
-                            <td class="tabla2"><%= reservation.user.user_name %></td>
-                            <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
-                        </tr>
-                    <% end %>
-                </tbody>
-                <tfoot>
-                    <tr class="tabla2">
-                        <th class="tabla2" colspan="9">
-                            <div class="pagination">
-                                <div class="digg_pagination">
-                                    <%= will_paginate @reservations, :container => false %>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Nombre reserva" %>
+                                    <span>Nombre al que está hecha la Reserva, el color Amarillo significa que el día de la reserva es hoy y en rojo que es una Reserva ya Realizada y Finalizada</span> 
                                 </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Número de personas" %>
+                                    <span>Número de Personas de las que se compone la Reserva</span>
+                                </div>
+                            </th>
+                            <th class="tabla2">
+                                <div class="cssToolTip">
+                                    <%= "Menú" %>
+                                    <span>Menú del cual se compone la Reserva en caso de tenerlo</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Día reserva" %>
+                                    <span>Día para el que se realiza la Reserva, en amarillo es que el dia de la reserva es hoy y en rojo es que la reserva es pasada y finalizada</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Hora reserva" %>
+                                    <span>Hora para el día de la Reserva</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Restaurante" %>
+                                    <span>Restaurante donde se realiza la Reserva</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Teléfono contacto" %>
+                                    <span>Teléfono de contacto opcional del Usuario que realiza la Reserva</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Reserva realizada por:" %>
+                                    <span>Nombre del Usuario que realizó la Reserva</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Rol" %>
+                                    <span>Rol del Usuario que realizó la Reserva</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @reservations.each do |reservation| %>
+                            <tr class="tabla2">
+                                <% if reservation.date >= Time.now.beginning_of_day %>
+                                    <td class="b5"><%= reservation.name %></td>
+                                <% else %>
+                                    <td class="b6"><%= reservation.name %></td>
+                                <% end %>
+                                <td class="b7"><%= reservation.num_persons %></td>
+                                <td class="tabla2"><%= reservation.menu.name if !reservation.menu.blank? %></td>
+                                <% if reservation.date >= Time.now.beginning_of_day %>
+                                    <td class="b5"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                <% else %>
+                                    <td class="b6"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                <% end %>
+                                <td class="tabla2"><%= reservation.hour.strftime("%X") %></td>
+                                <td class="tabla2"><%= reservation.restaurant.name %></td>
+                                <td class="tabla2"><%= reservation.phone %></td>
+                                <td class="tabla2"><%= reservation.user.user_name %></td>
+                                <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                    <tfoot>
+                        <tr class="tabla2">
+                            <th class="tabla2" colspan="9">
+                                <div class="pagination">
+                                    <div class="digg_pagination">
+                                        <%= will_paginate @reservations, :container => false %>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div id="tab2" class="contenido_tab">
+            <div class ="muestra-tabla">
+                <div class="new">
+                    <div class="inf">
+                        <div class="cssToolTip">
+                            <%= image_tag('information.png', :alt => 'info')%>
+                            <span>
+                                Manual de ayuda de Reservas:<br>
+                                En esta página los empleados del Restaurante podrán ver las Reservas que hay para futuro en el Restaurante.
+                            </span> 
+                        </div>
+                    </div>
+                </div>
+                <table class="tabla2">
+                    <thead>
+                        <tr class="tabla2">
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Nombre reserva" %>
+                                    <span>Nombre al que está hecha la Reserva, el color Amarillo significa que el día de la reserva es hoy y en rojo que es una Reserva ya Realizada y Finalizada</span> 
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Número de personas" %>
+                                    <span>Número de Personas de las que se compone la Reserva</span>
+                                </div>
+                            </th>
+                            <th class="tabla2">
+                                <div class="cssToolTip">
+                                    <%= "Menú" %>
+                                    <span>Menú del cual se compone la Reserva en caso de tenerlo</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Día reserva" %>
+                                    <span>Día para el que se realiza la Reserva, en amarillo es que el dia de la reserva es hoy y en rojo es que la reserva es pasada y finalizada</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Hora reserva" %>
+                                    <span>Hora para el día de la Reserva</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Restaurante" %>
+                                    <span>Restaurante donde se realiza la Reserva</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Teléfono contacto" %>
+                                    <span>Teléfono de contacto opcional del Usuario que realiza la Reserva</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Reserva realizada por:" %>
+                                    <span>Nombre del Usuario que realizó la Reserva</span>
+                                </div>
+                            </th>
+                            <th class="tabla2" >
+                                <div class="cssToolTip">
+                                    <%= "Rol" %>
+                                    <span>Rol del Usuario que realizó la Reserva</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @reservations.each do |reservation| %>
+                            <tr class="tabla2">
+                                <% if reservation.date >= Time.now.beginning_of_day %>
+                                    <td class="b5"><%= reservation.name %></td>
+                                <% else %>
+                                    <td class="b6"><%= reservation.name %></td>
+                                <% end %>
+                                <td class="b7"><%= reservation.num_persons %></td>
+                                <td class="tabla2"><%= reservation.menu.name if !reservation.menu.blank? %></td>
+                                <% if reservation.date >= Time.now.beginning_of_day %>
+                                    <td class="b5"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                <% else %>
+                                    <td class="b6"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                <% end %>
+                                <td class="tabla2"><%= reservation.hour.strftime("%X") %></td>
+                                <td class="tabla2"><%= reservation.restaurant.name %></td>
+                                <td class="tabla2"><%= reservation.phone %></td>
+                                <td class="tabla2"><%= reservation.user.user_name %></td>
+                                <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                    <tfoot>
+                        <tr class="tabla2">
+                            <th class="tabla2" colspan="9">
+                                <div class="pagination">
+                                    <div class="digg_pagination">
+                                        <%= will_paginate @reservations, :container => false %>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <% if @current_role == 3 %>
+            <div id="tab3" class="contenido_tab">
+                <div class ="muestra-tabla">
+                    <div class="new">
+                        <div class="inf">
+                            <div class="cssToolTip">
+                                <%= image_tag('information.png', :alt => 'info')%>
+                                <span>
+                                    Manual de ayuda de Reservas:<br>
+                                    En esta página el Gerente del Restaurante podrá ver las Reservas finalizadas ordenadas por fecha y hora mas reciente.
+                                </span> 
                             </div>
-                        </th>
-                    </tr>
-                </tfoot>
-            </table>
-    </div>
-    <div class="muestra-opciones">
-            </br><div class="accionTitle">Realizar Reserva</div>
-            <%= render 'form2' %>
+                        </div>
+                    </div>
+                    <table class="tabla2">
+                        <thead>
+                            <tr class="tabla2">
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Nombre reserva" %>
+                                        <span>Nombre al que está hecha la Reserva, el color Amarillo significa que el día de la reserva es hoy y en rojo que es una Reserva ya Realizada y Finalizada</span> 
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Número de personas" %>
+                                        <span>Número de Personas de las que se compone la Reserva</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2">
+                                    <div class="cssToolTip">
+                                        <%= "Menú" %>
+                                        <span>Menú del cual se compone la Reserva en caso de tenerlo</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Día reserva" %>
+                                        <span>Día para el que se realiza la Reserva, en amarillo es que el dia de la reserva es hoy y en rojo es que la reserva es pasada y finalizada</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Hora reserva" %>
+                                        <span>Hora para el día de la Reserva</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Restaurante" %>
+                                        <span>Restaurante donde se realiza la Reserva</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Teléfono contacto" %>
+                                        <span>Teléfono de contacto opcional del Usuario que realiza la Reserva</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Reserva realizada por:" %>
+                                        <span>Nombre del Usuario que realizó la Reserva</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Rol" %>
+                                        <span>Rol del Usuario que realizó la Reserva</span>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @reservations.each do |reservation| %>
+                                <tr class="tabla2">
+                                    <% if reservation.date >= Time.now.beginning_of_day %>
+                                        <td class="b5"><%= reservation.name %></td>
+                                    <% else %>
+                                        <td class="b6"><%= reservation.name %></td>
+                                    <% end %>
+                                    <td class="b7"><%= reservation.num_persons %></td>
+                                    <td class="tabla2"><%= reservation.menu.name if !reservation.menu.blank? %></td>
+                                    <% if reservation.date >= Time.now.beginning_of_day %>
+                                        <td class="b5"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                    <% else %>
+                                        <td class="b6"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                    <% end %>
+                                    <td class="tabla2"><%= reservation.hour.strftime("%X") %></td>
+                                    <td class="tabla2"><%= reservation.restaurant.name %></td>
+                                    <td class="tabla2"><%= reservation.phone %></td>
+                                    <td class="tabla2"><%= reservation.user.user_name %></td>
+                                    <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                        <tfoot>
+                            <tr class="tabla2">
+                                <th class="tabla2" colspan="9">
+                                    <div class="pagination">
+                                        <div class="digg_pagination">
+                                            <%= will_paginate @reservations, :container => false %>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div id="tab4" class="contenido_tab">
+                <div class ="muestra-tabla">
+                    <div class="new">
+                        <div class="inf">
+                            <div class="cssToolTip">
+                                <%= image_tag('information.png', :alt => 'info')%>
+                                <span>
+                                    Manual de ayuda de Reservas:<br>
+                                    En esta página el Gerente del Restaurante podrá ver las Reservas totales ordenadas por fecha y hora mas reciente.
+                                </span> 
+                            </div>
+                        </div>
+                    </div>
+                    <table class="tabla2">
+                        <thead>
+                            <tr class="tabla2">
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Nombre reserva" %>
+                                        <span>Nombre al que está hecha la Reserva, el color Amarillo significa que el día de la reserva es hoy y en rojo que es una Reserva ya Realizada y Finalizada</span> 
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Número de personas" %>
+                                        <span>Número de Personas de las que se compone la Reserva</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2">
+                                    <div class="cssToolTip">
+                                        <%= "Menú" %>
+                                        <span>Menú del cual se compone la Reserva en caso de tenerlo</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Día reserva" %>
+                                        <span>Día para el que se realiza la Reserva, en amarillo es que el dia de la reserva es hoy y en rojo es que la reserva es pasada y finalizada</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Hora reserva" %>
+                                        <span>Hora para el día de la Reserva</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Restaurante" %>
+                                        <span>Restaurante donde se realiza la Reserva</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Teléfono contacto" %>
+                                        <span>Teléfono de contacto opcional del Usuario que realiza la Reserva</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Reserva realizada por:" %>
+                                        <span>Nombre del Usuario que realizó la Reserva</span>
+                                    </div>
+                                </th>
+                                <th class="tabla2" >
+                                    <div class="cssToolTip">
+                                        <%= "Rol" %>
+                                        <span>Rol del Usuario que realizó la Reserva</span>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @reservations.each do |reservation| %>
+                                <tr class="tabla2">
+                                    <% if reservation.date >= Time.now.beginning_of_day %>
+                                        <td class="b5"><%= reservation.name %></td>
+                                    <% else %>
+                                        <td class="b6"><%= reservation.name %></td>
+                                    <% end %>
+                                    <td class="b7"><%= reservation.num_persons %></td>
+                                    <td class="tabla2"><%= reservation.menu.name if !reservation.menu.blank? %></td>
+                                    <% if reservation.date >= Time.now.beginning_of_day %>
+                                        <td class="b5"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                    <% else %>
+                                        <td class="b6"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                    <% end %>
+                                    <td class="tabla2"><%= reservation.hour.strftime("%X") %></td>
+                                    <td class="tabla2"><%= reservation.restaurant.name %></td>
+                                    <td class="tabla2"><%= reservation.phone %></td>
+                                    <td class="tabla2"><%= reservation.user.user_name %></td>
+                                    <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                        <tfoot>
+                            <tr class="tabla2">
+                                <th class="tabla2" colspan="9">
+                                    <div class="pagination">
+                                        <div class="digg_pagination">
+                                            <%= will_paginate @reservations, :container => false %>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        <% end %>
     </div>
 <%else%>
         </br><div class="title">Realizar Reserva</div>
         <%= render 'form' %>
 <% end %>
+
+<div class="window">
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, :class => 'boton red' %></div>
+    <div class="title">Realizar Reserva</div>
+    <%= render 'form2' %>
+</div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>

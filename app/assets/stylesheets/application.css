@@ -390,6 +390,14 @@ nav ul ul li a:hover {
   background: #2E2E2E;
 }
 
+.red{
+  background: #F78181;
+}
+
+.red:hover{
+  background: #FF0000;
+}
+
 label {
   display: block;
   margin: .5em 0 0 0;

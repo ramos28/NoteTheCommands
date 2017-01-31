@@ -102,7 +102,7 @@
 </div>
 
 <div class="window">
-    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, style: "color: white" %></div>
+    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, :class => 'boton red' %></div>
     <div class="title">Nuevo Stock</div>
     <%= render 'form' %>
 </div>
