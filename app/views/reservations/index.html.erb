@@ -219,29 +219,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% @reservations_futures.each do |reservation| %>
+                        <% @reservations_futures.each do |reserv_future| %>
                             <tr class="tabla2">
-                                <% if reservation.date >= Time.now.beginning_of_day %>
-                                    <td class="b5"><%= reservation.name %></td>
+                                <% if reserv_future.date < Time.now.beginning_of_day + (24*60*60) %>
+                                    <% if reserv_future.date >= Time.now.beginning_of_day %>
+                                        <td class="b5"><%= reserv_future.name %></td>
+                                    <% end %>
                                 <% else %>
-                                    <td class="b6"><%= reservation.name %></td>
+                                    <td class="b6"><%= reserv_future.name %></td>
                                 <% end %>
-                                <td class="b7"><%= reservation.num_persons %></td>
-                                <td class="tabla2"><%= reservation.menu.name if !reservation.menu.blank? %></td>
-                                <% if reservation.date >= Time.now.beginning_of_day %>
-                                    <td class="b5"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                <td class="b7"><%= reserv_future.num_persons %></td>
+                                <td class="tabla2"><%= reserv_future.menu.name if !reserv_future.menu.blank? %></td>
+                                <% if reserv_future.date < Time.now.beginning_of_day + (24*60*60) %>
+                                    <% if reserv_future.date >= Time.now.beginning_of_day %>
+                                        <td class="b5"><%= reserv_future.date.strftime("%d %B %Y") %></td>
+                                    <% end %>
                                 <% else %>
-                                    <td class="b6"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                    <td class="b6"><%= reserv_future.date.strftime("%d %B %Y") %></td>
                                 <% end %>
-                                <td class="tabla2"><%= reservation.hour.strftime("%X") %></td>
-                                <td class="tabla2"><%= reservation.restaurant.name %></td>
-                                <td class="tabla2"><%= reservation.phone %></td>
-                                <td class="tabla2"><%= reservation.user.user_name %></td>
-                                <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
-                                <% if !reservation.is_checkedOut %>
-                                    <td class="b1"><%= reservation.is_checkedOut %></td>
+                                <td class="tabla2"><%= reserv_future.hour.strftime("%X") %></td>
+                                <td class="tabla2"><%= reserv_future.restaurant.name %></td>
+                                <td class="tabla2"><%= reserv_future.phone %></td>
+                                <td class="tabla2"><%= reserv_future.user.user_name %></td>
+                                <td class="tabla2"><%= RestaurantUser::ROLES[reserv_future.user.restaurant_users.find_by_restaurant_id(reserv_future.restaurant.id).rol] %></td>
+                                <% if !reserv_future.is_checkedOut %>
+                                    <td class="b1"><%= reserv_future.is_checkedOut %></td>
                                 <% else %>
-                                    <td class="b2"><%= reservation.is_checkedOut %></td>
+                                    <td class="b2"><%= reserv_future.is_checkedOut %></td>
                                 <% end %>
                             </tr>
                         <% end %>
@@ -340,29 +344,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% @reservations_ended.each do |reservation| %>
+                            <% @reservations_ended.each do |reserv_end| %>
                                 <tr class="tabla2">
-                                    <% if reservation.date >= Time.now.beginning_of_day %>
-                                        <td class="b5"><%= reservation.name %></td>
+                                    <% if reserv_end.date >= Time.now.beginning_of_day %>
+                                        <td class="b5"><%= reserv_end.name %></td>
                                     <% else %>
-                                        <td class="b6"><%= reservation.name %></td>
+                                        <td class="b6"><%= reserv_end.name %></td>
                                     <% end %>
-                                    <td class="b7"><%= reservation.num_persons %></td>
-                                    <td class="tabla2"><%= reservation.menu.name if !reservation.menu.blank? %></td>
-                                    <% if reservation.date >= Time.now.beginning_of_day %>
-                                        <td class="b5"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                    <td class="b7"><%= reserv_end.num_persons %></td>
+                                    <td class="tabla2"><%= reserv_end.menu.name if !reserv_end.menu.blank? %></td>
+                                    <% if reserv_end.date >= Time.now.beginning_of_day %>
+                                        <td class="b5"><%= reserv_end.date.strftime("%d %B %Y") %></td>
                                     <% else %>
-                                        <td class="b6"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                        <td class="b6"><%= reserv_end.date.strftime("%d %B %Y") %></td>
                                     <% end %>
-                                    <td class="tabla2"><%= reservation.hour.strftime("%X") %></td>
-                                    <td class="tabla2"><%= reservation.restaurant.name %></td>
-                                    <td class="tabla2"><%= reservation.phone %></td>
-                                    <td class="tabla2"><%= reservation.user.user_name %></td>
-                                    <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
-                                    <% if !reservation.is_checkedOut %>
-                                        <td class="b1"><%= reservation.is_checkedOut %></td>
+                                    <td class="tabla2"><%= reserv_end.hour.strftime("%X") %></td>
+                                    <td class="tabla2"><%= reserv_end.restaurant.name %></td>
+                                    <td class="tabla2"><%= reserv_end.phone %></td>
+                                    <td class="tabla2"><%= reserv_end.user.user_name %></td>
+                                    <td class="tabla2"><%= RestaurantUser::ROLES[reserv_end.user.restaurant_users.find_by_restaurant_id(reserv_end.restaurant.id).rol] %></td>
+                                    <% if !reserv_end.is_checkedOut %>
+                                        <td class="b1"><%= reserv_end.is_checkedOut %></td>
                                     <% else %>
-                                        <td class="b2"><%= reservation.is_checkedOut %></td>
+                                        <td class="b2"><%= reserv_end.is_checkedOut %></td>
                                     <% end %>
                                 </tr>
                             <% end %>
@@ -460,29 +464,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% @reservations_total.each do |reservation| %>
+                            <% @reservations_total.each do |reserv_total| %>
                                 <tr class="tabla2">
-                                    <% if reservation.date >= Time.now.beginning_of_day %>
-                                        <td class="b5"><%= reservation.name %></td>
+                                    <% if reserv_total.date < Time.now.beginning_of_day + (24*60*60) %>
+                                        <% if reserv_total.date >= Time.now.beginning_of_day %>
+                                            <td class="b5"><%= reserv_total.name %></td>
+                                        <% end %>
                                     <% else %>
-                                        <td class="b6"><%= reservation.name %></td>
+                                        <td class="b6"><%= reserv_total.name %></td>
                                     <% end %>
-                                    <td class="b7"><%= reservation.num_persons %></td>
-                                    <td class="tabla2"><%= reservation.menu.name if !reservation.menu.blank? %></td>
-                                    <% if reservation.date >= Time.now.beginning_of_day %>
-                                        <td class="b5"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                    <td class="b7"><%= reserv_total.num_persons %></td>
+                                    <td class="tabla2"><%= reserv_total.menu.name if !reserv_total.menu.blank? %></td>
+                                    <% if reserv_total.date < Time.now.beginning_of_day + (24*60*60) %>
+                                        <% if reserv_total.date >= Time.now.beginning_of_day %>
+                                            <td class="b5"><%= reserv_total.date.strftime("%d %B %Y") %></td>
+                                        <% end %>
                                     <% else %>
-                                        <td class="b6"><%= reservation.date.strftime("%d %B %Y") %></td>
+                                        <td class="b6"><%= reserv_total.date.strftime("%d %B %Y") %></td>
                                     <% end %>
-                                    <td class="tabla2"><%= reservation.hour.strftime("%X") %></td>
-                                    <td class="tabla2"><%= reservation.restaurant.name %></td>
-                                    <td class="tabla2"><%= reservation.phone %></td>
-                                    <td class="tabla2"><%= reservation.user.user_name %></td>
-                                    <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
-                                    <% if !reservation.is_checkedOut %>
-                                        <td class="b1"><%= reservation.is_checkedOut %></td>
+                                    <td class="tabla2"><%= reserv_total.hour.strftime("%X") %></td>
+                                    <td class="tabla2"><%= reserv_total.restaurant.name %></td>
+                                    <td class="tabla2"><%= reserv_total.phone %></td>
+                                    <td class="tabla2"><%= reserv_total.user.user_name %></td>
+                                    <td class="tabla2"><%= RestaurantUser::ROLES[reserv_total.user.restaurant_users.find_by_restaurant_id(reserv_total.restaurant.id).rol] %></td>
+                                    <% if !reserv_total.is_checkedOut %>
+                                        <td class="b1"><%= reserv_total.is_checkedOut %></td>
                                     <% else %>
-                                        <td class="b2"><%= reservation.is_checkedOut %></td>
+                                        <td class="b2"><%= reserv_total.is_checkedOut %></td>
                                     <% end %>
                                 </tr>
                             <% end %>

@@ -12,7 +12,7 @@
             </div>
             <div class="field">
                 <%= f.label :descripción %>
-                <%= f.text_area :description, :cols => 30, rows: 5, placeholder: "Breve descripción del Menú..." %>
+                <%= f.text_area :description, style: "resize: none;", :cols => 30, rows: 5, placeholder: "Breve descripción del Menú..." %>
             </div>
             <div class="field">
                 <%= f.label :precio %>
@@ -27,7 +27,6 @@
             <div class="field">
                 <p><%= f.submit 'Crear Menú', :class => 'boton grey'%></p>
             </div>
-            </br></br>
         <% end %>
     </div>
 </div>

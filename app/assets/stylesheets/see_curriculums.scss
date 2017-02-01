@@ -6,5 +6,24 @@
 .vista {
 	float: left;
 	font-size:15px;
-	padding: 20px;
+	text-align: center;
+    top: 35%;
+    width: 100%;
+    margin: 0 auto;    
+    background-image: url("fondoAmarilloClaro.jpg");
+    margin-bottom: 2em;
+    border-radius: 16px 16px;
+    border-color: #444444;
+    border-style: solid;
+    box-shadow: 2px 2px 10px #B1B1B1;
+    margin-top: 25px;
+    border-width: 2px;
 }
+
+.pater > div {
+    display: inline-block;
+    padding: 20px;
+    width: 25%;
+    border: 1px solid black;
+    margin: 0;
+ }

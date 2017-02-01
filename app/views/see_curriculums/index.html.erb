@@ -1,11 +1,17 @@
 <div class="title">Curricula del Restaurante '<%= @current_restaurant.name %>'</div>
 <div class="vista">
-	</br><% @current_restaurant.curriculums.each do |curriculum| %>
-	<%= link_to curriculum.file.url do %>
-			<div class="imagen">
-				<%= image_tag('pdf.png', :alt => 'pdf')%>
-			</div>
+	<div class="pater">
+		<% cont = 0 %>
+		</br><% @current_restaurant.curriculums.each do |curriculum| %>
+			<%= link_to curriculum.file.url do %>
+				<% cont += 1 %>
+				<div>
+					<div class="imagen">
+						<%= image_tag('pdf.png', :alt => 'pdf')%><p><%= cont %>º</p>
+					</div>
+				</div>
+			<% end %>
 		<% end %>
-	<% end %>
-	</br></br></br>
+		</br></br></br>
+	</div>
 </div>

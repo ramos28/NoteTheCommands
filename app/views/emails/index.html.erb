@@ -153,7 +153,7 @@
                         <td class="tabla4" title="<%= email_out.subject %>"><%= email_out.subject %></td>
                         <td class="tabla4" title="<%= email_out.user_for %>"><%= email_out.user_for %></td>
                         <td class="tabla4" title="<%= email_out.description %>"><div id="container2"><%= email_out.description %></div></td>
-                        <td class="tabla4"><%= email_out.created_at %></td>
+                        <td class="tabla4"><%= email_out.created_at.strftime("%d %B %Y -- %X") %></td>
                         <% if email_out.is_sent == 0 %>
                             <td class="b1"><%= Email::SENT_CATEGORY[email_out.is_sent]%></td>
                         <% else %>
