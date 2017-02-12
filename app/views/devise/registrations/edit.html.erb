@@ -1,7 +1,7 @@
 <div class="title">Modificar <%= resource_name.to_s.humanize %></div>
 
 <div class ="muestra-tabla-anonimous">
-    </br><div class="accion">Modifica la Cuenta de '<%=current_user.user_name%>'</div>
+    </br><div class="accionEdit">Modifica la Cuenta de '<%=current_user.user_name%>'</div>
     <div id="padre">  
         <div id="hijo7">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -43,6 +43,6 @@
 </div>
 
 <div class="muestra-tabla-login">
-    </br></br></br></br><div class="accion" title="Si no esta conforme con los servicios proporcionados puede proceder a eliminar la cuenta">¿Eliminar la cuenta?</div>
+    </br></br></br></br><div class="accionEdit" title="Si no esta conforme con los servicios proporcionados puede proceder a eliminar la cuenta">¿Eliminar la cuenta?</div>
     </br></br><%= button_to "Eliminar cuenta", registration_path(resource_name), data: { confirm: "¿Está seguro que desea eliminar la cuenta?" }, method: :delete, :class => 'boton grey' %>
 </div>

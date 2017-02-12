@@ -19,7 +19,7 @@
                     </span> 
                 </div>
             </div>
-            <p class="header"><%= button_to "Nuvea Incidencia", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+            <p class="header"><%= button_to "Nueva Incidencia", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
         </div>
         <table class="tabla4">
             <thead>
@@ -50,7 +50,7 @@
                             <% else %>
                                 <td class="inc5"><%= Incidence::PRIORITY_CATEGORY[incidence.priority] %></td>
                             <% end %>
-                            <td class="tabla4" title="<%= incidence.description %>"><div id="container2"><%= incidence.description %></div></td>
+                            <td class="tabla4" title="<%= incidence.description %>"><div id="container3"><%= incidence.description %></div></td>
                             <td class="tabla4"><%= incidence.created_at.strftime("%d %B %Y -- %X") %></td>
                             <td class="tabla4"><%= incidence.user.user_name %></td>
                             <% if !incidence.is_solved %>

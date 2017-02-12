@@ -1,5 +1,20 @@
 <div class="title">Restaurantes</div>
 <div class ="muestra-tabla">
+	<div class="new">
+		<div class="inf">
+			<div class="cssToolTip">
+	        	<%= image_tag('information.png', :alt => 'info')%>
+				<span>
+					Manual de ayuda de Registro de Restaurante:<br>
+					En esta página el Administrador pordrá podrá registrar un Restaurante nuevo en la aplicación. Las funcionalidades que tiene son:<br>
+					- Registrar el Restaurante: Se resgistra un Restaurante nuevo con los datos proporcinados por el que vaya a ser Gerente del mismo.
+				</span> 
+			</div>
+		</div>
+		<div class="new">
+			<p class="header"><%= button_to 'Registrar Restaurante', 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+		</div>
+	</div>
 	<table class="tabla2">
 		<thead>
 		    <tr class="tabla2">
@@ -63,10 +78,19 @@
 	</table>
 </div>
 
-
-<div class="muestra-opciones">
+<div class="window">
 	<% if current_user.superadmin %>
-		<div class="accion">Registrar Restaurante</div>
-		<%= render 'form' %>
-	<%end %>
+	    <div class="cerrar"><%= link_to "Cerrar X", 'javascript:closeWindow();', data: { confirm: "¿Está seguro que desea cerrar?"}, :class => 'boton red' %></div>
+	    <div class="title">Registrar Restaurante</div>
+	    <%= render 'form' %>
+	<% end %>  
 </div>
+
+<script type="text/javascript">
+    function openWindow(){
+        $(".window").slideDown("slow");
+    }
+    function closeWindow(){
+        $(".window").slideUp("fast");
+    }
+</script>

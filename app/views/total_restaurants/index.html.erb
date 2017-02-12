@@ -1,104 +1,103 @@
 <div class="title">Restaurantes Registrados</div>
-<table class="tabla2">
-    <thead>
-        <tr class="tabla2">
-            <%= form_tag total_restaurants_index_path, method: :get do %>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                            <%= "Nombre" %>
-                            <span>Nombre del Restaurante</span> 
-                        </div>
-                    <p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Restaurante" %></p>
-                </th>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                        <%= "Correo electrónico" %>
-                        <span>Correo electrónico del Restaurante</span> 
-                    </div>
-                </th>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                        <%= "Teléfono" %>
-                        <span>Teléfono del Restaurante</span> 
-                    </div>
-                </th>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                        <%= "Dirección" %>
-                        <span>Dirección del Restaurante</span> 
-                    </div>
-                </th>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                        <%= "Ciudad" %>
-                        <span>Ciudad donde se encuentra el Restaurante</span> 
-                    </div>
-                </th>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                        <%= "País" %>
-                        <span>País donde se encuentra el Restaurante</span> 
-                    </div>
-                </th>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                        <%= "Código postal" %>
-                        <span>Código postal del Restaurante</span> 
-                    </div>
-                </th>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                        <%= "Coord. Latitud" %>
-                        <span>Coordenada latitud del Restaurante</span> 
-                    </div>
-                </th>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                        <%= "Coord. Longitud" %>
-                        <span>Coordenada longitud del Restaurante</span> 
-                    </div>
-                </th>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                        <%= "Horario apertura" %>
-                        <span>Horario de apertura del Restaurante</span> 
-                    </div>
-                </th>
-                <th class="tabla2">
-                    <div class="cssToolTip">
-                        <%= "Fecha registrado" %>
-                        <span>Frecha de registro del Restaurante</span> 
-                    </div>
-                </th>
-            <% end %>
-        </tr>
-    </thead>
-    <tbody>
-        <% @restaurants.each do |total_restaurants| %>
+<div class ="muestra-tabla">
+    <div class="new">
+        <div class="inf">
+            <div class="cssToolTip">
+                <%= image_tag('information.png', :alt => 'info')%>
+                <span>
+                    Manual de ayuda de Visualización de Restaurantes:<br>
+                    En esta página se podrá visualizar los Restaurantes que hay registardos en la aplicación.
+                </span> 
+            </div>
+        </div>
+    </div>
+    <table class="tabla2">
+        <thead>
             <tr class="tabla2">
-                <td class="tabla2"><%= total_restaurants.name %></td>
-                <td class="tabla2"><div id="container"><%= total_restaurants.email %></div></td>
-                <td class="tabla2"><%= total_restaurants.phone %></td>
-                <td class="tabla2"><%= total_restaurants.address %></td>
-                <td class="tabla2"><%= total_restaurants.city %></td>
-                <td class="tabla2"><%= total_restaurants.country %></td>
-                <td class="tabla2"><%= total_restaurants.postal_code %></td>
-                <td class="tabla2"><%= total_restaurants.latitude %></td>
-                <td class="tabla2"><%= total_restaurants.longitude %></td>
-                <td class="tabla2"><%= total_restaurants.opening_hours %></td>
-                <td class="tabla2"><%= total_restaurants.created_at.strftime("%d %B %Y - %X") %></td>
+                <%= form_tag total_restaurants_index_path, method: :get do %>
+                    <th class="tabla2">
+                        <div class="cssToolTip">
+                                <%= "Nombre" %>
+                                <span>Nombre del Restaurante</span> 
+                            </div>
+                        <p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Restaurante" %></p>
+                    </th>
+                    <th class="tabla2">
+                        <div class="cssToolTip">
+                            <%= "Correo electrónico" %>
+                            <span>Correo electrónico del Restaurante</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2">
+                        <div class="cssToolTip">
+                            <%= "Teléfono" %>
+                            <span>Teléfono del Restaurante</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2">
+                        <div class="cssToolTip">
+                            <%= "País" %>
+                            <span>País donde se encuentra el Restaurante</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2">
+                        <div class="cssToolTip">
+                            <%= "Código postal" %>
+                            <span>Código postal del Restaurante</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2">
+                        <div class="cssToolTip">
+                            <%= "Coord. Latitud" %>
+                            <span>Coordenada latitud del Restaurante</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2">
+                        <div class="cssToolTip">
+                            <%= "Coord. Longitud" %>
+                            <span>Coordenada longitud del Restaurante</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2">
+                        <div class="cssToolTip">
+                            <%= "Horario apertura" %>
+                            <span>Horario de apertura del Restaurante</span> 
+                        </div>
+                    </th>
+                    <th class="tabla2">
+                        <div class="cssToolTip">
+                            <%= "Fecha registrado" %>
+                            <span>Frecha de registro del Restaurante</span> 
+                        </div>
+                    </th>
+                <% end %>
             </tr>
-        <% end %>
-    </tbody>
-    <tfoot>
-        <tr class="tabla2">
-            <th class="tabla2" colspan="11">
-                <div class="pagination">
-                    <div class="digg_pagination">
-                        <%= will_paginate @restaurants, :container => false %>
+        </thead>
+        <tbody>
+            <% @restaurants.each do |total_restaurants| %>
+                <tr class="tabla2" title="<%= total_restaurants.address %>, <%= total_restaurants.city %>">
+                    <td class="tabla2"><%= total_restaurants.name %></td>
+                    <td class="tabla2"><div id="container"><%= total_restaurants.email %></div></td>
+                    <td class="tabla2"><%= total_restaurants.phone %></td>
+                    <td class="tabla2"><%= total_restaurants.country %></td>
+                    <td class="tabla2"><%= total_restaurants.postal_code %></td>
+                    <td class="tabla2"><%= total_restaurants.latitude %></td>
+                    <td class="tabla2"><%= total_restaurants.longitude %></td>
+                    <td class="tabla2"><%= total_restaurants.opening_hours %></td>
+                    <td class="tabla2"><%= total_restaurants.created_at.strftime("%d %B %Y - %X") %></td>
+                </tr>
+            <% end %>
+        </tbody>
+        <tfoot>
+            <tr class="tabla2">
+                <th class="tabla2" colspan="11">
+                    <div class="pagination">
+                        <div class="digg_pagination">
+                            <%= will_paginate @restaurants, :container => false %>
+                        </div>
                     </div>
-                </div>
-            </th>
-        </tr>
-    </tfoot>
-</table>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

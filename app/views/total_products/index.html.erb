@@ -1,74 +1,86 @@
 <div class="title">Productos Registrados</div>
-</br>
-<table class="tabla2">
-    <thead>
-        <tr class="tabla2">
-            <th class="tabla2">
-                <div class="cssToolTip">
-                    <%= "Nombre" %>
-                    <span>Nombre del Producto</span> 
-                </div>
-            </th>
-            <th class="tabla2">
-                <div class="cssToolTip">
-                    <%= "Restaurante" %>
-                    <span>Restaurante al que pertenece el Producto</span> 
-                </div>
-            </th>
-            <th class="tabla2">
-                <div class="cssToolTip">
-                    <%= "Categoría" %>
-                    <span>Categoía del Producto ("RACION", "CALDOS", "PESCADOS", "CARNES", "ENSALADAS", "BOCADILLO", "POSTRE", "BEBIDA", "BEBIDAS ALCOHOLICAS", "APERITIVO", "TACO", "BURRITO", "WRAP", "GENERAL", "EXTRAS")</span> 
-                </div>
-            </th>
-            <th class="tabla2">
-                <div class="cssToolTip">
-                    <%= "Ingredientes" %>
-                    <span>Ingredientes que lleva el Producto</span> 
-                </div>
-            </th>
-            <th class="tabla2">
-                <div class="cssToolTip">
-                    <%= "Precio" %>
-                    <span>Precio de venta del Producto al público</span> 
-                </div>
-            </th>
-            <th class="tabla2">
-                <div class="cssToolTip">
-                    <%= "Fecha de alta" %>
-                    <span>Fecha de registro del Producto</span> 
-                </div>
-            </th>
-            <th class="tabla2">
-                <div class="cssToolTip">
-                    <%= "Fecha modificación" %>
-                    <span>Fecha de última modificación del Producto</span> 
-                </div>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @products.each do |total_products| %>
+<div class ="muestra-tabla">
+    <div class="new">
+        <div class="inf">
+            <div class="cssToolTip">
+                <%= image_tag('information.png', :alt => 'info')%>
+                <span>
+                    Manual de ayuda de Visualización de Productos:<br>
+                    En esta página se podrá visualizar todos los productos de todos los restaurantes que hay registardos en la aplicación.
+                </span> 
+            </div>
+        </div>
+    </div>
+    <table class="tabla2">
+        <thead>
             <tr class="tabla2">
-                <td class="tabla2"><%= total_products.name %></td>
-                <td class="tabla2"><%= total_products.restaurant.name %></td>
-                <td class="tabla2"><%= Product::PRODUCT_CATEGORY[total_products.type_product] %></td>
-                <td class="tabla2"><div id="container"><%= total_products.ingredients %></div></td>
-                <td class="tabla2"><%= total_products.price %> €/Unidad</td>
-                <td class="tabla2"><%= total_products.created_at %></td>
-                <td class="tabla2"><%= total_products.updated_at %></td>
-            </tr>
-        <% end %>
-    </tbody>
-    <tfoot>
-        <tr class="tabla2">
-            <th class="tabla2" colspan="11">
-                <div class="pagination">
-                    <div class="digg_pagination">
-                        <%= will_paginate @products, :container => false %>
+                <th class="tabla2">
+                    <div class="cssToolTip">
+                        <%= "Nombre" %>
+                        <span>Nombre del Producto</span> 
                     </div>
-                </div>
-            </th>
-        </tr>
-    </tfoot>
-</table>
+                </th>
+                <th class="tabla2">
+                    <div class="cssToolTip">
+                        <%= "Restaurante" %>
+                        <span>Restaurante al que pertenece el Producto</span> 
+                    </div>
+                </th>
+                <th class="tabla2">
+                    <div class="cssToolTip">
+                        <%= "Categoría" %>
+                        <span>Categoía del Producto ("RACION", "CALDOS", "PESCADOS", "CARNES", "ENSALADAS", "BOCADILLO", "POSTRE", "BEBIDA", "BEBIDAS ALCOHOLICAS", "APERITIVO", "TACO", "BURRITO", "WRAP", "GENERAL", "EXTRAS")</span> 
+                    </div>
+                </th>
+                <th class="tabla2">
+                    <div class="cssToolTip">
+                        <%= "Ingredientes" %>
+                        <span>Ingredientes que lleva el Producto</span> 
+                    </div>
+                </th>
+                <th class="tabla2">
+                    <div class="cssToolTip">
+                        <%= "Precio" %>
+                        <span>Precio de venta del Producto al público</span> 
+                    </div>
+                </th>
+                <th class="tabla2">
+                    <div class="cssToolTip">
+                        <%= "Fecha de alta" %>
+                        <span>Fecha de registro del Producto</span> 
+                    </div>
+                </th>
+                <th class="tabla2">
+                    <div class="cssToolTip">
+                        <%= "Fecha modificación" %>
+                        <span>Fecha de última modificación del Producto</span> 
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @products.each do |total_products| %>
+                <tr class="tabla2">
+                    <td class="tabla2"><%= total_products.name %></td>
+                    <td class="tabla2"><%= total_products.restaurant.name %></td>
+                    <td class="tabla2"><%= Product::PRODUCT_CATEGORY[total_products.type_product] %></td>
+                    <td class="tabla2"><div id="container3"><%= total_products.ingredients %></div></td>
+                    <td class="tabla2"><%= total_products.price %> €/Unidad</td>
+                    <td class="tabla2"><%= total_products.created_at %></td>
+                    <td class="tabla2"><%= total_products.updated_at %></td>
+                </tr>
+            <% end %>
+        </tbody>
+        <tfoot>
+            <tr class="tabla2">
+                <th class="tabla2" colspan="11">
+                    <div class="pagination">
+                        <div class="digg_pagination">
+                            <%= will_paginate @products, :container => false %>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

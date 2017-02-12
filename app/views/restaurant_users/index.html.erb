@@ -1,23 +1,22 @@
 <div class="title">Restaurantes Asociados</div>
-</br>	
 <div class ="muestra-tabla">
 	<div class="new">
-			<div class="inf">
-				<div class="cssToolTip">
-		        	<%= image_tag('information.png', :alt => 'info')%>
-					<span>
-						Manual de ayuda de Restaurantes:<br>
-						En esta página el Usuario podrá seleccionar un Restaurante en el que ya esté registrado y tambén podrá apuntarse a otro Las funcionalidades que tiene son:
-						-Seleccionar: El Cliente selecciona el Restaurante en el que realizar las funcionalidades.
-						-Dar de Baja: El Usuario podrá darse de baja de un Restaurante determinado.
-						-Administrar: Es aqui donde el Usuario podrá darse de alta en un nuevo REstaurante de la lista de REstaurantes que estan asociados.
-					</span> 
-				</div>
-			</div>
-			<div class="new">
-				<p class="header"><%= button_to 'Administrar', 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+		<div class="inf">
+			<div class="cssToolTip">
+	        	<%= image_tag('information.png', :alt => 'info')%>
+				<span>
+					Manual de ayuda de Registro de Empleado:<br>
+					En esta página el Administrador pordrá podrá seleccionar un Usuario que ya esté registrado y asignarlo a un restaurante como empleado. Las funcionalidades que tiene son:<br>
+					- Seleccionar: El Cliente selecciona el Restaurante en el que realizar las funcionalidades.<br>
+					- Dar de Baja: El Usuario podrá darse de baja de un Restaurante determinado.<br>
+					- Administrar: Es aqui donde el Usuario podrá darse de alta en un nuevo REstaurante de la lista de REstaurantes que estan asociados.
+				</span> 
 			</div>
 		</div>
+		<div class="new">
+			<p class="header"><%= button_to 'Registrar Empleado', 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+		</div>
+	</div>
 	<table class="tabla2">
 		<thead>
 			<tr class="tabla2">
@@ -55,7 +54,7 @@
 				<tr class="tabla2" title="<%= restaurant_user.restaurant.name %> - <%= restaurant_user.restaurant.address %> - <%= restaurant_user.restaurant.city %>">
 					<td class="tabla2"><%= restaurant_user.restaurant.name %></td>
 					<td class="tabla2"><%= restaurant_user.restaurant.address %>, <%= restaurant_user.restaurant.city %></td>
-					<td class="tabla2"><%= current_user.user_name %></td>
+					<td class="tabla2"><%= restaurant_user.user.user_name %></td>
 					<td class="tabla2"><%= RestaurantUser::ROLES[restaurant_user.rol] %></td>
 					<% if !current_user.superadmin %>
 						<td><%= link_to "Seleccionar", restaurants_select_path(restaurant_user_id: restaurant_user.id), :class => 'boton grey'%>

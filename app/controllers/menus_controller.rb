@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
 	def index
-		@menus = Menu.all.paginate(:per_page => 6, :page => params[:page])
+		@menus = Menu.where("restaurant_id = ?", "#{@current_restaurant.id}").order("created_at DESC").paginate(:per_page => 6, :page => params[:page])
 		@menu = Menu.new
 	end
 

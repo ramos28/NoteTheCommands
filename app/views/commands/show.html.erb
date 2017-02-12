@@ -44,6 +44,12 @@
                     </p>
                 </div>
             </div>
+            <div class="muestra-printer">
+                <%if @command.is_end %>
+                    </br><div class="command_accion">Imprimir Factura</div>
+                    <p><a href="javascript:imprSelec('Imprime')" ><%= image_tag('printer.png', :alt => 'printer')%></a></p>
+                <% end %>
+            </div>
         </div>
         <% if @current_role == 0 %>
             <div class="muestra-tabla-comandas">
@@ -224,12 +230,6 @@
                         </tr>
                     </tfoot>
                 </table>
-            </div>
-            <div class="muestra-printer">
-                <%if @command.is_end %>
-                    </br><div class="accion">Imprimir Factura</div>
-                    <p><a href="javascript:imprSelec('Imprime')" ><%= image_tag('printer.png', :alt => 'printer')%></a></p>
-                <% end %>
             </div>
         <% end %>
     </div>
