@@ -9,8 +9,10 @@ class CommandsController < ApplicationController
 	    @commands_cooker = []
 
 	    @current_restaurant.commands.each do |command|
-	      @commands_cooker += @current_restaurant.commands.first.command_products.where(:is_served => false)
+	      @commands_cooker += command.command_products.where(:is_served => false)
 	    end
+
+	    debugger
 
 	    #@commands_cooker = @commands_cooker.order("is_cooked")
 
