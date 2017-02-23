@@ -2,28 +2,12 @@
 </br>
 <div class="statistic">
 	<% if @current_role == 3 %>
-		<%= link_to statistics_earnings_path do %>
-			<div class="statistics">
-				<div class="imagen">
-					<%= image_tag('estadistica_ganancias_restaurante.png', :alt => 'estadistica_ganancias_restaurante')%>
-				</div>
-				<p>En esta primera opción el Gerente del restaurante al que esta registrado podrá ver las ganancias que percibe con respecto a los gastos. Dicha operación se calculará con la diferencia entre ganancias totales del restaurante y gastos totales del restaurante entre un rango de fechas que seleccionemos. Todos estos datos seán explicitos al detalle</p>
-			</div>
-		<% end %>
-		<%= link_to statistics_commands_users_path do %>
+		<%= link_to statistics_best_seller_product_index_path do %>
 			<div class="statistics">
 				<div class="imagen">
 					<%= image_tag('estadistica_gastos_restaurante.png', :alt => 'estadistica_gastos_restaurante')%>
 				</div>
 				<p>En esta segunda opción el Gerente del restaurante al que esta registrado podrá ver los usuarios que mas comandas han realizado en el restaurante en un rango de tiempo seleccionado. Tambien se mostrará el total de gastos de dicho usuario el rango seleccionado. Todos los datos serán explicitos al detalle</p>
-			</div>
-		<% end %>
-		<%= link_to statistics_best_seller_product_index_path do %>
-			<div class="statistics">
-				<div class="imagen">
-					<%= image_tag('estadisticas_producto_mas _vendido.png', :alt => 'estadisticas_producto_mas _vendido')%>
-				</div>
-				<p>En esta tercera opción el Gerente del restaurante al que esta registrado podrá ver los productos mas vendidos en un rango seleccionado de fechas. Dicha estadistica se calculara mostrando los productos que más se han vendido en ese rango. Todos los datos serán explicitos al detalle</p>
 			</div>
 		<% end %>
 		<%= link_to statistics_votings_path do %>

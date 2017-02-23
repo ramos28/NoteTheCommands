@@ -12,8 +12,6 @@ class CommandsController < ApplicationController
 	      @commands_cooker += command.command_products.where(:is_served => false)
 	    end
 
-	    debugger
-
 	    #@commands_cooker = @commands_cooker.order("is_cooked")
 
 	    @ended = true

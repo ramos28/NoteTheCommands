@@ -1,3 +1,84 @@
-<div class="title">Estadísticas de las Votaciones</div>
+<div class="title">Estadísticas de los Productos más Vendidos</div>
+</br>
+<div class="contact">
+	<div class="new">
+		<div class="inf">
+			<div class="cssToolTip">
+	        	<%= image_tag('information.png', :alt => 'info')%>
+				<span>
+					Manual de ayuda de Estadísticas de Votaciones:<br>
+					En esta página el Gerente del Restaurante registrará los productos qua vaya a tener a la venta. La funcioanlidad que tendrá el Gerente es la siguiente:<br>
+					-Crear Productos: Donde el Gerente podrá registrar un nuevo producto en el Restaurante.<br>
+					-Tabla de Productos: Se nos mostrará todos los productos registrados ya en el Restaurante por el Gerente y podremos filtrarlos buscando por su nombre.
+					-Editar Producto: Se podrá editar tanto el nombre como los distintos atributos del producto.
+				</span> 
+			</div>
+		</div>
+	</div>
+	<div class="estat">
+		<%= form_tag({}, {:method => :get}) do %>
+			<div class="find">
+				</br></br></br>Desde: <%= date_field_tag "start_date" %>
+					- Hasta: <%= date_field_tag "end_date" %>
+				</br></br><%= submit_tag 'Buscar', :class => 'boton grey' %>
+			</div>
+			</br></br></br></br></br></br>
+		<% end %>
 
-Vengas restaurante <%= @current_restaurant.ventas %>
+		<% if !@rank_votings.blank? %>
+
+			<div id="cont2" style="width: 95%; height: 400px; margin: 0 auto"></div>
+			<script type="text/javascript">
+				$(function () { 
+					Highcharts.chart('cont2', {
+					    chart: {
+					        type: 'column'
+					    },
+					    title: {
+					        text: 'Estadísticas de las votaciones de los usuarios'
+					    },
+					    subtitle: {
+					        text: 'Ponga el puntero en la columna para ver ms información'
+					    },
+					    xAxis: {
+					        type: 'category'
+					    },
+					    yAxis: {
+					        title: {
+					            text: '% total de las votaciones'
+					        }
+
+					    },
+					    legend: {
+					        enabled: false
+					    },
+					    plotOptions: {
+					        series: {
+					            borderWidth: 0,
+					            dataLabels: {
+					                enabled: true,
+					                format: ''
+					            }
+					        }
+					    },
+
+					    tooltip: {
+					        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+					        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> del total<br/>'
+					    },
+
+					    series: [{
+					        name: 'Cuestionario',
+					        colorByPoint: true,
+					        data: <%= @rank_votings.to_json.html_safe %>
+					    }],
+					});
+
+				});
+			</script>
+
+		<% end %>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		</br>
+	</div>
+</div>
