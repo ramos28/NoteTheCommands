@@ -1,6 +1,6 @@
 class TakeawaysController < ApplicationController
 	def index
-		@takeaways = Takeaway.where("restaurant_id = ?", "#{@current_restaurant.id}").order("created_at ASC").paginate(:per_page => 7, :page => params[:page])
+		@takeaways = Takeaway.where("restaurant_id = ?", @current_restaurant.id).order("created_at ASC").paginate(:per_page => 7, :page => params[:page])
 		@takeaway = Takeaway.new
 	end
 

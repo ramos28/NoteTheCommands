@@ -57,9 +57,9 @@
 					<td class="tabla2"><%= restaurant_user.user.user_name %></td>
 					<td class="tabla2"><%= RestaurantUser::ROLES[restaurant_user.rol] %></td>
 					<% if !current_user.superadmin %>
-						<td><%= link_to "Seleccionar", restaurants_select_path(restaurant_user_id: restaurant_user.id), :class => 'boton grey'%>
-							<%#= link_to "Comanda", commands_path(restaurant_user_id: restaurant_user.id), :class => 'boton grey' if !@ended%>    
-							<%= link_to "Dar de Baja", restaurant_user_path(restaurant_user.id), method: :delete, data: { confirm: "¿Esta seguro que desea darse de baja del Restaurante?"}, :class => 'boton grey' %>
+						<td><%= link_to "Seleccionar", restaurants_select_path(restaurant_user_id: restaurant_user.id), :class => 'boton grey' if !@ended%>
+							<%= link_to "Comanda", commands_path(restaurant_user_id: restaurant_user.id), :class => 'boton grey' if @ended && restaurant_user.rol  == 0%>    
+							<%= link_to "Dar de Baja", restaurant_user_path(restaurant_user.id), method: :delete, data: { confirm: "¿Esta seguro que desea darse de baja del Restaurante?"}, :class => 'boton grey' if !@ended %>
 							
 						</td>
 					<% else %>

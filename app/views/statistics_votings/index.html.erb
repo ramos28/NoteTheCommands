@@ -7,22 +7,20 @@
 	        	<%= image_tag('information.png', :alt => 'info')%>
 				<span>
 					Manual de ayuda de Estadísticas de Votaciones:<br>
-					En esta página el Gerente del Restaurante registrará los productos qua vaya a tener a la venta. La funcioanlidad que tendrá el Gerente es la siguiente:<br>
-					-Crear Productos: Donde el Gerente podrá registrar un nuevo producto en el Restaurante.<br>
-					-Tabla de Productos: Se nos mostrará todos los productos registrados ya en el Restaurante por el Gerente y podremos filtrarlos buscando por su nombre.
-					-Editar Producto: Se podrá editar tanto el nombre como los distintos atributos del producto.
+					En esta página el gerente del restaurante podrá ver de forma estadística las votaciones de los clientes que han realizado de forma anónima a una serie de cuestiones que el gerente ha realizado previamente.
 				</span> 
 			</div>
 		</div>
 	</div>
 	<div class="estat">
+		</br></br><div class="titleStattistics">Seleccione un rango de fechas</div>
 		<%= form_tag({}, {:method => :get}) do %>
 			<div class="find">
-				</br></br></br>Desde: <%= date_field_tag "start_date" %>
+				</br></br>Desde: <%= date_field_tag "start_date" %>
 					- Hasta: <%= date_field_tag "end_date" %>
 				</br></br><%= submit_tag 'Buscar', :class => 'boton grey' %>
 			</div>
-			</br></br></br></br></br></br>
+			</br></br></br>
 		<% end %>
 
 		<% if !@rank_votings.blank? %>
@@ -45,7 +43,7 @@
 					    },
 					    yAxis: {
 					        title: {
-					            text: '% total de las votaciones'
+					            text: '% del total de las votaciones'
 					        }
 
 					    },

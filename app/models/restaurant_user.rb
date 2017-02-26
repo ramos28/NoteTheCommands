@@ -12,6 +12,12 @@ class RestaurantUser < ApplicationRecord
 
         if total > 1000
             return 1
+        elsif total > 2500
+            return 2
+        elsif total > 5000
+            return 3
+        elsif total > 10000
+            return 4
         else
             return 0
         end

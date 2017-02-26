@@ -76,6 +76,7 @@
                                 <li><%= link_to "Pedido Online", takeaways_path %></li>
                                 <li><%= link_to "Menús", menus_path%></li>
                                 <li><%= link_to "Crear Incidencias", new_incidence_path %></li>
+                                <li><%= link_to "Estadísticas", statistics_index_path %></li>
                             <% end %>
                             <% if (@current_role  == 1 || @current_role  == 2 )%>
                                 <li><%= link_to "Ver Menús", menus_path%></li>

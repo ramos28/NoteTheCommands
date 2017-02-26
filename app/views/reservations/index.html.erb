@@ -5,7 +5,7 @@
         <li><a href="#tab2">Futuras</a></li>
         <% if @current_role == 3 %>
             <li><a href="#tab3">Finalizadas</a></li>
-            <li><a href="#tab3">Totales</a></li>
+            <li><a href="#tab4">Totales</a></li>
         <% end %>
     </ul>
     <div class="contenedor_tab">
@@ -255,7 +255,7 @@
                             <th class="tabla2" colspan="10">
                                 <div class="pagination">
                                     <div class="digg_pagination">
-                                        <%= will_paginate @reservations, :container => false %>
+                                        <%= will_paginate @reservations_futures, :container => false %>
                                     </div>
                                 </div>
                             </th>
@@ -376,7 +376,7 @@
                                 <th class="tabla2" colspan="10">
                                     <div class="pagination">
                                         <div class="digg_pagination">
-                                            <%= will_paginate @reservations, :container => false %>
+                                            <%= will_paginate @reservations_ended, :container => false %>
                                         </div>
                                     </div>
                                 </th>
@@ -393,7 +393,8 @@
                                 <%= image_tag('information.png', :alt => 'info')%>
                                 <span>
                                     Manual de ayuda de Reservas Totales:<br>
-                                    En esta página el Gerente del Restaurante podrá ver las Reservas totales ordenadas por fecha y hora mas reciente.
+                                    En esta página el Gerente del Restaurante podrá ver las Reservas totales ordenadas por fecha y hora mas reciente.<br>
+                                    De color rojo muestra las reservas futuras y de color verde y amarillo las reservas ya pasadas
                                 </span> 
                             </div>
                         </div>
@@ -467,18 +468,14 @@
                             <% @reservations_total.each do |reserv_total| %>
                                 <tr class="tabla2">
                                     <% if reserv_total.date < Time.now.beginning_of_day + (24*60*60) %>
-                                        <% if reserv_total.date >= Time.now.beginning_of_day %>
-                                            <td class="b5"><%= reserv_total.name %></td>
-                                        <% end %>
+                                        <td class="b5"><%= reserv_total.name %></td>
                                     <% else %>
                                         <td class="b6"><%= reserv_total.name %></td>
                                     <% end %>
                                     <td class="b7"><%= reserv_total.num_persons %></td>
                                     <td class="tabla2"><%= reserv_total.menu.name if !reserv_total.menu.blank? %></td>
                                     <% if reserv_total.date < Time.now.beginning_of_day + (24*60*60) %>
-                                        <% if reserv_total.date >= Time.now.beginning_of_day %>
-                                            <td class="b5"><%= reserv_total.date.strftime("%d %B %Y") %></td>
-                                        <% end %>
+                                        <td class="b5"><%= reserv_total.date.strftime("%d %B %Y") %></td>
                                     <% else %>
                                         <td class="b6"><%= reserv_total.date.strftime("%d %B %Y") %></td>
                                     <% end %>
@@ -500,7 +497,7 @@
                                 <th class="tabla2" colspan="10">
                                     <div class="pagination">
                                         <div class="digg_pagination">
-                                            <%= will_paginate @reservations, :container => false %>
+                                            <%= will_paginate @reservations_total, :container => false %>
                                         </div>
                                     </div>
                                 </th>

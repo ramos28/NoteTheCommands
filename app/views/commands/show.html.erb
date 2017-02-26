@@ -125,7 +125,7 @@
                                     </br><%= f.label :producto %><br/>
                                     <%= f.select :product_id, options_from_collection_for_select(Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_products, :id, :name)%>
                                 </div>
-                                <% debugger %>
+                                <%# debugger %>
                                 <div class="field">
                                     </br><%= f.label :cantidad %><br/>
                                     <%= f.number_field :quantity %>
@@ -266,7 +266,7 @@
         </tr>
         <% @command.command_products.each do |cp| %>
             <tr>
-                <td><%= cp.product.name %></td>
+                <td>- <%= cp.product.name %></td>
                 <td style="text-align: right;"><%= cp.quantity %></td>
                 <td style="text-align: right;"><%= cp.product.price %>€</td>
                 <td style="text-align: right;"><%= cp.product.price * cp.quantity %>€</td>

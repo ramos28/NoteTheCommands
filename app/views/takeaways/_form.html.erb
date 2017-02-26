@@ -19,7 +19,7 @@
                 <%= f.text_field :phone, placeholder: "(Opcional)" %> 
             </div>
             <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
-            <%= f.hidden_field :user_id, :value => current_user %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
             <div class="field">
                 </br><%= f.submit 'Guardar Cambios', :class => 'boton grey'%>
             </div>

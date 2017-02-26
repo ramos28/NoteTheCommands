@@ -21,3 +21,21 @@
 .clear {
     clear: both;
 }
+
+@font-face {
+    font-family: acciones;
+    src: url(coolvetica.ttf);
+}
+
+@font-face {
+    font-family: acciones;
+    src: url(coolvetica.ttf);
+    font-weight: bold;
+}
+
+div.titleStattistics {
+    font-family: acciones;
+    text-align: center;     
+    font-size: 28px;
+    color: black;
+}
