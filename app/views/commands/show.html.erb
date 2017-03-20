@@ -71,8 +71,8 @@
                             <tr class="tabla3">
                                 <td class="tabla3"><%= cp.product.name %></td>
                                 <td class="tabla3"><%= cp.quantity %> Unds</td>
-                                <td class="tabla3"><%= cp.product.price %> €/Unds</td>
-                                <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td>
+                                <td class="tabla3"><%= '%.2f' % cp.product.price %> €/Unds</td>
+                                <td class="tabla3"><%= '%.2f' % (cp.product.price * cp.quantity) %> €</td>
                                 <% if cp.is_served %>
                                     <td class="b5"><%= cp.is_served %></td>
                                 <% else %>
@@ -89,8 +89,8 @@
                             <tr class="tabla3">
                                 <td class="tabla3"><%= cp.menu.name %></td>
                                 <td class="tabla3"><%= cp.quantity %> Unds</td>
-                                <td class="tabla3"><%= cp.menu.price %> €/Unds</td>
-                                <td class="tabla3"><%= cp.menu.price * cp.quantity %> €</td>
+                                <td class="tabla3"><%= '%.2f' % cp.menu.price %> €/Unds</td>
+                                <td class="tabla3"><%= '%.2f' % (cp.menu.price * cp.quantity) %> €</td>
                                 <% if cp.is_served %>
                                     <td class="b5"><%= cp.is_served %></td>
                                 <% else %>
@@ -105,7 +105,7 @@
                     <tfoot>
                         <tr class="tabla3">
                             <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                            <td class="tabla3" colspan="4"><%= total_price_command %> €</td>
+                            <td class="tabla3" colspan="4"><%= '%.2f' % total_price_command %> €</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -187,8 +187,8 @@
                             <tr class="tabla3">
                                 <td class="tabla3"><%= cp.product.name %></td>
                                 <td class="tabla3"><%= cp.quantity %> Unds</td>
-                                <td class="tabla3"><%= cp.product.price %> €/Unds</td>
-                                <td class="tabla3"><%= cp.product.price * cp.quantity %> €</td>
+                                <td class="tabla3"><%= '%.2f' % cp.product.price %> €/Unds</td>
+                                <td class="tabla3"><%= '%.2f' % (cp.product.price * cp.quantity) %> €</td>
                                 <% if cp.is_served %>
                                     <td class="b5"><%= cp.is_served %></td>
                                 <% else %>
@@ -211,7 +211,7 @@
                                 <td class="tabla3"><%= cp.menu.name %></td>
                                 <td class="tabla3"><%= cp.quantity %> Unds</td>
                                 <td class="tabla3"><%= cp.menu.price %> €/Unds</td>
-                                <td class="tabla3"><%= cp.menu.price * cp.quantity %> €</td>
+                                <td class="tabla3"><%= '%.2f' % (cp.menu.price * cp.quantity) %> €</td>
                                 <% if cp.is_served %>
                                     <td class="b5"><%= cp.is_served %></td>
                                 <% else %>
@@ -226,7 +226,7 @@
                     <tfoot>
                         <tr class="tabla3">
                             <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                            <td class="tabla3" colspan="5"><%= total_price_command %> €</td>
+                            <td class="tabla3" colspan="5"><%= '%.2f' % total_price_command %> €</td>
                         </tr>
                     </tfoot>
                 </table>
@@ -268,14 +268,14 @@
             <tr>
                 <td>- <%= cp.product.name %></td>
                 <td style="text-align: right;"><%= cp.quantity %></td>
-                <td style="text-align: right;"><%= cp.product.price %>€</td>
-                <td style="text-align: right;"><%= cp.product.price * cp.quantity %>€</td>
+                <td style="text-align: right;"><%= '%.2f' % cp.product.price %>€</td>
+                <td style="text-align: right;"><%= '%.2f' % (cp.product.price * cp.quantity) %>€</td>
             </tr>
         <% end %>
         <tr>
             <td style="font-weight:bold; text-align: right;">Total:</td>
-            <td style="text-align: right;"><%= total_price_command %>€</td>
-            <td style="text-align: right;" colspan="2"><%= total_price_command * 1.21 %>€</td>
+            <td style="text-align: right;"><%= '%.2f' % total_price_command %>€</td>
+            <td style="text-align: right;" colspan="2"><%= '%.2f' % (total_price_command * 1.21) %>€</td>
 
         </tr>
         <br>
@@ -284,7 +284,7 @@
             <% discount = @current_restaurant_user.discount/100 %>
             <% discount = (total_price_command * 1.21 * discount) if total_price_command != nil %>
             <% discount = (total_price_command * 1.21 - discount) if total_price_command != nil %>
-            <td style="text-align: right;" colspan="3">Con descuento: <%= discount %> €</td>
+            <td style="text-align: right;" colspan="3">Con descuento: <%= '%.2f' % discount %> €</td>
 
         </tr>
         <tr>

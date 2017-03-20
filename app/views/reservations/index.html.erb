@@ -17,8 +17,13 @@
                             <%= image_tag('information.png', :alt => 'info')%>
                             <span>
                                 Manual de ayuda de Reservas de Hoy:<br>
-                                En esta página los empleados del Restaurante podrán ver las reservas que hay para el dia de hoy en el restaurante. Se mostrarán solo las reservas de hoy Entre la funcionlidad destaca:<br>
-                                -Crear Reserva: Los empleados podrán realizar una reserva ellos mismos de algún cliente que no este registrado y llame por teléfono para realizarla.
+                                En esta página los empleados del restaurante podrán ver las reservas que hay para el día de hoy en el restaurante. Se mostrarán solo las reservas de hoy. Entre la funcionlidad destaca:<br>
+                                - Crear Reserva: Los empleados podrán realizar una reserva ellos mismos de algún cliente que no este registrado y llame por teléfono para realizarla.<br>
+                                Los colores de las celdas significan lo siguiente:<br>
+                                - Color amarillo reservas: Se refiere a las reservas pasadas a la fecha de hoy.<br>
+                                - Color Rojo despachado: Se refiere a las reservas que no han sido despachadas.<br>
+                                - Color Verde despachado: Se refiere a las reservas que han sido despachadas o entregadas al cliente.<br>
+                                - Color Morado claro: Se refiere al número de personas que componen la reserva.<br>
                             </span> 
                         </div>
                     </div>
@@ -77,12 +82,6 @@
                             </th>
                             <th class="tabla2" >
                                 <div class="cssToolTip">
-                                    <%= "Rol" %>
-                                    <span>Rol del Usuario que realizó la Reserva</span>
-                                </div>
-                            </th>
-                            <th class="tabla2" >
-                                <div class="cssToolTip">
                                     <%= "¿Despachado?" %>
                                     <span>Si la Reserva se ha realizado o no, es decir, si se le ha asignado la Reserva al Cliente (Rojo si no esta asignado y verde si lo está)</span>
                                 </div>
@@ -108,7 +107,6 @@
                                 <td class="tabla2"><%= reservation.restaurant.name %></td>
                                 <td class="tabla2"><%= reservation.phone %></td>
                                 <td class="tabla2"><%= reservation.user.user_name %></td>
-                                <td class="tabla2"><%= RestaurantUser::ROLES[reservation.user.restaurant_users.find_by_restaurant_id(reservation.restaurant.id).rol] %></td>
                                 <% if !reservation.is_checkedOut %>
                                     <td class="b1"><%= reservation.is_checkedOut %></td>
                                 <% else %>
@@ -148,7 +146,10 @@
                             <%= image_tag('information.png', :alt => 'info')%>
                             <span>
                                 Manual de ayuda de Reservas Futuras:<br>
-                                En esta página los empleados del Restaurante podrán ver las Reservas que hay para futuro en el Restaurante. Se mostrarán las reservas a partir de mañana.
+                                En esta página los empleados del Restaurante podrán ver las reservas que hay para el futuro en el Restaurante. Se mostrarán las reservas a partir del día de mañana. Los colores de las celdas significan lo siguiente:<br>
+                                - Color Rojo reservas: Se refiere a las reservas futuras al día de hoy.<br>
+                                - Color Verde despachado: Se refiere a las reservas que han sido despachadas o entregadas al cliente.<br>
+                                - Color Morado claro: Se refiere al número de personas que componen la reserva.<br>
                             </span> 
                         </div>
                     </div>
@@ -206,12 +207,6 @@
                             </th>
                             <th class="tabla2" >
                                 <div class="cssToolTip">
-                                    <%= "Rol" %>
-                                    <span>Rol del Usuario que realizó la Reserva</span>
-                                </div>
-                            </th>
-                            <th class="tabla2" >
-                                <div class="cssToolTip">
                                     <%= "¿Despachado?" %>
                                     <span>Si la Reserva se ha realizado o no, es decir, si se le ha asignado la Reserva al Cliente (Rojo si no esta asignado y verde si lo está)</span>
                                 </div>
@@ -241,7 +236,6 @@
                                 <td class="tabla2"><%= reserv_future.restaurant.name %></td>
                                 <td class="tabla2"><%= reserv_future.phone %></td>
                                 <td class="tabla2"><%= reserv_future.user.user_name %></td>
-                                <td class="tabla2"><%= RestaurantUser::ROLES[reserv_future.user.restaurant_users.find_by_restaurant_id(reserv_future.restaurant.id).rol] %></td>
                                 <% if !reserv_future.is_checkedOut %>
                                     <td class="b1"><%= reserv_future.is_checkedOut %></td>
                                 <% else %>
@@ -331,12 +325,6 @@
                                 </th>
                                 <th class="tabla2" >
                                     <div class="cssToolTip">
-                                        <%= "Rol" %>
-                                        <span>Rol del Usuario que realizó la Reserva</span>
-                                    </div>
-                                </th>
-                                <th class="tabla2" >
-                                    <div class="cssToolTip">
                                         <%= "¿Despachado?" %>
                                         <span>Si la Reserva se ha realizado o no, es decir, si se le ha asignado la Reserva al Cliente (Rojo si no esta asignado y verde si lo está)</span>
                                     </div>
@@ -362,7 +350,6 @@
                                     <td class="tabla2"><%= reserv_end.restaurant.name %></td>
                                     <td class="tabla2"><%= reserv_end.phone %></td>
                                     <td class="tabla2"><%= reserv_end.user.user_name %></td>
-                                    <td class="tabla2"><%= RestaurantUser::ROLES[reserv_end.user.restaurant_users.find_by_restaurant_id(reserv_end.restaurant.id).rol] %></td>
                                     <% if !reserv_end.is_checkedOut %>
                                         <td class="b1"><%= reserv_end.is_checkedOut %></td>
                                     <% else %>
@@ -393,8 +380,12 @@
                                 <%= image_tag('information.png', :alt => 'info')%>
                                 <span>
                                     Manual de ayuda de Reservas Totales:<br>
-                                    En esta página el Gerente del Restaurante podrá ver las Reservas totales ordenadas por fecha y hora mas reciente.<br>
-                                    De color rojo muestra las reservas futuras y de color verde y amarillo las reservas ya pasadas
+                                    En esta página el Gerente del Restaurante podrá ver las Reservas totales ordenadas por fecha y hora mas reciente. Los colores de las celdas significan lo siguiente:<br>
+                                    - Color Rojo reservas: Se refiere a las reservas futuras al día de hoy.<br>
+                                    - Color amarillo reservas: Se refiere a las reservas pasadas a la fecha de hoy.<br>
+                                    - Color Rojo despachado: Se refiere a las reservas que no han sido despachadas.<br>
+                                    - Color Verde despachado: Se refiere a las reservas que han sido despachadas o entregadas al cliente.<br>
+                                    - Color Morado claro: Se refiere al número de personas que componen la reserva.<br> 
                                 </span> 
                             </div>
                         </div>
@@ -452,12 +443,6 @@
                                 </th>
                                 <th class="tabla2" >
                                     <div class="cssToolTip">
-                                        <%= "Rol" %>
-                                        <span>Rol del Usuario que realizó la Reserva</span>
-                                    </div>
-                                </th>
-                                <th class="tabla2" >
-                                    <div class="cssToolTip">
                                         <%= "¿Despachado?" %>
                                         <span>Si la Reserva se ha realizado o no, es decir, si se le ha asignado la Reserva al Cliente (Rojo si no esta asignado y verde si lo está)</span>
                                     </div>
@@ -483,7 +468,6 @@
                                     <td class="tabla2"><%= reserv_total.restaurant.name %></td>
                                     <td class="tabla2"><%= reserv_total.phone %></td>
                                     <td class="tabla2"><%= reserv_total.user.user_name %></td>
-                                    <td class="tabla2"><%= RestaurantUser::ROLES[reserv_total.user.restaurant_users.find_by_restaurant_id(reserv_total.restaurant.id).rol] %></td>
                                     <% if !reserv_total.is_checkedOut %>
                                         <td class="b1"><%= reserv_total.is_checkedOut %></td>
                                     <% else %>

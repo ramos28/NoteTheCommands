@@ -76,7 +76,7 @@
 		                <td class="tabla1"><%= command.restaurant.name %></td>
 		                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
 		                <td class="tabla1"><%= command.place %></td>
-		                <td class="tabla1"><%= command.total_price_command %> €</td>
+		                <td class="tabla1"><%= '%.2f' % command.total_price_command %> €</td>
 		                <td class="tabla1"><%= command.created_at.strftime("%d %B %Y -- %X") %></td>
 		                <% if command.is_served %>
 		                	<td class="b5"><%= command.is_served %></td>
@@ -387,7 +387,7 @@
 		                <td class="tabla1"><%= command.restaurant_user.user.user_name %></td>
 		                <td class="tabla1"><%= command.place %></td>
 		                <td class="tabla1"><%= command.created_at.strftime("%d %B %Y -- %X") %></td>
-		                <td class="tabla1"><%= command.total_price_command %> €</td>
+		                <td class="tabla1"><%= '%.2f' % command.total_price_command %> €</td>
 		                <% if command.is_served %>
 		                	<td class="b5"><%= command.is_served %></td>
 		                <% else %>

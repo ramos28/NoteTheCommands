@@ -6,7 +6,7 @@
 			<div class="cssToolTip">
 	        	<%= image_tag('information.png', :alt => 'info')%>
 				<span>
-					Manual de ayuda de Estadísticas de Productos más pedidos:<br>
+					Manual de ayuda de Estadísticas de Productos más vendidos:<br>
 					En esta página los usuarios registrados en el restaurante podrán ver los productos mas consumindos en un rango de fechas seleccionados.
 				</span> 
 			</div>
@@ -17,7 +17,7 @@
 		<%= form_tag({}, {:method => :get}) do %>
 			<div class="find">
 				</br></br>Desde: <%= date_field_tag "start_date" %>
-					- Hasta: <%= date_field_tag "end_date" %>
+					- Hasta: <%= date_field_tag "end_date" %> Seleccione una categoría  <%= select_tag "select_category", options_for_select(Product::PRODUCT_CATEGORY.map.with_index {|index, value| [index, value]})%>
 				</br></br><%= submit_tag 'Buscar', :class => 'boton grey' %>
 			</div>
 			</br></br>
@@ -52,7 +52,7 @@
 					        type: 'pie'
 					    },
 					    title: {
-					        text: 'Productos más pedidos en el rango de tiempo'
+					        text: 'Productos más vendidos en el rango de tiempo'
 					    },
 					    tooltip: {
 					        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

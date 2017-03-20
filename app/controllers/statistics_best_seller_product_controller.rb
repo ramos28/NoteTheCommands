@@ -4,10 +4,11 @@ class StatisticsBestSellerProductController < ApplicationController
 
 	  	start_date = params[:start_date]
 	  	end_date = params[:end_date]
+	  	select_category = params[:select_category]
 
 		commands_ids = @current_restaurant.commands.where("created_at >= ? and created_at <= ?", start_date, end_date).pluck(:id)
-
-		products = CommandProduct.where(:command_id => commands_ids)
+		products_ids = @current_restaurant.products.where("type_product = ?", select_category)
+		products = CommandProduct.where(:command_id => commands_ids, :product_id => products_ids)
 	  	products.group_by(&:product_id).map do |key, value|
 	  		@rank_products << {name: Product.find(key).name, y: (value.count.to_f/products.count.to_f) * 100 }
 	  	end

@@ -73,8 +73,8 @@
                             <tr class="tabla3">
                                 <td class="tabla3"><%= product.name %></td>
                                 <td class="tabla3"><%= takeaway_product.quantity %> Unds</td>
-                                <td class="tabla3"><%= product.price %> €/Unds</td>
-                                <td class="tabla3"><%= price %> €</td>
+                                <td class="tabla3"><%= '%.2f' % product.price %> €/Unds</td>
+                                <td class="tabla3"><%= '%.2f' % price %> €</td>
                                 <% if @current_role == 0 %>
                                     <td class="tabla3"><%= link_to "Eliminar", takeaway_product_path(takeaway_product), :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar el producto de la comanda?"}, style: "color: white" %></td>
                                 <% end %>
@@ -84,7 +84,7 @@
                     <tfoot>
                         <tr class="tabla3">
                             <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                            <td class="tabla3" colspan="3"><%= total_price %> €</td>
+                            <td class="tabla3" colspan="3"><%= '%.2f' % total_price %> €</td>
                         </tr>
                     </tfoot>
                 </table> 
