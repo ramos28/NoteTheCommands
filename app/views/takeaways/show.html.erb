@@ -97,7 +97,7 @@
                             <%= form_for :takeaway_product, url: takeaway_products_path do |f| %>
                                 <div class="field">
                                     </br><%= f.label :producto %>
-                                    <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @takeaway.products, :id, :name)%>
+                                    <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}").order('name ASC') - @takeaway.products, :id, :name)%>
                                 </div>
                                 <div class="field">
                                     </br><%= f.label :cantidad %>
@@ -109,7 +109,7 @@
                         </div>
                     </div>
                     <% if !@takeaway.products.blank? %>
-                         </br></br><div class="menu_accion">Finalizar Pedido</div>
+                         </br></br><div class="takeaway_accion">Finalizar Pedido</div>
                         </br>
                         <%= button_to 'Finalizar Pedido', takeaway_path(@takeaway), :method => :put, data: { confirm: "¿Está seguro que Terminar el Pedido Online?"}, :class => 'boton grey' %></br></br>
                     <% end %>

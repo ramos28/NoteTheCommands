@@ -4,7 +4,7 @@
             <%= f.error_messages %>
             <div class="field">
                 </br><%= f.label :producto %>
-                <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}"), :id, :name)%>
+                <%= f.select :product_id, options_from_collection_for_select( Product.where("restaurant_id = ?", "#{@current_restaurant.id}").order('name ASC'), :id, :name)%>
             </div>
             <div class="field">
                 <%= f.label :cantidad %>

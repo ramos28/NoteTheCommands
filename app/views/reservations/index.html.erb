@@ -27,7 +27,7 @@
                             </span> 
                         </div>
                     </div>
-                    <p class="header"><%= button_to "Realizar Reserva", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></p>
+                    <div class="headered">Crear nueva reserva <%= link_to "Realizar Reserva", 'javascript:openWindow();', :method => "get", :class => 'boton grey' %></div>
                 </div>
                 <table class="tabla2">
                     <thead>
@@ -267,7 +267,10 @@
                                 <%= image_tag('information.png', :alt => 'info')%>
                                 <span>
                                     Manual de ayuda de Reservas Finalizadas:<br>
-                                    En esta página el Gerente del Restaurante podrá ver las Reservas finalizadas ordenadas por fecha y hora mas reciente.
+                                    En esta página el Gerente del Restaurante podrá ver las Reservas finalizadas ordenadas por fecha y hora mas reciente. Los colores de las celdas significan lo siguiente:<br>
+                                    - Color Rojo reserva: Se refiere a las reservas que ya se han servido.<br>
+                                    - Color Verde despachado: Se refiere a las reservas que han sido despachadas o entregadas al cliente.<br>
+                                    - Color Morado claro: Se refiere al número de personas que componen la reserva.<br>
                                 </span> 
                             </div>
                         </div>

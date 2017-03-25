@@ -13,18 +13,18 @@
 		</div>
 	</div>
 	<div class="estat">
-		</br></br><div class="titleStattistics">Seleccione un rango de fechas</div>
+		</br></br><div class="titleStattistics">Seleccione un rango de fechas y la categoría del producto a buscar</div>
 		<%= form_tag({}, {:method => :get}) do %>
 			<div class="find">
 				</br></br>Desde: <%= date_field_tag "start_date" %>
-					- Hasta: <%= date_field_tag "end_date" %> Seleccione una categoría  <%= select_tag "select_category", options_for_select(Product::PRODUCT_CATEGORY.map.with_index {|index, value| [index, value]})%>
+					- Hasta: <%= date_field_tag "end_date" %> y seleccione una categoría  <%= select_tag "select_category", options_for_select(Product::PRODUCT_CATEGORY.map.with_index {|index, value| [index, value]}), {:include_blank => "-- Todas --"}%>
 				</br></br><%= submit_tag 'Buscar', :class => 'boton grey' %>
 			</div>
-			</br></br>
+			</br>
 		<% end %>
 
 		<% if !@rank_products.blank? %>
-			<div id="cont" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
+			<div id="cont" style="width: 45%; height: 400px; float: left;"></div>
 			<script type="text/javascript">
 				
 				$(function () { 
@@ -52,7 +52,7 @@
 					        type: 'pie'
 					    },
 					    title: {
-					        text: 'Productos más vendidos en el rango de tiempo'
+					        text: 'Productos seleccionados entre las fechas: <%= @start %> - <%= @end %> y categoría: <%= @category %>'
 					    },
 					    tooltip: {
 					        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -82,4 +82,63 @@
 		<% end %>
 		<script src="http://code.highcharts.com/highcharts.js"></script>
 		</br>
+	<% if !@rank_products.blank? %>
+		<div id="contenidoTabla">
+			</br></br>
+			<table class="tabla1">
+				<thead>
+					<tr class="tabla1">
+						<%= form_tag products_path, method: :get do %>
+						    <th class="tabla1" >
+								<div class="cssToolTip">
+								    <%= "Nombre" %>
+									<span>Nombre del Producto que está registrado en el Restaurante</span> 
+								</div>
+								<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Producto" %></p>
+						    </th>
+						    <th class="tabla1" >
+								<div class="cssToolTip">
+								    <%= "Categoría" %>
+									<span>Categoría por la que se clasifica el producto (RACION, CALDOS, PESCADOS, CARNES, ENSALADAS, BOCADILLO, POSTRE, BEBIDA, BEBIDAS ALCOHOLICAS, APERITIVO, TACO, BURRITO, WRAP, GENERAL, EXTRAS)</span> 
+								</div>
+						    </th>
+						    <th class="tabla1" >
+								<div class="cssToolTip">
+								    <%= "Coste Venta" %>
+									<span>Coste de venta del Producto por Unidad</span> 
+								</div>
+						    </th>
+						    <th class="tabla1" >
+								<div class="cssToolTip">
+								    <%= "Resturante" %>
+									<span>Nombre del Restaurante al que pertenece el Producto</span> 
+								</div>
+						    </th>
+						<% end %>
+					</tr>
+				</thead>
+				<tbody>
+					<% @products_ids_aux.each do |product| %>
+					    <tr class="tabla1">
+							<td class="tabla1"><%= product.name %></td>
+							<td class="tabla1"><%= Product::PRODUCT_CATEGORY[product.type_product] %></td>
+							<td class="tabla1" class="price"><%= product.price %> €/Unidad</td>
+							<td class="tabla1"><%= product.restaurant.name %></td>
+					    </tr>
+					<% end %>
+				</tbody>
+				<tfoot>
+					<tr class="tabla1">
+						<th class="tabla1" colspan="6">
+							<div class="pagination">
+		                        <div class="digg_pagination">
+		                            <%= will_paginate @products_ids_aux, :container => false %>
+		                        </div>
+		                    </div>
+						</th>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	<% end %>
 </div>

@@ -149,10 +149,13 @@ div.accion {
     font-weight: bold;
 }
 
-p.header {
+.headered {
 	font-family: acciones;
+	font-size: 17px;
+	padding: 1%;
 	padding-right: 5%;
-    text-align: right;
+	float: right;
+	text-align: right;
     color: black;
 }
 

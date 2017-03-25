@@ -60,8 +60,6 @@ Rails.application.routes.draw do
     
     resources :statistics, only: [:index]
     resources :statistics_votings, only: [:index]
-    resources :statistics_earnings, only: [:index]
-    resources :statistics_commands_users, only: [:index]
     resources :statistics_best_seller_product, only: [:index]
     resources :contacts, only: [:index]
 
