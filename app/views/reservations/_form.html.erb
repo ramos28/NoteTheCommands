@@ -24,7 +24,7 @@
             </div>
             <div class="field">
                 <%= f.label :menú %>
-                <%= f.select :menu_id, options_from_collection_for_select(Menu.all, :id, :name), {:include_blank=>t(:ninguno), :value => 0}%>
+                <%= f.select :menu_id, options_from_collection_for_select(Menu.where("restaurant_id = ? AND is_available = 1", "#{@current_restaurant.id}").order("name ASC"), :id, :name), {:include_blank=>t(:ninguno), :value => 0}%>
             </div>
             <%= f.hidden_field :restaurant_id, :value => @current_restaurant.id %>
             <%= f.hidden_field :user_id, :value => current_user.id %>

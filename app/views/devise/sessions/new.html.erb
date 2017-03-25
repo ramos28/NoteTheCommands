@@ -47,6 +47,11 @@
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                 <%= devise_error_messages! %>
                 <div class="field">
+                    <%= f.label :nombre %>
+                    <%= f.text_field :user_name %>
+                </div>
+                
+                <div class="field">
                     <%= f.label :correo %>
                     <%= f.email_field :email, autofocus: true %>
                 </div>
@@ -68,11 +73,6 @@
                     <%= f.label :teléfono %>
                     <%= f.text_field :phone %>
                 </div> 
-
-                <div class="field">
-                    <%= f.label :nombre %>
-                    <%= f.text_field :user_name %>
-                </div>
 
                 <div class="field">
                     </br><%= f.label :fecha_nacimiento %>

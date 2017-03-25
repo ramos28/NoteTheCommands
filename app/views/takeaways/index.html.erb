@@ -90,8 +90,8 @@
 			            <% else %>
 			                <td class="b2"><%=takeaway.is_delivered %></td>
 			            <% end %>
-			            <td><%= link_to "Editar", edit_takeaway_path(takeaway), :class => 'boton grey' %></td>
 			            <% if !takeaway.is_end %>
+			            	<td><%= link_to "Editar", edit_takeaway_path(takeaway), :class => 'boton grey' %></td>
 			            	<td><%= link_to "Agregar Productos", takeaway_path(takeaway), :class => 'boton grey'  %></td>
 			            <% end %>        
 			        </tr>

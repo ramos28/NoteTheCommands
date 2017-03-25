@@ -158,7 +158,7 @@
 				<tbody>
 					<% @menus.each do |menu| %>
 					    <tr class="tabla2">
-					    	<% if menu.is_available %>
+					    	<%# if menu.is_available %>
 								<td class="tabla2"><%= menu.name %></td>
 								<td class="tabla2"><%= Menu::MENU_CATEGORY[menu.type_menu] %></td>
 								<td class="tabla2" class="price"><%= number_to_currency(menu.price, :unit => "€") %></td>
@@ -171,7 +171,7 @@
 									<td class="b6"><%= menu.is_available %></td>
 				                <% end %>
 								<td><%= link_to "Ver Menú", menu_path(menu), :class => 'boton grey' %></td>
-							<% end %>  
+							<%# end %>  
 					    </tr>
 					<% end %>
 				</tbody>

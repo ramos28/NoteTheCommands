@@ -44,12 +44,27 @@
                     </p>
                 </div>
             </div>
-            <div class="muestra-printer">
-                <%if @command.is_end %>
-                    </br><div class="command_accion">Imprimir Factura</div>
-                    <p><a href="javascript:imprSelec('Imprime')" ><%= image_tag('printer.png', :alt => 'printer')%></a></p>
+            <% if !@command.is_end %>
+                <% if @command.is_served %>
+                    <%= form_for @command, url: command_path do |f| %>
+                        <%= f.error_messages %>
+                        <%= f.hidden_field :is_end, :value => 1 %>
+                        </br><div class="accion-command">Cerrar la Comanda</div>
+                        <div class="field">
+                            </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
+                            </br></br>
+                        </div>
+                    <% end %>
                 <% end %>
-            </div>
+            <% end %>
+            <% if @current_role == 1 %>
+                <div class="muestra-printer">
+                    <%if @command.is_end %>
+                        </br><div class="command_accion">Imprimir Factura</div>
+                        <p><a href="javascript:imprSelec('Imprime')" ><%= image_tag('printer.png', :alt => 'printer')%></a></p>
+                    <% end %>
+                </div>
+            <% end %>
         </div>
         <% if @current_role == 0 %>
             <div class="muestra-tabla-comandas">
@@ -123,7 +138,7 @@
                             <%= form_for :command_product, url: command_products_path do |f| %>
                                 <div class="field">
                                     </br><%= f.label :producto %><br/>
-                                    <%= f.select :product_id, options_from_collection_for_select(Product.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_products, :id, :name)%>
+                                    <%= f.select :product_id, options_from_collection_for_select(Product.where("restaurant_id = ?", "#{@current_restaurant.id}").order("name ASC    ") - @command.command_products, :id, :name)%>
                                 </div>
                                 <%# debugger %>
                                 <div class="field">
@@ -139,7 +154,7 @@
                             <%= form_for :command_menu, url: command_menus_path do |f| %>
                                 <div class="field">
                                     </br><%= f.label :menú %><br />
-                                    <%= f.select :menu_id, options_from_collection_for_select( Menu.where("restaurant_id = ?", "#{@current_restaurant.id}") - @command.command_menus, :id, :name)%>
+                                    <%= f.select :menu_id, options_from_collection_for_select( Menu.where("restaurant_id = ? AND is_available = 1", "#{@current_restaurant.id}").order("name ASC") - @command.command_menus, :id, :name)%>
                                 </div>
                                 <div class="field">
                                     </br><%= f.label :cantidad %><br />
@@ -150,21 +165,11 @@
                             <% end %>
                         </div>
                     </div>
-                    <% if @command.is_served %>
-                        <%= form_for @command, url: command_path do |f| %>
-                            <%= f.error_messages %>
-                            <%= f.hidden_field :is_end, :value => 1 %>
-                            </br></br><div class="accion-command">Cerrar la Comanda</div>
-                            <div class="field">
-                                </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
-                                </br></br>
-                            </div>
-                        <% end %>
-                    <% end %>
                 </div>
                 <div style="clear:both;"></div>
             <% else %>
-                <%= link_to 'Pedir cuenta', command_finish_path(@command), :class => 'boton grey'  %>
+                <div class="accion-command">Pedir cuenta de la comanda</div>
+                </br><%= link_to 'Pedir Cuenta', command_finish_path(@command), :class => 'boton grey'  %>
             <% end %>
         <% else %>
             <div class="muestra-tabla-comandas-entera">

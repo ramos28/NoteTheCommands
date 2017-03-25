@@ -64,7 +64,7 @@
                     <td class="tabla2"><%= total_products.name %></td>
                     <td class="tabla2"><%= total_products.restaurant.name %></td>
                     <td class="tabla2"><%= Product::PRODUCT_CATEGORY[total_products.type_product] %></td>
-                    <td class="tabla2"><div id="container3"><%= total_products.ingredients %></div></td>
+                    <td class="tabla2" title="<%= total_products.ingredients %>"><div id="container3"><%= total_products.ingredients %></div></td>
                     <td class="tabla2"><%= total_products.price %> €/Unidad</td>
                     <td class="tabla2"><%= total_products.created_at %></td>
                     <td class="tabla2"><%= total_products.updated_at %></td>

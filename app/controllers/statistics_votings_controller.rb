@@ -4,6 +4,9 @@ class StatisticsVotingsController < ApplicationController
 
 	  	start_date = params[:start_date]
 	  	end_date = params[:end_date]
+
+	  	@start = start_date
+	  	@end = end_date
 		
 		votings = @current_restaurant.votings.where("created_at >= ? and created_at <= ?", start_date, end_date)
 		

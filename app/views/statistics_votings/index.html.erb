@@ -33,7 +33,7 @@
 					        type: 'column'
 					    },
 					    title: {
-					        text: 'Estadísticas de las votaciones de los usuarios'
+					        text: 'Estadísticas de las votaciones de los usuarios entre las fechas: <%= @start %> - <%= @end %>'
 					    },
 					    subtitle: {
 					        text: 'Ponga el puntero en la columna para ver ms información'
@@ -68,7 +68,7 @@
 					    series: [{
 					        name: 'Cuestionario',
 					        colorByPoint: true,
-					        data: <%= @rank_votings.to_json.html_safe %>
+					        data: @rank_votings.to_json.html_safe %>
 					    }],
 					});
 
