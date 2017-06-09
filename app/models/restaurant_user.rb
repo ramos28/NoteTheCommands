@@ -22,4 +22,11 @@ class RestaurantUser < ApplicationRecord
             return 0
         end
     end
+
+    def totalPrice
+        total = 0
+        self.commands.map {|c| total += c.command_price}
+
+        return total
+    end
 end

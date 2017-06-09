@@ -6,8 +6,8 @@
 	        	<%= image_tag('information.png', :alt => 'info')%>
 				<span>
 					Manual de ayuda de Registro de Restaurante:<br>
-					En esta página el Administrador pordrá podrá registrar un Restaurante nuevo en la aplicación. Las funcionalidades que tiene son:<br>
-					- Registrar el Restaurante: Se resgistra un Restaurante nuevo con los datos proporcinados por el que vaya a ser Gerente del mismo.
+					En esta página el Administrador podrá registrar un nuevo restaurante en la aplicación. Las funcionalidades que tiene son:<br>
+					- Registrar el Restaurante: Se resgistra un restaurante nuevo con los datos proporcinados por el usuario que vaya a ser gerente del mismo.
 				</span> 
 			</div>
 		</div>
@@ -24,7 +24,7 @@
 						    <%= "Nombre" %>
 							<span>Nombre del Restaurante</span> 
 						</div>
-			    		<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Restaurante" %></p>
+			    		<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre del restaurante..." %></p>
 			    	</th>
 			    	<th class="tabla2">
 				    	<div class="cssToolTip">

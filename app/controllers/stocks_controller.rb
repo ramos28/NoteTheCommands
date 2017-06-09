@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
 	def index
-		@stocks = Stock.all.order("quantity ASC").paginate(:per_page => 7, :page => params[:page])
+		@stocks = Stock.all.order("quantity ASC").paginate(:per_page => 12, :page => params[:page])
 	    if params[:description_stock].present?
 	      	@stocks = @stocks.where("description_stock LIKE ?", "%#{params[:description_stock]}%")
 	    end

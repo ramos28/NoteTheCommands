@@ -46,14 +46,16 @@
             </div>
             <% if !@command.is_end %>
                 <% if @command.is_served %>
-                    <%= form_for @command, url: command_path do |f| %>
-                        <%= f.error_messages %>
-                        <%= f.hidden_field :is_end, :value => 1 %>
-                        </br><div class="accion-command">Cerrar la Comanda</div>
-                        <div class="field">
-                            </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
-                            </br></br>
-                        </div>
+                    <% if @current_role == 0 %>
+                        <%= form_for @command, url: command_path do |f| %>
+                            <%= f.error_messages %>
+                            <%= f.hidden_field :is_end, :value => 1 %>
+                            </br><div class="accion-command">Cerrar la Comanda</div>
+                            <div class="field">
+                                </br><%= f.submit 'Cerrar Comanda', :class => 'boton grey' %>
+                                </br></br>
+                            </div>
+                        <% end %>
                     <% end %>
                 <% end %>
             <% end %>
@@ -125,7 +127,7 @@
                     </tfoot>
                 </table>
             </div>
-            </br>
+            </br></br>
             <% if !@command.is_end %>    
                 <div class="muestra-eleccion-comandas">
                 <ul class="tabs">
@@ -279,16 +281,16 @@
         <% end %>
         <tr>
             <td style="font-weight:bold; text-align: right;">Total:</td>
-            <td style="text-align: right;"><%= '%.2f' % total_price_command %>€</td>
-            <td style="text-align: right;" colspan="2"><%= '%.2f' % (total_price_command * 1.21) %>€</td>
+            <td style="text-align: right;"> *</td>
+            <td style="text-align: right;" colspan="2"><%= '%.2f' % (total_price_command) %>€</td>
 
         </tr>
         <br>
         <tr>
             <td></td>
             <% discount = @current_restaurant_user.discount/100 %>
-            <% discount = (total_price_command * 1.21 * discount) if total_price_command != nil %>
-            <% discount = (total_price_command * 1.21 - discount) if total_price_command != nil %>
+            <% discount = (total_price_command * discount) if total_price_command != nil %>
+            <% discount = (total_price_command - discount) if total_price_command != nil %>
             <td style="text-align: right;" colspan="3">Con descuento: <%= '%.2f' % discount %> €</td>
 
         </tr>

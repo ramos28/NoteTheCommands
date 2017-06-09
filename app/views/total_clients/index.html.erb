@@ -17,7 +17,8 @@
                 <th class="tabla2">
                     <div class="cssToolTip">
                         <%= "Nombre" %>
-                        <span>Nombre del Usuario registrado</span> 
+                        <span>Nombre del Usuario registrado</span>
+                        <p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre del cliente..." %></p>
                     </div>
                 </th>
                 <th class="tabla2">
@@ -56,12 +57,12 @@
                         <span>Fecha de alta del Usuario al sistema</span> 
                     </div>
                 </th>
-                <th class="tabla2">
+                <!-- <th class="tabla2">
                     <div class="cssToolTip">
-                        <%= "Gastado" %>
+                        <%#= "Gastado" %>
                         <span>Total gastado por el Usuario en el sistema</span> 
                     </div>
-                </th>
+                </th> -->
             </tr>
         </thead>
         <tbody>
@@ -73,8 +74,8 @@
                     <td class="tabla2"><%= total_users.email %></td>
                     <td class="tabla2"><%= total_users.sign_in_count %></td>
                     <td class="tabla2"><%= total_users.phone %></td>
-                    <td class="tabla2"><%= total_users.created_at %></td>
-                    <td class="tabla2"><%= total_users.total_spent %> €</td>
+                    <td class="tabla2"><%= total_users.created_at.strftime("%d %B %Y a las %X") %></td>
+                    <!-- <td class="tabla2"><%#= total_users.total_spent %> €</td> -->
                 </tr>
             <% end %>
         </tbody>

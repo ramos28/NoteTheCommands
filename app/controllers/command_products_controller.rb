@@ -9,7 +9,7 @@ class CommandProductsController < ApplicationController
         @product_command.is_cooked = true if @product_command.product.type_product == 6 || @product_command.product.type_product == 7 || @product_command.product.type_product == 8 
 
         if current_user.age < 18 && !@product_command.product.younger
-            flash[:notice] = "Eres menor de edad"
+            flash.now[:notice] = "Eres menor de edad"
             redirect_to :back
         else
             if @product_command.save

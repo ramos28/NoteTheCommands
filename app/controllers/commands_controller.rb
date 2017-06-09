@@ -1,7 +1,8 @@
 class CommandsController < ApplicationController
 	def index
 
-		@commands = @current_restaurant_user.commands.where("created_at >= ?", Time.now.beginning_of_day + (60*60*5)).paginate(:per_page => 8, :page => params[:page])
+		#@commands = @current_restaurant_user.commands.where("created_at >= ?", Time.now.beginning_of_day + (60*60*5)).paginate(:per_page => 8, :page => params[:page])
+		@commands = @current_restaurant_user.commands.where("restaurant_user_id = ?", current_user.id).order("is_end ASC").paginate(:per_page => 8, :page => params[:page])
 		@command_waiter = Command.where("restaurant_id = ? AND created_at >= ?", "#{@current_restaurant.id}", Time.now.beginning_of_day).paginate(:per_page => 8, :page => params[:page])
 		@commands_gerente = Command.where("restaurant_id = ?", "#{@current_restaurant.id}").order('created_at DESC').paginate(:per_page => 8, :page => params[:page])
 		#@commands += @commands.select{|command| command.created_at >= Time.now.beginning_of_day}
@@ -9,7 +10,7 @@ class CommandsController < ApplicationController
 	    @commands_cooker = []
 
 	    @current_restaurant.commands.each do |command|
-	      @commands_cooker += command.command_products.where(:is_served => false)
+	      @commands_cooker += command.command_products.where(:is_served => false).paginate(:per_page => 8, :page => params[:page])
 	    end
 
 	    #@commands_cooker = @commands_cooker.order("is_cooked")

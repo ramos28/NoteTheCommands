@@ -13,12 +13,12 @@
             <% if current_user.superadmin %>
                 <div class="field">
                     </br>Restaurante<%= radio_button_tag(:user_for, "Restaurante") %>
-                    <%= f.select :user_for, options_from_collection_for_select( Restaurant.all, :email, :email)%>
+                    <%= f.select :user_for, options_from_collection_for_select( Restaurant.all.order("name ASC"), :email, :email)%>
                 </div>
             <% else %>
                 <div class="field">
                     </br>Restaurante<%= radio_button_tag(:user_for, "Restaurante") %>
-                    <%= f.select :user_for, options_from_collection_for_select( Restaurant.where("id != ?", "#{@current_restaurant.id}"), :email, :email)%>
+                    <%= f.select :user_for, options_from_collection_for_select( Restaurant.where("id = ?", "#{@current_restaurant.id}").order("name ASC"), :email, :email)%>
                 </div>
             <% end %>
             <div class="field">

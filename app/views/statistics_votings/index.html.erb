@@ -1,4 +1,4 @@
-<div class="title">Estadísticas de los Productos más Vendidos</div>
+<div class="title">Estadísticas de las votaciones de los usuarios</div>
 </br>
 <div class="contact">
 	<div class="new">
@@ -24,7 +24,6 @@
 		<% end %>
 
 		<% if !@rank_votings.blank? %>
-
 			<div id="cont2" style="width: 95%; height: 400px; margin: 0 auto"></div>
 			<script type="text/javascript">
 				$(function () { 
@@ -68,7 +67,7 @@
 					    series: [{
 					        name: 'Cuestionario',
 					        colorByPoint: true,
-					        data: @rank_votings.to_json.html_safe %>
+					        data: <%= @rank_votings.to_json.html_safe %>
 					    }],
 					});
 

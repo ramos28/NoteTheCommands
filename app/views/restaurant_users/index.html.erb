@@ -49,7 +49,7 @@
 						    <%= "Restaurante" %>
 							<span>Nombre del Restaurante al que está registrado Usuario</span> 
 						</div>
-						<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre Restaurante" %></p>
+						<p><%= text_field_tag :name, params[:name], class: "form-control", placeholder: "Nombre del restaurante..." %></p>
 					</th>
 					<th class="tabla2" >
 						<div class="cssToolTip">
@@ -118,12 +118,12 @@
 				<%= form_for @restaurants_users do |f| %>
 					<div class="field">
 						</br><%= f.label :selecione_restaurante %></br>
-						<%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all, :id, :name)%>
+						<%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.all.order("name ASC"), :id, :name)%>
 					</div>
 					<% if current_user.superadmin %>
 						<div class="field">
 							</br><%= f.label :selecione_usuario %></br>
-							<%= f.select :user_id, options_from_collection_for_select( User.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%"), :id, :email )%>
+							<%= f.select :user_id, options_from_collection_for_select( User.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%").order("email ASC"), :id, :email )%>
 						</div>
 						<div class="field">
 							</br><%= f.label :función_usuario %></br>

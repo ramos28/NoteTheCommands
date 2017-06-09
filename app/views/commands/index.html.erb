@@ -46,8 +46,8 @@
 		        </th>
 		        <th class="tabla1" >
 					<div class="cssToolTip">
-					    <%= "Precio Comanda" %>
-						<span>Precio total que costó la Comanda al Usuario</span> 
+					    <%= "Coste Comanda" %>
+						<span>Coste total que costó la Comanda al Usuario</span> 
 					</div>
 		        </th>
 		        <th class="tabla1" >
@@ -203,7 +203,7 @@
 					<th class="tabla1" colspan="6">
 						<div class="pagination">
 							<div class="digg_pagination">
-							    <%= will_paginate @commands, :container => false %>
+							    <%= will_paginate @command_waiter, :container => false %>
 							</div>
 						</div>
 					</th>
@@ -231,7 +231,7 @@
 		    <tr class="tabla1">
 		    	<th class="tabla1" >
 					<div class="cssToolTip">
-					    Comanda
+					    Producto
 						<span>Nombre de la Comanda</span> 
 					</div>
 		        </th>
@@ -407,7 +407,7 @@
 					<th class="tabla1" colspan="8">
 						<div class="pagination">
 							<div class="digg_pagination">
-							    <%= will_paginate @commands, :container => false %>
+							    <%= will_paginate @commands_gerente, :container => false %>
 							</div>
 						</div>
 					</th>

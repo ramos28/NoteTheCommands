@@ -6,7 +6,7 @@
 				<div class="imagen">
 					<%= image_tag('registrar_restaurante.png', :alt => 'registrar_restaurante')%>
 				</div>
-				<p>Registrar un nuevo restaurante en la aplicación</p>
+				<p>Registrar un nuevo restaurante en el sistema</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -15,7 +15,7 @@
 				<div class="imagen">
 					<%= image_tag('registrar_empleado.png', :alt => 'registrar_empleado')%>
 				</div>
-				<p>Registrar un nuevo empleado en un restaurante ya resgistrado en la aplicación</p>
+				<p>Registrar un nuevo empleado en un restaurante ya resgistrado en el sistema</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -63,7 +63,7 @@
 				<div class="imagen">
 					<%= image_tag('menu.png', :alt => 'menu')%>
 				</div>
-				<p>En esta sección el camarero podrán consultar los Menús del Restaurante</p>
+				<p>En esta sección el camarero podrán consultar los menús del restaurante</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -81,7 +81,7 @@
 				<div class="imagen">
 					<%= image_tag('incidencia.png', :alt => 'incidencia')%>
 				</div>
-				<p>Aquí el Camarero podrá ver las incidencias sobre la comida que le han sido reportadas</p>
+				<p>Aquí el Camarero podrá visualizar las incidencias sobre algún producto de la comanda</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -91,7 +91,7 @@
 				<div class="imagen">
 					<%= image_tag('menu.png', :alt => 'menu')%>
 				</div>
-				<p>En esta sección el cocinero podrán consultar los Menús del Restaurante</p>
+				<p>En esta sección el cocinero podrán consultar los menús del restaurante</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -109,7 +109,7 @@
 				<div class="imagen">
 					<%= image_tag('comanda_restaurante.png', :alt => 'comanda_restaurante')%>
 				</div>
-				<p>El gerente podrá ver las comandas que tienen asignadas tanto el camarero como el cocinero</p>
+				<p>El gerente podrá visualizar las comandas que tienen asignadas tanto el camarero como el cocinero</p>
 			</div>
 		<% end %>
 	<% end %>
@@ -119,7 +119,7 @@
 				<div class="imagen">
 					<%= image_tag('restaurante.png', :alt => 'restaurante')%>
 				</div>
-				<p>Seleccione uno de los restaurantes registrados para veneficiarse de las distintas ventajas y poder navegar por sus distintas funcionalidades</p>
+				<p>Seleccione uno de los restaurantes registrados para beneficiarse de las distintas ventajas y poder navegar por sus distintas funcionalidades</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -130,7 +130,7 @@
 				<div class="imagen">
 					<%= image_tag('incidencia.png', :alt => 'incidencia')%>
 				</div>
-				<p>Aquí se podrán reportar las incidencias del restuarante para que el se resulvan lo antes posible</p>
+				<p>Aquí se podrán reportar las incidencias del restaurante para que el se resulvan lo antes posible</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -140,7 +140,7 @@
 				<div class="imagen">
 					<%= image_tag('incidencia.png', :alt => 'incidencia')%>
 				</div>
-				<p>Aquí el gerente del restaurante podrá ver y gestionar las incidencias</p>
+				<p>Aquí el gerente del restaurante podrá visualizar y gestionar las incidencias</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -151,7 +151,7 @@
 				<div class="imagen">
 					<%= image_tag('menu.png', :alt => 'menu')%>
 				</div>
-				<p>En esta sección el cliente podrá consultar los Menús del Restaurante</p>
+				<p>En esta sección el cliente podrá consultar los menús del restaurante</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -160,7 +160,7 @@
 				<div class="imagen">
 					<%= image_tag('pedido_online.png', :alt => 'pedido_online')%>
 				</div>
-				<p>Realice el pedido online de sus productos favoritos y venga a recogerlo a casa o si lo desea se le podrá enviar el pedido a domicilio</p>
+				<p>Realice el pedido online de sus productos favoritos y venga a recogerlo o si lo desea se le podrá enviar el pedido a domicilio</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -171,7 +171,7 @@
 				<div class="imagen">
 					<%= image_tag('reserva.png', :alt => 'reserva')%>
 				</div>
-				<p>Petición de reserva el día que desee de la mesa del restaurante para no tener que esperar</p>
+				<p>Petición de una reserva para el día y la mesa que desee del restaurante para no quedarte sin sitio</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -200,16 +200,16 @@
 				<div class="imagen">
 					<%= image_tag('menu.png', :alt => 'menu')%>
 				</div>
-				<p>En esta sección el gerente podrá registrar, consultar y modificar los menus del restaurante</p>
+				<p>En esta sección el gerente podrá registrar, consultar y modificar los menús del restaurante</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
-		<%= link_to reservations_path do %>
+		<%= link_to takeaways_path do %>
 			<div class="starts">
 				<div class="imagen">
 					<%= image_tag('ver_reservas.png', :alt => 'ver_reservas')%>
 				</div>
-				<p>En esta sección el gerente podrá consultar y modificar las reservas del restaurante</p>
+				<p>En esta sección el gerente podrá consultar los pedidos online del restaurante</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -227,7 +227,7 @@
 				<div class="imagen">
 					<%= image_tag('cuestionario.png', :alt => 'cuestionario')%>
 				</div>
-				<p>Es aquí donde el Gerente del restaurante generará cuestiones para que los clientes realicen las votaciones mientras se le suministra la cuenta</p>
+				<p>Es aquí donde el Gerente del restaurante generará cuestiones para que los clientes realicen las votaciones mientras se les suministra la cuenta</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -236,7 +236,7 @@
 				<div class="imagen">
 					<%= image_tag('publicacion_blog.png', :alt => 'publicacion_blog')%>
 				</div>
-				<p>Ventana donde el Gerente publicará noticias relevantes para que los clientes puedan verlas y dejar sus comnetarios si lo desean</p>
+				<p>Blog donde el Gerente publicará noticias relevantes para que los clientes puedan verlas y dejar sus propios comentarios si lo desean</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -246,7 +246,7 @@
 			<div class="imagen">
 				<%= image_tag('mensajeria.png', :alt => 'mensajeria')%>
 			</div>
-			<p>Bandeja de mensajes de los usuarios donde se permitirá enviar y recibir mensajes entre los usuarios y restaurantes</p>
+			<p>Bandeja de mensajes de los usuarios, donde también se permitirá enviar y recibir mensajes entre los usuarios y restaurantes registrados en el sistema</p>
 			<div class="clear"></div>
 		</div>
 	<% end %>
@@ -256,7 +256,7 @@
 				<div class="imagen">
 					<%= image_tag('chat.png', :alt => 'chat')%>
 				</div>
-				<p>Chat privado entre clientes del mismo restaurante donde poder comunicarse con personas las cuales opinan de diferentes temas</p>
+				<p>Chat privado entre clientes del mismo restaurante donde poder comunicarse con otras personas registradas en el sistema</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -266,17 +266,17 @@
 			<div class="imagen">
 				<%= image_tag('mi_perfil.png', :alt => 'mi_pefil')%>
 			</div>
-			<p>Perfil del usuario donde se podrá modificar toda la información en caso de que sea necesario</p>
+			<p>Perfil del usuario donde se podrá modificar toda la información en caso de que lo desee</p>
 			<div class="clear"></div>
 		</div>
 	<% end %>
 	<% if @current_role == 0 || @current_role == 1 || @current_role == 2 || @current_role == 3 %>
-		<%= link_to blogs_index_path do %>
+		<%= link_to new_curriculum_path do %>
 			<div class="starts">
 				<div class="imagen">
 					<%= image_tag('blog.png', :alt => 'blog')%>
 				</div>
-				<p>Aquí podremos ver las noticias, ofertas o demás información que el gerente del restaurante en el que estamos registrados publique</p>
+				<p>Ventana donde podremos enviar nuestro curriculum a un restaurante donde queramos trabajar y donde el gerente podra visualizarlos cuando lo necesite</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -285,7 +285,7 @@
 				<div class="imagen">
 					<%= image_tag('contactar.png', :alt => 'contactar')%>
 				</div>
-				<p>Información para poder contactar con el restaurante, asi como su ubucación exacta</p>
+				<p>Información para poder contactar con el restaurante, así como su ubicación exacta en el mapa</p>
 				<div class="clear"></div>
 			</div>
 		<% end %>
@@ -304,7 +304,7 @@
 <% if !@close_session %>
     <script type="text/javascript">
         $(".close_session").click(function(event){
-            alert("tienes comandas abiertas");
+            alert("Tiene comandas abiertas..No puede salir del sistema");
             event.preventDefault();
             event.stopPropagation();
             return false;

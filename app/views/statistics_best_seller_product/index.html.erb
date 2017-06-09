@@ -20,7 +20,7 @@
 					- Hasta: <%= date_field_tag "end_date" %> y seleccione una categoría  <%= select_tag "select_category", options_for_select(Product::PRODUCT_CATEGORY.map.with_index {|index, value| [index, value]}), {:include_blank => "-- Todas --"}%>
 				</br></br><%= submit_tag 'Buscar', :class => 'boton grey' %>
 			</div>
-			</br>
+			</br></br></br>
 		<% end %>
 
 		<% if !@rank_products.blank? %>

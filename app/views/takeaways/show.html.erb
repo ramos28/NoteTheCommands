@@ -114,7 +114,6 @@
                         <%= button_to 'Finalizar Pedido', takeaway_path(@takeaway), :method => :put, data: { confirm: "¿Está seguro que Terminar el Pedido Online?"}, :class => 'boton grey' %></br></br>
                     <% end %>
                 <% else %>
-                    </br></br><div class="takeaway_accion">Datos Usuario</div>
 
                 <% end %>
             </div>
@@ -139,15 +138,15 @@
                             <tr class="tabla3">
                                 <td class="tabla3"><%= product.name %></td>
                                 <td class="tabla3"><%= takeaway_product.quantity %> Unds</td>
-                                <td class="tabla3"><%= product.price %> €/Unds</td>
-                                <td class="tabla3"><%= price %> €</td>
+                                <td class="tabla3"><%= '%.2f' %  product.price %> €/Unds</td>
+                                <td class="tabla3"><%= '%.2f' %  price %> €</td>
                             </tr>
                         <% end %>
                     </tbody>
                     <tfoot>
                         <tr class="tabla3">
                             <th class="tabla3" title="Precio total de la comanda">Total: </th>
-                            <td class="tabla3" colspan="3"><%= @takeaway.total_price_selection %> €</td>
+                            <td class="tabla3" colspan="3"><%= '%.2f' % total_price %> €</td>
                         </tr>
                     </tfoot>
                 </table> 
@@ -213,8 +212,8 @@
         <tr>
             <td></td>
             <% discount = @current_restaurant_user.discount/100 %>
-            <% discount = (@takeaway.total_price_selection * 1.21 * discount) if @takeaway.total_price_selection != nil %>
-            <% discount = (@takeaway.total_price_selection * 1.21 - discount) if @takeaway.total_price_selection != nil %>
+            <% discount = (@takeaway.total_price_selection * discount) if @takeaway.total_price_selection != nil %>
+            <% discount = (@takeaway.total_price_selection - discount) if @takeaway.total_price_selection != nil %>
             <td style="text-align: right;" colspan="3">Con descuento: <%= discount %> €</td>
 
         </tr>
