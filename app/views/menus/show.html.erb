@@ -1,6 +1,6 @@
 <div class="menu">
     <div class="muestra-menus">
-        </br></br></br></br><div class="menu_accion">Menú</div>
+        </br></br></br></br><div class="takeaway_accion">Menú</div>
         <div id="padre">  
             <div id="hijo7">
                 <p>
@@ -21,8 +21,8 @@
                 </p>
                 <p>
                     <% if @current_role == 3 %>
-                        <%= link_to "Modificar", edit_menu_path(@menu) %> |
-                        <%= link_to "Eliminar", @menu, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el Menú?"} %>
+                        <%= link_to "Modificar", edit_menu_path(@menu), :class => 'boton grey' %> |
+                        <%= link_to "Eliminar", @menu, :method => :delete, data: { confirm: "¿Está seguro que desea eliminar el Menú?"}, :class => 'boton red' %>
                     <% end %>
                 </p>
             </div>
@@ -72,7 +72,7 @@
 	</br>
     <div class="muestra-eleccion">
         <% if @current_role == 3 %>
-            </br></br><div class="menu_accion">Agregar Producto</div>
+            </br></br><div class="takeaway_accion">Agregar Producto</div>
             <div id="padre">  
 	            <div id="hijo7">
 		            <%= form_for :menu_product, url: menu_products_path do |f| %>
@@ -89,7 +89,7 @@
 		            <% end %></br>
 		        </div>
 		    </div>
-            </br></br><div class="menu_accion">Finalizar Menú</div>
+            </br></br><div class="takeaway_accion">Finalizar Menú</div>
             </br><%= button_to 'Terminar', menus_path, :method => "get", data: { confirm: "¿Está seguro que Terminar el Menú?"}, :class => 'boton grey' %></br>
         <% else %>
             <div class="contacto-menu"> 

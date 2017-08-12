@@ -31,6 +31,14 @@
                 <%= f.text_field :email %>
             </div>
             <div class="field">
+                <%= f.label :número_mesas%>
+                <%= f.text_field :tables %>
+            </div>
+            <div class="field">
+                <%= f.label :comida_rápida %>
+                <%= f.select :fastfood, [['Si', true], ['No', false]], :selected => 'No' %>
+            </div>
+            <div class="field">
                 <%= f.label :horario_apertura %>
                 <%= f.text_field :opening_hours %>
             </div>    

@@ -44,8 +44,8 @@
 
                     <p>
                         <% if @current_role == 0 %>
-                            <%= link_to "Modificar", edit_takeaway_path(@takeaway) %> |
-                            <%= link_to "Eliminar", @takeaway, :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar la comanda?"} %>
+                            <%= link_to "Modificar", edit_takeaway_path(@takeaway), :class => 'boton grey' %> |
+                            <%= link_to "Eliminar", @takeaway, :method => :delete, data: { confirm: "¿Esta seguro que desea eliminar la comanda?"}, :class => 'boton red' %>
                         <% end %>
                     </p>
                 </div>
@@ -204,7 +204,7 @@
             <td style="font-weight:bold; text-align: right;">Total:</td>
             <td style="text-align: right;"><%= @takeaway.total_price_selection %>€</td>
             <% if !@takeaway.total_price_selection != nil %>
-                <td style="text-align: right;" colspan="2"><%= @takeaway.total_price_selection * 1.21 if @takeaway.total_price_selection != nil %>€*</td>
+                <td style="text-align: right;" colspan="2"><%= @takeaway.total_price_selection if @takeaway.total_price_selection != nil %>€*</td>
             <% end %>
 
         </tr>

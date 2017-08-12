@@ -1,40 +1,43 @@
 <div class="title">Restaurante creado</div>
+<div id="padre">  
+    <div id="hijo3"> 
+        <p>
+            <strong>Nombre restaurante:</strong>
+            <%= @restaurant.name %>
+        </p>
+        <p>
+            <strong>Email:</strong>
+            <%= @restaurant.email %>
+        </p>
+        <p>
+            <strong>Teléfono:</strong>
+            <%= @restaurant.phone %>
+        </p>
+        <p>
+            <strong>Dirección:</strong>
+            <%= @restaurant.address %>
+        </p>
+        <p>
+            <strong>Ciudad:</strong>
+            <%= @restaurant.city %>
+        </p>
+        <p>
+            <strong>País:</strong>
+            <%= @restaurant.country %>
+        </p>
+        <p>
+            <strong>Código Postal:</strong>
+            <%= @restaurant.postal_code %>
+        </p>
+        <p>
+            <strong>Horario Apertura:</strong>
+            <%= @restaurant.opening_hours %>
+        </p>
 
-<p>
-    <strong>Nombre Restaurante:</strong>
-    <%= @restaurant.name %>
-</p>
-<p>
-    <strong>Email:</strong>
-    <%= @restaurant.email %>
-</p>
-<p>
-    <strong>Telefono:</strong>
-    <%= @restaurant.phone %>
-</p>
-<p>
-    <strong>Direccion:</strong>
-    <%= @restaurant.address %>
-</p>
-<p>
-    <strong>Ciudad:</strong>
-    <%= @restaurant.city %>
-</p>
-<p>
-    <strong>Pais:</strong>
-    <%= @restaurant.country %>
-</p>
-<p>
-    <strong>Codigo Postal:</strong>
-    <%= @restaurant.postal_code %>
-</p>
-<p>
-    <strong>Horario Apertura:</strong>
-    <%= @restaurant.opening_hours %>
-</p>
-
-<p>
-    <%= link_to "Edit", edit_restaurant_path(@restaurant) %> |
-    <%= link_to "Destroy", @restaurant, :method => :delete, data: { confirm: "Are you sure?"} %> |
-    <%= link_to "View All", restaurants_path %>
-</p>
+        <p>
+            <%= link_to "Editar", edit_restaurant_path(@restaurant), :class => 'boton grey'  %> 
+            <%= link_to "Eliminar", @restaurant, :method => :delete, data: { confirm: "Are you sure?"},:class => 'boton grey'  %> 
+            <%= link_to "Aceptar", restaurants_path, :class => 'boton grey'  %>
+        </p>
+    </div>
+</div>

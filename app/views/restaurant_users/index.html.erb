@@ -144,7 +144,7 @@
     			<div id="hijo3">
 					<div class="field">
 						</br><%= f.label :selecione_restaurante %></br>
-						<%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%"), :id, :name)%>
+						<%= f.select :restaurant_id, options_from_collection_for_select( Restaurant.where("id != ? AND email NOT LIKE ?", "#{current_user.id}", "#{'guest_'}%").order("name ASC"), :id, :name)%>
 					</div>
 			        <%= f.hidden_field :user_id, :value => current_user.id %>
 					<div class="field">

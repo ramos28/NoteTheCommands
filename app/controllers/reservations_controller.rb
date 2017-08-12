@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
 		@reservations = Reservation.where("restaurant_id = ? AND date < ? AND date > ? AND is_checkedOut = 0", @current_restaurant.id, Time.now.beginning_of_day + (24*60*60), Time.now.beginning_of_day).order("hour ASC").paginate(:per_page => 10, :page => params[:page])
 		@reservations_futures = Reservation.where("restaurant_id = ? AND date > ?", @current_restaurant.id, Time.now.beginning_of_day + (24*60*60)).order("hour ASC").paginate(:per_page => 10, :page => params[:page])
 		@reservations_ended = Reservation.where("restaurant_id = ? AND is_checkedOut = 1", @current_restaurant.id).order("date DESC").paginate(:per_page => 10, :page => params[:page])
-		@reservations_total = Reservation.where("restaurant_id = ?", @current_restaurant.id).order("date DESC").paginate(:per_page => 11, :page => params[:page])
+		@reservations_total = Reservation.where("restaurant_id = ?", @current_restaurant.id).order("date DESC").paginate(:per_page => 10, :page => params[:page])
 		@reservation = Reservation.new
 	end
 

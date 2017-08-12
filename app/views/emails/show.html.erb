@@ -2,7 +2,7 @@
 <div id="padre">  
     <div id="hijo2"> 
         <p>
-            <strong>Asunto</strong><br />
+            <strong>Asunto: </strong>
             <%= @email.subject %>
         </p>
         <p>
@@ -18,7 +18,7 @@
             <%= @email.description %>
         </p>
         <p>
-            <%= link_to "Eliminar", @email, :method => :delete, data: { confirm: "¿Está seguro que desea Eliminar el mensaje?"} %>
+            <%= link_to "Eliminar", @email, :method => :delete, data: { confirm: "¿Está seguro que desea Eliminar el mensaje?"}, :class => 'boton grey'  %>
         </p>
     </div>
 </div>

@@ -37,9 +37,9 @@
 
                     <p>
                         <% if @current_role == 0 %>
-                            <%= link_to "Modificar", edit_command_path(@command), style: "color: black"  %> |
-                            <%= link_to "Eliminar", @command, :method => :delete, data: { confirm: "¿Está seguro que desea modificar la Comanda?"}, style: "color: black"  %> |
-                            <%= link_to "Ver Todas", commands_path, style: "color: black" %>
+                            <%= link_to "Modificar", edit_command_path(@command), :class => 'boton grey'  %> 
+                            <%= link_to "Eliminar", @command, :method => :delete, data: { confirm: "¿Está seguro que desea modificar la Comanda?"}, :class => 'boton red'  %> 
+                            <%= link_to "Ver Todas", commands_path, :class => 'boton grey' %>
                         <% end %>
                     </p>
                 </div>
